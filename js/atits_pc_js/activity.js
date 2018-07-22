@@ -156,7 +156,7 @@ $(document).ready(function() {
     var data;
     $.ajax({
         crossDomain : true,
-        url:"http://localhost:8080/activity/findAll2",
+        url:"http://47.104.26.79:8080/atits_service/activity/findAll2",
         dataType:"json",
         type:"get",
         async:false,
