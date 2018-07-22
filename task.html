@@ -46,6 +46,8 @@
     <!--Animate.css [ OPTIONAL ]-->
     <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
 
+    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
+
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -71,6 +73,10 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
+    <!-----------------------------这个js文件放上面---------------------------------->
+    <script src="js/atits_pc_js/task.js"></script>
+    <!----------------------------------------------------------------------------->
+
     <!--&lt;!&ndash;X-editable [ OPTIONAL ]&ndash;&gt;-->
     <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
     <!--&lt;!&ndash;&ndash;&gt;-->
@@ -88,10 +94,9 @@
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
 
-    <script src="js/atits_pc_js/task.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
-    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
+
 
 
 </head>
@@ -205,7 +210,6 @@
 
 
                     <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                           data-url="data/bs-table.json"
                            data-toolbar="#buttonn"
                            data-search="true"
                            data-show-refresh="true"
@@ -216,151 +220,6 @@
                            data-page-size="5"
                            data-pagination="true"
                            data-show-pagination-switch="true">
-                        <thead>
-                        <tr role="row">
-                            <th data-field="state" data-checkbox="true">ID</th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="标题: activate to sort column ascending">任务名称
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="负责人: activate to sort column ascending">负责人
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="所属体系: activate to sort column ascending">所属体系
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="任务合同: activate to sort column ascending">任务合同
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="开始时间: activate to sort column ascending">开始时间
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="结束时间: activate to sort column ascending">结束时间
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr><tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>

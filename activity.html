@@ -30,7 +30,6 @@
     <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
 
 
-
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
 
@@ -38,13 +37,16 @@
     <!--X-editable [ OPTIONAL ]-->
     <link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
 
-    <!--Theme [ OPTIONAL ]-->
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
+
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
-
-
-
-
-
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
@@ -66,70 +68,33 @@
     <script src="js/nifty.min.js"></script>
 
 
-
-
-
-
     <!--=================================================-->
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
+    <!-----------------------------这个js文件放上面---------------------------------->
+    <script src="js/atits_pc_js/activity.js"></script>
+    <!----------------------------------------------------------------------------->
 
-    <!--Bootstrap Table Sample [ SAMPLE ]-->
-    <script src="js/demo/tables-bs-table.js"></script>
-
-
-    <!--X-editable [ OPTIONAL ]-->
+    <!--&lt;!&ndash;X-editable [ OPTIONAL ]&ndash;&gt;-->
     <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
+    <!--&lt;!&ndash;&ndash;&gt;-->
 
-
-    <!--Bootstrap Table [ OPTIONAL ]-->
+    <!--&lt;!&ndash;Bootstrap Table [ OPTIONAL ]&ndash;&gt;-->
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="plugins/summernote/summernote.min.js"></script>
+    <!--=================================================-->
 
-    <!--Bootstrap Table Extension [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
-
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="plugins/dropzone/dropzone.min.js"></script>
 
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
 
-
-    <!--Modals [ SAMPLE ]-->
-    <script src="js/demo/ui-modals.js"></script>
-
-
-
-
-
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
-
+    <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
 </head>
 
@@ -203,16 +168,13 @@
                    <div class="panel-body">
 
                        <div id="zdhd">
-
-
-                           <button class="btn btn-danger"><i class="demo-pli-cross"></i>删除</button>
                            <button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal">
                                <i class="demo-pli-plus"></i>添加</button>
+                           <button class="btn btn-danger"><i class="demo-pli-cross"></i>删除</button>
                        </div>
 
 
                        <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                              data-url="data/bs-table.json"
                               data-toolbar="#zdhd"
                               data-search="true"
                               data-show-refresh="true"
@@ -222,32 +184,6 @@
                               data-page-list="[5, 10, 20]"
                               data-page-size="5"
                               data-pagination="true" data-show-pagination-switch="true">
-                           <thead>
-                           <tr>
-                               <th data-field="state" data-checkbox="true">ID</th>
-                               <th data-field="id" data-sortable="true" data-align="center" data-formatter="invoiceFormatter">标题</th>
-                               <th data-field="name" data-sortable="true" data-align="center" >发布者</th>
-                               <th data-field="date" data-sortable="true" data-align="center" data-formatter="dateFormatter">发布时间</th>
-                               <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
-                           </tr>
-                           </thead>
-
-                           <tbody>
-                           <tr>
-                               <td></td>
-                               <td><a href="notice_detail.html">安徽</a></td>
-                               <td>13</td>
-                               <td>11</td>
-                               <td>22</td>
-                           </tr>
-                           <tr>
-                               <td></td>
-                               <td>23</td>
-                               <td>13</td>
-                               <td>11</td>
-                               <td>22</td>
-                           </tr>
-                           </tbody>
                        </table>
                    </div>
                </div>

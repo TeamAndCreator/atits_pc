@@ -156,7 +156,7 @@ $(document).ready(function() {
     var data;
     $.ajax({
         crossDomain : true,
-        url:"http://localhost:8080/activity/findAll1",
+        url:"http://localhost:8080/activity/findAll2",
         dataType:"json",
         type:"get",
         async:false,
@@ -165,9 +165,6 @@ $(document).ready(function() {
         }
 
     });
-
-
-
 
 
 
@@ -187,24 +184,45 @@ $(document).ready(function() {
         data:data,
         columns: [{
             field: 'id',
-            formatter:'id',
             title: 'id'
         }, {
-            field: 'content',
-            title: 'content',
-            editable: {
-                type: 'text'
-            }
+            field: 'title',
+            formatter:'invoiceFormatter',
+            title: '标题',
         }, {
             field: 'date',
-            title: 'date'
+            align: 'center',
+            title: '日期'
         }, {
-            field: 'time',
-            title: 'time',
+            field: 'user.userName',
+            title: '负责人',
+        },{
+            field: 'state',
+            align: 'center',
+            title: '状态',
+            formatter:'statusFormatter'
         }
+
         ]
     });
 
 });
 
+//超链接
+function invoiceFormatter(value, row) {
+    return '<a href="#" class="btn-link" >' + value + '</a>';
+}
 
+//状态
+function statusFormatter(value, row) {
+    var labelColor;
+    var icon = row.id % 2 === 0 ? 'fa-star' : 'fa-user';
+    if (value==1){
+        value=="通过"
+        labelColor = "success";
+    } else {
+        value=="未通过"
+        labelColor = "warning";
+    }
+    return '<div class="label label-table label-'+ labelColor+'"> ' + value + '</div>';
+}
