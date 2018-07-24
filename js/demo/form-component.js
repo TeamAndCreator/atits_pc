@@ -15,7 +15,7 @@ $(document).ready(function() {
     // Require Chosen
     // http://harvesthq.github.io/chosen/
     // =================================================================
-    $('#demo-chosen-select').chosen();
+
     $('#demo-cs-multiselect').chosen({width:'100%'});
 
 

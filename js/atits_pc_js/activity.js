@@ -226,3 +226,4 @@ function statusFormatter(value, row) {
     }
     return '<div class="label label-table label-'+ labelColor+'"> ' + value + '</div>';
 }
+
