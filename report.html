@@ -81,8 +81,7 @@
     <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
 
-    <!--Bootstrap Table [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
 
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
@@ -97,6 +96,28 @@
     <script src="js/demo/ui-modals.js"></script>
 
 
+    <!-----------------------------这个js文件放上面---------------------------------->
+    <script src="js/atits_pc_js/report.js"></script>
+    <!----------------------------------------------------------------------------->
+
+    <!--&lt;!&ndash;X-editable [ OPTIONAL ]&ndash;&gt;-->
+    <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
+    <!--&lt;!&ndash;&ndash;&gt;-->
+
+    <!--&lt;!&ndash;Bootstrap Table [ OPTIONAL ]&ndash;&gt;-->
+    <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="plugins/summernote/summernote.min.js"></script>
+    <!--=================================================-->
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="plugins/dropzone/dropzone.min.js"></script>
+
+    <!--Bootbox Modals [ OPTIONAL ]-->
+    <script src="plugins/bootbox/bootbox.min.js"></script>
+
+    <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
 
     <!--=================================================
@@ -200,8 +221,9 @@
                     <div id="zdwjbg">
 
 
-                        <button class="btn btn-danger"><i class="demo-pli-cross"></i>删除</button>
+
                         <button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal"><i class="demo-pli-plus"></i>添加</button>
+                        <button class="btn btn-danger"><i class="demo-pli-cross"></i>删除</button>
                     </div>
 
 
@@ -216,32 +238,7 @@
                            data-page-list="[5, 10, 20]"
                            data-page-size="5"
                            data-pagination="true" data-show-pagination-switch="true">
-                        <thead>
-                        <tr>
-                            <th data-field="state" data-checkbox="true">ID</th>
-                            <th data-field="id" data-sortable="true" data-align="center" data-formatter="invoiceFormatter">标题</th>
-                            <th data-field="name" data-sortable="true" data-align="center" >发布者</th>
-                            <th data-field="date" data-sortable="true" data-align="center" data-formatter="dateFormatter">发布时间</th>
-                            <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
-                        </tr>
-                        </thead>
 
-                        <tbody>
-                        <tr>
-                            <td></td>
-                            <td><a href="notice_detail.html">安徽</a></td>
-                            <td>13</td>
-                            <td>11</td>
-                            <td>22</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>23</td>
-                            <td>13</td>
-                            <td>11</td>
-                            <td>22</td>
-                        </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
