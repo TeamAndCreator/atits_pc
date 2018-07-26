@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>功能研究室</title>
+
+		<!--STYLESHEET-->
+		<!--=================================================-->
+
+		<!--Open Sans Font [ OPTIONAL ]-->
+
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+		<!--Bootstrap Stylesheet [ REQUIRED ]-->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!--Nifty Stylesheet [ REQUIRED ]-->
+		<link href="css/nifty.min.css" rel="stylesheet">
+
+		<!--Nifty Premium Icon [ DEMONSTRATION ]-->
+		<link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+		<!--Demo [ DEMONSTRATION ]-->
+		<link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+
+		<!--Bootstrap Table [ OPTIONAL ]-->
+		<link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+		<!--X-editable [ OPTIONAL ]-->
+		<link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+
+		<!--Summernote [ OPTIONAL ]-->
+		<link href="plugins/summernote/summernote.min.css" rel="stylesheet">
+
+		<!--Dropzone [ OPTIONAL ]-->
+		<link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
+		<!--Animate.css [ OPTIONAL ]-->
+		<link href="plugins/animate-css/animate.min.css" rel="stylesheet">
+
+		<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+		<!--JAVASCRIPT-->
+		<!--=================================================-->
+
+		<!--Pace - Page Load Progress Par [OPTIONAL]-->
+		<link href="plugins/pace/pace.min.css" rel="stylesheet">
+
+		<script src="plugins/pace/pace.min.js"></script>
+
+		<!--jQuery [ REQUIRED ]-->
+		<script src="js/jquery-2.2.4.min.js"></script>
+
+		<!--BootstrapJS [ RECOMMENDED ]-->
+		<script src="js/bootstrap.min.js"></script>
+
+		<!--NiftyJS [ RECOMMENDED ]-->
+		<script src="js/nifty.min.js"></script>
+
+		<!--=================================================-->
+
+		<!--Demo script [ DEMONSTRATION ]-->
+		<script src="js/demo/nifty-demo.min.js"></script>
+
+		<!--Bootstrap Table Sample [ SAMPLE ]-->
+		<script src="js/demo/tables-bs-table.js"></script>
+
+		<!--X-editable [ OPTIONAL ]-->
+		<script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
+
+		<!--Bootstrap Table [ OPTIONAL ]-->
+		<script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+		<!--Bootstrap Table Extension [ OPTIONAL ]-->
+		<script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+
+		<!--Summernote [ OPTIONAL ]-->
+		<script src="plugins/summernote/summernote.min.js"></script>
+		<!--=================================================-->
+		<!--Form File Upload [ SAMPLE ]-->
+		<script src="js/demo/form-text-editor.js"></script>
+		<!--Demo script [ DEMONSTRATION ]-->
+
+		<!--Dropzone [ OPTIONAL ]-->
+		<script src="plugins/dropzone/dropzone.min.js"></script>
+
+		<!--Form File Upload [ SAMPLE ]-->
+		<script src="js/demo/form-file-upload.js"></script>
+
+		<!--Bootbox Modals [ OPTIONAL ]-->
+		<script src="plugins/bootbox/bootbox.min.js"></script>
+
+		<!--Modals [ SAMPLE ]-->
+		<script src="js/demo/ui-modals.js"></script>
+
+		<!--=================================================
+
+    REQUIRED
+    You must include this in your project.
+
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    =================================================-->
+		<link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
+
+	</head>
+
+	<!--TIPS-->
+	<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+	<body>
+		<div id="container" class="effect aside-float aside-bright mainnav-lg">
+
+			<!--NAVBAR-->
+			<!--===================================================-->
+			<header id="navbar">
+				<div id="navbar-container" class="boxed">
+
+					<!--Brand logo & name-->
+					<!--================================-->
+					<div class="navbar-header">
+						<a href="index.html" class="navbar-brand">
+							<img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+							<div class="brand-title">
+								<span class="brand-text">现代农业产业技术体系平台</span>
+							</div>
+						</a>
+					</div>
+					<!--================================-->
+					<!--End brand logo & name-->
+
+					<!--Navbar Dropdown-->
+					<!--================================-->
+					<div class="navbar-content clearfix">
+						<ul class="nav navbar-top-links pull-left">
+
+							<!--Navigation toogle button-->
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<li class="tgl-menu-btn">
+								<a class="mainnav-toggle" href="#">
+									<i class="demo-pli-view-list"></i>
+								</a>
+							</li>
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<!--End Navigation toogle button-->
+
+							<!--Notification dropdown-->
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<li class="dropdown">
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+									<i class="demo-pli-bell"></i>
+									<span class="badge badge-header badge-danger"></span>
+								</a>
+
+								<!--Notification dropdown menu-->
+								<div class="dropdown-menu dropdown-menu-md">
+									<div class="pad-all bord-btm">
+										<p class="text-semibold text-main mar-no">You have 9 notifications.</p>
+									</div>
+									<div class="nano scrollable">
+										<div class="nano-content">
+											<ul class="head-list">
+
+												<!-- Dropdown list-->
+												<li>
+													<a href="#">
+														<div class="clearfix">
+															<p class="pull-left">Database Repair</p>
+															<p class="pull-right">70%</p>
+														</div>
+														<div class="progress progress-sm">
+															<div style="width: 70%;" class="progress-bar">
+																<span class="sr-only">70% Complete</span>
+															</div>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li>
+													<a href="#">
+														<div class="clearfix">
+															<p class="pull-left">Upgrade Progress</p>
+															<p class="pull-right">10%</p>
+														</div>
+														<div class="progress progress-sm">
+															<div style="width: 10%;" class="progress-bar progress-bar-warning">
+																<span class="sr-only">10% Complete</span>
+															</div>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li>
+													<a class="media" href="#">
+														<span class="badge badge-success pull-right">90%</span>
+														<div class="media-left">
+															<i class="demo-pli-data-settings icon-2x"></i>
+														</div>
+														<div class="media-body">
+															<div class="text-nowrap">HDD is full</div>
+															<small class="text-muted">50 minutes ago</small>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li>
+													<a class="media" href="#">
+														<div class="media-left">
+															<i class="demo-pli-file-edit icon-2x"></i>
+														</div>
+														<div class="media-body">
+															<div class="text-nowrap">Write a news article</div>
+															<small class="text-muted">Last Update 8 hours ago</small>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li>
+													<a class="media" href="#">
+														<span class="label label-danger pull-right">New</span>
+														<div class="media-left">
+															<i class="demo-pli-speech-bubble-7 icon-2x"></i>
+														</div>
+														<div class="media-body">
+															<div class="text-nowrap">Comment Sorting</div>
+															<small class="text-muted">Last Update 8 hours ago</small>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li>
+													<a class="media" href="#">
+														<div class="media-left">
+															<i class="demo-pli-add-user-plus-star icon-2x"></i>
+														</div>
+														<div class="media-body">
+															<div class="text-nowrap">New User Registered</div>
+															<small class="text-muted">4 minutes ago</small>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li class="bg-gray">
+													<a class="media" href="#">
+														<div class="media-left">
+															<img class="img-circle img-sm" alt="Profile Picture" src="img/profile-photos/9.png">
+														</div>
+														<div class="media-body">
+															<div class="text-nowrap">Lucy sent you a message</div>
+															<small class="text-muted">30 minutes ago</small>
+														</div>
+													</a>
+												</li>
+
+												<!-- Dropdown list-->
+												<li class="bg-gray">
+													<a class="media" href="#">
+														<div class="media-left">
+															<img class="img-circle img-sm" alt="Profile Picture" src="img/profile-photos/3.png">
+														</div>
+														<div class="media-body">
+															<div class="text-nowrap">Jackson sent you a message</div>
+															<small class="text-muted">40 minutes ago</small>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<!--Dropdown footer-->
+									<div class="pad-all bord-top">
+										<a href="#" class="btn-link text-dark box-block">
+											<i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
+										</a>
+									</div>
+								</div>
+							</li>
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<!--End notifications dropdown-->
+
+						</ul>
+						<ul class="nav navbar-top-links pull-right">
+							<!--User dropdown-->
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<li id="dropdown-user" class="dropdown">
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+									<span class="pull-right">
+                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+                                    <i class="demo-pli-male ic-user"></i>
+                                </span>
+									<div class="username hidden-xs">Aaron Chavez</div>
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
+
+									<!-- Dropdown heading  -->
+									<div class="pad-all bord-btm">
+										<p class="text-main mar-btm"><span class="text-bold">750GB</span> of 1,000GB Used</p>
+										<div class="progress progress-sm">
+											<div class="progress-bar" style="width: 70%;">
+												<span class="sr-only">70%</span>
+											</div>
+										</div>
+									</div>
+
+									<!-- User dropdown menu -->
+									<ul class="head-list">
+										<li>
+											<a href="#">
+												<i class="demo-pli-male icon-lg icon-fw"></i> Profile
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="badge badge-danger pull-right">9</span>
+												<i class="demo-pli-mail icon-lg icon-fw"></i> Messages
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="label label-success pull-right">New</span>
+												<i class="demo-pli-gear icon-lg icon-fw"></i> Settings
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="demo-pli-information icon-lg icon-fw"></i> Help
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen
+											</a>
+										</li>
+									</ul>
+
+									<!-- Dropdown footer -->
+									<div class="pad-all text-right">
+										<a href="pages-login.html" class="btn btn-primary">
+											<i class="demo-pli-unlock"></i> Logout
+										</a>
+									</div>
+								</div>
+							</li>
+							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+							<!--End user dropdown-->
+
+						</ul>
+					</div>
+					<!--================================-->
+					<!--End Navbar Dropdown-->
+
+				</div>
+			</header>
+			<!--===================================================-->
+			<!--END NAVBAR-->
+
+			<div class="boxed">
+
+				<!--CONTENT CONTAINER-->
+				<!--===================================================-->
+				<div id="content-container">
+
+					<!--Page Title-->
+					<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+					<div id="page-title">
+						<h1 class="page-header text-overflow">功能研究室详情</h1>
+
+						<!--Searchbox-->
+						<div class="searchbox">
+							<div class="input-group custom-search-form">
+								<input type="text" class="form-control" placeholder="Search..">
+								<span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                            </span>
+							</div>
+						</div>
+					</div>
+					<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+					<!--End page title-->
+
+					<!--Breadcrumb-->
+					<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+					<!--<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Tables</a></li>
+					<li class="active">Bootstrap Tables</li>
+                </ol>-->
+					<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+					<!--End breadcrumb-->
+
+					<!--Page content-->
+					<!--===================================================-->
+					<div id="page-content">
+
+						<!--Custom Toolbar-->
+						<!--===================================================-->
+						<div class="panel col-lg-10">
+							<!--<div class="panel-heading">
+								<h3 class="panel-title">功能研究室详情</h3>
+							</div>-->
+							<div class="panel-body">
+
+								<div id="page-content ">
+
+									<div class="row ">
+										<ul class="pager pager-rounded">
+											<li class="previous">
+												<a href="laboratory.html"><i class="demo-psi-arrow-left"></i> 返回</a>
+											</li>
+											<!--<li class="next">
+								<a href="#">Next <i class="demo-psi-arrow-right"></i></a>
+							</li>-->
+										</ul>
+										<div class="col-lg-10 col-lg-offset-1 ">
+											<div class="panel panel-trans ">
+												<div class="panel-heading ">
+													<!--<h2 class="panel-title">小麦产业技术体系简介与组织架构</h2>-->
+													<h1 class="text-main">专用水稻产业化技术研究室 </h1>
+												</div>
+												<h1 class="text-main ">
+													<small>基本内容展示:</small>
+						            			</h1>
+												<div style="text-indent:2em;">
+													<h1 class="text-main">
+														<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>建设依托单位：&nbsp;&nbsp;</small>
+														<small>安徽省农业科学院</small>
+						            				</h1>
+												</div>
+												<div style="text-indent:2em;">
+													<h1 class="text-main">
+														<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>所属体系：&nbsp;&nbsp;</small>
+														<small>水稻产业技术体系</small>
+						            				</h1>
+												</div>
+												<div style="text-indent:2em;">
+													<h1 class="text-main">
+														<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>研究室主任：&nbsp;&nbsp;</small>
+														<small>李泽福（兼） </small>
+						            				</h1>
+												</div>
+												<div style="text-indent:2em;">
+													<h1 class="text-main">
+														<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>岗位专家：&nbsp;&nbsp;</small>
+														<small> 石英尧     </small>
+						            				</h1>
+												</div>
+												<div style="text-indent:2em;">
+													<h1 class="text-main">
+														<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>基本信息：&nbsp;&nbsp;</small>
+														<small> 安徽省农业委员会关于水稻等15个产业 技术体系组织架构和成员名单的公示
+															根据《安徽省现代农业产业技术体系十三五建设实施方案》（皖农科〔2016〕18号）、《安徽省现代农业产业技术体系专家暂行管理办法》（皖农科〔2016〕20号）、《安徽省农业
+															委员会关于推荐省现代农业产业技术体系专家的通知》（皖农科函〔2016〕139号）等相关文件要求，
+															经过酝酿提名、专家论证、征求意见等程序，产生了水稻等15个产业技术体系组织架构和成员名单（附后），现进行公示，公示时间5天。公示期间，
+															如有异议，请予反映。      
+														</small>
+						            				</h1>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!--===================================================-->
+
+					</div>
+					<!--===================================================-->
+					<!--End page content-->
+
+				</div>
+				<!--===================================================-->
+				<!--END CONTENT CONTAINER-->
+
+				<div id="demo-lg-modal" class="modal fade" tabindex="-1">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+								<h4 class="modal-title" id="myLargeModalLabel">添加</h4>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal">
+									<div class="panel-body">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+                                        	体系名称
+                                    </label>
+											<div class="col-sm-6">
+												<input class="form-control input-sm" placeholder="" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+                                        	首席专家
+                                    </label>
+											<div class="col-sm-6">
+												<input class="form-control input-sm" placeholder="" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+                                        	副首席专家
+                                    </label>
+											<div class="col-sm-6">
+												<input class="form-control input-sm" placeholder="" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+                                        	产业概况
+                                    </label>
+											<div class="col-sm-6">
+												<textarea placeholder="500字以内" rows="6" class="form-control"></textarea>
+											</div>
+										</div>
+									</div>
+									<div id="page-content">
+										<div class="panel">
+											<div class="panel-heading">
+												<h3 class="panel-title">体系简介</h3>
+											</div>
+											<div class="panel-body">
+
+												<!--Summernote-->
+												<!--===================================================-->
+												<div id="demo-summernote">
+													<h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;">请在这写!</span><br></h4>
+													<h4><font color="#9c9c94"></font></h4>
+												</div>
+												<!--===================================================-->
+												<!-- End Summernote -->
+
+											</div>
+										</div>
+									</div>
+									<div class="panel-footer text-right">
+										<button class="btn btn-info middle " data-dismiss="modal">退出</button>
+										<button class="btn btn-primary middle">添加</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--MAIN NAVIGATION-->
+				<!--===================================================-->
+				<nav id="mainnav-container">
+					<div id="mainnav">
+
+						<!--Menu-->
+						<!--================================-->
+						<div id="mainnav-menu-wrap">
+							<div class="nano">
+								<div class="nano-content">
+
+									<!--Profile Widget-->
+									<!--================================-->
+									<div id="mainnav-profile" class="mainnav-profile">
+										<div class="profile-wrap">
+											<div class="pad-btm">
+												<span class="label label-success pull-right">New</span>
+												<img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture">
+											</div>
+											<a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+												<span class="pull-right dropdown-toggle">
+                                                <i class="dropdown-caret"></i>
+                                            </span>
+												<p class="mnp-name">Aaron Chavez</p>
+												<span class="mnp-desc">aaron.cha@themeon.net</span>
+											</a>
+										</div>
+										<div id="profile-nav" class="collapse list-group bg-trans">
+											<a href="#" class="list-group-item">
+												<i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
+											</a>
+											<a href="#" class="list-group-item">
+												<i class="demo-pli-gear icon-lg icon-fw"></i> 设置
+											</a>
+											<a href="#" class="list-group-item">
+												<i class="demo-pli-information icon-lg icon-fw"></i> 帮助
+											</a>
+											<a href="#" class="list-group-item">
+												<i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
+											</a>
+										</div>
+									</div>
+									<ul id="mainnav-menu" class="list-group">
+
+										<!--Menu list item-->
+										<li>
+											<a href="index.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>平台首页</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="user.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>人员管理</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="system.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>体系管理</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="laboratory.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>功能研究室</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="station.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>综合试验站</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="activity.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>重大活动</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="harvest.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>重大成果</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="report.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>重大文件报告</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="notice.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>通知公告</strong>
+											</span>
+											</a>
+										</li>
+										<!--Menu list item-->
+										<li>
+											<a href="dynamic.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>体系动态</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="regulation.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>规章制度</strong>
+											</span>
+											</a>
+										</li>
+										<!--Menu list item-->
+										<li>
+											<a href="sys_task.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>工作任务</strong>
+											</span>
+											</a>
+										</li>
+
+										<!--Menu list item-->
+										<li>
+											<a href="task_progress.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>工作进展</strong>
+											</span>
+											</a>
+										</li>
+										<!--Menu list item-->
+										<li>
+											<a href="#">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>考评管理</strong>
+											</span>
+											</a>
+										</li>
+										<!--Menu list item-->
+										<li>
+											<a href="files.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>下载中心</strong>
+											</span>
+											</a>
+										</li>
+										<!--Menu list item-->
+										<li>
+											<a href="help.html">
+												<i class="demo-psi-home"></i>
+												<span class="menu-title">
+												<strong>帮助</strong>
+											</span>
+											</a>
+										</li>
+
+									</ul>
+
+								</div>
+							</div>
+						</div>
+						<!--================================-->
+						<!--End menu-->
+
+					</div>
+				</nav>
+				<!--===================================================-->
+				<!--END MAIN NAVIGATION-->
+
+			</div>
+
+			<!-- FOOTER -->
+			<!--===================================================-->
+			<footer id="footer">
+
+				<!-- Visible when footer positions are fixed -->
+				<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+				<div class="show-fixed pull-right">
+					You have
+					<a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
+				</div>
+
+				<!-- Visible when footer positions are static -->
+				<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+				<div class="hide-fixed pull-right pad-rgt">
+					14GB of <strong>512GB</strong> Free.
+				</div>
+
+				<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+				<!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+				<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+				<p class="pad-lft">&#0169; 2016 Your Company</p>
+
+			</footer>
+			<!--===================================================-->
+			<!-- END FOOTER -->
+
+			<!-- SCROLL PAGE BUTTON -->
+			<!--===================================================-->
+			<button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+			<!--===================================================-->
+
+		</div>
+		<!--===================================================-->
+		<!-- END OF CONTAINER -->
+
+	</body>
+
+</html>
