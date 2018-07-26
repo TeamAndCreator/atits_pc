@@ -67,10 +67,15 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
+    <!--===================这个在上面==================-->
+    <script src="js/atits_pc_js/perrmission.js"></script>
+
+    <!--===================这个在下面==================-->
+    <script src="js/atits_pc_js/test_manager.js"></script>
     <!--Bootstrap Datepicker [ OPTIONAL ]-->
     <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-    <script src="js/atits_pc_js/perrmission.js"></script>
+
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="js/demo/tables-bs-table.js"></script>
 
@@ -97,7 +102,6 @@
 
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
-    <script src="js/atits_pc_js/test_manager.js"></script>
 
     <!--=================================================
      <!--Form Component [ SAMPLE ]-->
@@ -250,34 +254,7 @@
                                                data-page-list="[5, 10, 20]"
                                                data-page-size="5"
                                                data-pagination="true" data-show-pagination-switch="true">
-                                            <thead>
-                                            <tr>
-                                                <th data-field="state" data-checkbox="true">ID</th>
-                                                <th data-field="id" data-sortable="true" data-align="center" data-formatter="invoiceFormatter">考评年度</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >考评人员</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >考评日期</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >考评地点</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >状态</th>
 
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td><a href="notice_detail.html">安徽</a></td>
-                                                <td>13</td>
-                                                <td>11</td>
-                                                <td>22</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>23</td>
-                                                <td>13</td>
-                                                <td>11</td>
-                                                <td>22</td>
-                                            </tr>
-                                            </tbody>
                                         </table>
 
 
@@ -285,7 +262,6 @@
                                     <div class="tab-pane fade" id="demo-tabs-box-2">
 
                                         <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                                               data-url="data/bs-table.json"
                                                data-toolbar="#qzsz"
                                                data-search="true"
                                                data-show-refresh="true"
@@ -433,7 +409,6 @@
 
 
                                         <table id="demo-custom-toolbar3" class="demo-add-niftycheck" data-toggle="table"
-                                               data-url="data/bs-table.json"
                                                data-toolbar="#zdhd"
                                                data-search="true"
                                                data-show-refresh="true"
@@ -513,7 +488,7 @@
                                         年份
                                     </label>
                                     <div class="col-sm-2">
-                                        <input  class="form-control input-sm" placeholder="" type="text">
+                                        <input  class="form-control input-sm"  placeholder="" type="text" name="year">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -521,7 +496,7 @@
                                         所属体系
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm" value="体系办" disabled =" " type="text">
+                                        <input  class="form-control input-sm " value="体系办" disabled =" " type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -530,7 +505,7 @@
                                     </label>
                                     <div id="demo-dp-component" class="col-sm-6">
                                         <div class="input-group date">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control "  name="date">
                                             <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
                                         </div>
                                     </div>
@@ -540,7 +515,7 @@
                                         考评地点
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="请输入详细地址..."  type="text">
+                                        <input  class="form-control input-sm " placeholder="请输入详细地址..."  type="text" name="address">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -558,22 +533,9 @@
                                              <div class="form-group">
                                                 <label class="col-lg-3 control-label">请您选择体系人员名单：</label>
                                                 <div class="col-lg-5">
+                                                <ul id="menu">
 
-                                                    <div class="checkbox">
-                                                        <input id="demo-checkbox-11" class="magic-checkbox" type="checkbox" name="programs[]" value="net">
-                                                        <label for="demo-checkbox-11">张某某</label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <input id="demo-checkbox-12" class="magic-checkbox" type="checkbox" name="programs[]" value="java">
-                                                        <label for="demo-checkbox-12">王某某</label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <input id="demo-checkbox-13" class="magic-checkbox" type="checkbox" name="programs[]" value="c">
-                                                        <label for="demo-checkbox-13">李某某</label>
-                                                    </div>
-
+                                                </ul>
                                                 </div>
                                              </div>
                                         </div>
@@ -582,17 +544,13 @@
                                             <label class="col-lg-3 control-label">请您选择外聘专家名单：</label>
                                             <div class="col-lg-5">
                                                 <div class="checkbox">
-                                                    <input id="demo-checkbox-21" class="magic-checkbox" type="checkbox" name="programs[]" value="net">
+                                                    <input id="demo-checkbox-21" class="magic-checkbox" type="checkbox" name="" >
                                                     <label for="demo-checkbox-21">张某某</label>
-                                                </div>
-
-                                                <div class="checkbox">
-                                                    <input id="demo-checkbox-22" class="magic-checkbox" type="checkbox" name="programs[]" value="java">
+                                                    <br>
+                                                    <input id="demo-checkbox-22" class="magic-checkbox" type="checkbox" name="programs[]" >
                                                     <label for="demo-checkbox-22">李某某</label>
-                                                </div>
-
-                                                <div class="checkbox">
-                                                    <input id="demo-checkbox-23" class="magic-checkbox" type="checkbox" name="programs[]" value="c">
+                                                    <br>
+                                                    <input id="demo-checkbox-23" class="magic-checkbox" type="checkbox" name="programs[]">
                                                     <label for="demo-checkbox-23">王某某</label>
                                                 </div>
 
@@ -606,7 +564,7 @@
 
                             <div class="panel-footer text-right">
                                 <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="btn btn-primary middle">添加</button>
+                                <button class="" id="submit1"  type="submit">添加</button>
                             </div>
                         </form>
                     </div>
@@ -728,7 +686,6 @@
                                     </a>
                                 </li>
 
-
                                 <!--Menu list item-->
                                 <li>
                                     <a href="report.html">
@@ -813,7 +770,6 @@
 											</span>
                                     </a>
                                 </li>
-
 
 
                             </ul>
