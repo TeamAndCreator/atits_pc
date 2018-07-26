@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script type="application/javascript">
+        $(document).ready(function() {
+
+
+            $("#login").click(function () {
+                var param={
+                    "userName":$("#userName").val(),
+                    "password":$("#password").val()
+                }
+                $.ajax({
+                    crossDomain : true,
+                    url:"http://localhost:8080/login/login",
+                    dataType:"json",
+                    data:param,
+                    type:"post",
+                    async:false,
+                    success:function (result) {
+                        if (result.code == 100){
+                            var roles=result.data.user.roles;
+                            var rolesId=[];
+                            for (var i = 0; i < roles.length;i++){
+                                rolesId.push(roles[i].id)
+                            }
+                            rolesId=JSON.stringify(rolesId)
+                            sessionStorage.setItem("rolesId",rolesId)
+                            window.location.href = "index.html"
+                        }else {
+                            alert("账号或密码错误")
+                        }
+                    }
+                });
+
+            })
+
+        })
+
+
+
+    </script>
+</head>
+<body>
+
+        用户名：<input name="userName" type="text" id="userName">
+        <br>
+        密码：<input name="password" type="text" id="password">
+        <input type="submit" value="登录" id="login">
+
+
+
+</body>
+</html>
