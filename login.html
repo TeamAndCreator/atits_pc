@@ -3,7 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!--Open Sans Font [ OPTIONAL ] -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="css/nifty.min.css" rel="stylesheet">
+
+
+    <!--Themify Icons [ OPTIONAL ]-->
+    <link href="plugins/themify-icons/themify-icons.min.css" rel="stylesheet">
+
+
+
+    <!--Magic Checkbox [ OPTIONAL ]-->
+    <link href="plugins/magic-check/css/magic-check.min.css" rel="stylesheet">
+
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+
+    <script src="plugins/pace/pace.min.js"></script>
+
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!--Nifty Admin [ RECOMMENDED ]-->
+    <script src="js/nifty.min.js"></script>
+
+
+    <!--=================================================
+
+    REQUIRED
+    You must include this in your project.
+
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+
+    Detailed information and more samples can be found in the document.
+
+    =================================================-->
+
+
+
+
+
+
+
     <!--jQuery [ REQUIRED ]-->
+
     <script src="js/jquery-2.2.4.min.js"></script>
     <script type="application/javascript">
         $(document).ready(function() {
@@ -47,10 +112,72 @@
 </head>
 <body>
 
-        用户名：<input name="userName" type="text" id="userName">
-        <br>
-        密码：<input name="password" type="text" id="password">
-        <input type="submit" value="登录" id="login">
+        <!--用户名：<input name="userName" type="text" id="userName">-->
+        <!--<br>-->
+        <!--密码：<input name="password" type="text" id="password">-->
+        <!--<input type="submit" value="登录" id="login">-->
+
+
+
+        <div id="container" class="cls-container">
+
+            <!-- BACKGROUND IMAGE -->
+            <!--===================================================-->
+            <div id="bg-overlay" class="bg-img" style="background-image: url('img/bg-img/7.jpg')"></div>
+
+
+            <!-- LOGIN FORM -->
+            <!--===================================================-->
+            <div class="cls-content">
+                <div class="cls-content-sm panel">
+                    <div class="panel-body">
+                        <div class="mar-ver pad-btm">
+                            <h3 class="h4 mar-no">账号登陆</h3>
+                            <p class="text-muted">登录到您的账户</p>
+                        </div>
+                        <form action="index.html">
+                            <div class="form-group">
+                                <input type="text" name="userName" id="userName" class="form-control" placeholder="用户名" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="密码">
+                            </div>
+                            <div class="checkbox pad-btm text-left">
+                                <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
+                                <label for="demo-form-checkbox">记住密码</label>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block" id="login" type="submit">登陆</button>
+                        </form>
+                    </div>
+
+                    <div class="pad-all">
+                        <a href="#" class="btn-link mar-rgt">忘记密码?</a>
+                        <a href="#" class="btn-link mar-lft">注册</a>
+
+                        <!--<div class="media pad-top bord-top">-->
+                            <!--<div class="pull-right">-->
+                                <!--<a href="#" class="pad-rgt"><i class="ti-facebook icon-lg text-primary"></i></a>-->
+                                <!--<a href="#" class="pad-rgt"><i class="ti-twitter-alt icon-lg text-info"></i></a>-->
+                                <!--<a href="#" class="pad-rgt"><i class="ti-google icon-lg text-danger"></i></a>-->
+                            <!--</div>-->
+                            <!--<div class="media-body text-left">-->
+                                <!--Login with-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <!--===================================================-->
+
+
+
+        </div>
+
+
+
+
+
+
 
 
 
