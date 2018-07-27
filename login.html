@@ -88,14 +88,16 @@
                     async:false,
                     success:function (result) {
                         if (result.code == 100){
+                            var systemId=result.data.user.system.id;
                             var roles=result.data.user.roles;
                             var rolesId=[];
                             for (var i = 0; i < roles.length;i++){
                                 rolesId.push(roles[i].id)
                             }
-                            rolesId=JSON.stringify(rolesId)
-                            sessionStorage.setItem("rolesId",rolesId)
-                            window.location.href = "index.html"
+                            rolesId=JSON.stringify(rolesId);
+                            sessionStorage.setItem("systemId",systemId);
+                            sessionStorage.setItem("rolesId",rolesId);
+                            window.location.href = "index.html";
                         }else {
                             alert("账号或密码错误")
                         }

@@ -1,61 +1,57 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
+    //日历
+    $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
 
-    // BOOTSTRAP DATEPICKER WITH AUTO CLOSE
-    // =================================================================
-    // Require Bootstrap Datepicker
-    // http://eternicode.github.io/bootstrap-datepicker/
-    // =================================================================
-    $('#demo-dp-component .input-group.date').datepicker({autoclose:true});
-
-
-  //获取考评人员名单
 
     var dataUsers;
-    $.ajax({
-        crossDomain : true,
-        url:"http://47.104.26.79:8080/atits_service/teststart/import_persons",
-        dataType:"json",
-        data : {"sysId" : 2,"roleId":3},
-        type:"get",
-        async:false,
-        success:function (result) {
-        //   console.log(result);
-            dataUsers=result.data.users;
-            createDom(dataUsers);
-        }})
+    //获取考评人员名单
+    $('#add').click(function () {
+        $.ajax({
+            crossDomain: true,
+            url: "http://47.104.26.79:8080/atits_service/teststart/import_persons",
+            dataType: "json",
+            data: {"sysId": sessionStorage.getItem("systemId"), "roleId": 1},
+            type: "get",
+            async: false,
+            success: function (result) {
+                dataUsers = result.data.users;
+                createDom(dataUsers);
+            }
+        })
+
+    })
 
 
-    function createDom(ele){
+    function createDom(ele) {
         var htmlStr = '';
-        for(i = 0; i < ele.length; i++){
+        for (i = 0; i < ele.length; i++) {
             htmlStr += '<li class="checkbox">\n' +
-                '   <input class="magic-checkbox" type="checkbox" name="users" value="'+dataUsers[i].id+'">\n' +
-                '             <label for="demo-checkbox-11"> '+ dataUsers[i].userName +'</label>\n' +
+                '   <input class="magic-checkbox" type="checkbox" name="users" value="' + dataUsers[i].id + '">\n' +
+                '             <label for="demo-checkbox-11"> ' + dataUsers[i].profile.name + '</label>\n' +
                 '        </li>'
         }
         $('#tabs-box-1 #menu ').html(htmlStr);
-      // console.log(usersId);
     }
 
 
- //发送考评启动添加数据内容
-    $("#submit1").on('click',function() {
-        var obj={
-            "year" : '',
-            "date":'',
-            "address" : '',
-            "ids":""
+    //发送考评启动添加数据内容
+    $("#submit1").on('click', function () {
+        var obj = {
+            "year": '',
+            "date": '',
+            "address": '',
+            "ids": ""
         };
         obj.year = $("input[ name = 'year']").val();
         obj.date = $("input[ name = 'date']").val();
         obj.address = $("input[ name = 'address']").val();
-        var ids=[];
+        var ids = [];
         $("input[name = 'users']:checked").each(function (i) {
-            ids[i]=$(this).val();
+            ids[i] = $(this).val();
         });
-        obj.ids=ids;
+        obj.ids = ids;
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
@@ -67,30 +63,56 @@ $(document).ready(function() {
     })
 
 
-
 //获取考评启动表单数据
     var data;
     $.ajax({
-        crossDomain : true,
-        url:"http://47.104.26.79:8080/atits_service/teststart/findAll",
-        dataType:"json",
-        type:"get",
-        async:false,
-        success:function (result) {
-            data=result.data.testStarts
-    }})
+        crossDomain: true,
+        url: "http://47.104.26.79:8080/atits_service/teststart/findAll",
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function (result) {
+            data = result.data.testStarts
+        }
+    })
 
 
+//删除
+    $('#delete').click(function () {
+        var a = $("#demo-custom-toolbar1").bootstrapTable('getSelections');
+        var b = [];
+        for (var i = 0; i < a.length; i++) {
+            b[i] = a[i].id
+        }
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: 'http://47.104.26.79:8080/atits_service/teststart/deleteByIds',
+            data: {_method: "DELETE", "idList": b},
+            async: false,
+            traditional: true,
+            success: function () {
+                window.location.reload()
+            }
+        })
+    })
+
+
+//设置table每列标题
     $('#demo-custom-toolbar1').bootstrapTable({
         idField: 'id',
         data: data,
         columns: [{
-            field: 'id',
-            title: 'id'
+            field: 'checked',
+            checkbox: true,
         }, {
             field: 'year',
             align: 'center',
             title: '考评年度',
+        }, {
+            field: 'users',
+            title: '考评人员',
+            formatter: 'invoiceFormatter'
         }, {
             field: 'date',
             align: 'center',
@@ -99,11 +121,11 @@ $(document).ready(function() {
             field: 'address',
             align: 'center',
             title: '考评地点',
-        },{
+        }, {
             field: 'state',
             align: 'center',
             title: '状态',
-            formatter:'statusFormatter'
+            formatter: 'statusFormatter'
         }
 
         ]
@@ -114,19 +136,73 @@ $(document).ready(function() {
 
 //超链接
 function invoiceFormatter(value, row) {
-    return '<a href="#" class="btn-link" >' + value + '</a>';
+    value = JSON.stringify(value)
+    return "<a onclick='f(" + value + ")' class='btn-link' data-toggle='modal' data-target='#users' style='cursor:default'>" + "考评人员" + '</a>';
+}
+
+//向考评人员名单上写名字
+function f(users) {
+    var names = [];
+    for (var i = 0; i < users.length; i++) {
+        names[i] = users[i].profile.name;
+    }
+    $('#usersName').text(names);
 }
 
 //状态
 function statusFormatter(value, row) {
     var labelColor;
+    var v;
     var icon = row.id % 2 === 0 ? 'fa-star' : 'fa-user';
-    if (value==1){
-        value=="通过"
-        labelColor = "success";
-    } else {
-        value=="未通过"
+    if (value == 0) {
+        v = "待启动";
         labelColor = "warning";
+    } else if (value == 1) {
+        v = "已启动";
+        labelColor = "success";
+    } else if (value == 2) {
+        v = "已结束";
+        labelColor = "default"
+        return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
     }
-    return '<div class="label label-table label-'+ labelColor+'"> ' + value + '</div>';
+    return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white'>" + v + "</a></div>";
+}
+//判断状态按钮，选择调用函数
+function updateState(value, id) {
+    if (value == 0) {
+        $('#testStart1').text("是否启动考评");
+        $
+        $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f1("+id+")\">确定</button>");
+    }else if (value == 1) {
+        $('#testStart1').text("是否结束考评");
+        $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f2("+id+")\">确定</button>");
+    }
+}
+//待启动变为启动
+function f1(id) {
+    $.ajax({
+        type: 'post',
+        dataType: 'JSON',
+        url: 'http://47.104.26.79:8080/atits_service/teststart/updateState',
+        data: {_method: "put", "id": id,"state":1},
+        async: false,
+        success: function (data) {
+            window.location.reload()
+        },
+        error:function () {
+        }
+    })
+}
+//启动变为结束
+function f2(id) {
+    $.ajax({
+        type: 'post',
+        dataType: 'JSON',
+        url: 'http://47.104.26.79:8080/atits_service/teststart/updateState',
+        data: {_method: "put", "id": id,"state":2},
+        async: false,
+        success: function () {
+            window.location.reload()
+        }
+    })
 }

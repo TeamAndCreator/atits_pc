@@ -75,11 +75,6 @@
     <!--Bootstrap Datepicker [ OPTIONAL ]-->
     <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-
-    <!--Bootstrap Table Sample [ SAMPLE ]-->
-    <script src="js/demo/tables-bs-table.js"></script>
-
-
     <!--X-editable [ OPTIONAL ]-->
     <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
@@ -88,17 +83,9 @@
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
 
-    <!--Bootstrap Table Extension [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
-
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
 
-
-
-    <!--Modals [ SAMPLE ]-->
-    <script src="js/demo/ui-modals.js"></script>
 
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
@@ -107,33 +94,30 @@
      <!--Form Component [ SAMPLE ]-->
 
 
-<!--
-    REQUIRED
-    You must include this in your project.
+    <!--
+        REQUIRED
+        You must include this in your project.
 
 
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
+        RECOMMENDED
+        This category must be included but you may modify which plugins or components which should be included in your project.
 
 
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
+        OPTIONAL
+        Optional plugins. You may choose whether to include it in your project or not.
 
 
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+        DEMONSTRATION
+        This is to be removed, used for demonstration purposes only. This category must not be included in your project.
 
 
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+        SAMPLE
+        Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
 
 
-    Detailed information and more samples can be found in the document.
+        Detailed information and more samples can be found in the document.
 
-    =================================================-->
-
-
-
+        =================================================-->
 
 
 </head>
@@ -240,9 +224,12 @@
                                     <div class="tab-pane fade in active" id="demo-tabs-box-1">
 
                                         <div id="kpqd">
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal">
-                                                <i class="demo-pli-plus"></i>添加</button>
-                                            <button class="btn btn-danger"><i class="demo-pli-cross"></i>删除</button>
+                                            <button class="btn btn-success" data-toggle="modal" id="add"
+                                                    data-target="#demo-lg-modal">
+                                                <i class="demo-pli-plus"></i>添加
+                                            </button>
+                                            <button class="btn btn-danger" id="delete"><i class="demo-pli-cross"></i>删除
+                                            </button>
                                         </div>
                                         <table id="demo-custom-toolbar1" class="demo-add-niftycheck" data-toggle="table"
                                                data-toolbar="#kpqd"
@@ -256,8 +243,6 @@
                                                data-pagination="true" data-show-pagination-switch="true">
 
                                         </table>
-
-
                                     </div>
                                     <div class="tab-pane fade" id="demo-tabs-box-2">
 
@@ -274,15 +259,26 @@
                                             <thead>
                                             <tr>
                                                 <th data-field="state" data-checkbox="true">ID</th>
-                                                <th data-field="id" data-sortable="true" data-align="center" data-formatter="invoiceFormatter">年度</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >评分对象</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >省体系办</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >行业主管部门</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >副首席专家岗位、岗位专家和综合试验站站长</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >岗位专家和综合试验站站长</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >首席专家</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >省体系办和行业主管部门</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >首席专家和副首席专家</th>
+                                                <th data-field="id" data-sortable="true" data-align="center"
+                                                    data-formatter="invoiceFormatter">年度
+                                                </th>
+                                                <th data-field="name" data-sortable="true" data-align="center">评分对象</th>
+                                                <th data-field="date" data-sortable="true" data-align="center">省体系办</th>
+                                                <th data-field="name" data-sortable="true" data-align="center">行业主管部门
+                                                </th>
+                                                <th data-field="date" data-sortable="true" data-align="center">
+                                                    副首席专家岗位、岗位专家和综合试验站站长
+                                                </th>
+                                                <th data-field="name" data-sortable="true" data-align="center">
+                                                    岗位专家和综合试验站站长
+                                                </th>
+                                                <th data-field="date" data-sortable="true" data-align="center">首席专家</th>
+                                                <th data-field="name" data-sortable="true" data-align="center">
+                                                    省体系办和行业主管部门
+                                                </th>
+                                                <th data-field="date" data-sortable="true" data-align="center">
+                                                    首席专家和副首席专家
+                                                </th>
 
                                             </tr>
                                             </thead>
@@ -306,105 +302,125 @@
                                         </table>
 
 
-
                                     </div>
                                     <div class="tab-pane fade" id="demo-tabs-box-3">
                                         <!--Custom Toolbar-->
                                         <!--===================================================-->
 
 
-                                                <div class="modal-content">
+                                        <div class="modal-content">
 
 
-                                                    <div class="modal-body ">
-                                                        <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
+                                            <div class="modal-body ">
+                                                <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
 
-                                                            <form id="form_table"></form>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td class="align-right">年度：</td>
-                                                                <td>
-                                                                    <select class="form-control " name="year" id="form-field-select-1">
-                                                                        <option value="2018">2018</option>
-                                                                        <option value="2017">2017</option>
-                                                                        <option value="2016">2016</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-
-
-                                                            <tr>
-                                                                <td class="align-right">考评对象：</td>
-                                                                <td>
-                                                                    <div class="radio">
-                                                                        <label>
-                                                                            <input name="testObject" class="ace" value="首席专家" id="id-disable-check1" autocomplete="off" type="radio">
-                                                                            <span class="lbl">首席专家</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="radio">
-                                                                        <label>
-                                                                            <input name="testObject" class="ace" value="副首席专家" id="id-disable-check2" autocomplete="off" type="radio">
-                                                                            <span class="lbl">副首席专家</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="radio">
-                                                                        <label>
-                                                                            <input name="testObject" class="ace" value="岗位专家和综合试验站站长" id="id-disable-check3" autocomplete="off" type="radio">
-                                                                            <span class="lbl">岗位专家和综合试验站站长</span>
-                                                                        </label>
-                                                                    </div>
-
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="align-right ">省体系办：</td>
-                                                                <td><input placeholder="" id="form-1" name="nongWei" class="col-xs-10 col-sm-8" autocomplete="off" disabled="disabled" type="number">％
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td class="align-right">行业主管部门：</td>
-                                                                <td>
-                                                                    <input id="form-2" name="expert" value="" placeholder="" class="col-xs-10 col-sm-8" autocomplete="off" disabled="disabled" type="number">％
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="align-right">副首席专家、岗位专家和综合试验站站长：</td>
-                                                                <td><input id="form-3" placeholder="" name="subChief_sta_lib" class="col-xs-10 col-sm-8" autocomplete="off" disabled="disabled" type="number">％
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="align-right">岗位专家和综合试验站站长：</td>
-                                                                <td><input placeholder="" id="form-4" name="sta_lib" class="col-xs-10 col-sm-8" autocomplete="off" type="number">％
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="align-right">首席专家：</td>
-                                                                <td><input placeholder="" id="form-5" name="chief" class="col-xs-10 col-sm-8" autocomplete="off" disabled="disabled" type="number">％
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="align-right">省体系办和行业主管部门：</td>
-                                                                <td><input placeholder="" id="form-6" name="nongwei_expert" class="col-xs-10 col-sm-8" autocomplete="off" disabled="disabled" type="number">％
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="align-right">首席专家和副首席专家：</td>
-                                                                <td><input placeholder="" id="form-7" name="chief_subChief" class="col-xs-10 col-sm-8" autocomplete="off" type="number">％
-                                                                </td>
-                                                            </tr>
-
-                                                            </tbody>
-
-                                                        </table>
-                                                    </div>
+                                                    <form id="form_table"></form>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="align-right">年度：</td>
+                                                        <td>
+                                                            <select class="form-control " name="year"
+                                                                    id="form-field-select-1">
+                                                                <option value="2018">2018</option>
+                                                                <option value="2017">2017</option>
+                                                                <option value="2016">2016</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
 
 
-                                                </div>
-                                                <!-- /.modal-content -->
+                                                    <tr>
+                                                        <td class="align-right">考评对象：</td>
+                                                        <td>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input name="testObject" class="ace" value="首席专家"
+                                                                           id="id-disable-check1" autocomplete="off"
+                                                                           type="radio">
+                                                                    <span class="lbl">首席专家</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input name="testObject" class="ace" value="副首席专家"
+                                                                           id="id-disable-check2" autocomplete="off"
+                                                                           type="radio">
+                                                                    <span class="lbl">副首席专家</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input name="testObject" class="ace"
+                                                                           value="岗位专家和综合试验站站长" id="id-disable-check3"
+                                                                           autocomplete="off" type="radio">
+                                                                    <span class="lbl">岗位专家和综合试验站站长</span>
+                                                                </label>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="align-right ">省体系办：</td>
+                                                        <td><input placeholder="" id="form-1" name="nongWei"
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   disabled="disabled" type="number">％
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td class="align-right">行业主管部门：</td>
+                                                        <td>
+                                                            <input id="form-2" name="expert" value="" placeholder=""
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   disabled="disabled" type="number">％
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="align-right">副首席专家、岗位专家和综合试验站站长：</td>
+                                                        <td><input id="form-3" placeholder="" name="subChief_sta_lib"
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   disabled="disabled" type="number">％
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="align-right">岗位专家和综合试验站站长：</td>
+                                                        <td><input placeholder="" id="form-4" name="sta_lib"
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   type="number">％
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="align-right">首席专家：</td>
+                                                        <td><input placeholder="" id="form-5" name="chief"
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   disabled="disabled" type="number">％
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="align-right">省体系办和行业主管部门：</td>
+                                                        <td><input placeholder="" id="form-6" name="nongwei_expert"
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   disabled="disabled" type="number">％
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="align-right">首席专家和副首席专家：</td>
+                                                        <td><input placeholder="" id="form-7" name="chief_subChief"
+                                                                   class="col-xs-10 col-sm-8" autocomplete="off"
+                                                                   type="number">％
+                                                        </td>
+                                                    </tr>
+
+                                                    </tbody>
+
+                                                </table>
                                             </div>
+
+
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
                                     <div class="tab-pane fade" id="demo-tabs-box-4">
 
 
@@ -421,12 +437,14 @@
                                             <thead>
                                             <tr>
                                                 <th data-field="state" data-checkbox="true">ID</th>
-                                                <th data-field="id" data-sortable="true" data-align="center" data-formatter="invoiceFormatter">年度</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >所属体系</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >被评分人</th>
+                                                <th data-field="id" data-sortable="true" data-align="center"
+                                                    data-formatter="invoiceFormatter">年度
+                                                </th>
+                                                <th data-field="name" data-sortable="true" data-align="center">所属体系</th>
+                                                <th data-field="date" data-sortable="true" data-align="center">被评分人</th>
                                                 <th data-field="status" data-align="center" data-sortable="true">职位</th>
-                                                <th data-field="name" data-sortable="true" data-align="center" >分数</th>
-                                                <th data-field="date" data-sortable="true" data-align="center" >评级</th>
+                                                <th data-field="name" data-sortable="true" data-align="center">分数</th>
+                                                <th data-field="date" data-sortable="true" data-align="center">评级</th>
                                                 <th data-field="status" data-align="center" data-sortable="true">操作</th>
                                             </tr>
                                             </thead>
@@ -450,9 +468,6 @@
                                         </table>
 
 
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -471,13 +486,55 @@
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
 
+        <!--Small Bootstrap Modal-->
+        <!--===================================================-->
+        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <h4 id="testStart1"></h4>
+                        <br>
+                        <div id="testStart2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+        <!--End Small Bootstrap Modal-->
+
+        <!--Large Bootstrap Modal-->
+        <!--===================================================-->
+        <div id="users" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
+                        <h3 class="modal-title">考评人员</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h4>体系内部人员</h4>
+                        <div id="usersName"></div>
+                        <h4>外聘人员</h4>
+                        <div id="External"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+        <!--End Large Bootstrap Modal-->
+
         <!--Large Bootstrap Modal-->
         <!--===================================================-->
         <div id="demo-lg-modal" class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
                         <h4 class="modal-title" id="myLargeModalLabel">添加</h4>
                     </div>
                     <div class="modal-body">
@@ -488,38 +545,31 @@
                                         年份
                                     </label>
                                     <div class="col-sm-2">
-                                        <input  class="form-control input-sm"  placeholder="" type="text" name="year">
+                                        <input class="form-control input-sm" placeholder="" type="text" name="year">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        所属体系
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <input  class="form-control input-sm " value="体系办" disabled =" " type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
+                                    <label class="col-sm-3 control-label">
                                         考评时间
                                     </label>
                                     <div id="demo-dp-component" class="col-sm-6">
                                         <div class="input-group date">
-                                            <input type="text" class="form-control "  name="date">
+                                            <input type="text" class="form-control " name="date">
                                             <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
+                                    <label class="col-sm-3 control-label">
                                         考评地点
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm " placeholder="请输入详细地址..."  type="text" name="address">
+                                        <input class="form-control input-sm " placeholder="请输入详细地址..." type="text"
+                                               name="address">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
+                                    <label class="col-sm-3 control-label">
                                         参与考评人员
                                     </label>
                                     <div class="col-sm-6">
@@ -529,34 +579,37 @@
                                         </ul>
 
                                         <div class="tab-content">
-                                        <div class="tab-pane fade in active" id="tabs-box-1">
-                                             <div class="form-group">
-                                                <label class="col-lg-3 control-label">请您选择体系人员名单：</label>
-                                                <div class="col-lg-5">
-                                                <ul id="menu">
+                                            <div class="tab-pane fade in active" id="tabs-box-1">
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">请您选择体系人员名单：</label>
+                                                    <div class="col-lg-5">
+                                                        <ul id="menu">
 
-                                                </ul>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                             </div>
-                                        </div>
-                                        <div class="tab-pane fade " id="tabs-box-2">
-                                            <div class="form-group">
-                                            <label class="col-lg-3 control-label">请您选择外聘专家名单：</label>
-                                            <div class="col-lg-5">
-                                                <div class="checkbox">
-                                                    <input id="demo-checkbox-21" class="magic-checkbox" type="checkbox" name="" >
-                                                    <label for="demo-checkbox-21">张某某</label>
-                                                    <br>
-                                                    <input id="demo-checkbox-22" class="magic-checkbox" type="checkbox" name="programs[]" >
-                                                    <label for="demo-checkbox-22">李某某</label>
-                                                    <br>
-                                                    <input id="demo-checkbox-23" class="magic-checkbox" type="checkbox" name="programs[]">
-                                                    <label for="demo-checkbox-23">王某某</label>
-                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade " id="tabs-box-2">
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">请您选择外聘专家名单：</label>
+                                                    <div class="col-lg-5">
+                                                        <div class="checkbox">
+                                                            <input id="demo-checkbox-21" class="magic-checkbox"
+                                                                   type="checkbox" name="">
+                                                            <label for="demo-checkbox-21">张某某</label>
+                                                            <br>
+                                                            <input id="demo-checkbox-22" class="magic-checkbox"
+                                                                   type="checkbox" name="programs[]">
+                                                            <label for="demo-checkbox-22">李某某</label>
+                                                            <br>
+                                                            <input id="demo-checkbox-23" class="magic-checkbox"
+                                                                   type="checkbox" name="programs[]">
+                                                            <label for="demo-checkbox-23">王某某</label>
+                                                        </div>
 
+                                                    </div>
+                                                </div>
                                             </div>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -564,7 +617,7 @@
 
                             <div class="panel-footer text-right">
                                 <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="" id="submit1"  type="submit">添加</button>
+                                <button class="" id="submit1" type="submit">添加</button>
                             </div>
                         </form>
                     </div>
@@ -835,7 +888,7 @@
 <script type="text/javascript">
     jQuery(function ($) {
 
-        $(document).on('click','th input:checkbox',function () {
+        $(document).on('click', 'th input:checkbox', function () {
             var that = this;
             $(this).closest('table').find(
                 'tr > td:first-child input:checkbox').each(
