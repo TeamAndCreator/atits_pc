@@ -72,7 +72,7 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
-    
+    <script src="js/atits_pc_js/perrmission.js"></script>
     <!--Bootstrap Table Sample [ SAMPLE ]下面三个js-->
     <script src="js/demo/tables-bs-table.js"></script>
 
@@ -87,7 +87,7 @@
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-        
+    <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
 </head>
 
@@ -365,16 +365,6 @@
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <div id="page-title">
                     <h1 class="page-header text-overflow">人员管理</h1>
-
-                    <!--Searchbox-->
-                    <div class="searchbox">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search..">
-                            <span class="input-group-btn">
-                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
-                            </span>
-                        </div>
-                    </div>
                 </div>
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <!--End page title-->
@@ -581,7 +571,7 @@
                                 </li>
 
                                 <!--Menu list item-->
-                                <li>
+                                <li class="active" style="display: none" id="person">
                                     <a href="user.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
@@ -591,7 +581,7 @@
                                 </li>
 
                                 <!--Menu list item-->
-                                <li>
+                                <li style="display: none" id="system">
                                     <a href="system.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
@@ -601,7 +591,7 @@
                                 </li>
 
                                 <!--Menu list item-->
-                                <li>
+                                <li style="display: none" id="lab">
                                     <a href="laboratory.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
@@ -611,7 +601,7 @@
                                 </li>
 
                                 <!--Menu list item-->
-                                <li>
+                                <li style="display: none" id="sta">
                                     <a href="station.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
@@ -672,7 +662,7 @@
 
                                 <!--Menu list item-->
                                 <li>
-                                    <a href="regulation.html">
+                                    <a href="#">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>规章制度</strong>
@@ -681,7 +671,7 @@
                                 </li>
                                 <!--Menu list item-->
                                 <li>
-                                    <a href="sys_task.html">
+                                    <a href="task.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>工作任务</strong>
@@ -691,7 +681,7 @@
 
                                 <!--Menu list item-->
                                 <li>
-                                    <a href="task_progress.html">
+                                    <a href="taskProgress.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>工作进展</strong>
@@ -699,8 +689,8 @@
                                     </a>
                                 </li>
                                 <!--Menu list item-->
-                                <li>
-                                    <a href="#">
+                                <li style="display: none" id="test">
+                                    <a href="test_manager.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>考评管理</strong>
@@ -709,7 +699,7 @@
                                 </li>
                                 <!--Menu list item-->
                                 <li>
-                                    <a href="files.html">
+                                    <a href="download.html">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>下载中心</strong>
@@ -725,6 +715,7 @@
 											</span>
                                     </a>
                                 </li>
+
 
 
                             </ul>
