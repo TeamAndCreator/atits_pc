@@ -208,6 +208,12 @@ $(document).ready(function() {
 
 });
 
+ //添加通知公告
+jQuery(function(){
+    $("#submit1").click(function(){
+
+   });
+});
 //超链接
 function invoiceFormatter(value, row) {
     return '<a href="#" class="btn-link" >' + value + '</a>';
