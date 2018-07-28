@@ -31,6 +31,11 @@
     <!--Page Load Progress Bar [ OPTIONAL ]-->
     <link href="plugins/pace/pace.min.css" rel="stylesheet">
 
+
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/atits_pc_js/login.js"></script>
+
+
     <script src="plugins/pace/pace.min.js"></script>
 
 
@@ -59,60 +64,15 @@
 
     Detailed information and more samples can be found in the document.
 
-    =================================================-->
-
-
-
-
+    =================================================--
 
 
 
     <!--jQuery [ REQUIRED ]-->
 
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script type="application/javascript">
-        $(document).ready(function() {
 
-
-            $("#login").click(function () {
-                var param={
-                    "userName":$("#userName").val(),
-                    "password":$("#password").val()
-                }
-                $.ajax({
-                    crossDomain : true,
-                    url:"http://47.104.26.79:8080/atits_service/login/login",
-                    dataType:"json",
-                    data:param,
-                    type:"post",
-                    async:false,
-                    success:function (result) {
-                        if (result.code == 100){
-                            var systemId=result.data.user.system.id;
-                            var roles=result.data.user.roles;
-                            var rolesId=[];
-                            for (var i = 0; i < roles.length;i++){
-                                rolesId.push(roles[i].id)
-                            }
-                            rolesId=JSON.stringify(rolesId);
-                            sessionStorage.setItem("systemId",systemId);
-                            sessionStorage.setItem("rolesId",rolesId);
-                            window.location.href = "index.html";
-                        }else {
-                            alert("账号或密码错误")
-                        }
-                    }
-                });
-
-            })
-
-        })
-
-
-
-    </script>
 </head>
-<body>
+<body onLoad="createCode()">
 
         <!--用户名：<input name="userName" type="text" id="userName">-->
         <!--<br>-->
@@ -134,22 +94,48 @@
                 <div class="cls-content-sm panel">
                     <div class="panel-body">
                         <div class="mar-ver pad-btm">
-                            <h3 class="h4 mar-no">账号登陆</h3>
-                            <p class="text-muted">登录到您的账户</p>
+                            <h1 class="h3 mar-no">用户登陆</h1>
+
                         </div>
-                        <form action="index.html">
+
+
+                        <!--<div class="form-group">-->
+                            <!--<label for="demo-is-inputnormal" class="col-sm-3 control-label">Normal Input</label>-->
+                            <!--<div class="col-sm-6">-->
+                                <!--<input type="text" placeholder="Normal" class="form-control" id="demo-is-inputnormal">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <form class="form-horizontal">
                             <div class="form-group">
-                                <input type="text" name="userName" id="userName" class="form-control" placeholder="用户名" autofocus>
+                                <label for="demo-is-inputnormal" class="col-sm-3 control-label">用户名：</label>
+                                <div class="col-sm-8">
+                                     <input type="text" name="userName" id="userName" class="form-control" id="demo-is-inputnormal" placeholder="" >
+                                </div>
                             </div>
+
                             <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="密码">
+                                <label class="col-sm-3 control-label">密 &nbsp;&nbsp; 码：</label>
+                                <div class="col-sm-8">
+                                     <input type="password" name="userName" id="password" class="form-control" placeholder="" >
+                                </div>
                             </div>
+
+                           <div class="form-group">
+                                <label class="col-sm-3 control-label">验证码：</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="yzm" size="5" class="form-control">
+                                </div>
+                               <div class="col-sm-3">
+                                    <input type="button" id="checkCode" class="form-control" onClick="createCode()" title="刷新验证码" style="width:60px;background-image:url('img/timg.jpg');font-size:14px;font-weight:bolder
+                                   ;text-align:center;border:0;letter-spacing:1px;font-family:Arial;font-style:italic; " />
+                                </div>
+                            </div>
+                        </form>
                             <div class="checkbox pad-btm text-left">
                                 <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
                                 <label for="demo-form-checkbox">记住密码</label>
                             </div>
-                            <button class="btn btn-primary btn-lg btn-block" id="login" type="submit">登陆</button>
-                        </form>
+                            <button class="btn btn-primary btn-lg btn-block" onClick="validate()" id="login" >登陆</button>
                     </div>
 
                     <div class="pad-all">
