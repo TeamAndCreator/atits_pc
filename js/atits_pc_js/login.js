@@ -46,7 +46,6 @@
         checkCode.value = code;
     }
 
-
     function validate () {
         var inputCode = document.getElementById("yzm").value.toUpperCase();
         if(inputCode != code ){
@@ -55,6 +54,10 @@
             logFun();
         }
     }
+
+
+
+
     function logFun(){
         var param={
             "userName":$("#userName").val(),
@@ -69,6 +72,7 @@
             async:false,
             success:function (result) {
                 if (result.code == 100 ){
+                    console.log(result);
                     var systemId=result.data.user.system.id;
                     var roles=result.data.user.roles;
                     var rolesId=[];
@@ -84,4 +88,78 @@
                 }
             }
         });
+    }
+
+
+    //判断用户名和密码是否为空
+    function checkInCorrect()
+    {
+        if (document.getElementById('userName').value=="")
+        {
+            alert('请输入用户名！')
+            document.getElementById('userName').focus();
+            return false;
+        }
+        if (document.getElementById('password').value=="")
+        {
+            alert('请输入密码！')
+            document.getElementById('password').focus();
+            return false;
+        }
+        else
+        {
+            saveInfo();
+            return true;
+        }
+    }
+
+
+    saveInfo = function(){
+        try{
+            var isSave = document.getElementById('remember-password').checked;   //保存按键是否选中
+            if (isSave) {
+                var usernm = document.getElementById('userName').value;
+                var userpsw = document.getElementById('password').value;
+                if(usernm!="" && userpsw!=""){
+                    SetCookie(usernm,userpsw);
+                }
+            }else {
+                SetCookie("","");
+            }
+        }catch(e){
+
+        }
+    }
+
+    function SetCookie(usernm,userpsw){
+        var oDate = new Date();
+        oDate.setTime(oDate.getTime() + 1866240000000);
+        document.cookie ="username=" + usernm + "%%"+userpsw+";expires="+ oDate.toGMTString() ;
+    }
+
+    function GetCookie(){
+        var nmpsd;
+        var nm;
+        var psd;
+        var cookieString = new String(document.cookie);
+        var cookieHeader = "username=";
+        var beginPosition = cookieString.indexOf(cookieHeader);
+        cookieString = cookieString.substring(beginPosition);
+        var ends=cookieString.indexOf(";");
+        if (ends!=-1){
+            cookieString = cookieString.substring(0,ends);
+        }
+        if (beginPosition>-1){
+            nmpsd = cookieString.substring(cookieHeader.length);
+            if (nmpsd!=""){
+                beginPosition = nmpsd.indexOf("%%");
+                nm=nmpsd.substring(0,beginPosition);
+                psd=nmpsd.substring(beginPosition+2);
+                document.getElementById('userName').value=nm;
+                document.getElementById('password').value=psd;
+                if(nm!="" && psd!=""){
+                    document.getElementById('remember-password').checked = true;
+                }
+            }
+        }
     }
