@@ -13,7 +13,18 @@
         checkCode.value = code;
     }
 
-    function validate () {
+
+    function keyEnter(e){
+        var e = e||event;
+        if(e.keyCode == 13){
+            document.getElementsByName("submit")[0].click();
+        }
+    }
+    document.onkeydown = keyEnter;
+
+
+
+    function validate() {
         var inputCode = document.getElementById("yzm").value.toUpperCase();
         if(inputCode != code ){
             alert("验证码错误！");
@@ -21,7 +32,6 @@
             logFun();
         }
     }
-
 
 
 
@@ -129,3 +139,4 @@
             }
         }
     }
+
