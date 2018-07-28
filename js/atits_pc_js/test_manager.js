@@ -6,13 +6,14 @@ $(document).ready(function () {
 
 
     var dataUsers;
+    var externalUsers;
     //获取考评人员名单
     $('#add').click(function () {
         $.ajax({
             crossDomain: true,
             url: "http://47.104.26.79:8080/atits_service/teststart/import_persons",
             dataType: "json",
-            data: {"sysId": sessionStorage.getItem("systemId"), "roleId": 1},
+            data: {"sysId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
@@ -20,16 +21,38 @@ $(document).ready(function () {
                 createDom(dataUsers);
             }
         })
+        $.ajax({
+            crossDomain: true,
+            url: "http://47.104.26.79:8080/atits_service/teststart/import_persons",
+            dataType: "json",
+            data: {"sysId": null},
+            type: "get",
+            async: false,
+            success: function (result) {
+                externalUsers = result.data.users;
+                createDom2(externalUsers);
+            }
+        })
 
     })
 
+    function createDom2(ele) {
+        var htmlStr = '';
+        for (i = 0; i < ele.length; i++) {
+            htmlStr += '<li class="checkbox">\n' +
+                '   <input class="magic-checkbox" type="checkbox" name="users" value="' + ele[i].id + '">\n' +
+                '             <label for="demo-checkbox-11"> ' + ele[i].profile.name + '</label>\n' +
+                '        </li>'
+        }
+        $('#tabs-box-2 #menu2 ').html(htmlStr);
+    }
 
     function createDom(ele) {
         var htmlStr = '';
         for (i = 0; i < ele.length; i++) {
             htmlStr += '<li class="checkbox">\n' +
-                '   <input class="magic-checkbox" type="checkbox" name="users" value="' + dataUsers[i].id + '">\n' +
-                '             <label for="demo-checkbox-11"> ' + dataUsers[i].profile.name + '</label>\n' +
+                '   <input class="magic-checkbox" type="checkbox" name="users" value="' + ele[i].id + '">\n' +
+                '             <label for="demo-checkbox-11"> ' + ele[i].profile.name + '</label>\n' +
                 '        </li>'
         }
         $('#tabs-box-1 #menu ').html(htmlStr);
@@ -142,11 +165,17 @@ function invoiceFormatter(value, row) {
 
 //向考评人员名单上写名字
 function f(users) {
-    var names = [];
+    var names1 = [];
+    var names2 = [];
     for (var i = 0; i < users.length; i++) {
-        names[i] = users[i].profile.name;
+        if (users[i].system != null) {
+            names1.push(users[i].profile.name);
+        }else {
+            names2.push(users[i].profile.name)
+        }
     }
-    $('#usersName').text(names);
+    $('#usersName').text(names1);
+    $('#External').text(names2);
 }
 
 //状态
@@ -167,39 +196,42 @@ function statusFormatter(value, row) {
     }
     return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white'>" + v + "</a></div>";
 }
+
 //判断状态按钮，选择调用函数
 function updateState(value, id) {
     if (value == 0) {
         $('#testStart1').text("是否启动考评");
         $
-        $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f1("+id+")\">确定</button>");
-    }else if (value == 1) {
+        $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f1(" + id + ")\">确定</button>");
+    } else if (value == 1) {
         $('#testStart1').text("是否结束考评");
-        $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f2("+id+")\">确定</button>");
+        $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f2(" + id + ")\">确定</button>");
     }
 }
+
 //待启动变为启动
 function f1(id) {
     $.ajax({
         type: 'post',
         dataType: 'JSON',
         url: 'http://47.104.26.79:8080/atits_service/teststart/updateState',
-        data: {_method: "put", "id": id,"state":1},
+        data: {_method: "put", "id": id, "state": 1},
         async: false,
         success: function (data) {
             window.location.reload()
         },
-        error:function () {
+        error: function () {
         }
     })
 }
+
 //启动变为结束
 function f2(id) {
     $.ajax({
         type: 'post',
         dataType: 'JSON',
         url: 'http://47.104.26.79:8080/atits_service/teststart/updateState',
-        data: {_method: "put", "id": id,"state":2},
+        data: {_method: "put", "id": id, "state": 2},
         async: false,
         success: function () {
             window.location.reload()
