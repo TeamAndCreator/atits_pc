@@ -1,37 +1,4 @@
 
-
-    // $(document).ready(function() {
-    //     $("#login").click(function () {
-    //         var param={
-    //             "userName":$("#userName").val(),
-    //             "password":$("#password").val()
-    //         }
-    //         $.ajax({
-    //             crossDomain : true,
-    //             url:"http://47.104.26.79:8080/atits_service/login/login",
-    //             dataType:"json",
-    //             data:param,
-    //             type:"post",
-    //             async:false,
-    //             success:function (result) {
-    //                 if (result.code == 100 ){
-    //                     var roles=result.data.user.roles;
-    //                     var rolesId=[];
-    //                     for (var i = 0; i < roles.length;i++){
-    //                         rolesId.push(roles[i].id)
-    //                     }
-    //                     rolesId=JSON.stringify(rolesId);
-    //                     sessionStorage.setItem("rolesId",rolesId);
-    //                     window.location.href = "index.html"
-    //                 }else {
-    //                     alert("账号或密码错误");
-    //                 }
-    //             }
-    //         });
-    //     })
-    // })
-
-
     var code ;
     function createCode(){
         code = new Array();
@@ -65,14 +32,13 @@
         }
         $.ajax({
             crossDomain : true,
-            url:"http://47.104.26.79:8080/atits_service/login/login",
+            url:ipValue+"/login/login",
             dataType:"json",
             data:param,
             type:"post",
             async:false,
             success:function (result) {
                 if (result.code == 100 ){
-                    console.log(result);
                     var systemId=result.data.user.system.id;
                     var roles=result.data.user.roles;
                     var rolesId=[];

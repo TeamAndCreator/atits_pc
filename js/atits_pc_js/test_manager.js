@@ -4,14 +4,21 @@ $(document).ready(function () {
     //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
 
-
+    if (rolesId.indexOf(3) != -1) {
+        $('#kpqd').html('<button class="btn btn-success" data-toggle="modal" id="add"\n' +
+            '                                                    data-target="#demo-lg-modal">\n' +
+            '                                                <i class="demo-pli-plus"></i>添加\n' +
+            '                                            </button>\n' +
+            '                                            <button class="btn btn-danger" id="delete"><i class="demo-pli-cross"></i>删除\n' +
+            '                                            </button>');
+    }
     var dataUsers;
     var externalUsers;
     //获取考评人员名单
     $('#add').click(function () {
         $.ajax({
             crossDomain: true,
-            url: "http://47.104.26.79:8080/atits_service/teststart/import_persons",
+            url: ipValue + "/teststart/import_persons",
             dataType: "json",
             data: {"sysId": sessionStorage.getItem("systemId")},
             type: "get",
@@ -23,7 +30,7 @@ $(document).ready(function () {
         })
         $.ajax({
             crossDomain: true,
-            url: "http://47.104.26.79:8080/atits_service/teststart/import_persons",
+            url: ipValue + "/teststart/import_persons",
             dataType: "json",
             data: {"sysId": null},
             type: "get",
@@ -78,7 +85,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
-            url: 'http://47.104.26.79:8080/atits_service/teststart/save',
+            url: ipValue + '/teststart/save',
             data: obj,
             async: false,
             traditional: true
@@ -90,7 +97,7 @@ $(document).ready(function () {
     var data;
     $.ajax({
         crossDomain: true,
-        url: "http://47.104.26.79:8080/atits_service/teststart/findAll",
+        url: ipValue + "/teststart/findAll",
         dataType: "json",
         type: "get",
         async: false,
@@ -110,7 +117,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: 'http://47.104.26.79:8080/atits_service/teststart/deleteByIds',
+            url: ipValue + '/teststart/deleteByIds',
             data: {_method: "DELETE", "idList": b},
             async: false,
             traditional: true,
@@ -170,7 +177,7 @@ function f(users) {
     for (var i = 0; i < users.length; i++) {
         if (users[i].system != null) {
             names1.push(users[i].profile.name);
-        }else {
+        } else {
             names2.push(users[i].profile.name)
         }
     }
@@ -186,9 +193,15 @@ function statusFormatter(value, row) {
     if (value == 0) {
         v = "待启动";
         labelColor = "warning";
+        if (rolesId.indexOf(3) == -1) {
+            return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
+        }
     } else if (value == 1) {
         v = "已启动";
         labelColor = "success";
+        if (rolesId.indexOf(3) == -1) {
+            return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
+        }
     } else if (value == 2) {
         v = "已结束";
         labelColor = "default"
@@ -214,7 +227,7 @@ function f1(id) {
     $.ajax({
         type: 'post',
         dataType: 'JSON',
-        url: 'http://47.104.26.79:8080/atits_service/teststart/updateState',
+        url: ipValue + '/teststart/updateState',
         data: {_method: "put", "id": id, "state": 1},
         async: false,
         success: function (data) {
@@ -230,7 +243,7 @@ function f2(id) {
     $.ajax({
         type: 'post',
         dataType: 'JSON',
-        url: 'http://47.104.26.79:8080/atits_service/teststart/updateState',
+        url: ipValue + '/teststart/updateState',
         data: {_method: "put", "id": id, "state": 2},
         async: false,
         success: function () {
