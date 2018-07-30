@@ -51,6 +51,7 @@
                 if (result.code == 100 ){
                     var systemId=result.data.user.system.id;
                     var roles=result.data.user.roles;
+                    var systemName=result.data.user.system.systemName;
                     var rolesId=[];
                     for (var i = 0; i < roles.length;i++){
                         rolesId.push(roles[i].id)
@@ -58,6 +59,7 @@
                     rolesId=JSON.stringify(rolesId);
                     sessionStorage.setItem("systemId",systemId);
                     sessionStorage.setItem("rolesId",rolesId);
+                    sessionStorage.setItem("systemName",systemName);
                     window.location.href = "index.html";
                 }else {
                     alert("账号或密码错误");

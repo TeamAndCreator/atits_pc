@@ -4,7 +4,7 @@ $(document).ready(function () {
     //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
 
-    if (rolesId.indexOf(3) != -1) {
+    if (rolesId.indexOf(3) != -1||rolesId.indexOf(1)!=-1) {
         $('#kpqd').html('<button class="btn btn-success" data-toggle="modal" id="add"\n' +
             '                                                    data-target="#demo-lg-modal">\n' +
             '                                                <i class="demo-pli-plus"></i>添加\n' +
@@ -16,6 +16,8 @@ $(document).ready(function () {
     var externalUsers;
     //获取考评人员名单
     $('#add').click(function () {
+        var systemName = sessionStorage.getItem('systemName');
+        $("input[ name = 'system']").val(systemName);
         $.ajax({
             crossDomain: true,
             url: ipValue + "/teststart/import_persons",
@@ -68,12 +70,31 @@ $(document).ready(function () {
 
     //发送考评启动添加数据内容
     $("#submit1").on('click', function () {
-        var obj = {
-            "year": '',
-            "date": '',
-            "address": '',
-            "ids": ""
-        };
+        if(sessionStorage.getItem('systemId')==1){
+            var obj = {
+                "year": '',
+                "date": '',
+                "address": '',
+                "system.id": sessionStorage.getItem("systemId"),
+                "testWeight.a": 40,
+                "testWeight.b": 30,
+                "testWeight.c": 30,
+                "testWeight.d": 40,
+                "testWeight.e": 30,
+                "testWeight.f": 30,
+                "ids": ""
+            };
+        }else {
+            var obj = {
+                "year": '',
+                "date": '',
+                "address": '',
+                "system.id": sessionStorage.getItem("systemId"),
+                "testWeight.g": 60,
+                "testWeight.h": 40,
+                "ids": ""
+            };
+        }
         obj.year = $("input[ name = 'year']").val();
         obj.date = $("input[ name = 'date']").val();
         obj.address = $("input[ name = 'address']").val();
@@ -92,20 +113,72 @@ $(document).ready(function () {
         });
     })
 
-
-//获取考评启动表单数据
-    var data;
-    $.ajax({
-        crossDomain: true,
-        url: ipValue + "/teststart/findAll",
-        dataType: "json",
-        type: "get",
-        async: false,
-        success: function (result) {
-            data = result.data.testStarts
+    //两个权重设置修改模态框提交按钮
+    $("#testWeight2_btn").click(function () {
+        var testWeight={
+            "id":"",
+            "g":"",
+            "h":""
+        };
+        testWeight.id=$("input[name='id2']").val();
+        testWeight.g=$("input[name='g']").val();
+        testWeight.h=$("input[name='h']").val();
+        var sum=parseInt(testWeight.g) + parseInt(testWeight.h);
+        if (sum!= 100) {
+            alert("请确保权重之和为100")
+        }else {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/testweight/update',
+                data: testWeight,
+                async: false,
+                traditional: true,
+                success:function () {
+                    alert("修改成功");
+                    location.reload()
+                }
+            });
         }
-    })
 
+    });
+    $("#testWeight_btn").click(function () {
+        var testWeight={
+            "id":"",
+            "a":"",
+            "b":"",
+            "c":"",
+            "d":"",
+            "e":"",
+            "f":""
+        };
+        testWeight.id=$("input[name='id']").val();
+        testWeight.a=$("input[name='a']").val();
+        testWeight.b=$("input[name='b']").val();
+        testWeight.c=$("input[name='c']").val();
+        testWeight.d=$("input[name='d']").val();
+        testWeight.e=$("input[name='e']").val();
+        testWeight.f=$("input[name='f']").val();
+        var sum1=parseInt(testWeight.a) + parseInt(testWeight.b)+parseInt(testWeight.c);
+        var sum2=parseInt(testWeight.d) + parseInt(testWeight.e)+parseInt(testWeight.f);
+        if (sum1!= 100||sum2!=100) {
+            alert("请确保权重之和为100")
+        }else {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/testweight/update',
+                data: testWeight,
+                async: false,
+                traditional: true,
+                success:function () {
+                    alert("修改成功");
+                    location.reload()
+                }
+            });
+        }
+
+    })
 
 //删除
     $('#delete').click(function () {
@@ -127,6 +200,18 @@ $(document).ready(function () {
         })
     })
 
+//获取考评启动表单数据
+    var data;
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/teststart/findAll",
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function (result) {
+            data = result.data.testStarts
+        }
+    })
 
 //设置table每列标题
     $('#demo-custom-toolbar1').bootstrapTable({
@@ -134,34 +219,97 @@ $(document).ready(function () {
         data: data,
         columns: [{
             field: 'checked',
-            checkbox: true,
+            checkbox: true
         }, {
             field: 'year',
             align: 'center',
-            title: '考评年度',
+            title: '考评年度'
         }, {
-            field: 'users',
-            title: '考评人员',
-            formatter: 'invoiceFormatter'
-        }, {
-            field: 'date',
+            field: 'system.systemName',
             align: 'center',
-            title: '考评日期'
-        }, {
-            field: 'address',
-            align: 'center',
-            title: '考评地点',
-        }, {
-            field: 'state',
-            align: 'center',
-            title: '状态',
-            formatter: 'statusFormatter'
+            title: '所属体系'
         }
+            , {
+                field: 'users',
+                title: '考评人员',
+                formatter: 'invoiceFormatter'
+            }, {
+                field: 'date',
+                align: 'center',
+                title: '考评日期'
+            }, {
+                field: 'address',
+                align: 'center',
+                title: '考评地点',
+            }, {
+                field: 'testWeight',
+                align: 'center',
+                title: '权重设置',
+                formatter: 'test_weight'
+
+            }, {
+                field: 'state',
+                align: 'center',
+                title: '状态',
+                formatter: 'statusFormatter'
+            }
 
         ]
     })
 
+
 });
+
+//权重设置权限判断
+function test_weight(value, row) {
+    value=JSON.stringify(value);
+    if (row.system.id == 1) {
+        if (rolesId.indexOf(1)!=-1){
+            return "<a onclick='testWeightTable("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+        }else {
+            return "<a onclick='testWeightTable2("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+        }
+    }else {
+        if(row.system.id==sessionStorage.getItem('systemId')&&rolesId.indexOf(3)!=-1){
+            return "<a onclick='testWeightTable3("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+        }else {
+            return "<a onclick='testWeightTable4("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+        }
+    }
+}
+
+//四种权重设置的权限
+function testWeightTable(value) {
+    $("input[name='id']").val(value.id);
+    $("input[name='a']").val(value.a);
+    $("input[name='b']").val(value.b);
+    $("input[name='c']").val(value.c);
+    $("input[name='d']").val(value.d);
+    $("input[name='e']").val(value.e);
+    $("input[name='f']").val(value.f);
+
+}
+function testWeightTable2(value) {
+    $("input[name='a'],input[name='b'],input[name='c'],input[name='d'],input[name='e'],input[name='f']").attr("disabled","disabled");
+    $("input[name='a']").val(value.a);
+    $("input[name='b']").val(value.b);
+    $("input[name='c']").val(value.c);
+    $("input[name='d']").val(value.d);
+    $("input[name='e']").val(value.e);
+    $("input[name='f']").val(value.f);
+    $("#testWeight_btn").css('display','none')
+}
+function testWeightTable3(value) {
+    $("input[name='id2']").val(value.id)
+    $("input[name='g']").val(value.g);
+    $("input[name='h']").val(value.h);
+}
+function testWeightTable4(value) {
+    $("input[name='g'],input[name='h']").attr("disabled","disabled");
+    $("input[name='g']").val(value.g);
+    $("input[name='h']").val(value.h);
+    $("#testWeight2_btn").css('display','none')
+}
 
 
 //超链接
