@@ -341,13 +341,25 @@ function statusFormatter(value, row) {
     if (value == 0) {
         v = "待启动";
         labelColor = "warning";
-        if (rolesId.indexOf(3) == -1) {
+        if (row.system.id == sessionStorage.getItem('systemId')){
+            if (rolesId.indexOf(3)!=-1||rolesId.indexOf(1)!=-1){
+                return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
+            }else {
+                return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
+            }
+        }else {
             return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
         }
     } else if (value == 1) {
         v = "已启动";
         labelColor = "success";
-        if (rolesId.indexOf(3) == -1) {
+        if (row.system.id == sessionStorage.getItem('systemId')){
+            if (rolesId.indexOf(3)!=-1||rolesId.indexOf(1)!=-1){
+                return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
+            }else {
+                return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
+            }
+        }else {
             return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
         }
     } else if (value == 2) {
@@ -355,14 +367,12 @@ function statusFormatter(value, row) {
         labelColor = "default"
         return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
     }
-    return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white'>" + v + "</a></div>";
 }
 
 //判断状态按钮，选择调用函数
 function updateState(value, id) {
     if (value == 0) {
         $('#testStart1').text("是否启动考评");
-        $
         $('#testStart2').html("<button class=\"btn btn-success-basic\" onclick=\"f1(" + id + ")\">确定</button>");
     } else if (value == 1) {
         $('#testStart1').text("是否结束考评");
