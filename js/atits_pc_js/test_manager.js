@@ -18,6 +18,7 @@ $(document).ready(function () {
     $('#add').click(function () {
         var systemName = sessionStorage.getItem('systemName');
         $("input[ name = 'system']").val(systemName);
+        //获取本体系人员
         $.ajax({
             crossDomain: true,
             url: ipValue + "/teststart/import_persons",
@@ -30,18 +31,23 @@ $(document).ready(function () {
                 createDom(dataUsers);
             }
         })
-        $.ajax({
-            crossDomain: true,
-            url: ipValue + "/teststart/import_persons",
-            dataType: "json",
-            data: {"sysId": null},
-            type: "get",
-            async: false,
-            success: function (result) {
-                externalUsers = result.data.users;
-                createDom2(externalUsers);
-            }
-        })
+        //判断当前用户是否为体系办，是则显示外聘人员，否则不显示
+        if (sessionStorage.getItem('systemId') == 1) {
+            $.ajax({
+                crossDomain: true,
+                url: ipValue + "/teststart/import_persons",
+                dataType: "json",
+                data: {"sysId": null},
+                type: "get",
+                async: false,
+                success: function (result) {
+                    externalUsers = result.data.users;
+                    createDom2(externalUsers);
+                }
+            })
+        }else {
+            $('#external_add li:eq(1)').remove();
+        }
 
     })
 
@@ -68,7 +74,7 @@ $(document).ready(function () {
     }
 
 
-    //发送考评启动添加数据内容
+//发送考评启动添加数据内容
     $("#submit1").on('click', function () {
         if(sessionStorage.getItem('systemId')==1){
             var obj = {
@@ -113,7 +119,7 @@ $(document).ready(function () {
         });
     })
 
-    //两个权重设置修改模态框提交按钮
+//两个权重设置修改模态框提交按钮
     $("#testWeight2_btn").click(function () {
         var testWeight={
             "id":"",
@@ -218,8 +224,9 @@ $(document).ready(function () {
         idField: 'id',
         data: data,
         columns: [{
-            field: 'checked',
-            checkbox: true
+            field:'system.id',
+            checkbox: true,
+            formatter:'check'
         }, {
             field: 'year',
             align: 'center',
@@ -228,50 +235,463 @@ $(document).ready(function () {
             field: 'system.systemName',
             align: 'center',
             title: '所属体系'
-        }
-            , {
-                field: 'users',
-                title: '考评人员',
-                formatter: 'invoiceFormatter'
-            }, {
-                field: 'date',
-                align: 'center',
-                title: '考评日期'
-            }, {
-                field: 'address',
-                align: 'center',
-                title: '考评地点',
-            }, {
-                field: 'testWeight',
-                align: 'center',
-                title: '权重设置',
-                formatter: 'test_weight'
+        }, {
+            field: 'users',
+            title: '考评人员',
+            formatter: 'invoiceFormatter'
+        }, {
+            field: 'date',
+            align: 'center',
+            title: '考评日期'
+        }, {
+            field: 'address',
+            align: 'center',
+            title: '考评地点',
+        }, {
+            field: 'testWeight',
+            align: 'center',
+            title: '权重设置',
+            formatter: 'test_weight'
 
-            }, {
-                field: 'state',
-                align: 'center',
-                title: '状态',
-                formatter: 'statusFormatter'
-            }
+        }, {
+            field: 'state',
+            align: 'center',
+            title: '状态',
+            formatter: 'statusFormatter'
+        }
 
         ]
     })
 
+//获取testScore
+    var testScore;
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/testscore/findByEvaluation",
+        dataType: "json",
+        data:{"evaluationId":sessionStorage.getItem('userId')},
+        type: "get",
+        async: false,
+        success: function (result) {
+            testScore = result.data.testScores;
+        }
+    });
 
+//设置testScore表格标题
+    $('#testScore').bootstrapTable({
+        idField: 'id',
+        data: testScore,
+        editable:true,
+        columns: [
+            {
+                field: 'testStart.year',
+                align: 'center',
+                title: '考评年度'
+            },{
+                field:'testStart.system.systemName',
+                align:'center',
+                title:'考评发起单位'
+            },{
+                field:'testStart.address',
+                align:'center',
+                title:'考评地点'
+            },{
+                field:'testStart.date',
+                align:'center',
+                title:'考评日期'
+            }, {
+                field: 'evaluationed.profile.name',
+                align: 'center',
+                title: '被考评人员',
+            },{
+                field:'evaluation.profile.name',
+                align:'center',
+                title:'打分人员'
+            },{
+                field:'testStart.state',
+                align:'center',
+                formatter:'score',
+                title:'打分'
+            },{
+                field:'time',
+                align:'center',
+                title:'打分时间'
+            }
+
+        ]
+    });
+
+//发送打分数据
+    $('#score-btn').click(function () {
+        // var scoreValue={
+        //     "id":"",
+        //     "A1":"",
+        //     "A2":"",
+        //     "A3":"",
+        //     "A4":"",
+        //     "A5":"",
+        //     "A6":"",
+        // };
+        id=parseInt($("input[name='score-id']").val());
+        A1=parseInt($("input[name='a1']").val());
+        A2=parseInt($("input[name='a2']").val());
+        A3=parseInt($("input[name='a3']").val());
+        A4=parseInt($("input[name='a4']").val());
+        A5=parseInt($("input[name='a5']").val());
+        A6=parseInt($("input[name='a6']").val());
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: ipValue + '/testscore/score',
+            data:{_method: "put","id":id,"A1":A1,"A2":A2,"A3":A3,"A4":A4,"A5":A5,"A6":A6},
+            async: false,
+            traditional: true,
+            success:function (result) {
+                alert("打分成功");
+                location.reload()
+            }
+        });
+    })
+
+//个人得分表（体系办不用，外聘人员不用）
+    if (sessionStorage.getItem("systemId") != 1 && sessionStorage.getItem("systemId")!= null) {
+        if (rolesId.indexOf(3)==-1){
+            $('#title').text("个人得分");
+        }
+//获取个人得分
+        var testManage_person;
+        $.ajax({
+            crossDomain: true,
+            url: ipValue + "/testmanage/findOwn",
+            dataType: "json",
+            data:{"userId":sessionStorage.getItem('userId')},
+            type: "get",
+            async: false,
+            success: function (result) {
+                testManage_person = result.data.testManages;
+            }
+    })
+//设置个人得分标题
+        $('#testManage_person').bootstrapTable({
+        striped: true,
+        pagination: true,
+        pageSize: 10,
+        pageList: [10, 25, 50],
+        showColumns: true,
+        search: true,
+        showRefresh: false,
+        showRefresh: false,
+        showToggle:true,
+        idField: 'id',
+        data: testManage_person,
+        editable:true,
+        columns: [
+            {
+                field: 'testStart.year',
+                align: 'center',
+                title: '考评年度'
+            },{
+                field:'testStart.system.systemName',
+                align:'center',
+                title:'考评发起单位'
+            },{
+                field:'testStart.date',
+                align:'center',
+                title:'考评日期'
+            },{
+                field:'testStart.address',
+                align:'center',
+                title:'考评地点'
+            },{
+                field:'scoreUser.profile.name',
+                align:'center',
+                title:'得分人'
+            },{
+                field:'sum',
+                align:'center',
+                title:'综合得分'
+            }
+
+        ]
+    })
+    }
+
+//体系人员得分表（体系办、首席用）
+    if(rolesId.indexOf(1)!=-1||rolesId.indexOf(3)!=-1){
+//获取本体系所有得分
+        var testManage_system;
+        $.ajax({
+            crossDomain: true,
+            url: ipValue + "/testmanage/findSystemTestManage",
+            dataType: "json",
+            data:{"systemId":sessionStorage.getItem('systemId')},
+            type: "get",
+            async: false,
+            success: function (result) {
+                testManage_system = result.data.testManages;
+            }
+        })
+        $('#testManage_system').bootstrapTable({
+            striped: true,
+            pagination: true,
+            pageSize: 10,
+            pageList: [10, 25, 50],
+            showColumns: true,
+            search: true,
+            showRefresh: false,
+            showRefresh: false,
+            showToggle:true,
+            idField: 'id',
+            data: testManage_system,
+            editable:true,
+            columns: [
+                {
+                    field: 'testStart.year',
+                    align: 'center',
+                    title: '考评年度'
+                },{
+                    field:'testStart.system.systemName',
+                    align:'center',
+                    title:'考评发起单位'
+                },{
+                    field:'testStart.date',
+                    align:'center',
+                    title:'考评日期'
+                },{
+                    field:'testStart.address',
+                    align:'center',
+                    title:'考评地点'
+                },{
+                    field:'scoreUser.profile.name',
+                    align:'center',
+                    title:'得分人'
+                },{
+                    field:'sum',
+                    align:'center',
+                    title:'综合得分'
+                }
+
+            ]
+        })
+
+    }
 });
+//判断考评有没有结束。并根据被考评人的角色，调用不同的函数在模态框中写上不同的打分项
+function score(value, row, index)   {
+    var tempRow={
+        "id":row.id,
+        "role":row.role,
+        "a1":row.a1,
+        "a2":row.a2,
+        "a3":row.a3,
+        "a4":row.a4,
+        "a5":row.a5,
+        "a6":row.a6
+    };
+    row=tempRow;
+    if (value == 1) {
+        if (row.role == 1) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }else if (row.role == 2) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }else if (row.role == 3) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score2("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }else if (row.role == 4) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score3("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }
+    }else {
+        if (row.role == 1) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score1_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }else if (row.role == 2) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score1_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }else if (row.role == 3) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score2_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }else if (row.role == 4) {
+            row=JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score3_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+        }
+    }
+}
+//给首席、副首席打分，设置打分项，考评已启动（可打分）
+function score1(row) {
+    $("#a1").text("1．团队建设情况，15分");
+    $("#a2").text("2．支撑产业发展情况，50分");
+    $("#a3").text("3．应急事件处置及参与重大活动情况，10分");
+    $("#a4").text("4．经费使用情况，10分");
+    $("#a5").text("5．宣传推动情况，10分");
+    $("#a6").text("6．对接协作情况，5分");
+    $("input[name='score-id']").val(row.id);
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a1']").attr('max',"15");
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a2']").attr('max',"50");
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a3']").attr('max',"10");
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a4']").attr('max',"10");
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a5']").attr('max',"10");
+    $("input[name='a6']").val(row.a6);
+    $("input[name='a6']").attr('max',"5");
+}
+//给首席、副首席打分，设置打分项，考评已启动（不可打分）
+function score1_1(row) {
+    $("#a1").text("1．团队建设情况，15分");
+    $("#a2").text("2．支撑产业发展情况，50分");
+    $("#a3").text("3．应急事件处置及参与重大活动情况，10分");
+    $("#a4").text("4．经费使用情况，10分");
+    $("#a5").text("5．宣传推动情况，10分");
+    $("#a6").text("6．对接协作情况，5分");
+    $("input[name='score-id']").val(row.id);
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a1']").attr('max',"15");
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a2']").attr('max',"50");
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a3']").attr('max',"10");
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a4']").attr('max',"10");
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a5']").attr('max',"10");
+    $("input[name='a6']").val(row.a6);
+    $("input[name='a6']").attr('max',"5");
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled","disabled");
+    $("#score-btn").remove();
+}
+//给研究室主任打分，设置打分项，考评已启动（可打分）
+function score2(row) {
+    $("#a1").text("1．本室建设情况，5分");
+    $("#a2").text("2．任务完成情况，50分");
+    $("#a3").text("3．遵规守纪情况，20分");
+    $("#a4").text("4．经费使用情况，10分");
+    $("#a5").text("5．宣传推动情况，10分");
+    $("#a6").text("6．其他，5分");
+    $("input[name='score-id']").val(row.id);
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a1']").attr('max',"5");
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a2']").attr('max',"50");
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a3']").attr('max',"20");
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a4']").attr('max',"10");
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a5']").attr('max',"10");
+    $("input[name='a6']").val(row.a6);
+    $("input[name='a6']").attr('max',"5");
+}
+//给研究室主任打分，设置打分项，考评已启动（不可打分）
+function score2_1(row) {
+    $("#a1").text("1．本室建设情况，5分");
+    $("#a2").text("2．任务完成情况，50分");
+    $("#a3").text("3．遵规守纪情况，20分");
+    $("#a4").text("4．经费使用情况，10分");
+    $("#a5").text("5．宣传推动情况，10分");
+    $("#a6").text("6．其他，5分");
+    $("input[name='score-id']").val(row.id);
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a1']").attr('max',"5");
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a2']").attr('max',"50");
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a3']").attr('max',"20");
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a4']").attr('max',"10");
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a5']").attr('max',"10");
+    $("input[name='a6']").val(row.a6);
+    $("input[name='a6']").attr('max',"5");
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled","disabled");
+    $("#score-btn").remove();
+}
+//给实验站站长打分，设置打分项，考评已启动（可打分）
+function score3(row) {
+    $("#a1").text("1．任务完成情况，50分");
+    $("#a2").text("2．遵规守纪情况，20分");
+    $("#a3").text("3．经费使用情况，10分");
+    $("#a4").text("4．宣传推动情况，10分");
+    $("#a5").text("5．争取支持情况，5分");
+    $("#a6").text("6．其他，5分");
+    $("input[name='score-id']").val(row.id);
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a1']").attr('max',"50");
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a2']").attr('max',"20");
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a3']").attr('max',"10");
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a4']").attr('max',"10");
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a5']").attr('max',"5");
+    $("input[name='a6']").val(row.a6);
+    $("input[name='a6']").attr('max',"5");
+}
+//给实验站站长打分，设置打分项，考评已启动（不可打分）
+function score3_1(row) {
+    $("#a1").text("1．任务完成情况，50分");
+    $("#a2").text("2．遵规守纪情况，20分");
+    $("#a3").text("3．经费使用情况，10分");
+    $("#a4").text("4．宣传推动情况，10分");
+    $("#a5").text("5．争取支持情况，5分");
+    $("#a6").text("6．其他，5分");
+    $("input[name='score-id']").val(row.id);
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a1']").attr('max',"50");
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a2']").attr('max',"20");
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a3']").attr('max',"10");
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a4']").attr('max',"10");
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a5']").attr('max',"5");
+    $("input[name='a6']").val(row.a6);
+    $("input[name='a6']").attr('max',"5");
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled","disabled");
+    $("#score-btn").remove();
+}
+
+//考评启动表checkbox可用权限判断
+function check(value) {
+    if (value==sessionStorage.getItem('systemId')) {
+        if (rolesId.indexOf(1)!=-1 || rolesId.indexOf(3)!=-1) {
+            return {
+                disabled:false//设置可用
+            }
+        }
+    }
+    return {
+        disabled : true//设置不可用
+    }
+}
 
 //权重设置权限判断
 function test_weight(value, row) {
     value=JSON.stringify(value);
     if (row.system.id == 1) {
         if (rolesId.indexOf(1)!=-1){
-            return "<a onclick='testWeightTable("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+            if (row.state==0||row.state==1) {
+                return "<a onclick='testWeightTable(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+            }else {
+                return "<a onclick='testWeightTable2("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+            }
         }else {
             return "<a onclick='testWeightTable2("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
         }
     }else {
         if(row.system.id==sessionStorage.getItem('systemId')&&rolesId.indexOf(3)!=-1){
-            return "<a onclick='testWeightTable3("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+            if (row.state==0||row.state==1) {
+                return "<a onclick='testWeightTable3(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+            }else {
+                return "<a onclick='testWeightTable4("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+            }
         }else {
             return "<a onclick='testWeightTable4("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
         }
@@ -312,7 +732,7 @@ function testWeightTable4(value) {
 }
 
 
-//超链接
+//考评人员超链接
 function invoiceFormatter(value, row) {
     value = JSON.stringify(value)
     return "<a onclick='f(" + value + ")' class='btn-link' data-toggle='modal' data-target='#users' style='cursor:default'>" + "考评人员" + '</a>';
