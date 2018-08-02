@@ -660,7 +660,6 @@ function score3_1(row) {
 
 //考评启动表checkbox可用权限判断
 function check(value,row) {
-    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+row.system.id)
     if (row.system.id==sessionStorage.getItem('systemId')) {
         if (rolesId.indexOf(1)!=-1 || rolesId.indexOf(3)!=-1) {
             return {
