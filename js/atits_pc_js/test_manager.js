@@ -4,7 +4,7 @@ $(document).ready(function () {
     //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
 
-    if (rolesId.indexOf(3) != -1||rolesId.indexOf(1)!=-1) {
+    if (rolesId.indexOf(3) != -1 || rolesId.indexOf(1) != -1) {
         $('#kpqd').html('<button class="btn btn-success" data-toggle="modal" id="add"\n' +
             '                                                    data-target="#demo-lg-modal">\n' +
             '                                                <i class="demo-pli-plus"></i>添加\n' +
@@ -45,7 +45,7 @@ $(document).ready(function () {
                     createDom2(externalUsers);
                 }
             })
-        }else {
+        } else {
             $('#external_add li:eq(1)').remove();
         }
 
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 //发送考评启动添加数据内容
     $("#submit1").on('click', function () {
-        if(sessionStorage.getItem('systemId')==1){
+        if (sessionStorage.getItem('systemId') == 1) {
             var obj = {
                 "year": '',
                 "date": '',
@@ -90,7 +90,7 @@ $(document).ready(function () {
                 "testWeight.f": 30,
                 "ids": ""
             };
-        }else {
+        } else {
             var obj = {
                 "year": '',
                 "date": '',
@@ -121,18 +121,18 @@ $(document).ready(function () {
 
 //两个权重设置修改模态框提交按钮
     $("#testWeight2_btn").click(function () {
-        var testWeight={
-            "id":"",
-            "g":"",
-            "h":""
+        var testWeight = {
+            "id": "",
+            "g": "",
+            "h": ""
         };
-        testWeight.id=$("input[name='id2']").val();
-        testWeight.g=$("input[name='g']").val();
-        testWeight.h=$("input[name='h']").val();
-        var sum=parseInt(testWeight.g) + parseInt(testWeight.h);
-        if (sum!= 100) {
+        testWeight.id = $("input[name='id2']").val();
+        testWeight.g = $("input[name='g']").val();
+        testWeight.h = $("input[name='h']").val();
+        var sum = parseInt(testWeight.g) + parseInt(testWeight.h);
+        if (sum != 100) {
             alert("请确保权重之和为100")
-        }else {
+        } else {
             $.ajax({
                 type: 'post',
                 dataType: 'JSON',
@@ -140,7 +140,7 @@ $(document).ready(function () {
                 data: testWeight,
                 async: false,
                 traditional: true,
-                success:function () {
+                success: function () {
                     alert("修改成功");
                     location.reload()
                 }
@@ -149,27 +149,27 @@ $(document).ready(function () {
 
     });
     $("#testWeight_btn").click(function () {
-        var testWeight={
-            "id":"",
-            "a":"",
-            "b":"",
-            "c":"",
-            "d":"",
-            "e":"",
-            "f":""
+        var testWeight = {
+            "id": "",
+            "a": "",
+            "b": "",
+            "c": "",
+            "d": "",
+            "e": "",
+            "f": ""
         };
-        testWeight.id=$("input[name='id']").val();
-        testWeight.a=$("input[name='a']").val();
-        testWeight.b=$("input[name='b']").val();
-        testWeight.c=$("input[name='c']").val();
-        testWeight.d=$("input[name='d']").val();
-        testWeight.e=$("input[name='e']").val();
-        testWeight.f=$("input[name='f']").val();
-        var sum1=parseInt(testWeight.a) + parseInt(testWeight.b)+parseInt(testWeight.c);
-        var sum2=parseInt(testWeight.d) + parseInt(testWeight.e)+parseInt(testWeight.f);
-        if (sum1!= 100||sum2!=100) {
+        testWeight.id = $("input[name='id']").val();
+        testWeight.a = $("input[name='a']").val();
+        testWeight.b = $("input[name='b']").val();
+        testWeight.c = $("input[name='c']").val();
+        testWeight.d = $("input[name='d']").val();
+        testWeight.e = $("input[name='e']").val();
+        testWeight.f = $("input[name='f']").val();
+        var sum1 = parseInt(testWeight.a) + parseInt(testWeight.b) + parseInt(testWeight.c);
+        var sum2 = parseInt(testWeight.d) + parseInt(testWeight.e) + parseInt(testWeight.f);
+        if (sum1 != 100 || sum2 != 100) {
             alert("请确保权重之和为100")
-        }else {
+        } else {
             $.ajax({
                 type: 'post',
                 dataType: 'JSON',
@@ -177,7 +177,7 @@ $(document).ready(function () {
                 data: testWeight,
                 async: false,
                 traditional: true,
-                success:function () {
+                success: function () {
                     alert("修改成功");
                     location.reload()
                 }
@@ -224,9 +224,9 @@ $(document).ready(function () {
         idField: 'id',
         data: data,
         columns: [{
-            field:'system.id',
+            field: 'system.id',
             checkbox: true,
-            formatter:'check'
+            formatter: 'check'
         }, {
             field: 'year',
             align: 'center',
@@ -269,7 +269,7 @@ $(document).ready(function () {
         crossDomain: true,
         url: ipValue + "/testscore/findByEvaluation",
         dataType: "json",
-        data:{"evaluationId":sessionStorage.getItem('userId')},
+        data: {"evaluationId": sessionStorage.getItem('userId')},
         type: "get",
         async: false,
         success: function (result) {
@@ -281,41 +281,41 @@ $(document).ready(function () {
     $('#testScore').bootstrapTable({
         idField: 'id',
         data: testScore,
-        editable:true,
+        editable: true,
         columns: [
             {
                 field: 'testStart.year',
                 align: 'center',
                 title: '考评年度'
-            },{
-                field:'testStart.system.systemName',
-                align:'center',
-                title:'考评发起单位'
-            },{
-                field:'testStart.address',
-                align:'center',
-                title:'考评地点'
-            },{
-                field:'testStart.date',
-                align:'center',
-                title:'考评日期'
+            }, {
+                field: 'testStart.system.systemName',
+                align: 'center',
+                title: '考评发起单位'
+            }, {
+                field: 'testStart.address',
+                align: 'center',
+                title: '考评地点'
+            }, {
+                field: 'testStart.date',
+                align: 'center',
+                title: '考评日期'
             }, {
                 field: 'evaluationed.profile.name',
                 align: 'center',
                 title: '被考评人员',
-            },{
-                field:'evaluation.profile.name',
-                align:'center',
-                title:'打分人员'
-            },{
-                field:'testStart.state',
-                align:'center',
-                formatter:'score',
-                title:'打分'
-            },{
-                field:'time',
-                align:'center',
-                title:'打分时间'
+            }, {
+                field: 'evaluation.profile.name',
+                align: 'center',
+                title: '打分人员'
+            }, {
+                field: 'testStart.state',
+                align: 'center',
+                formatter: 'score',
+                title: '打分'
+            }, {
+                field: 'time',
+                align: 'center',
+                title: '打分时间'
             }
 
         ]
@@ -332,30 +332,34 @@ $(document).ready(function () {
         //     "A5":"",
         //     "A6":"",
         // };
-        id=parseInt($("input[name='score-id']").val());
-        A1=parseInt($("input[name='a1']").val());
-        A2=parseInt($("input[name='a2']").val());
-        A3=parseInt($("input[name='a3']").val());
-        A4=parseInt($("input[name='a4']").val());
-        A5=parseInt($("input[name='a5']").val());
-        A6=parseInt($("input[name='a6']").val());
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/testscore/score',
-            data:{_method: "put","id":id,"A1":A1,"A2":A2,"A3":A3,"A4":A4,"A5":A5,"A6":A6},
-            async: false,
-            traditional: true,
-            success:function (result) {
-                alert("打分成功");
-                location.reload()
-            }
-        });
+        id = parseInt($("input[name='score-id']").val());
+        A1 = parseInt($("input[name='a1']").val());
+        A2 = parseInt($("input[name='a2']").val());
+        A3 = parseInt($("input[name='a3']").val());
+        A4 = parseInt($("input[name='a4']").val());
+        A5 = parseInt($("input[name='a5']").val());
+        A6 = parseInt($("input[name='a6']").val());
+        if (A1 + A1 + A3 + A4 + A5 + A6 > 100) {
+            alert("分数总和不能大于100")
+        } else {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/testscore/score',
+                data: {_method: "put", "id": id, "A1": A1, "A2": A2, "A3": A3, "A4": A4, "A5": A5, "A6": A6},
+                async: false,
+                traditional: true,
+                success: function (result) {
+                    alert("打分成功");
+                    location.reload()
+                }
+            });
+        }
     })
 
 //个人得分表（体系办不用，外聘人员不用）
-    if (sessionStorage.getItem("systemId") != 1 && sessionStorage.getItem("systemId")!= null) {
-        if (rolesId.indexOf(3)==-1){
+    if (sessionStorage.getItem("systemId") != 1 && sessionStorage.getItem("systemId") != null) {
+        if (rolesId.indexOf(3) == -1) {
             $('#title').text("个人得分");
         }
 //获取个人得分
@@ -364,67 +368,67 @@ $(document).ready(function () {
             crossDomain: true,
             url: ipValue + "/testmanage/findOwn",
             dataType: "json",
-            data:{"userId":sessionStorage.getItem('userId')},
+            data: {"userId": sessionStorage.getItem('userId')},
             type: "get",
             async: false,
             success: function (result) {
                 testManage_person = result.data.testManages;
             }
-    })
+        })
 //设置个人得分标题
         $('#testManage_person').bootstrapTable({
-        striped: true,
-        pagination: true,
-        pageSize: 10,
-        pageList: [10, 25, 50],
-        showColumns: true,
-        search: true,
-        showRefresh: false,
-        showRefresh: false,
-        showToggle:true,
-        idField: 'id',
-        data: testManage_person,
-        editable:true,
-        columns: [
-            {
-                field: 'testStart.year',
-                align: 'center',
-                title: '考评年度'
-            },{
-                field:'testStart.system.systemName',
-                align:'center',
-                title:'考评发起单位'
-            },{
-                field:'testStart.date',
-                align:'center',
-                title:'考评日期'
-            },{
-                field:'testStart.address',
-                align:'center',
-                title:'考评地点'
-            },{
-                field:'scoreUser.profile.name',
-                align:'center',
-                title:'得分人'
-            },{
-                field:'sum',
-                align:'center',
-                title:'综合得分'
-            }
+            striped: true,
+            pagination: true,
+            pageSize: 10,
+            pageList: [10, 25, 50],
+            showColumns: true,
+            search: true,
+            showRefresh: false,
+            showRefresh: false,
+            showToggle: true,
+            idField: 'id',
+            data: testManage_person,
+            editable: true,
+            columns: [
+                {
+                    field: 'testStart.year',
+                    align: 'center',
+                    title: '考评年度'
+                }, {
+                    field: 'testStart.system.systemName',
+                    align: 'center',
+                    title: '考评发起单位'
+                }, {
+                    field: 'testStart.date',
+                    align: 'center',
+                    title: '考评日期'
+                }, {
+                    field: 'testStart.address',
+                    align: 'center',
+                    title: '考评地点'
+                }, {
+                    field: 'scoreUser.profile.name',
+                    align: 'center',
+                    title: '得分人'
+                }, {
+                    field: 'sum',
+                    align: 'center',
+                    title: '综合得分'
+                }
 
-        ]
-    })
+            ]
+        })
     }
 
 //体系人员得分表（体系办、首席用）
-    if(rolesId.indexOf(1)!=-1||rolesId.indexOf(3)!=-1){
+    if (rolesId.indexOf(1) != -1 || rolesId.indexOf(3) != -1) {
 //获取本体系所有得分
         var testManage_system;
         $.ajax({
             crossDomain: true,
             url: ipValue + "/testmanage/findSystemTestManage",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem('systemId')},
+            data: {"systemId": sessionStorage.getItem('systemId')},
             type: "get",
             async: false,
             success: function (result) {
@@ -440,35 +444,35 @@ $(document).ready(function () {
             search: true,
             showRefresh: false,
             showRefresh: false,
-            showToggle:true,
+            showToggle: true,
             idField: 'id',
             data: testManage_system,
-            editable:true,
+            editable: true,
             columns: [
                 {
                     field: 'testStart.year',
                     align: 'center',
                     title: '考评年度'
-                },{
-                    field:'testStart.system.systemName',
-                    align:'center',
-                    title:'考评发起单位'
-                },{
-                    field:'testStart.date',
-                    align:'center',
-                    title:'考评日期'
-                },{
-                    field:'testStart.address',
-                    align:'center',
-                    title:'考评地点'
-                },{
-                    field:'scoreUser.profile.name',
-                    align:'center',
-                    title:'得分人'
-                },{
-                    field:'sum',
-                    align:'center',
-                    title:'综合得分'
+                }, {
+                    field: 'testStart.system.systemName',
+                    align: 'center',
+                    title: '考评发起单位'
+                }, {
+                    field: 'testStart.date',
+                    align: 'center',
+                    title: '考评日期'
+                }, {
+                    field: 'testStart.address',
+                    align: 'center',
+                    title: '考评地点'
+                }, {
+                    field: 'scoreUser.profile.name',
+                    align: 'center',
+                    title: '得分人'
+                }, {
+                    field: 'sum',
+                    align: 'center',
+                    title: '综合得分'
                 }
 
             ]
@@ -476,49 +480,51 @@ $(document).ready(function () {
 
     }
 });
+
 //判断考评有没有结束。并根据被考评人的角色，调用不同的函数在模态框中写上不同的打分项
-function score(value, row, index)   {
-    var tempRow={
-        "id":row.id,
-        "role":row.role,
-        "a1":row.a1,
-        "a2":row.a2,
-        "a3":row.a3,
-        "a4":row.a4,
-        "a5":row.a5,
-        "a6":row.a6
+function score(value, row, index) {
+    var tempRow = {
+        "id": row.id,
+        "role": row.role,
+        "a1": row.a1,
+        "a2": row.a2,
+        "a3": row.a3,
+        "a4": row.a4,
+        "a5": row.a5,
+        "a6": row.a6
     };
-    row=tempRow;
+    row = tempRow;
     if (value == 1) {
         if (row.role == 1) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-success'><a onclick='score1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
-        }else if (row.role == 2) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-success'><a onclick='score1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
-        }else if (row.role == 3) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-success'><a onclick='score2("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
-        }else if (row.role == 4) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-success'><a onclick='score3("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score1(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
+        } else if (row.role == 2) {
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score1(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
+        } else if (row.role == 3) {
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score2(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
+        } else if (row.role == 4) {
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-success'><a onclick='score3(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
         }
-    }else {
+    } else {
         if (row.role == 1) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-default'><a onclick='score1_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
-        }else if (row.role == 2) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-default'><a onclick='score1_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
-        }else if (row.role == 3) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-default'><a onclick='score2_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
-        }else if (row.role == 4) {
-            row=JSON.stringify(row);
-            return "<div class='label label-table label-default'><a onclick='score3_1("+row+")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>"+"打分"+"</a></div>"
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score1_1(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
+        } else if (row.role == 2) {
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score1_1(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
+        } else if (row.role == 3) {
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score2_1(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
+        } else if (row.role == 4) {
+            row = JSON.stringify(row);
+            return "<div class='label label-table label-default'><a onclick='score3_1(" + row + ")' class='btn-link' data-toggle='modal' data-target='#score' style='color: white; cursor:default'>" + "打分" + "</a></div>"
         }
     }
 }
+
 //给首席、副首席打分，设置打分项，考评已启动（可打分）
 function score1(row) {
     $("#a1").text("1．团队建设情况，15分");
@@ -529,18 +535,19 @@ function score1(row) {
     $("#a6").text("6．对接协作情况，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max',"15");
+    $("input[name='a1']").attr('max', "15");
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max',"50");
+    $("input[name='a2']").attr('max', "50");
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max',"10");
+    $("input[name='a3']").attr('max', "10");
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max',"10");
+    $("input[name='a4']").attr('max', "10");
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max',"10");
+    $("input[name='a5']").attr('max', "10");
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max',"5");
+    $("input[name='a6']").attr('max', "5");
 }
+
 //给首席、副首席打分，设置打分项，考评已启动（不可打分）
 function score1_1(row) {
     $("#a1").text("1．团队建设情况，15分");
@@ -551,20 +558,21 @@ function score1_1(row) {
     $("#a6").text("6．对接协作情况，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max',"15");
+    $("input[name='a1']").attr('max', "15");
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max',"50");
+    $("input[name='a2']").attr('max', "50");
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max',"10");
+    $("input[name='a3']").attr('max', "10");
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max',"10");
+    $("input[name='a4']").attr('max', "10");
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max',"10");
+    $("input[name='a5']").attr('max', "10");
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max',"5");
-    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled","disabled");
+    $("input[name='a6']").attr('max', "5");
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
+
 //给研究室主任打分，设置打分项，考评已启动（可打分）
 function score2(row) {
     $("#a1").text("1．本室建设情况，5分");
@@ -575,18 +583,19 @@ function score2(row) {
     $("#a6").text("6．其他，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max',"5");
+    $("input[name='a1']").attr('max', "5");
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max',"50");
+    $("input[name='a2']").attr('max', "50");
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max',"20");
+    $("input[name='a3']").attr('max', "20");
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max',"10");
+    $("input[name='a4']").attr('max', "10");
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max',"10");
+    $("input[name='a5']").attr('max', "10");
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max',"5");
+    $("input[name='a6']").attr('max', "5");
 }
+
 //给研究室主任打分，设置打分项，考评已启动（不可打分）
 function score2_1(row) {
     $("#a1").text("1．本室建设情况，5分");
@@ -597,20 +606,21 @@ function score2_1(row) {
     $("#a6").text("6．其他，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max',"5");
+    $("input[name='a1']").attr('max', "5");
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max',"50");
+    $("input[name='a2']").attr('max', "50");
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max',"20");
+    $("input[name='a3']").attr('max', "20");
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max',"10");
+    $("input[name='a4']").attr('max', "10");
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max',"10");
+    $("input[name='a5']").attr('max', "10");
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max',"5");
-    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled","disabled");
+    $("input[name='a6']").attr('max', "5");
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
+
 //给实验站站长打分，设置打分项，考评已启动（可打分）
 function score3(row) {
     $("#a1").text("1．任务完成情况，50分");
@@ -621,18 +631,19 @@ function score3(row) {
     $("#a6").text("6．其他，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max',"50");
+    $("input[name='a1']").attr('max', "50");
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max',"20");
+    $("input[name='a2']").attr('max', "20");
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max',"10");
+    $("input[name='a3']").attr('max', "10");
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max',"10");
+    $("input[name='a4']").attr('max', "10");
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max',"5");
+    $("input[name='a5']").attr('max', "5");
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max',"5");
+    $("input[name='a6']").attr('max', "5");
 }
+
 //给实验站站长打分，设置打分项，考评已启动（不可打分）
 function score3_1(row) {
     $("#a1").text("1．任务完成情况，50分");
@@ -643,57 +654,57 @@ function score3_1(row) {
     $("#a6").text("6．其他，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max',"50");
+    $("input[name='a1']").attr('max', "50");
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max',"20");
+    $("input[name='a2']").attr('max', "20");
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max',"10");
+    $("input[name='a3']").attr('max', "10");
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max',"10");
+    $("input[name='a4']").attr('max', "10");
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max',"5");
+    $("input[name='a5']").attr('max', "5");
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max',"5");
-    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled","disabled");
+    $("input[name='a6']").attr('max', "5");
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
 
 //考评启动表checkbox可用权限判断
-function check(value,row) {
-    if (row.system.id==sessionStorage.getItem('systemId')) {
-        if (rolesId.indexOf(1)!=-1 || rolesId.indexOf(3)!=-1) {
+function check(value, row) {
+    if (row.system.id == sessionStorage.getItem('systemId')) {
+        if (rolesId.indexOf(1) != -1 || rolesId.indexOf(3) != -1) {
             return {
-                disabled:false//设置可用
+                disabled: false//设置可用
             }
         }
     }
     return {
-        disabled : true//设置不可用
+        disabled: true//设置不可用
     }
 }
 
 //权重设置权限判断
 function test_weight(value, row) {
-    value=JSON.stringify(value);
+    value = JSON.stringify(value);
     if (row.system.id == 1) {
-        if (rolesId.indexOf(1)!=-1){
-            if (row.state==0||row.state==1) {
+        if (rolesId.indexOf(1) != -1) {
+            if (row.state == 0 || row.state == 1) {
                 return "<a onclick='testWeightTable(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
-            }else {
-                return "<a onclick='testWeightTable2("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+            } else {
+                return "<a onclick='testWeightTable2(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
             }
-        }else {
-            return "<a onclick='testWeightTable2("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
+        } else {
+            return "<a onclick='testWeightTable2(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight' style='cursor:default'>" + "权重设置" + "</a>";
         }
-    }else {
-        if(row.system.id==sessionStorage.getItem('systemId')&&rolesId.indexOf(3)!=-1){
-            if (row.state==0||row.state==1) {
+    } else {
+        if (row.system.id == sessionStorage.getItem('systemId') && rolesId.indexOf(3) != -1) {
+            if (row.state == 0 || row.state == 1) {
                 return "<a onclick='testWeightTable3(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
-            }else {
-                return "<a onclick='testWeightTable4("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+            } else {
+                return "<a onclick='testWeightTable4(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
             }
-        }else {
-            return "<a onclick='testWeightTable4("+value+")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
+        } else {
+            return "<a onclick='testWeightTable4(" + value + ")' class='btn-link' data-toggle='modal' data-target='#testWeight2' style='cursor:default'>" + "权重设置" + "</a>";
         }
     }
 }
@@ -709,26 +720,29 @@ function testWeightTable(value) {
     $("input[name='f']").val(value.f);
 
 }
+
 function testWeightTable2(value) {
-    $("input[name='a'],input[name='b'],input[name='c'],input[name='d'],input[name='e'],input[name='f']").attr("disabled","disabled");
+    $("input[name='a'],input[name='b'],input[name='c'],input[name='d'],input[name='e'],input[name='f']").attr("disabled", "disabled");
     $("input[name='a']").val(value.a);
     $("input[name='b']").val(value.b);
     $("input[name='c']").val(value.c);
     $("input[name='d']").val(value.d);
     $("input[name='e']").val(value.e);
     $("input[name='f']").val(value.f);
-    $("#testWeight_btn").css('display','none')
+    $("#testWeight_btn").css('display', 'none')
 }
+
 function testWeightTable3(value) {
     $("input[name='id2']").val(value.id)
     $("input[name='g']").val(value.g);
     $("input[name='h']").val(value.h);
 }
+
 function testWeightTable4(value) {
-    $("input[name='g'],input[name='h']").attr("disabled","disabled");
+    $("input[name='g'],input[name='h']").attr("disabled", "disabled");
     $("input[name='g']").val(value.g);
     $("input[name='h']").val(value.h);
-    $("#testWeight2_btn").css('display','none')
+    $("#testWeight2_btn").css('display', 'none')
 }
 
 
@@ -761,25 +775,25 @@ function statusFormatter(value, row) {
     if (value == 0) {
         v = "待启动";
         labelColor = "warning";
-        if (row.system.id == sessionStorage.getItem('systemId')){
-            if (rolesId.indexOf(3)!=-1||rolesId.indexOf(1)!=-1){
+        if (row.system.id == sessionStorage.getItem('systemId')) {
+            if (rolesId.indexOf(3) != -1 || rolesId.indexOf(1) != -1) {
                 return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
-            }else {
+            } else {
                 return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
             }
-        }else {
+        } else {
             return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
         }
     } else if (value == 1) {
         v = "已启动";
         labelColor = "success";
-        if (row.system.id == sessionStorage.getItem('systemId')){
-            if (rolesId.indexOf(3)!=-1||rolesId.indexOf(1)!=-1){
+        if (row.system.id == sessionStorage.getItem('systemId')) {
+            if (rolesId.indexOf(3) != -1 || rolesId.indexOf(1) != -1) {
                 return "<div class='label label-table label-" + labelColor + "'> <a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
-            }else {
+            } else {
                 return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
             }
-        }else {
+        } else {
             return "<div class='label label-table label-" + labelColor + "'>" + v + "</div>";
         }
     } else if (value == 2) {
