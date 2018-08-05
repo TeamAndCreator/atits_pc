@@ -273,6 +273,7 @@ $(document).ready(function () {
         type: "get",
         async: false,
         success: function (result) {
+            console.log(result)
             testScore = result.data.testScores;
         }
     });
