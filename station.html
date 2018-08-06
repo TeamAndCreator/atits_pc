@@ -38,7 +38,8 @@
 
     <!--Animate.css [ OPTIONAL ]-->
     <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
-
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -66,41 +67,27 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
-    <!--Bootstrap Table Sample [ SAMPLE ]-->
-    <script src="js/demo/tables-bs-table.js"></script>
-
-
+    <script src="js/atits_pc_js/station.js"></script>
     <!--X-editable [ OPTIONAL ]-->
     <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
-
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
 
-    <!--Bootstrap Table Extension [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
     <!--Summernote [ OPTIONAL ]-->
     <script src="plugins/summernote/summernote.min.js"></script>
-    <!--=================================================-->
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="js/demo/form-text-editor.js"></script>
-    <!--Demo script [ DEMONSTRATION ]-->
 
     <!--Dropzone [ OPTIONAL ]-->
     <script src="plugins/dropzone/dropzone.min.js"></script>
 
 
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="js/demo/form-file-upload.js"></script>
-
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
-    <!--Modals [ SAMPLE ]-->
-    <script src="js/demo/ui-modals.js"></script>
 
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
@@ -401,106 +388,19 @@
                     </div>
                     <div class="panel-body">
                         <div id="row1">
-                            <button id="demo-delete-row2" class="btn btn-danger" disabled><i class="demo-pli-cross"></i>删除
-                            </button>
-                            <button id="demo-delete-row1" class="btn btn-mint" data-toggle="modal"
-                                    data-target="#demo-lg-modal"><i class="demo-pli-plus"></i>添加
-                            </button>
-                            <!--<button class="btn btn-success">添加</button>-->
                         </div>
                         <!--data-url="data/bs-table.json"-->
                         <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                               data-toolbar="#row1" data-search="true" data-show-refresh="true" data-show-toggle="true"
-                               data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
-                               data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
-                            <thead>
-                            <tr>
-                                <!--<th data-field="state" data-checkbox="true">ID</th>-->
-                                <th data-field="id" data-align="center" data-sortable="true" data-formatter="">综合试验站名称
-                                </th>
-                                <th data-field="name" data-align="center" data-sortable="true">综合试验站站长</th>
-                                <th data-field="date" data-align="center" data-sortable="true" data-formatter="">所属体系
-                                </th>
-                                <th data-field="name2" data-align="center" data-sortable="true" data-formatter="">
-                                    建设依托单位
-                                </th>
-                                <th data-field="status" data-align="center" data-sortable="true" data-formatter="">状态
-                                </th>
-                                <th data-field="track" data-align="center" data-sortable="true" data-formatter="">操作
-                                </th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr data-index="0">
-                                <!--<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>-->
-                                <td style="">
-                                    <a href="station_detail.html" class="btn-link">绿色稻作技术实验室</a>
-                                </td>
-                                <td style="">吴文革</td>
-                                <td style="">水稻产业技术体系</td>
-                                <td style="text-align: center; ">
-                                    <span>安徽省农业科学院</span>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <div class="label label-xs label-success" style="font-size: inherit;">&nbsp;&nbsp;通过&nbsp;&nbsp;</div>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <button class="btn btn-xs btn-warning" style="font-size: inherit;">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
-                                </td>
-                            </tr>
-                            <tr data-index="0">
-                                <!--<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>-->
-                                <td style="">
-                                    <a href="station_detail.html" class="btn-link">绿色稻作技术实验室</a>
-                                </td>
-                                <td style="">吴文革</td>
-                                <td style="">水稻产业技术体系</td>
-                                <td style="text-align: center; ">
-                                    <span>安徽省农业科学院</span>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <div class="label label-xs label-success" style="font-size: inherit;">&nbsp;&nbsp;通过&nbsp;&nbsp;</div>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <button class="btn btn-xs btn-warning" style="font-size: inherit;">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
-                                </td>
-                            </tr>
-                            <tr data-index="0">
-                                <!--<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>-->
-                                <td style="">
-                                    <a href="station_detail.html" class="btn-link">绿色稻作技术实验室</a>
-                                </td>
-                                <td style="">吴文革</td>
-                                <td style="">水稻产业技术体系</td>
-                                <td style="text-align: center; ">
-                                    <span>安徽省农业科学院</span>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <div class="label label-xs label-success" style="font-size: inherit;">&nbsp;&nbsp;通过&nbsp;&nbsp;</div>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <button class="btn btn-xs btn-warning" style="font-size: inherit;">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
-                                </td>
-                            </tr>
-                            <tr data-index="0">
-                                <!--<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>-->
-                                <td style="">
-                                    <a href="station_detail.html" class="btn-link">绿色稻作技术实验室</a>
-                                </td>
-                                <td style="">吴文革</td>
-                                <td style="">水稻产业技术体系</td>
-                                <td style="text-align: center; ">
-                                    <span>安徽省农业科学院</span>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <div class="label label-xs label-success" style="font-size: inherit;">&nbsp;&nbsp;通过&nbsp;&nbsp;</div>
-                                </td>
-                                <td style="text-align: center; ">
-                                    <button class="btn btn-xs btn-warning" style="font-size: inherit;">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
-                                </td>
-                            </tr>
-                            </tbody>
+                               data-toolbar="#row1"
+                               data-search="true"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-show-columns="true"
+                               data-sort-name="id"
+                               data-striped=true"
+                               data-page-list="[5, 10, 20]"
+                               data-page-size="10"
+                               data-pagination="true" data-show-pagination-switch="true">
                         </table>
 
                     </div>
@@ -514,6 +414,20 @@
         </div>
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
+        <div id="updateState" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <h3>是否激活</h3>
+                        <button id="updateState_btn" class="btn btn-success">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="demo-lg-modal" class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-lg">
@@ -528,10 +442,19 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">
-                                        综合实验站
+                                        综合实验站名称
                                     </label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm" placeholder="" type="text">
+                                        <input class="form-control input-sm" name="staName" placeholder="" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        体系
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm " type="text"
+                                               name="system" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -539,40 +462,18 @@
                                         建设依托单位
                                     </label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm" placeholder="" type="text">
+                                        <input class="form-control input-sm" name="company" placeholder="" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">
-                                        综合实验站站长
+                                        成立时间
                                     </label>
-                                    <div class="col-sm-6">
-                                        <input class="form-control input-sm" placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">
-                                        发布者
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <select class="form-control">
-                                            <option value="1">省体系办</option>
-                                            <option value="2">水稻产业技术体系</option>
-                                            <option value="3">小麦产业技术体系</option>
-                                            <option value="4">玉米产业技术体系</option>
-                                            <option value="5">油菜棉花产业技术体系</option>
-                                            <option value="6">生猪产业技术体系</option>
-                                            <option value="7">家禽产业技术体系</option>
-                                            <option value="8">牛羊产业技术体系</option>
-                                            <option value="9">水产产业技术体系</option>
-                                            <option value="10">蔬菜产业技术体系</option>
-                                            <option value="11">果树产业技术体系</option>
-                                            <option value="12">茶叶产业技术体系</option>
-                                            <option value="13">蚕桑中药材产业技术体系</option>
-                                            <option value="14">农业信息化产业技术体系</option>
-                                            <option value="15">农机装备应用产业技术体系</option>
-                                            <option value="16">农业生态环保与质量安全产业技术体系</option>
-                                        </select>
+                                    <div id="demo-dp-component" class="col-sm-6">
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control " name="time">
+                                            <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -581,14 +482,14 @@
                                     </label>
                                     <div class="col-sm-6">
                                         <textarea placeholder="此信息主要填写建设依托单位简介，字数200字以内，另附挂牌图片一张。" rows="13"
-                                                  class="form-control"></textarea>
+                                                 id="content" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="panel-footer text-right">
                                 <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="btn btn-primary middle">添加</button>
+                                <button id="add" class="btn btn-primary middle">添加</button>
                             </div>
                         </form>
                     </div>
@@ -811,61 +712,6 @@
         <!--END MAIN NAVIGATION-->
 
     </div>
-
-
-    <!-- FOOTER -->
-    <!--===================================================-->
-    <footer id="footer">
-
-        <!-- Visible when footer positions are fixed -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <div class="show-fixed pull-right">
-            You have <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending
-            action.</a>
-        </div>
-
-
-        </ul>
-
-</div>
-</div>
-</div>
-<!--================================-->
-<!--End menu-->
-
-</div>
-</nav>
-<!--===================================================-->
-<!--END MAIN NAVIGATION-->
-
-</div>
-
-<!-- FOOTER -->
-<!--===================================================-->
-<footer id="footer">
-
-    <!-- Visible when footer positions are fixed -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div class="show-fixed pull-right">
-        You have
-        <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
-    </div>
-
-    <!-- Visible when footer positions are static -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div class="hide-fixed pull-right pad-rgt">
-        14GB of <strong>512GB</strong> Free.
-    </div>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <p class="pad-lft">&#0169; 2016 Your Company</p>
-
-</footer>
-<!--===================================================-->
-<!-- END FOOTER -->
 
 <!-- SCROLL PAGE BUTTON -->
 <!--===================================================-->

@@ -7,9 +7,8 @@ $(document).ready(function() {
     if(rolesId.indexOf(1)!=-1){
         $("li").css('display','block')
     }
-    if (rolesId.indexOf(3)!=-1){
-        $("#lab,#sta,#test").css('display','block')
-
+    if (rolesId.indexOf(3)!=-1||rolesId.indexOf(4)!=-1){
+        $("#lab,#sta,#test,#person").css('display','block')
     }
 
 

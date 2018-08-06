@@ -1,57 +1,105 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
 //获取体系名单
     var data;
     $.ajax({
-        crossDomain : true,
-        url:"http://47.104.26.79:8080/atits_service/system/findAll",
-        dataType:"json",
-        type:"get",
-        async:false,
-        success:function (result) {
-            data=result.data.systems
-    }})
+        crossDomain: true,
+        url: ipValue + "/system/findAll2",
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function (result) {
+            data = result.data.list
+        }
+    })
 
-
-    $('#demo-custom-toolbar1').bootstrapTable({
+//设置体系表每列标题
+    $('#systems').bootstrapTable({
         idField: 'id',
         data: data,
-        columns: [{
-            field: 'id',
-            align: 'center',
-            title: 'id'
-        }, {
-            field: 'systemName',
-            align: 'center',
-            title: '体系名称',
-        }, {
-            field: 'date',
-            align: 'center',
-            title: '操作'
-        }, 
+        columns: [
+            {
+                checkbox:true
+            }, {
+                field: 'systemName',
+                align: 'center',
+                title: '体系名称'
+            }, {
+                field: 'sx',
+                align: 'center',
+                title: '首席',
+            }, {
+                field: 'fsx',
+                align: 'center',
+                title: '副首席',
+            }
 
         ]
+    })
+//发送添加数据
+    $('#add_btn').click(function () {
+        var systemName = $('#systemName').val();
+        if (systemName == null) {
+            alert("体系名称不能为空")
+        } else {
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                url: ipValue + '/system/save',
+                data: {'systemName': systemName},
+                async: false,
+                traditional: true
+            });
+        }
+    })
+//发送删除数据
+    $('#delete_btn').click(function () {
+        var a = $("#systems").bootstrapTable('getSelections');
+        var idList=[];
+        for (var i = 0; i < a.length; i++) {
+            idList[i]=a[i].systemId;
+        }
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: ipValue + '/system/deleteByIds',
+            data: {_method: "DELETE", "idList": idList},
+            async: false,
+            traditional: true,
+            success: function () {
+                window.location.reload()
+            }
+        })
+
+
+
     })
 
 });
 
 
-//超链接
-function invoiceFormatter(value, row) {
-    return '<a href="#" class="btn-link" >' + value + '</a>';
-}
 
-//状态
-function statusFormatter(value, row) {
-    var labelColor;
-    var icon = row.id % 2 === 0 ? 'fa-star' : 'fa-user';
-    if (value==1){
-        value=="通过"
-        labelColor = "success";
-    } else {
-        value=="未通过"
-        labelColor = "warning";
-    }
-    return '<div class="label label-table label-'+ labelColor+'"> ' + value + '</div>';
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
