@@ -276,7 +276,8 @@ $(document).ready(function () {
             testScore = result.data.testScores;
         }
     });
-
+    console.log(testScore)
+      
 //设置testScore表格标题
     $('#testScore').bootstrapTable({
         idField: 'id',
@@ -535,17 +536,17 @@ function score1(row) {
     $("#a6").text("6．对接协作情况，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max', "15");
+    $("input[name='a1']").attr('oninput','if(value>15)value=15;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max', "50");
+    $("input[name='a2']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max', "10");
+    $("input[name='a3']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max', "10");
+    $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max', "10");
+    $("input[name='a5']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max', "5");
+    $("input[name='a6']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
 //给首席、副首席打分，设置打分项，考评已启动（不可打分）
@@ -556,19 +557,6 @@ function score1_1(row) {
     $("#a4").text("4．经费使用情况，10分");
     $("#a5").text("5．宣传推动情况，10分");
     $("#a6").text("6．对接协作情况，5分");
-    $("input[name='score-id']").val(row.id);
-    $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max', "15");
-    $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max', "50");
-    $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max', "10");
-    $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max', "10");
-    $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max', "10");
-    $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max', "5");
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
@@ -583,17 +571,17 @@ function score2(row) {
     $("#a6").text("6．其他，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max', "5");
+    $("input[name='a1']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max', "50");
+    $("input[name='a2']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max', "20");
+    $("input[name='a3']").attr('oninput','if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max', "10");
+    $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max', "10");
+    $("input[name='a5']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max', "5");
+    $("input[name='a6']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
 //给研究室主任打分，设置打分项，考评已启动（不可打分）
@@ -604,19 +592,6 @@ function score2_1(row) {
     $("#a4").text("4．经费使用情况，10分");
     $("#a5").text("5．宣传推动情况，10分");
     $("#a6").text("6．其他，5分");
-    $("input[name='score-id']").val(row.id);
-    $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max', "5");
-    $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max', "50");
-    $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max', "20");
-    $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max', "10");
-    $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max', "10");
-    $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max', "5");
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
@@ -631,17 +606,17 @@ function score3(row) {
     $("#a6").text("6．其他，5分");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max', "50");
+    $("input[name='a1']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max', "20");
+    $("input[name='a2']").attr('oninput','if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max', "10");
+    $("input[name='a3']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max', "10");
+    $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max', "5");
+    $("input[name='a5']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max', "5");
+    $("input[name='a6']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
 //给实验站站长打分，设置打分项，考评已启动（不可打分）
@@ -652,19 +627,6 @@ function score3_1(row) {
     $("#a4").text("4．宣传推动情况，10分");
     $("#a5").text("5．争取支持情况，5分");
     $("#a6").text("6．其他，5分");
-    $("input[name='score-id']").val(row.id);
-    $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('max', "50");
-    $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('max', "20");
-    $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('max', "10");
-    $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('max', "10");
-    $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('max', "5");
-    $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('max', "5");
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
