@@ -237,6 +237,7 @@ $(document).ready(function () {
             title: '所属体系'
         }, {
             field: 'users',
+            align: 'center',
             title: '考评人员',
             formatter: 'invoiceFormatter'
         }, {
@@ -528,12 +529,12 @@ function score(value, row, index) {
 
 //给首席、副首席打分，设置打分项，考评已启动（可打分）
 function score1(row) {
-    $("#a1").text("1．团队建设情况，15分");
-    $("#a2").text("2．支撑产业发展情况，50分");
-    $("#a3").text("3．应急事件处置及参与重大活动情况，10分");
-    $("#a4").text("4．经费使用情况，10分");
-    $("#a5").text("5．宣传推动情况，10分");
-    $("#a6").text("6．对接协作情况，5分");
+    $("#a1").text("1．团队建设情况（15分）");
+    $("#a2").text("2．支撑产业发展情况（50分)");
+    $("#a3").text("3．应急事件处置及参与重大活动情况（10分）");
+    $("#a4").text("4．经费使用情况（10分）");
+    $("#a5").text("5．宣传推动情况（10分）");
+    $("#a6").text("6．对接协作情况（5分）");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
     $("input[name='a1']").attr('oninput','if(value>15)value=15;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
@@ -551,24 +552,24 @@ function score1(row) {
 
 //给首席、副首席打分，设置打分项，考评已启动（不可打分）
 function score1_1(row) {
-    $("#a1").text("1．团队建设情况，15分");
-    $("#a2").text("2．支撑产业发展情况，50分");
-    $("#a3").text("3．应急事件处置及参与重大活动情况，10分");
-    $("#a4").text("4．经费使用情况，10分");
-    $("#a5").text("5．宣传推动情况，10分");
-    $("#a6").text("6．对接协作情况，5分");
+    $("#a1").text("1．团队建设情况（15分）");
+    $("#a2").text("2．支撑产业发展情况（50分）");
+    $("#a3").text("3．应急事件处置及参与重大活动情况（10分）");
+    $("#a4").text("4．经费使用情况（10分）");
+    $("#a5").text("5．宣传推动情况（10分）");
+    $("#a6").text("6．对接协作情况（5分）");
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
 
 //给研究室主任打分，设置打分项，考评已启动（可打分）
 function score2(row) {
-    $("#a1").text("1．本室建设情况，5分");
-    $("#a2").text("2．任务完成情况，50分");
-    $("#a3").text("3．遵规守纪情况，20分");
-    $("#a4").text("4．经费使用情况，10分");
-    $("#a5").text("5．宣传推动情况，10分");
-    $("#a6").text("6．其他，5分");
+    $("#a1").text("1．本室建设情况（5分）");
+    $("#a2").text("2．任务完成情况（50分）");
+    $("#a3").text("3．遵规守纪情况（20分）");
+    $("#a4").text("4．经费使用情况（10分）");
+    $("#a5").text("5．宣传推动情况（10分）");
+    $("#a6").text("6．其他（5分）");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
     $("input[name='a1']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
@@ -586,24 +587,24 @@ function score2(row) {
 
 //给研究室主任打分，设置打分项，考评已启动（不可打分）
 function score2_1(row) {
-    $("#a1").text("1．本室建设情况，5分");
-    $("#a2").text("2．任务完成情况，50分");
-    $("#a3").text("3．遵规守纪情况，20分");
-    $("#a4").text("4．经费使用情况，10分");
-    $("#a5").text("5．宣传推动情况，10分");
-    $("#a6").text("6．其他，5分");
+    $("#a1").text("1．本室建设情况（5分）");
+    $("#a2").text("2．任务完成情况（50分）");
+    $("#a3").text("3．遵规守纪情况（20分）");
+    $("#a4").text("4．经费使用情况（10分）");
+    $("#a5").text("5．宣传推动情况（10分）");
+    $("#a6").text("6．其他（5分）");
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
 
 //给实验站站长打分，设置打分项，考评已启动（可打分）
 function score3(row) {
-    $("#a1").text("1．任务完成情况，50分");
-    $("#a2").text("2．遵规守纪情况，20分");
-    $("#a3").text("3．经费使用情况，10分");
-    $("#a4").text("4．宣传推动情况，10分");
-    $("#a5").text("5．争取支持情况，5分");
-    $("#a6").text("6．其他，5分");
+    $("#a1").text("1．任务完成情况（50分）");
+    $("#a2").text("2．遵规守纪情况（20分）");
+    $("#a3").text("3．经费使用情况（10分）");
+    $("#a4").text("4．宣传推动情况（10分）");
+    $("#a5").text("5．争取支持情况（5分）");
+    $("#a6").text("6．其他（5分）");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
     $("input[name='a1']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
@@ -621,12 +622,12 @@ function score3(row) {
 
 //给实验站站长打分，设置打分项，考评已启动（不可打分）
 function score3_1(row) {
-    $("#a1").text("1．任务完成情况，50分");
-    $("#a2").text("2．遵规守纪情况，20分");
-    $("#a3").text("3．经费使用情况，10分");
-    $("#a4").text("4．宣传推动情况，10分");
-    $("#a5").text("5．争取支持情况，5分");
-    $("#a6").text("6．其他，5分");
+    $("#a1").text("1．任务完成情况（50分）");
+    $("#a2").text("2．遵规守纪情况（20分）");
+    $("#a3").text("3．经费使用情况（10分）");
+    $("#a4").text("4．宣传推动情况（10分）");
+    $("#a5").text("5．争取支持情况（5分）");
+    $("#a6").text("6．其他（5分）");
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }

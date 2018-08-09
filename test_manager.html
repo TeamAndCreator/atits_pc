@@ -28,6 +28,7 @@
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -283,23 +284,65 @@
 
         <!--Large Bootstrap Modal-->
         <!--===================================================-->
-        <div id="score" class="modal fade" tabindex="-1">
-            <div class="modal-dialog modal-lg">
+        <div id="score" class="modal fade " tabindex="-1">
+            <div class="modal-dialog modal-lg-6">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
                         </button>
                         <h3 class="modal-title">打分</h3>
                     </div>
-                    <div class="modal-body" style="text-align: center">
-                            <input type="hidden" name="score-id">
-                            <span id="a1"></span><br><input type="number" style="text-align: center" name="a1"><br>
-                            <span id="a2"></span><br><input type="number" style="text-align: center" name="a2"><br>
-                            <span id="a3"></span><br><input type="number" style="text-align: center" name="a3"><br>
-                            <span id="a4"></span><br><input type="number" style="text-align: center" name="a4"><br>
-                            <span id="a5"></span><br><input type="number" style="text-align: center" name="a5"><br>
-                            <span id="a6"></span><br><input type="number" style="text-align: center" name="a6"><br><br>
-                            <button id="score-btn" class="btn-success" >提交</button>
+                    
+                    <div class="modal-body ">
+                        <form class="form-horizontal">
+                           
+                             
+                                    <input type="hidden" name="score-id">
+                                    <div class="form-group">
+                                        <label class="col-sm-offset-2 control-label" id="a1"> </label>
+                                        <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
+                                            <input type="number" class="form-control" name="a1" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-offset-2  control-label" id="a2"> </label>
+                                        <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
+                                            <input type="number" class="form-control" name="a2" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-offset-2  control-label" id="a3"> </label>
+                                        <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
+                                            <input type="number" class="form-control" name="a3" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-offset-2 control-label" id="a4"> </label>
+                                        <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
+                                            <input type="number" class="form-control" name="a4" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-offset-2  control-label" id="a5"> </label>
+                                        <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;"> 
+                                            <input type="number" class="form-control" name="a5" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-offset-2  control-label" id="a6"> </label>
+                                        <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
+                                            <input type="number" class="form-control" name="a6" placeholder="">
+                                        </div>
+                                    </div>
+                              
+                                              
+                                    <div class="form-group">                 
+                                    <div class="col-sm-7 col-sm-offset-5">
+                                        <button id="score-btn" class="btn-success btn btn-mint" type="submit">提交</button>
+                                    </div>
+                                    </div>
+                               
+                        </form>
                     </div>
                 </div>
             </div>
@@ -467,8 +510,8 @@
                             </div>
 
                             <div class="panel-footer text-right">
-                                <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="" id="submit1" type="submit">添加</button>
+                                <button class="btn btn-default" data-dismiss="modal">退出</button>
+                                <button class="btn  btn-success" id="submit1" type="submit">添加</button>
                             </div>
                         </form>
                     </div>
@@ -520,164 +563,165 @@
                             </div>
                             <ul id="mainnav-menu" class="list-group">
 
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="index.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>平台首页</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li style="display: none" id="person">
-                                    <a href="user.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>人员管理</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li style="display: none" id="system">
-                                    <a href="system.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>体系管理</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li style="display: none" id="lab">
-                                    <a href="laboratory.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>功能研究室</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li style="display: none" id="sta">
-                                    <a href="station.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>综合试验站</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="activity.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>重大活动</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="harvest.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>重大成果</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="report.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>重大文件报告</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="notice.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>通知公告</strong>
-											</span>
-                                    </a>
-                                </li>
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="dynamic.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>体系动态</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>规章制度</strong>
-											</span>
-                                    </a>
-                                </li>
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="task.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>工作任务</strong>
-											</span>
-                                    </a>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="taskProgress.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>工作进展</strong>
-											</span>
-                                    </a>
-                                </li>
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="test_manager.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>考评管理</strong>
-											</span>
-                                    </a>
-                                </li>
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="download.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>下载中心</strong>
-											</span>
-                                    </a>
-                                </li>
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="help.html">
-                                        <i class="demo-psi-home"></i>
-                                        <span class="menu-title">
-												<strong>帮助</strong>
-											</span>
-                                    </a>
-                                </li>
-
-
-                            </ul>
-
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="index.html">
+                                            <i class="demo-psi-home"></i>
+                                            <span class="menu-title">
+                                                    <strong>平台首页</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li style="display: none" id="person">
+                                        <a href="user.html">
+                                            <i class="fa fa-users"></i>
+                                            <span class="menu-title">
+                                                    <strong>人员管理</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li style="display: none" id="system">
+                                        <a href="system.html">
+                                            <i class="demo-psi-repair"></i>
+                                            <span class="menu-title">
+                                                    <strong>体系管理</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li style="display: none" id="lab">
+                                        <a href="laboratory.html">
+                                            <i class="fa fa-university"></i>
+                                            <span class="menu-title">
+                                                    <strong>功能研究室</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li style="display: none" id="sta">
+                                        <a href="station.html">
+                                            <i class="demo-psi-office"></i>
+                                            <span class="menu-title">
+                                                    <strong>综合试验站</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="activity.html">
+                                            <i class="fa fa-life-ring"></i>
+                                            <span class="menu-title">
+                                                    <strong>重大活动</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="harvest.html">
+                                            <i class="fa fa-mortar-board"></i>
+                                            <span class="menu-title">
+                                                    <strong>重大成果</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+    
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="report.html">
+                                            <i class="fa fa-file-text"></i>
+                                            <span class="menu-title">
+                                                    <strong>重大文件报告</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="notice.html">
+                                            <i class="fa fa-bullhorn"></i>
+                                            <span class="menu-title">
+                                                    <strong>通知公告</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="dynamic.html">
+                                            <i class="fa fa-table"></i>
+                                            <span class="menu-title">
+                                                    <strong>体系动态</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-book"></i>
+                                            <span class="menu-title">
+                                                    <strong>规章制度</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="task.html">
+                                            <i class="fa fa-list-ol"></i>
+                                            <span class="menu-title">
+                                                    <strong>工作任务</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="taskProgress.html">
+                                            <i class="fa fa-spinner"></i>
+                                            <span class="menu-title">
+                                                    <strong>工作进展</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+                                    <!--Menu list item-->
+                                    <li style="display: none" id="test">
+                                        <a href="test_manager.html">
+                                            <i class="fa fa-magnet"></i>
+                                            <span class="menu-title">
+                                                    <strong>考评管理</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="download.html">
+                                            <i class="demo-psi-download-from-cloud"></i>
+                                            <span class="menu-title">
+                                                    <strong>下载中心</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="help.html">
+                                            <i class="fa fa-question-circle"></i>
+                                            <span class="menu-title">
+                                                    <strong>帮助</strong>
+                                                </span>
+                                        </a>
+                                    </li>
+    
+    
+    
+                                </ul>
 
                         </div>
                     </div>
