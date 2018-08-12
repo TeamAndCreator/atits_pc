@@ -133,12 +133,12 @@ $(document).ready(function () {
 
 
     $('input[name="system"]').val(sessionStorage.getItem("systemName"));
-//判断当前用户角色，决定是否添加添加删除框
-    if (rolesId.indexOf(1) != -1||rolesId.indexOf(3) != -1) {
-        $('#zdcg').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
-            "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
-    }
+    $('input[name="user"]').val(sessionStorage.getItem("userName"));
+
+//添加添加删除框
+    $('#txdt').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
+        "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
+        "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
 
 //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
@@ -147,38 +147,38 @@ $(document).ready(function () {
     if (sessionStorage.getItem("systemId") == 1) {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findForTXB",
+            url: ipValue + "/dynamic/findForTXB",
             dataType: "json",
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                data = result.data.dynamics
             }
 
         });
     } else if (rolesId.indexOf(3) != -1) {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findForSX",
+            url: ipValue + "/dynamic/findForSX",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                data = result.data.dynamics
             }
 
         });
     } else {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findFor",
+            url: ipValue + "/dynamic/findFor",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"userId": sessionStorage.getItem("userId")},
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                data = result.data.dynamics
             }
 
         });
@@ -189,7 +189,7 @@ $(document).ready(function () {
         data: data,
         columns: [{
             checkbox: true,
-            formatter:'check'
+            formatter: 'check'
         }, {
             field: 'system.systemName',
             align: 'center',
@@ -219,11 +219,14 @@ $(document).ready(function () {
     $('#add').click(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
-        var content=$('#demo-summernote').summernote('code');
+        var content = $('#demo-summernote').summernote('code');
         formData.append("title", title);
-        formData.append("content",content);//具体内容
+        formData.append("content", content);//具体内容
         formData.append("system.id", sessionStorage.getItem("systemId"));
         formData.append("user.id", sessionStorage.getItem("userId"));
+        if (rolesId.indexOf(1) != -1) {
+            formData.append("state", 2);
+        }
         //将文件数组添加进来
         var multipartFiles = myDropzone.files;
         for (var i = 0; i < multipartFiles.length; i++) {
@@ -232,7 +235,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
-            url: ipValue + '/harvest/save',
+            url: ipValue + '/dynamic/save',
             data: formData,
             contentType: false,
             processData: false,
@@ -251,7 +254,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/deleteByIds',
+            url: ipValue + '/dynamic/deleteByIds',
             data: {_method: "DELETE", "idList": b},
             async: false,
             traditional: true,
@@ -262,12 +265,18 @@ $(document).ready(function () {
     })
 
 });
+
 //checkbox
 function check(value, row) {
     if (row.system.id == sessionStorage.getItem('systemId')) {
         if (rolesId.indexOf(1) != -1 || rolesId.indexOf(3) != -1) {
             return {
                 disabled: false//设置可用
+            }
+        }
+        if (sessionStorage.getItem("userId") == row.user.id) {
+            return{
+                disabled:false
             }
         }
     }
@@ -278,7 +287,7 @@ function check(value, row) {
 
 //超链接
 function invoiceFormatter(value, row) {
-    return '<a href="harvest_detail.html?id='+row.id+'" class="btn-link" >' + value + '</a>';
+    return '<a href="dynamic_detail.html?id=' + row.id + '" class="btn-link" >' + value + '</a>';
 }
 
 //状态
@@ -289,50 +298,79 @@ function statusFormatter(value, row) {
     if (value == 0) {
         v = "待审核";
         labelColor = "warning"
+        if (rolesId.indexOf(3) != -1) {
+            return "<div class='label label-table label-" + labelColor + "'><a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
+        } else {
+            return '<div class="label label-table label-' + labelColor + '">' + v + '</div>';
+        }
     } else if (value == 1) {
-        v = "通过";
-        labelColor = "success";
-    } else if (value == 2) {
         v = "未通过";
         labelColor = "default";
-    }
-    if (rolesId.indexOf(1) != -1 && value == 0) {
-        return "<div class='label label-table label-" + labelColor + "'><a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
-    } else {
+        return '<div class="label label-table label-' + labelColor + '">' + v + '</div>';
+    } else if (value == 2) {
+        if (rolesId.indexOf(1) != -1) {
+            v = "展示";
+            labelColor = "primary";
+            return "<div class='label label-table label-" + labelColor + "'><a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
+        } else {
+            v = "已通过";
+            labelColor = "success"
+            return '<div class="label label-table label-' + labelColor + '">' + v + '</div>';
+        }
+    } else if (value == 3) {
+        v = "已展示";
+        labelColor = "success";
         return '<div class="label label-table label-' + labelColor + '">' + v + '</div>';
     }
 }
 
-function updateState(value, harvestId) {
+function updateState(value, dynamicId) {
     if (value == 0) {
         $('#sh').text("是否通过");
+        $('#tg').click(function () {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/dynamic/updateState',
+                data: {_method: "put", "id": dynamicId, "state": 2},
+                async: false,
+                success: function (data) {
+                    window.location.reload()
+                },
+                error: function () {
+                }
+            })
+        });
+        $('#wtg').click(function () {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/dynamic/updateState',
+                data: {_method: "put", "id": dynamicId, "state": 1},
+                async: false,
+                success: function (data) {
+                    window.location.reload()
+                },
+                error: function () {
+                }
+            })
+        })
+    } else if (value == 2) {
+        $('#sh').text("是否展示");
+        $('#wtg').css('display','none');
+        $('#tg').click(function () {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/dynamic/updateState',
+                data: {_method: "put", "id": dynamicId, "state": 3},
+                async: false,
+                success: function (data) {
+                    window.location.reload()
+                },
+                error: function () {
+                }
+            })
+        })
     }
-    $('#tg').click(function () {
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/harvest/updateState',
-            data: {_method: "put", "id": harvestId, "state": 1},
-            async: false,
-            success: function (data) {
-                window.location.reload()
-            },
-            error: function () {
-            }
-        })
-    });
-    $('#wtg').click(function () {
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/harvest/updateState',
-            data: {_method: "put", "id": harvestId, "state": 2},
-            async: false,
-            success: function (data) {
-                window.location.reload()
-            },
-            error: function () {
-            }
-        })
-    })
 }

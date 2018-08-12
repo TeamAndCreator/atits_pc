@@ -132,53 +132,52 @@ $(document).ready(function () {
     });
 
 
-    $('input[name="system"]').val(sessionStorage.getItem("systemName"));
-//判断当前用户角色，决定是否添加添加删除框
-    if (rolesId.indexOf(1) != -1||rolesId.indexOf(3) != -1) {
-        $('#zdcg').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
-            "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
+//写入体系任务
+    var subTasks;
+    var html2='';
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/subTask/findByBearerId",
+        data:{"bearerId":sessionStorage.getItem("userId")},
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function (result) {
+            subTasks = result.data.subTasks
+        }
+    });
+    for (var i = 0; i < subTasks.length; i++) {
+        html2+="<option value="+subTasks[i].id+">"+subTasks[i].title+"</option>"
     }
+    $('#select').html(html2);
 
 //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
     var data;
 //根据不同角色，获取不同数据
-    if (sessionStorage.getItem("systemId") == 1) {
+
+    if (rolesId.indexOf(3) != -1) {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findForTXB",
+            url: ipValue + "/taskProgress/findBySystemId",
             dataType: "json",
+            data: {"systemId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                data = result.data.taskProgresses
             }
-
-        });
-    } else if (rolesId.indexOf(3) != -1) {
-        $.ajax({
-            crossDomain: true,
-            url: ipValue + "/harvest/findForSX",
-            dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
-            type: "get",
-            async: false,
-            success: function (result) {
-                data = result.data.harvests
-            }
-
         });
     } else {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findFor",
+            url: ipValue + "/taskProgress/findByBearerId",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"bearerId": sessionStorage.getItem("userId")},
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                data = result.data.taskProgresses
             }
 
         });
@@ -189,11 +188,12 @@ $(document).ready(function () {
         data: data,
         columns: [{
             checkbox: true,
-            formatter:'check'
+            formatter: 'check'
         }, {
-            field: 'system.systemName',
+            field: 'subTask.title',
             align: 'center',
-            title: '所属体系',
+            formatter: 'subTask',
+            title: '体系任务'
         }, {
             field: 'title',
             align: 'center',
@@ -204,8 +204,8 @@ $(document).ready(function () {
             align: 'center',
             title: '上传日期'
         }, {
-            field: 'user.profile.name',
-            title: '上传人员'
+            field: 'subTask.bearer.profile.name',
+            title: '责任人'
         }, {
             field: 'state',
             align: 'center',
@@ -219,11 +219,13 @@ $(document).ready(function () {
     $('#add').click(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
-        var content=$('#demo-summernote').summernote('code');
+        var content = $('#demo-summernote').summernote('code');
+        var subTaskId=$("#select option:selected").val();
         formData.append("title", title);
-        formData.append("content",content);//具体内容
-        formData.append("system.id", sessionStorage.getItem("systemId"));
-        formData.append("user.id", sessionStorage.getItem("userId"));
+        formData.append("content", content);//具体内容
+        formData.append("subTask.id", subTaskId);
+        formData.append("subTask.bearer.id", sessionStorage.getItem("userId"));
+        formData.append("subTask.bearer.system.id", sessionStorage.getItem("systemId"));
         //将文件数组添加进来
         var multipartFiles = myDropzone.files;
         for (var i = 0; i < multipartFiles.length; i++) {
@@ -232,7 +234,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
-            url: ipValue + '/harvest/save',
+            url: ipValue + '/taskProgress/save',
             data: formData,
             contentType: false,
             processData: false,
@@ -251,7 +253,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/deleteByIds',
+            url: ipValue + '/taskProgress/deleteByIds',
             data: {_method: "DELETE", "idList": b},
             async: false,
             traditional: true,
@@ -262,13 +264,17 @@ $(document).ready(function () {
     })
 
 });
+
+//体系任务
+function subTask(value, row) {
+    return '<a href="subTask_detail.html?id=' + row.subTask.id + '"class="btn-link" >' + value + '</a>'
+}
+
 //checkbox
 function check(value, row) {
-    if (row.system.id == sessionStorage.getItem('systemId')) {
-        if (rolesId.indexOf(1) != -1 || rolesId.indexOf(3) != -1) {
-            return {
-                disabled: false//设置可用
-            }
+    if (row.subTask.bearer.id == sessionStorage.getItem('userId')) {
+        return {
+            disabled: false//设置可用
         }
     }
     return {
@@ -278,7 +284,7 @@ function check(value, row) {
 
 //超链接
 function invoiceFormatter(value, row) {
-    return '<a href="harvest_detail.html?id='+row.id+'" class="btn-link" >' + value + '</a>';
+    return '<a href="taskProgress_detail.html?id=' + row.id + '" class="btn-link" >' + value + '</a>';
 }
 
 //状态
@@ -296,7 +302,7 @@ function statusFormatter(value, row) {
         v = "未通过";
         labelColor = "default";
     }
-    if (rolesId.indexOf(1) != -1 && value == 0) {
+    if (rolesId.indexOf(3) != -1 && value == 0) {
         return "<div class='label label-table label-" + labelColor + "'><a onclick='updateState(" + value + "," + row.id + ")' data-toggle=\"modal\" data-target=\"#demo-sm-modal\" style='color: white; cursor:default'>" + v + "</a></div>";
     } else {
         return '<div class="label label-table label-' + labelColor + '">' + v + '</div>';
@@ -311,7 +317,7 @@ function updateState(value, harvestId) {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/updateState',
+            url: ipValue + '/taskProgress/updateState',
             data: {_method: "put", "id": harvestId, "state": 1},
             async: false,
             success: function (data) {
@@ -325,7 +331,7 @@ function updateState(value, harvestId) {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/updateState',
+            url: ipValue + '/taskProgress/updateState',
             data: {_method: "put", "id": harvestId, "state": 2},
             async: false,
             success: function (data) {

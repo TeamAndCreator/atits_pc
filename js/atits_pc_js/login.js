@@ -50,6 +50,7 @@ function logFun(){
         success:function (result) {
             if (result.code == 100 ){
                 var userId=result.data.user.id;
+                var userName=result.data.user.profile.name;
                 if(result.data.user.system!=null) {
                     var systemId = result.data.user.system.id;
                     var systemName = result.data.user.system.systemName;
@@ -64,6 +65,7 @@ function logFun(){
                 rolesId=JSON.stringify(rolesId);
                 sessionStorage.setItem("rolesId",rolesId);
                 sessionStorage.setItem("userId",userId);
+                sessionStorage.setItem("userName",userName);
                 window.location.href = "index.html";
             }else {
                 alert("账号或密码错误");

@@ -38,7 +38,11 @@
     <!--X-editable [ OPTIONAL ]-->
     <link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
 
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
 
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
 
 
 
@@ -78,8 +82,6 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
-    <!--Bootstrap Table Sample [ SAMPLE ]-->
-    <script src="js/demo/tables-bs-table.js"></script>
 
 
     <!--X-editable [ OPTIONAL ]-->
@@ -90,15 +92,9 @@
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
 
-    <!--Bootstrap Table Extension [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
 
-
-    <!--Modals [ SAMPLE ]-->
-    <script src="js/demo/ui-modals.js"></script>
 
     <!--&lt;!&ndash;X-editable [ OPTIONAL ]&ndash;&gt;-->
 
@@ -116,35 +112,7 @@
 
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
-
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
-
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
-
 
 </head>
 
@@ -217,15 +185,10 @@
                 </div>
                 <div class="panel-body">
 
-                    <div id="tzgg">
-
-                        <button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal"><i class="demo-pli-plus"></i>添加</button>
-                        <button class="btn btn-danger"><i class="demo-pli-cross"></i>删除</button>
-                    </div>
+                    <div id="tzgg"></div>
 
 
                     <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                           data-url="data/bs-table.json"
                            data-toolbar="#tzgg"
                            data-search="true"
                            data-show-refresh="true"
@@ -233,7 +196,8 @@
                            data-show-columns="true"
                            data-sort-name="id"
                            data-page-list="[5, 10, 20]"
-                           data-page-size="5"
+                           data-page-size="10"
+                           data-striped=true"
                            data-pagination="true" data-show-pagination-switch="true">
                     </table>
                 </div>
@@ -258,40 +222,15 @@
                                         标题
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="" type="text" name="title">
+                                        <input  class="form-control input-sm" placeholder="" name="title" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        编辑人
+                                    <label class="col-sm-3 control-label">
+                                        所属体系
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm" value="体系办" disabled =" " type="text" name="user">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        发布者
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <select   class="form-control">
-                                            <option value="1">省体系办</option>
-                                            <option value="2">水稻产业技术体系</option>
-                                            <option value="3">小麦产业技术体系</option>
-                                            <option value="4">玉米产业技术体系</option>
-                                            <option value="5">油菜棉花产业技术体系</option>
-                                            <option value="6">生猪产业技术体系</option>
-                                            <option value="7">家禽产业技术体系</option>
-                                            <option value="8">牛羊产业技术体系</option>
-                                            <option value="9">水产产业技术体系</option>
-                                            <option value="10">蔬菜产业技术体系</option>
-                                            <option value="11">果树产业技术体系</option>
-                                            <option value="12">茶叶产业技术体系</option>
-                                            <option value="13">蚕桑中药材产业技术体系</option>
-                                            <option value="14">农业信息化产业技术体系</option>
-                                            <option value="15">农机装备应用产业技术体系</option>
-                                            <option value="16">农业生态环保与质量安全产业技术体系</option>
-                                        </select>
+                                        <input  class="form-control input-sm" placeholder="" name="system" type="text" readonly>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -303,14 +242,6 @@
 					                <span>选择文件</span>
 					                </span>
 
-                                        <!--<div class="btn-group pull-right">-->
-                                        <!--<button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled>-->
-                                        <!--<i class="fa fa-upload-cloud"></i> Upload-->
-                                        <!--</button>-->
-                                        <!--<button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled>-->
-                                        <!--<i class="demo-pli-cross"></i>-->
-                                        <!--</button>-->
-                                        <!--</div>-->
                                     </div>
 
 
@@ -354,8 +285,8 @@
 
                                         <!--Summernote-->
                                         <!--===================================================-->
-                                        <div id="content1" >
-                                            <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;">请在这写!</span><br></h4><h4><font color="#9c9c94"></font></h4>
+                                        <div id="demo-summernote" >
+                                            <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br></h4><h4><font color="#9c9c94"></font></h4>
                                         </div>
                                         <!--===================================================-->
                                         <!-- End Summernote -->
@@ -365,9 +296,24 @@
                             </div>
                             <div class="panel-footer text-right">
                                 <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="btn btn-primary middle" id="submit1" type="submit">添加</button>
+                                <button class="btn btn-primary middle" id="add">添加</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <h3 id="sh"></h3>
+                        <button id="tg" class="btn btn-success">是</button>
+                        <button id="wtg" class="btn btn-default">否</button>
                     </div>
                 </div>
             </div>
@@ -520,7 +466,7 @@
     
                                     <!--Menu list item-->
                                     <li>
-                                        <a href="#">
+                                        <a href="regulation.html">
                                             <i class="fa fa-book"></i>
                                             <span class="menu-title">
                                                     <strong>规章制度</strong>
@@ -538,7 +484,7 @@
                                     </li>
     
                                     <!--Menu list item-->
-                                    <li>
+                                    <li id="taskProgress">
                                         <a href="taskProgress.html">
                                             <i class="fa fa-spinner"></i>
                                             <span class="menu-title">

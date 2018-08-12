@@ -134,59 +134,99 @@ $(document).ready(function () {
 
     $('input[name="system"]').val(sessionStorage.getItem("systemName"));
 //判断当前用户角色，决定是否添加添加删除框
-    if (rolesId.indexOf(1) != -1||rolesId.indexOf(3) != -1) {
-        $('#zdcg').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
+    if (rolesId.indexOf(1) != -1) {
+        $('#gzzd').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
             "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
+    }else if(rolesId.indexOf(3)!=-1){
+        $('#gzzd1').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
+            "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
+            "                           <button class=\"btn btn-danger\" id='delete1'><i class=\"demo-pli-cross\"></i>删除</button>")
     }
 
 //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
-    var data;
+    var txb;
+    var others;
 //根据不同角色，获取不同数据
     if (sessionStorage.getItem("systemId") == 1) {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findForTXB",
+            url: ipValue + "/regulation/findForTXB",
             dataType: "json",
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                txb = result.data.txb;
+                others=result.data.others
             }
 
         });
     } else if (rolesId.indexOf(3) != -1) {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findForSX",
+            url: ipValue + "/regulation/findForSX",
             dataType: "json",
             data:{"systemId":sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                txb = result.data.txb;
+                others=result.data.others
             }
 
         });
     } else {
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/harvest/findFor",
+            url: ipValue + "/regulation/findFor",
             dataType: "json",
             data:{"systemId":sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.harvests
+                txb = result.data.txb;
+                others=result.data.others
             }
 
         });
     }
-//设置table每列标题
+//设置省体系table每列标题
     $('#demo-custom-toolbar').bootstrapTable({
         idField: 'id',
-        data: data,
+        data: txb,
+        columns: [{
+            checkbox: true,
+            formatter:'check'
+        }, {
+            field: 'system.systemName',
+            align: 'center',
+            title: '所属体系',
+        }, {
+            field: 'title',
+            align: 'center',
+            formatter: 'invoiceFormatter',
+            title: '标题'
+        }, {
+            field: 'date',
+            align: 'center',
+            title: '上传日期'
+        }, {
+            field: 'user.profile.name',
+            title: '上传人员'
+        }, {
+            field: 'state',
+            align: 'center',
+            title: '状态',
+            formatter: 'statusFormatter'
+        }
+
+        ]
+    });
+//设置各体系table每列标题
+    $('#demo-custom-toolbar1').bootstrapTable({
+        idField: 'id',
+        data: others,
         columns: [{
             checkbox: true,
             formatter:'check'
@@ -224,6 +264,9 @@ $(document).ready(function () {
         formData.append("content",content);//具体内容
         formData.append("system.id", sessionStorage.getItem("systemId"));
         formData.append("user.id", sessionStorage.getItem("userId"));
+        if (rolesId.indexOf(1)!=-1){
+            formData.append("state", 1);
+        }
         //将文件数组添加进来
         var multipartFiles = myDropzone.files;
         for (var i = 0; i < multipartFiles.length; i++) {
@@ -232,7 +275,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
-            url: ipValue + '/harvest/save',
+            url: ipValue + '/regulation/save',
             data: formData,
             contentType: false,
             processData: false,
@@ -251,7 +294,26 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/deleteByIds',
+            url: ipValue + '/regulation/deleteByIds',
+            data: {_method: "DELETE", "idList": b},
+            async: false,
+            traditional: true,
+            success: function () {
+                window.location.reload()
+            }
+        })
+    })
+
+    $('#delete1').click(function () {
+        var a = $("#demo-custom-toolbar1").bootstrapTable('getSelections');
+        var b = [];
+        for (var i = 0; i < a.length; i++) {
+            b[i] = a[i].id
+        }
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: ipValue + '/regulation/deleteByIds',
             data: {_method: "DELETE", "idList": b},
             async: false,
             traditional: true,
@@ -278,7 +340,7 @@ function check(value, row) {
 
 //超链接
 function invoiceFormatter(value, row) {
-    return '<a href="harvest_detail.html?id='+row.id+'" class="btn-link" >' + value + '</a>';
+    return '<a href="regulation_detail.html?id='+row.id+'" class="btn-link" >' + value + '</a>';
 }
 
 //状态
@@ -303,7 +365,7 @@ function statusFormatter(value, row) {
     }
 }
 
-function updateState(value, harvestId) {
+function updateState(value, regulationId) {
     if (value == 0) {
         $('#sh').text("是否通过");
     }
@@ -311,8 +373,8 @@ function updateState(value, harvestId) {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/updateState',
-            data: {_method: "put", "id": harvestId, "state": 1},
+            url: ipValue + '/regulation/updateState',
+            data: {_method: "put", "id": regulationId, "state": 1},
             async: false,
             success: function (data) {
                 window.location.reload()
@@ -325,8 +387,8 @@ function updateState(value, harvestId) {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: ipValue + '/harvest/updateState',
-            data: {_method: "put", "id": harvestId, "state": 2},
+            url: ipValue + '/regulation/updateState',
+            data: {_method: "put", "id": regulationId, "state": 2},
             async: false,
             success: function (data) {
                 window.location.reload()

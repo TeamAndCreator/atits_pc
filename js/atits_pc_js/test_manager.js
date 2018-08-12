@@ -30,7 +30,7 @@ $(document).ready(function () {
                 dataUsers = result.data.users;
                 createDom(dataUsers);
             }
-        })
+        });
         //判断当前用户是否为体系办，是则显示外聘人员，否则不显示
         if (sessionStorage.getItem('systemId') == 1) {
             $.ajax({
@@ -277,8 +277,7 @@ $(document).ready(function () {
             testScore = result.data.testScores;
         }
     });
-    console.log(testScore)
-      
+
 //设置testScore表格标题
     $('#testScore').bootstrapTable({
         idField: 'id',
@@ -562,38 +561,37 @@ function score1_1(row) {
     $("#score-btn").remove();
 }
 
-//给研究室主任打分，设置打分项，考评已启动（可打分）
+//给岗位专家打分，设置打分项，考评已启动（可打分）
 function score2(row) {
-    $("#a1").text("1．本室建设情况（5分）");
-    $("#a2").text("2．任务完成情况（50分）");
-    $("#a3").text("3．遵规守纪情况（20分）");
-    $("#a4").text("4．经费使用情况（10分）");
-    $("#a5").text("5．宣传推动情况（10分）");
-    $("#a6").text("6．其他（5分）");
+    $("#a1").text("1．任务完成情况（50分）");
+    $("#a2").text("2．遵规守纪情况（20分）");
+    $("#a3").text("3．经费使用情况（10分）");
+    $("#a4").text("4．宣传推动情况（10分）");
+    $("#a5").text("5．其他（10分）");
+    $("input[name='a6']").css('display','none');
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
+    $("input[name='a1']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a2']").attr('oninput','if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('oninput','if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a3']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
     $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
     $("input[name='a5']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
-//给研究室主任打分，设置打分项，考评已启动（不可打分）
+//给岗位专家打分，设置打分项，考评已启动（不可打分）
 function score2_1(row) {
-    $("#a1").text("1．本室建设情况（5分）");
-    $("#a2").text("2．任务完成情况（50分）");
-    $("#a3").text("3．遵规守纪情况（20分）");
-    $("#a4").text("4．经费使用情况（10分）");
-    $("#a5").text("5．宣传推动情况（10分）");
-    $("#a6").text("6．其他（5分）");
-    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
+    $("#a1").text("1．任务完成情况（50分）");
+    $("#a2").text("2．遵规守纪情况（20分）");
+    $("#a3").text("3．经费使用情况（10分）");
+    $("#a4").text("4．宣传推动情况（10分）");
+    $("#a5").text("5．其他（10分）");
+    $("input[name='a6']").css('display','none');
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5']").attr("disabled", "disabled");
     $("#score-btn").remove();
 }
 

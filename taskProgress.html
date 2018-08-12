@@ -73,9 +73,8 @@
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
+    <script src="js/atits_pc_js/taskProgress.js"></script>
 
-    <!--Bootstrap Table Sample [ SAMPLE ]-->
-    <script src="js/demo/tables-bs-table.js"></script>
 
 
     <!--X-editable [ OPTIONAL ]-->
@@ -85,56 +84,18 @@
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
-
-    <!--Bootstrap Table Extension [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
     <!--Summernote [ OPTIONAL ]-->
     <script src="plugins/summernote/summernote.min.js"></script>
-    <!--=================================================-->
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="js/demo/form-text-editor.js"></script>
     <!--Demo script [ DEMONSTRATION ]-->
 
     <!--Dropzone [ OPTIONAL ]-->
     <script src="plugins/dropzone/dropzone.min.js"></script>
 
-
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="js/demo/form-file-upload.js"></script>
-
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
-    <!--Modals [ SAMPLE ]-->
-    <script src="js/demo/ui-modals.js"></script>
 
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 
 
@@ -209,90 +170,23 @@
                 </div>
                 <div class="panel-body">
 
-                    <div class="col-sm-6 table-toolbar-left pad-btm form-inline">
-
-                        <button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal">添加</button>
-                        <button class="btn btn-danger">删除</button>
-                        <select id="demo-foo-filter-status" class="form-control">
-                            <option value="">省体系办</option>
-
-                            <option value="">水稻产业技术体系</option>
-
-                            <option value="">小麦产业技术体系</option>
-
-                            <option value="">玉米产业技术体系</option>
-
-                            <option value="">油菜棉花产业技术体系</option>
-
-                            <option value="">生猪产业技术体系</option>
-
-                            <option value="">家禽产业技术体系</option>
-
-                            <option value="">牛羊产业技术体系</option>
-
-                            <option value="">水产产业技术体系</option>
-
-                            <option value="">蔬菜产业技术体系</option>
-
-                            <option value="">果树产业技术体系</option>
-
-                            <option value="">茶叶产业技术体系</option>
-
-                            <option value="">蚕桑中药材产业技术体系</option>
-
-                            <option value="">农业信息化产业技术体系</option>
-
-                            <option value="">农机装备应用产业技术体系</option>
-
-                            <option value="">农业生态环保与质量安全产业技术体系</option>
-                        </select>
+                    <div id="gzjz">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal" ><i class="demo-pli-plus"></i>添加</button>
+                        <button class="btn btn-danger" id="delete"><i class="demo-pli-cross"></i>删除</button>
                     </div>
 
 
                     <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                           data-url="data/bs-table.json"
-                           data-toolbar="#demo-delete-row"
+                           data-toolbar="#gzjz"
                            data-search="true"
                            data-show-refresh="true"
                            data-show-toggle="true"
                            data-show-columns="true"
                            data-sort-name="id"
                            data-page-list="[5, 10, 20]"
-                           data-page-size="5"
+                           data-page-size="10"
+                           data-striped=true"
                            data-pagination="true" data-show-pagination-switch="true">
-                        <thead>
-                        <tr role="row">
-                            <th data-field="state" data-checkbox="true">ID</th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="标题: activate to sort column ascending">标题
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="负责人: activate to sort column ascending">负责人
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="所属体系: activate to sort column ascending">所属体系
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="任务合同: activate to sort column ascending">任务合同
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="任务安排: activate to sort column ascending">任务安排
-                            </th>
-                            <th class="text-center sorting" tabindex="0" aria-controls="sample-table-1" rowspan="1"
-                                colspan="1" aria-label="上传时间: activate to sort column ascending">上传时间
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                            <td>安徽农业大学</td>
-                        </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -317,64 +211,15 @@
                                         标题
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="" type="text">
+                                        <input  class="form-control input-sm" placeholder="" name="title" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        负责人
+                                    <label class="col-sm-3 control-label">
+                                        体系任务
                                     </label>
                                     <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        所属体系
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <select   class="form-control">
-                                            <option value="1">省体系办</option>
-                                            <option value="2">水稻产业技术体系</option>
-                                            <option value="3">小麦产业技术体系</option>
-                                            <option value="4">玉米产业技术体系</option>
-                                            <option value="5">油菜棉花产业技术体系</option>
-                                            <option value="6">生猪产业技术体系</option>
-                                            <option value="7">家禽产业技术体系</option>
-                                            <option value="8">牛羊产业技术体系</option>
-                                            <option value="9">水产产业技术体系</option>
-                                            <option value="10">蔬菜产业技术体系</option>
-                                            <option value="11">果树产业技术体系</option>
-                                            <option value="12">茶叶产业技术体系</option>
-                                            <option value="13">蚕桑中药材产业技术体系</option>
-                                            <option value="14">农业信息化产业技术体系</option>
-                                            <option value="15">农机装备应用产业技术体系</option>
-                                            <option value="16">农业生态环保与质量安全产业技术体系</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        任务合同
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        任务安排
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" >
-                                        上传时间
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <input  class="form-control input-sm" placeholder="" type="text">
+                                        <select class="form-control" id="select"></select>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -430,7 +275,7 @@
                                         <!--Summernote-->
                                         <!--===================================================-->
                                         <div id="demo-summernote" >
-                                            <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;">请在这写!</span><br></h4><h4><font color="#9c9c94"></font></h4>
+                                            <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br></h4><h4><font color="#9c9c94"></font></h4>
                                         </div>
                                         <!--===================================================-->
                                         <!-- End Summernote -->
@@ -440,9 +285,24 @@
                             </div>
                             <div class="panel-footer text-right">
                                 <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="btn btn-primary middle">添加</button>
+                                <button class="btn btn-primary middle" id="add">添加</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <h3 id="sh"></h3>
+                        <button id="tg" class="btn btn-success">是</button>
+                        <button id="wtg" class="btn btn-default">否</button>
                     </div>
                 </div>
             </div>
@@ -594,7 +454,7 @@
     
                                     <!--Menu list item-->
                                     <li>
-                                        <a href="#">
+                                        <a href="regulation.html">
                                             <i class="fa fa-book"></i>
                                             <span class="menu-title">
                                                     <strong>规章制度</strong>
@@ -612,7 +472,7 @@
                                     </li>
     
                                     <!--Menu list item-->
-                                    <li>
+                                    <li id="taskProgress">
                                         <a href="taskProgress.html">
                                             <i class="fa fa-spinner"></i>
                                             <span class="menu-title">

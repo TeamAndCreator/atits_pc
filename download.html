@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>重大文件报告</title>
+    <title>下载中心</title>
 
 
     <!--STYLESHEET-->
@@ -29,7 +29,6 @@
     <!--Demo [ DEMONSTRATION ]-->
     <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
 
-
     <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -38,14 +37,10 @@
     <!--X-editable [ OPTIONAL ]-->
     <link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
 
-    <!--Summernote [ OPTIONAL ]-->
-    <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
 
-    <!--Dropzone [ OPTIONAL ]-->
-    <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
-
-
-
+    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
@@ -70,26 +65,12 @@
     <script src="js/nifty.min.js"></script>
 
 
-
-
-
-
     <!--=================================================-->
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
-
-
-    <!--X-editable [ OPTIONAL ]-->
-    <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
-
-
-
-    <!--Bootbox Modals [ OPTIONAL ]-->
-    <script src="plugins/bootbox/bootbox.min.js"></script>
-
     <!-----------------------------这个js文件放上面---------------------------------->
-    <script src="js/atits_pc_js/report.js"></script>
+    <script src="js/atits_pc_js/download.js"></script>
     <!----------------------------------------------------------------------------->
 
     <!--&lt;!&ndash;X-editable [ OPTIONAL ]&ndash;&gt;-->
@@ -99,21 +80,10 @@
     <!--&lt;!&ndash;Bootstrap Table [ OPTIONAL ]&ndash;&gt;-->
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
-    <!--Summernote [ OPTIONAL ]-->
-    <script src="plugins/summernote/summernote.min.js"></script>
-    <!--=================================================-->
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="plugins/dropzone/dropzone.min.js"></script>
-
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
 
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-
-    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
-
-
 
 </head>
 
@@ -170,168 +140,40 @@
 
         <!--CONTENT CONTAINER-->
         <!--===================================================-->
-        <div id="content-container">
+           <div id="content-container">
 
             <!--Page Title-->
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 
-            <!--Custom Toolbar-->
-            <!--===================================================-->
+                <!--Custom Toolbar-->
+                <!--===================================================-->
 
-            <!--===================================================-->
-            <div class="panel">
-                <div class="panel-heading">
-                    <h1 class="panel-title">重大文件报告</h1>
-                </div>
-                <div class="panel-body">
-
-                    <div id="zdwjbg"></div>
+                <!--===================================================-->
+               <div class="panel">
+                   <div class="panel-heading">
+                       <h1 class="panel-title">下载中心</h1>
+                   </div>
+                   <div class="panel-body">
 
 
-                    <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                           data-toolbar="#zdwjbg"
-                           data-search="true"
-                           data-show-refresh="true"
-                           data-show-toggle="true"
-                           data-show-columns="true"
-                           data-sort-name="id"
-                           data-page-list="[5, 10, 20]"
-                           data-page-size="10"
-                           data-striped=true"
-                           data-pagination="true" data-show-pagination-switch="true">
-                    </table>
-                </div>
-            </div>
-        </div>
+                       <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
+                              data-search="true"
+                              data-show-refresh="true"
+                              data-show-toggle="true"
+                              data-show-columns="true"
+                              data-sort-name="id"
+                              data-page-list="[5, 10, 20]"
+                              data-page-size="10"
+                              data-striped=true"
+                              data-pagination="true" data-show-pagination-switch="true">
+                       </table>
+                   </div>
+               </div>
+           </div>
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
-        <!--Large Bootstrap Modal-->
-        <!--===================================================-->
-        <div id="demo-lg-modal" class="modal fade" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
-                        </button>
-                        <h4 class="modal-title" id="myLargeModalLabel">添加</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">
-                                        标题
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <input class="form-control input-sm" placeholder="" name="title" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">
-                                        所属体系
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <input class="form-control input-sm" placeholder="" name="system" type="text"
-                                               readonly>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
 
-                                    <div class="bord-top pad-ver">
-                                        <!-- The fileinput-button span is used to style the file input field as button -->
-                                        <span class="btn btn-success fileinput-button dz-clickable">
-					                <i class="fa fa-plus"></i>
-					                <span>选择文件</span>
-					                </span>
-
-                                    </div>
-
-
-                                    <div id="dz-previews">
-                                        <div id="dz-template" class="pad-top bord-top">
-                                            <div class="media">
-                                                <div class="media-body">
-                                                    <!--This is used as the file preview template-->
-                                                    <div class="media-block">
-                                                        <div class="media-left">
-                                                            <img class="dz-img" data-dz-thumbnail>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="text-main text-bold mar-no text-overflow"
-                                                               data-dz-name></p>
-                                                            <span class="dz-error text-danger text-sm"
-                                                                  data-dz-errormessage></span>
-                                                            <p class="text-sm" data-dz-size></p>
-                                                            <div id="dz-total-progress" style="opacity:0">
-                                                                <div class="progress progress-xs active"
-                                                                     role="progressbar" aria-valuemin="0"
-                                                                     aria-valuemax="100" aria-valuenow="0">
-                                                                    <div class="progress-bar progress-bar-success"
-                                                                         style="width:0%;" data-dz-uploadprogress></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="media-right">
-                                                    <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i
-                                                            class="demo-pli-cross"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--===================================================-->
-                                    <!--End Dropzonejs using Bootstrap theme-->
-                                </div>
-                            </div>
-                            <div id="page-content">
-                                <div class="panel">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">内容</h3>
-                                    </div>
-                                    <div class="panel-body">
-
-                                        <!--Summernote-->
-                                        <!--===================================================-->
-                                        <div id="demo-summernote">
-                                            <h4><span
-                                                    style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
-                                            </h4><h4><font color="#9c9c94"></font></h4>
-                                        </div>
-                                        <!--===================================================-->
-                                        <!-- End Summernote -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer text-right">
-                                <button class="btn btn-info middle " data-dismiss="modal">退出</button>
-                                <button class="btn btn-primary middle" id="add">添加</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body" style="text-align: center">
-                        <h3 id="sh"></h3>
-                        <button id="tg" class="btn btn-success">是</button>
-                        <button id="wtg" class="btn btn-default">否</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--MAIN NAVIGATION-->
-        <!--===================================================-->
         <nav id="mainnav-container">
             <div id="mainnav">
 
@@ -597,4 +439,6 @@
 
 
 </body>
+
+
 </html>

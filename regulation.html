@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工作任务</title>
+    <title>规章制度</title>
 
 
     <!--STYLESHEET-->
@@ -28,6 +28,7 @@
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+
     <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Table [ OPTIONAL ]-->
@@ -43,13 +44,7 @@
     <!--Dropzone [ OPTIONAL ]-->
     <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
 
-    <!--Animate.css [ OPTIONAL ]-->
-    <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
 
-    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <link href="plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -73,34 +68,36 @@
     <script src="js/nifty.min.js"></script>
 
 
+    <!-----------------------------这个js文件放上面---------------------------------->
+    <script src="js/atits_pc_js/regulation.js"></script>
+    <!----------------------------------------------------------------------------->
+
     <!--=================================================-->
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
-    <!-----------------------------这个js文件放上面---------------------------------->
-    <script src="js/atits_pc_js/task.js"></script>
-    <!----------------------------------------------------------------------------->
 
-    <!--&lt;!&ndash;X-editable [ OPTIONAL ]&ndash;&gt;-->
+
+    <!--X-editable [ OPTIONAL ]-->
     <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
-    <!--&lt;!&ndash;&ndash;&gt;-->
 
-    <!--&lt;!&ndash;Bootstrap Table [ OPTIONAL ]&ndash;&gt;-->
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+
+    <!--Bootbox Modals [ OPTIONAL ]-->
+    <script src="plugins/bootbox/bootbox.min.js"></script>
 
     <!--Summernote [ OPTIONAL ]-->
     <script src="plugins/summernote/summernote.min.js"></script>
     <!--=================================================-->
 
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!--Dropzone [ OPTIONAL ]-->
     <script src="plugins/dropzone/dropzone.min.js"></script>
 
-    <!--Bootbox Modals [ OPTIONAL ]-->
-    <script src="plugins/bootbox/bootbox.min.js"></script>
-
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 
 
 </head>
@@ -108,7 +105,7 @@
 <!--TIPS-->
 <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
 <body>
-<div id="container" class="effect aside-float aside-bright mainnav-lg navbar-fixed">
+<div id="container" class="effect aside-float aside-bright mainnav-lg">
 
     <!--NAVBAR-->
     <!--===================================================-->
@@ -170,43 +167,43 @@
             <!--===================================================-->
             <div class="panel">
                 <div class="panel-heading">
-                    <h1 class="panel-title">工作任务</h1>
+                    <h1 class="panel-title">规章制度</h1>
                 </div>
                 <div class="panel-body">
-                    <div id="f">
-                        <div class="panel-heading"><h3>工作任务</h3></div>
-                        <div id="fgzrw">
-                        </div>
-                        <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-                               data-toolbar="#fgzrw"
-                               data-search="true"
-                               data-show-refresh="true"
-                               data-show-toggle="true"
-                               data-show-columns="true"
-                               data-sort-name="id"
-                               data-page-list="[5, 10, 20]"
-                               data-page-size="10"
-                               data-striped=true"
-                               data-pagination="true" data-show-pagination-switch="true">
-                        </table>
-                    </div>
-                    <div id="z">
-                        <br>
-                        <div class="panel-heading"><h3>体系任务</h3></div>
-                        <div id="zgzrw"></div>
-                        <table id="demo-custom-toolbar1" class="demo-add-niftycheck" data-toggle="table"
-                               data-toolbar="#zgzrw"
-                               data-search="true"
-                               data-show-refresh="true"
-                               data-show-toggle="true"
-                               data-show-columns="true"
-                               data-sort-name="id"
-                               data-page-list="[5, 10, 20]"
-                               data-page-size="10"
-                               data-striped=true"
-                               data-pagination="true" data-show-pagination-switch="true">
-                        </table>
-                    </div>
+
+                    <div class="panel-heading"><h3>省体系规章制度</h3></div>
+                    <div id="gzzd"></div>
+
+
+                    <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
+                           data-toolbar="#gzzd"
+                           data-search="true"
+                           data-show-refresh="true"
+                           data-show-toggle="true"
+                           data-show-columns="true"
+                           data-sort-name="id"
+                           data-page-list="[5, 10, 20]"
+                           data-page-size="10"
+                           data-striped=true"
+                           data-pagination="true" data-show-pagination-switch="true">
+
+                    </table>
+                    <br>
+                    <div class="panel-heading"><h3>各体系规章制度</h3></div>
+                    <div id="gzzd1"></div>
+                    <table id="demo-custom-toolbar1" class="demo-add-niftycheck" data-toggle="table"
+                           data-toolbar="#gzzd1"
+                           data-search="true"
+                           data-show-refresh="true"
+                           data-show-toggle="true"
+                           data-show-columns="true"
+                           data-sort-name="id"
+                           data-page-list="[5, 10, 20]"
+                           data-page-size="10"
+                           data-striped=true"
+                           data-pagination="true" data-show-pagination-switch="true">
+
+                    </table>
                 </div>
             </div>
         </div>
@@ -228,65 +225,19 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">
-                                        任务名称
+                                        标题
                                     </label>
                                     <div class="col-sm-6">
                                         <input class="form-control input-sm" placeholder="" name="title" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" id="frwlab">
+                                    <label class="col-sm-3 control-label">
                                         所属体系
                                     </label>
                                     <div class="col-sm-6">
-                                        <select class="form-control" id="select">
-                                            <option value="1">省体系办</option>
-                                            <option value="2">水稻产业技术体系</option>
-                                            <option value="3">小麦产业技术体系</option>
-                                            <option value="4">玉米产业技术体系</option>
-                                            <option value="5">油菜棉花产业技术体系</option>
-                                            <option value="6">生猪产业技术体系</option>
-                                            <option value="7">家禽产业技术体系</option>
-                                            <option value="8">牛羊产业技术体系</option>
-                                            <option value="9">水产产业技术体系</option>
-                                            <option value="10">蔬菜产业技术体系</option>
-                                            <option value="11">果树产业技术体系</option>
-                                            <option value="12">茶叶产业技术体系</option>
-                                            <option value="13">蚕桑中药材产业技术体系</option>
-                                            <option value="14">农业信息化产业技术体系</option>
-                                            <option value="15">农机装备应用产业技术体系</option>
-                                            <option value="16">农业生态环保与质量安全产业技术体系</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">
-                                        发布时间
-                                    </label>
-                                    <div id="demo-dp-component" class="col-sm-6">
-                                        <div class="input-group date">
-                                            <input type="text" class="form-control " name="stratTime">
-                                            <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">
-                                        结束时间
-                                    </label>
-                                    <div id="demo-dp-component1" class="col-sm-6">
-                                        <div class="input-group date">
-                                            <input type="text" class="form-control " name="endTime">
-                                            <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 col-sm-offset-1 control-label">责任人：</label>
-                                    <div class="col-sm-6">
-                                        <ul id="menu">
-
-                                        </ul>
+                                        <input class="form-control input-sm" placeholder="" name="system" type="text"
+                                               readonly>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -367,6 +318,21 @@
                 </div>
             </div>
         </div>
+        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <h3 id="sh"></h3>
+                        <button id="tg" class="btn btn-success">是</button>
+                        <button id="wtg" class="btn btn-default">否</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--MAIN NAVIGATION-->
         <!--===================================================-->
         <nav id="mainnav-container">
@@ -382,8 +348,7 @@
                             <!--================================-->
                             <div id="mainnav-profile" class="mainnav-profile">
                                 <div class="profile-wrap">
-                                    <div class="pad-btm">
-                                        <span class="label label-success pull-right">New</span>
+                                    <div class="pad-btm ce">
                                         <img class="img-circle img-sm img-border" src="img/profile-photos/1.png"
                                              alt="Profile Picture">
                                     </div>
@@ -392,7 +357,7 @@
                                             <span class="pull-right dropdown-toggle">
                                                 <i class="dropdown-caret"></i>
                                             </span>
-                                        <p class="mnp-name">Aaron Chavez</p>
+                                        <p class="mnp-name">张三</p>
                                         <span class="mnp-desc">aaron.cha@themeon.net</span>
                                     </a>
                                 </div>

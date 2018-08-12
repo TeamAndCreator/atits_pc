@@ -5,7 +5,8 @@ $(document).ready(function() {
         window.location.href="login.html";
     }
     if(rolesId.indexOf(1)!=-1){
-        $("li").css('display','block')
+        $("li").css('display','block');
+        $("#taskProgress").css('display','none')
     }
     if (rolesId.indexOf(3)!=-1||rolesId.indexOf(4)!=-1){
         $("#lab,#sta,#test,#person").css('display','block')
