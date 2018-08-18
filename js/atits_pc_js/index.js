@@ -4,7 +4,7 @@
 
 
 (function($){
-
+     //轮播图
     function slider(ele, option) {
         this.default = {
             curDisplay: 0,
@@ -92,59 +92,332 @@
         }
     })
     
-// 获取体系动态
+
+
+// 通知公告 ----- 根据不同角色，获取不同数据
+if (sessionStorage.getItem("systemId") == 1) {
     $.ajax({
-        url: 'http://47.104.26.79:8080/atits_service/dynamic/findAll1',
-        type: 'get',
-        dataType: 'json',
-        success: function(result) {
-            //console.log(result);
+        crossDomain: true,
+        url: ipValue + "/notice/findForTXB",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,      
+        success: function (result) {
+            var notices = result.data.notices;
+            $.each(notices, function(index, notice) {
+                var liEle =' <li class=" list-group-item"  ><a href="javascript:void(0)" onclick="noticeDetail('+notice.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
+                $(liEle).appendTo("#notice");
+            });
+        }
+
+    });
+} else if (rolesId.indexOf(3) != -1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/notice/findForSX",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var notices = result.data.notices;
+            $.each(notices, function(index, notice) {
+                var liEle =' <li class="list-group-item "><a href="javascript:void(0)" onclick="noticeDetail('+notice.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
+                $(liEle).appendTo("#notice");
+            });
+        }
+
+    });
+} else {
+    $.ajax({
+        crossDomain: true,
+        url: param + "/notice/findFor",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var notices = result.data.notices;
+            $.each(notices, function(index, notice) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="noticeDetail('+notice.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
+                $(liEle).appendTo("#notice");
+            });
+        }
+
+    });
+}
+// 体系动态 ----- 根据不同角色，获取不同数据
+if (sessionStorage.getItem("systemId") == 1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/dynamic/findForTXB",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,      
+        success: function (result) {
             var dynamics = result.data.dynamics;
-            var eleStr = '';
-            $.each(dynamics, function(index, dynamic) {               
-                eleStr +=  ' <li class="news-item "><a href="#" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a><span class="pull-right">'+ dynamic.date + '</span></li>'
-                $(eleStr).appendTo("#dynamic");
-            
+            $.each(dynamics, function(index, dynamic) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="dynamicDetail('+dynamic.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
+                $(liEle).appendTo("#dynamic");
             });
         }
+
     });
-//获取通知公告
-$.ajax({
-    url: 'http://47.104.26.79:8080/atits_service/notice/findAll1',
-    type: 'get',
-    dataType: 'json',
-    success: function(result) {
-        //console.log(result);
-        var notices = result.data.notices;
-        var eleStr = '';
-        $.each(notices, function(index, notice) {
-            eleStr +=  ' <li class="news-item "  > <a href="#"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 " >' + notice.title + '</a> <span class="pull-right" >'  +notice.date + ' </span></li>'
-            $(eleStr).appendTo("#notice");
-            console.log(eleStr)
+} else if (rolesId.indexOf(3) != -1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/dynamic/findForSX",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var dynamics = result.data.dynamics;
+            $.each(dynamics, function(index, dynamic) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="dynamicDetail('+dynamic.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
+                $(liEle).appendTo("#dynamic");
+            });
+        }
+
+    });
+} else {
+    $.ajax({
+        crossDomain: true,
+        url: param + "/dynamic/findFor",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var dynamics = result.data.dynamics;
+            $.each(dynamics, function(index, dynamic) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="dynamicDetail('+dynamic.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
+                $(liEle).appendTo("#dynamic");
+            });
+        }
+
+    });
+}
+// 重大活动 ----- 根据不同角色，获取不同数据
+if (sessionStorage.getItem("systemId") == 1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/activity/findForTXB",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,      
+        success: function (result) {
+            var activities = result.data.activities;
+            $.each(activities, function(index, activity) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="activityDetail('+activity.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
+                $(liEle).appendTo("#activity");
+            });
+        }
+
+    });
+} else if (rolesId.indexOf(3) != -1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/activity/findForSX",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+          var activities = result.data.activities;
+          $.each(activities, function(index, activity) {
+            var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="activityDetail('+activity.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
+            $(liEle).appendTo("#activity");
+          });
+        }
+
+    });
+} else {
+    $.ajax({
+        crossDomain: true,
+        url: param + "/activity/findFor",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+          var activities = result.data.activities;
+          $.each(activities, function(index, activity) {
+            var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="activityDetail('+activity.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
+            $(liEle).appendTo("#activity");
+          });
+        }
+
+    });
+}
+
+//规章制度
+if (sessionStorage.getItem("systemId") == 1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/regulation/findForTXB",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,      
+        success: function (result) {
+            var regulations = result.data.others;
+            $.each(regulations , function(index, regulation) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="regulationDetail('+regulation.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
+                $(liEle).appendTo("#regulation");
+            });
+        }
+
+    });
+} else if (rolesId.indexOf(3) != -1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/regulation/findForSX",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var regulations = result.data.others;
+            $.each(regulations , function(index, regulation) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="regulationDetail('+regulation.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
+                $(liEle).appendTo("#regulation");
+            });
+        }
+
+    });
+} else {
+    $.ajax({
+        crossDomain: true,
+        url: param + "/regulation/findFor",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+          var regulations = result.data.others;
+          $.each(regulations , function(index, regulation) {
+            var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="regulationDetail('+regulation.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
+            $(liEle).appendTo("#regulation");
         });
-    }
-});
-//获取重大活动
-var activityId = [];
+        }
 
-$.ajax({
-        url: 'http://47.104.26.79:8080/atits_service/activity/findAll1',
-        type: 'get',
-        dataType: 'json',
-        success: function(result) {
-            var activitys = result.data.activitys;
-            var eleStr = '';
-            console.log(result);
-            $.each(activitys, function(index, activity) {
-                eleStr +=  ' <li class="news-item "  ><a href="#"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
-                $(eleStr).appendTo("#activity");
-                activityId.push(activity.id);               
+    });
+}
+
+//重大成果
+if (sessionStorage.getItem("systemId") == 1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/harvest/findForTXB",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,      
+        success: function (result) {
+            var harvests = result.data.harvests;
+            $.each(harvests , function(index, harvest) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="harvestDetail('+harvest.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
+                $(liEle).appendTo("#harvest");
             });
         }
+
     });
-console.log(activityId);
+} else if (rolesId.indexOf(3) != -1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/harvest/findForSX",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var harvests = result.data.harvests;
+            $.each(harvests , function(index, harvest) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="harvestDetail('+harvest.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
+                $(liEle).appendTo("#harvest");
+            });
+        }
+
+    });
+} else {
+    $.ajax({
+        crossDomain: true,
+        url: param + "/harvest/findFor",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var harvests = result.data.harvests;
+            $.each(harvests , function(index, harvest) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="harvestDetail('+harvest.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
+                $(liEle).appendTo("#harvest");
+            });
+        }
+
+    });
+}
+
+//重大文件报告
+if (sessionStorage.getItem("systemId") == 1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/report/findForTXB",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,      
+        success: function (result) {
+            var reports = result.data.reports;
+            $.each(reports , function(index, report) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="reportDetail('+report.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
+                $(liEle).appendTo("#report");
+            });
+        }
+
+    });
+} else if (rolesId.indexOf(3) != -1) {
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/report/findForSX",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var reports = result.data.reports;
+            $.each(reports , function(index, report) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="reportDetail('+report.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
+                $(liEle).appendTo("#report");
+            });
+        }
+
+    });
+} else {
+    $.ajax({
+        crossDomain: true,
+        url: param + "/report/findFor",
+        dataType: "json",
+        data:{"systemId":sessionStorage.getItem("systemId")},
+        type: "get",
+        async: false,
+        success: function (result) {
+            var reports = result.data.reports;
+            $.each(reports , function(index, report) {
+                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="reportDetail('+report.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
+                $(liEle).appendTo("#report");
+            });
+        }
+
+    });
+}
 
 
+//阅读更多
  $('article').readmore({
     maxHeight: 220,
     speed: 700,
@@ -153,6 +426,44 @@ console.log(activityId);
     heightMargin: 16,
 });
 
+
+//实现分页
+
+     
+    
+
+
 })(jQuery)
 
+//通知公告
+function noticeDetail(notice_id){
+     sessionStorage.setItem("notice_id",notice_id)
+     window.open('././notice_detail.html')
+}
 
+//重大活动
+function activityDetail(activity_id){
+    sessionStorage.setItem("activity_id",activity_id)
+    window.open('././activity_detail.html')
+}
+//体系动态
+function dynamicDetail(dynamic_id){
+    sessionStorage.setItem("dynamic_id",dynamic_id)
+    window.open('././dynamic_detail.html')
+}
+//规章制度
+function regulationDetail(regulation_id){
+    sessionStorage.setItem("regulation_id",regulation_id)
+    window.open('././regulation_detail.html')
+}
+
+//重大成果
+function harvestDetail(harvest_id){
+   sessionStorage.setItem("harvest_id",harvest_id)
+   window.open('././harvest_detail.html')
+}
+//重大文件报告
+function reportDetail(report_id){
+   sessionStorage.setItem("report_id",report_id)
+   window.open('././report_detail.html')
+}
