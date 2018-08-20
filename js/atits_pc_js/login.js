@@ -58,14 +58,11 @@ function logFun(){
                     sessionStorage.setItem("systemId",systemId);
                 }
                 var roles = result.data.user.roles;
-                alert(JSON.stringify(roles))
-                alert(JSON.stringify(roles.length))
                 var rolesId=[];
                 for (var i = 0; i < roles.length;i++){
                     rolesId.push(roles[i].id)
                 }
                 rolesId=JSON.stringify(rolesId);
-                alert(rolesId);
                 sessionStorage.setItem("rolesId",rolesId);
                 sessionStorage.setItem("userId",userId);
                 sessionStorage.setItem("userName",userName);

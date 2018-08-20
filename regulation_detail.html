@@ -56,7 +56,9 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="js/demo/nifty-demo.min.js"></script>
 
-    
+    <script src="js/atits_pc_js/regulation_detail.js"></script>
+
+
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 
 </head>
@@ -369,11 +371,49 @@
                             <div class="row ">
                                 <ul class="pager pager-rounded">
                                     <li class="previous">
-                                        <a href="index.html"><i class="demo-psi-arrow-left"></i> 返回</a>
+                                        <a href="regulation.html"><i class="demo-psi-arrow-left"></i> 返回</a>
                                     </li>
                                 </ul>
-                                <div id="regulation_detail" style="min-height: 600px;text-align: center;" >
-
+                                <div class="col-lg-10 col-lg-offset-1 ">
+                                    <div class="panel panel-trans ">
+                                        <div class="panel-heading ">
+                                            <h1 class="text-main" id="title"></h1>
+                                        </div>
+                                        <div style="text-indent:2em;">
+                                            <h1 class="text-main">
+                                                <small style="color:dodgerblue;"><i
+                                                        class="fa fa-sitemap">&nbsp;&nbsp;</i>所属体系：&nbsp;&nbsp;
+                                                </small>
+                                                <small id="systemName"></small>
+                                            </h1>
+                                        </div>
+                                        <div style="text-indent:2em;">
+                                            <h1 class="text-main">
+                                                <small style="color:dodgerblue;"><i
+                                                        class="fa fa-sitemap">&nbsp;&nbsp;</i>上传日期：&nbsp;&nbsp;
+                                                </small>
+                                                <small id="date"></small>
+                                            </h1>
+                                        </div>
+                                        <div style="text-indent:2em;">
+                                            <h1 class="text-main">
+                                                <small style="color:dodgerblue;"><i
+                                                        class="fa fa-sitemap">&nbsp;&nbsp;</i>详细内容：&nbsp;&nbsp;
+                                                </small>
+                                                <br>
+                                                <br>
+                                                <small id="content"></small>
+                                            </h1>
+                                        </div>
+                                        <div style="text-indent:2em;">
+                                            <h1 class="text-main">
+                                                <small style="color:dodgerblue;"><i
+                                                        class="fa fa-sitemap">&nbsp;&nbsp;</i>文件：&nbsp;&nbsp;
+                                                </small>
+                                                <div id="a" style="text-align: center"></div>
+                                            </h1>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -648,26 +688,5 @@
 <!-- END OF CONTAINER -->
 
 </body>
-<script>
-  
-        $(document).ready(function () {
-          $.ajax({
-            url: ipValue + '/regulation/findById',
-            type: 'get',
-            data: {
-                'id': sessionStorage.getItem("regulation_id")
-            },
-            dataType: 'json',
-            success: function (result) {
-                //console.log(JSON.stringify(result));
-               var regulation = result.data.regulation;
-               var Ele = '<h2>' + regulation.title + '</h2><h5><span>来源:' + regulation.system.systemName + '</span>&nbsp;&nbsp;<span>编辑人:'+regulation.user.profile.name+'</span> &nbsp;&nbsp;<span>时间:'+regulation.date+'</span></h5><hr/><div class="widget-main">'+regulation.content+'</div>';
-               $(Ele).appendTo("#regulation_detail");
-                
-            }
-          })
 
-        })
-
-</script>
 </html>
