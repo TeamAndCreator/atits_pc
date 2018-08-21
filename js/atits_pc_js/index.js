@@ -106,7 +106,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var notices = result.data.notices;
             $.each(notices, function(index, notice) {
-                var liEle =' <li class=" list-group-item"  ><a href="javascript:void(0)" onclick="noticeDetail('+notice.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
+                var liEle =' <li class="list-group-item "><a  href="././notice_detail.html?id='+notice.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
                 $(liEle).appendTo("#notice");
             });
         }
@@ -123,7 +123,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var notices = result.data.notices;
             $.each(notices, function(index, notice) {
-                var liEle =' <li class="list-group-item "><a href="javascript:void(0)" onclick="noticeDetail('+notice.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
+                var liEle =' <li class="list-group-item "><a href="././notice_detail.html?id='+notice.id+'" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
                 $(liEle).appendTo("#notice");
             });
         }
@@ -140,7 +140,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var notices = result.data.notices;
             $.each(notices, function(index, notice) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="noticeDetail('+notice.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././notice_detail.html?id='+notice.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + notice.title +'</a> <span class="pull-right"> '+ notice.date + '</span></li>'
                 $(liEle).appendTo("#notice");
             });
         }
@@ -159,7 +159,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var dynamics = result.data.dynamics;
             $.each(dynamics, function(index, dynamic) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="dynamicDetail('+dynamic.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a  href="././dynamic_detail.html?id='+dynamic.id+'" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
                 $(liEle).appendTo("#dynamic");
             });
         }
@@ -176,7 +176,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var dynamics = result.data.dynamics;
             $.each(dynamics, function(index, dynamic) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="dynamicDetail('+dynamic.id+')" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././dynamic_detail.html?id='+dynamic.id+'" class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
                 $(liEle).appendTo("#dynamic");
             });
         }
@@ -193,7 +193,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var dynamics = result.data.dynamics;
             $.each(dynamics, function(index, dynamic) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="dynamicDetail('+dynamic.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././dynamic_detail.html?id='+dynamic.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + dynamic.title +'</a> <span class="pull-right"> '+ dynamic.date + '</span></li>'
                 $(liEle).appendTo("#dynamic");
             });
         }
@@ -212,7 +212,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var activities = result.data.activities;
             $.each(activities, function(index, activity) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="activityDetail('+activity.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././activity_detail.html?id='+activity.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
                 $(liEle).appendTo("#activity");
             });
         }
@@ -229,7 +229,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
           var activities = result.data.activities;
           $.each(activities, function(index, activity) {
-            var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="activityDetail('+activity.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
+            var liEle =' <li class="list-group-item "  ><a href="././activity_detail.html?id='+activity.id+'"   class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
             $(liEle).appendTo("#activity");
           });
         }
@@ -246,7 +246,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
           var activities = result.data.activities;
           $.each(activities, function(index, activity) {
-            var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="activityDetail('+activity.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
+            var liEle =' <li class="list-group-item "  ><a href="././activity_detail.html?id='+activity.id+'"   class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + activity.title +'</a> <span class="pull-right"> '+ activity.date + '</span></li>'
             $(liEle).appendTo("#activity");
           });
         }
@@ -266,7 +266,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var regulations = result.data.others;
             $.each(regulations , function(index, regulation) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="regulationDetail('+regulation.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././regulation_detail.html?id='+regulation.id+'"   class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
                 $(liEle).appendTo("#regulation");
             });
         }
@@ -283,7 +283,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var regulations = result.data.others;
             $.each(regulations , function(index, regulation) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="regulationDetail('+regulation.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././regulation_detail.html?id='+regulation.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
                 $(liEle).appendTo("#regulation");
             });
         }
@@ -300,7 +300,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
           var regulations = result.data.others;
           $.each(regulations , function(index, regulation) {
-            var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="regulationDetail('+regulation.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
+            var liEle =' <li class="list-group-item "  ><a href="././regulation_detail.html?id='+regulation.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + regulation.title +'</a> <span class="pull-right"> '+ regulation.date + '</span></li>'
             $(liEle).appendTo("#regulation");
         });
         }
@@ -320,7 +320,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var harvests = result.data.harvests;
             $.each(harvests , function(index, harvest) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="harvestDetail('+harvest.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././harvest_detail.html?id='+harvest.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
                 $(liEle).appendTo("#harvest");
             });
         }
@@ -337,7 +337,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var harvests = result.data.harvests;
             $.each(harvests , function(index, harvest) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="harvestDetail('+harvest.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././harvest_detail.html?id='+harvest.id+'"    class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
                 $(liEle).appendTo("#harvest");
             });
         }
@@ -354,7 +354,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var harvests = result.data.harvests;
             $.each(harvests , function(index, harvest) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="harvestDetail('+harvest.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././harvest_detail.html?id='+harvest.id+'"    class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + harvest.title +'</a> <span class="pull-right"> '+ harvest.date + '</span></li>'
                 $(liEle).appendTo("#harvest");
             });
         }
@@ -374,7 +374,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var reports = result.data.reports;
             $.each(reports , function(index, report) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="reportDetail('+report.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././report_detail.html?id='+report.id+'"    class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
                 $(liEle).appendTo("#report");
             });
         }
@@ -391,7 +391,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var reports = result.data.reports;
             $.each(reports , function(index, report) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="reportDetail('+report.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
+                var liEle =' <li class="list-group-item "  ><a href="././report_detail.html?id='+report.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
                 $(liEle).appendTo("#report");
             });
         }
@@ -408,15 +408,13 @@ if (sessionStorage.getItem("systemId") == 1) {
         success: function (result) {
             var reports = result.data.reports;
             $.each(reports , function(index, report) {
-                var liEle =' <li class="list-group-item "  ><a href="javascript:void(0)" onclick="reportDetail('+report.id+')"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
+                var liEle =' <li class="list-group-item "><a href="././report_detail.html?id='+report.id+'"  class="right" style="display:inline-block;width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#758697 ">' + report.title +'</a> <span class="pull-right"> '+ report.date + '</span></li>'
                 $(liEle).appendTo("#report");
             });
         }
 
     });
 }
-
-
 //阅读更多
  $('article').readmore({
     maxHeight: 220,
@@ -435,35 +433,4 @@ if (sessionStorage.getItem("systemId") == 1) {
 
 })(jQuery)
 
-//通知公告
-function noticeDetail(notice_id){
-     sessionStorage.setItem("notice_id",notice_id)
-     window.open('././notice_detail.html')
-}
 
-//重大活动
-function activityDetail(activity_id){
-    sessionStorage.setItem("activity_id",activity_id)
-    window.open('././activity_detail.html')
-}
-//体系动态
-function dynamicDetail(dynamic_id){
-    sessionStorage.setItem("dynamic_id",dynamic_id)
-    window.open('././dynamic_detail.html')
-}
-//规章制度
-function regulationDetail(regulation_id){
-    sessionStorage.setItem("regulation_id",regulation_id)
-    window.open('././regulation_detail.html')
-}
-
-//重大成果
-function harvestDetail(harvest_id){
-   sessionStorage.setItem("harvest_id",harvest_id)
-   window.open('././harvest_detail.html')
-}
-//重大文件报告
-function reportDetail(report_id){
-   sessionStorage.setItem("report_id",report_id)
-   window.open('././report_detail.html')
-}
