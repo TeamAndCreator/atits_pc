@@ -236,6 +236,9 @@ $(document).ready(function () {
                 data: formData,
                 contentType: false,
                 processData: false,
+                success:function () {
+                    window.location.reload();
+                }
             });
 
 
@@ -429,6 +432,9 @@ $(document).ready(function () {
                 data: formData,
                 contentType: false,
                 processData: false,
+                success:function () {
+                    window.location.reload();
+                }
             });
 
 
