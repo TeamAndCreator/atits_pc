@@ -12,5 +12,8 @@ $(document).ready(function() {
         $("#lab,#sta,#test,#person").css('display','block')
     }
 
+    $(".mnp-name").text(sessionStorage.getItem("userName"))
+
+
 
 })

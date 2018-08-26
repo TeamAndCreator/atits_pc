@@ -137,11 +137,11 @@ $(document).ready(function () {
     if (rolesId.indexOf(1) != -1) {
         $('#gzzd').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
-    }else if(rolesId.indexOf(3)!=-1){
+            "                           <button class=\"btn btn-danger\" onclick=\"delete1()\" data-toggle=\"modal\" data-target=\"#delete_modal1\"><i class=\"demo-pli-cross\"></i>删除</button>")
+    } else if (rolesId.indexOf(3) != -1) {
         $('#gzzd1').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete1'><i class=\"demo-pli-cross\"></i>删除</button>")
+            "                           <button class=\"btn btn-danger\" onclick=\"delete2()\" data-toggle=\"modal\" data-target=\"#delete_modal2\"><i class=\"demo-pli-cross\"></i>删除</button>")
     }
 
 //日历
@@ -158,7 +158,7 @@ $(document).ready(function () {
             async: false,
             success: function (result) {
                 txb = result.data.txb;
-                others=result.data.others
+                others = result.data.others
             }
 
         });
@@ -167,12 +167,12 @@ $(document).ready(function () {
             crossDomain: true,
             url: ipValue + "/regulation/findForSX",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
                 txb = result.data.txb;
-                others=result.data.others
+                others = result.data.others
             }
 
         });
@@ -181,12 +181,12 @@ $(document).ready(function () {
             crossDomain: true,
             url: ipValue + "/regulation/findFor",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
                 txb = result.data.txb;
-                others=result.data.others
+                others = result.data.others
             }
 
         });
@@ -197,7 +197,7 @@ $(document).ready(function () {
         data: txb,
         columns: [{
             checkbox: true,
-            formatter:'check'
+            formatter: 'check'
         }, {
             field: 'system.systemName',
             align: 'center',
@@ -229,7 +229,7 @@ $(document).ready(function () {
         data: others,
         columns: [{
             checkbox: true,
-            formatter:'check'
+            formatter: 'check'
         }, {
             field: 'system.systemName',
             align: 'center',
@@ -259,12 +259,12 @@ $(document).ready(function () {
     $('#add').click(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
-        var content=$('#demo-summernote').summernote('code');
+        var content = $('#demo-summernote').summernote('code');
         formData.append("title", title);
-        formData.append("content",content);//具体内容
+        formData.append("content", content);//具体内容
         formData.append("system.id", sessionStorage.getItem("systemId"));
         formData.append("user.id", sessionStorage.getItem("userId"));
-        if (rolesId.indexOf(1)!=-1){
+        if (rolesId.indexOf(1) != -1) {
             formData.append("state", 1);
         }
         //将文件数组添加进来
@@ -279,7 +279,7 @@ $(document).ready(function () {
             data: formData,
             contentType: false,
             processData: false,
-            success:function () {
+            success: function () {
                 window.location.reload();
             }
         });
@@ -288,45 +288,54 @@ $(document).ready(function () {
     });
 
 //删除
-    $('#delete').click(function () {
-        var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
-        var b = [];
-        for (var i = 0; i < a.length; i++) {
-            b[i] = a[i].id
-        }
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/regulation/deleteByIds',
-            data: {_method: "DELETE", "idList": b},
-            async: false,
-            traditional: true,
-            success: function () {
-                window.location.reload()
+    $('#delete1').click(function () {
+        if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+            $("#delete_modal1").modal('hide')
+        } else {
+            var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
+            var b = [];
+            for (var i = 0; i < a.length; i++) {
+                b[i] = a[i].id
             }
-        })
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/regulation/deleteByIds',
+                data: {_method: "DELETE", "idList": b},
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload()
+                }
+            })
+        }
     })
 
-    $('#delete1').click(function () {
-        var a = $("#demo-custom-toolbar1").bootstrapTable('getSelections');
-        var b = [];
-        for (var i = 0; i < a.length; i++) {
-            b[i] = a[i].id
-        }
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/regulation/deleteByIds',
-            data: {_method: "DELETE", "idList": b},
-            async: false,
-            traditional: true,
-            success: function () {
-                window.location.reload()
+    $('#delete2').click(function () {
+        if ($("#demo-custom-toolbar1").bootstrapTable('getSelections').length == 0) {
+            $("#delete_modal2").modal('hide')
+        } else {
+            var a = $("#demo-custom-toolbar1").bootstrapTable('getSelections');
+            var b = [];
+            for (var i = 0; i < a.length; i++) {
+                b[i] = a[i].id
             }
-        })
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/regulation/deleteByIds',
+                data: {_method: "DELETE", "idList": b},
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload()
+                }
+            })
+        }
     })
 
 });
+
 //checkbox
 function check(value, row) {
     if (row.system.id == sessionStorage.getItem('systemId')) {
@@ -343,7 +352,7 @@ function check(value, row) {
 
 //超链接
 function invoiceFormatter(value, row) {
-    return '<a href="regulation_detail.html?id='+row.id+'" class="btn-link" >' + value + '</a>';
+    return '<a href="regulation_detail.html?id=' + row.id + '" class="btn-link" >' + value + '</a>';
 }
 
 //状态
@@ -400,4 +409,21 @@ function updateState(value, regulationId) {
             }
         })
     })
+}
+
+//判断有没有选中需删除的项
+function delete1() {
+    if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h31").text("请至少选择一条");
+    } else {
+        $("#delete_h31").text("是否删除");
+    }
+}
+
+function delete2() {
+    if ($("#demo-custom-toolbar1").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h32").text("请至少选择一条");
+    } else {
+        $("#delete_h32").text("是否删除");
+    }
 }

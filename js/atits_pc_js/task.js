@@ -137,7 +137,7 @@ $(document).ready(function () {
         $('#z').css('display', 'none');
         $('#fgzrw').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
+            "                           <button class=\"btn btn-danger\" onclick=\"delete1()\" data-toggle=\"modal\" data-target=\"#delete_modalf\"><i class=\"demo-pli-cross\"></i>删除</button>")
         var tasks;
         $.ajax({
             crossDomain: true,
@@ -205,7 +205,7 @@ $(document).ready(function () {
         }
         $('#menu').html(htmlStr);
         //只能选一个责任人
-        $('#menu').find('input[type="checkbox"]').bind('click', function(){
+        $('#menu').find('input[type="checkbox"]').bind('click', function () {
             $('#menu').find('input[type="checkbox"]').not(this).attr("checked", false);
         });
         //(父任务)获取并发送添加表单
@@ -213,13 +213,13 @@ $(document).ready(function () {
             var formData = new FormData();
             var title = $('input[name="title"]').val();
             var content = $('#demo-summernote').summernote('code');
-            var systemId=$("#select option:selected").val();
-            var userId=$("input[name = 'users']:checked").val();
+            var systemId = $("#select option:selected").val();
+            var userId = $("input[name = 'users']:checked").val();
             var stratTime = $('input[name="stratTime"]').val();
             var endTime = $('input[name="endTime"]').val();
             formData.append("title", title);
             formData.append("content", content);//具体内容
-            formData.append("system.id",systemId);
+            formData.append("system.id", systemId);
             formData.append("user.id", userId);
             formData.append("stratTime", stratTime);
             formData.append("endTime", endTime);
@@ -236,7 +236,7 @@ $(document).ready(function () {
                 data: formData,
                 contentType: false,
                 processData: false,
-                success:function () {
+                success: function () {
                     window.location.reload();
                 }
             });
@@ -244,28 +244,32 @@ $(document).ready(function () {
 
         });
         //(父任务)删除
-        $('#delete').click(function () {
-            var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
-            var b = [];
-            for (var i = 0; i < a.length; i++) {
-                b[i] = a[i].id
-            }
-            $.ajax({
-                type: 'post',
-                dataType: 'JSON',
-                url: ipValue + '/task/deleteByIds',
-                data: {_method: "DELETE", "idList": b},
-                async: false,
-                traditional: true,
-                success: function () {
-                    window.location.reload()
+        $('#deletef').click(function () {
+            if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+                $("#delete_modalf").modal('hide')
+            } else {
+                var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
+                var b = [];
+                for (var i = 0; i < a.length; i++) {
+                    b[i] = a[i].id
                 }
-            })
+                $.ajax({
+                    type: 'post',
+                    dataType: 'JSON',
+                    url: ipValue + '/task/deleteByIds',
+                    data: {_method: "DELETE", "idList": b},
+                    async: false,
+                    traditional: true,
+                    success: function () {
+                        window.location.reload()
+                    }
+                })
+            }
         })
     } else if (rolesId.indexOf(3) != -1) {//设置首席的页面
         $('#zgzrw').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete1'><i class=\"demo-pli-cross\"></i>删除</button>")
+            "                           <button class=\"btn btn-danger\" onclick=\"delete2()\" data-toggle=\"modal\" data-target=\"#delete_modalz\"><i class=\"demo-pli-cross\"></i>删除</button>")
         //获取父任务数据
         var ftasks;
         $.ajax({
@@ -283,8 +287,6 @@ $(document).ready(function () {
             idField: 'id',
             data: ftasks,
             columns: [{
-                checkbox: true,
-            }, {
                 field: 'system.systemName',
                 align: 'center',
                 title: '所属体系'
@@ -316,7 +318,7 @@ $(document).ready(function () {
         $.ajax({
             crossDomain: true,
             url: ipValue + "/subTask/findBySystemId",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             dataType: "json",
             type: "get",
             async: false,
@@ -334,7 +336,7 @@ $(document).ready(function () {
                 field: 'fatherTask.title',
                 align: 'center',
                 title: '父任务',
-                formatter:'fatherTask'
+                formatter: 'fatherTask'
             }, {
                 field: 'title',
                 align: 'center',
@@ -360,11 +362,11 @@ $(document).ready(function () {
         });
         //写入父任务
         var ftasks2;
-        var html2='';
+        var html2 = '';
         $.ajax({
             crossDomain: true,
             url: ipValue + "/task/findBySysId",
-            data:{"sysId":sessionStorage.getItem("systemId")},
+            data: {"sysId": sessionStorage.getItem("systemId")},
             dataType: "json",
             type: "get",
             async: false,
@@ -373,17 +375,17 @@ $(document).ready(function () {
             }
         });
         for (var i = 0; i < ftasks2.length; i++) {
-            html2+="<option value="+ftasks2[i].id+">"+ftasks2[i].title+"</option>"
+            html2 += "<option value=" + ftasks2[i].id + ">" + ftasks2[i].title + "</option>"
         }
         $('#frwlab').text("父任务");
         $('#select').html(html2)
         //写入责任人
         var bearers;
-        var html3='';
+        var html3 = '';
         $.ajax({
             crossDomain: true,
             url: ipValue + "/user/findUserInSystem",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             dataType: "json",
             type: "get",
             async: false,
@@ -392,14 +394,14 @@ $(document).ready(function () {
             }
         });
         for (var i = 0; i < bearers.length; i++) {
-            html3+='<li class="checkbox">\n' +
+            html3 += '<li class="checkbox">\n' +
                 '   <input class="magic-checkbox" type="checkbox" name="users" value="' + bearers[i].id + '">\n' +
                 '             <label for="demo-checkbox-11"> ' + bearers[i].profile.name + '</label>\n' +
                 '        </li>';
         }
         $('#menu').html(html3)
         //只能选一个责任人
-        $('#menu').find('input[type="checkbox"]').bind('click', function(){
+        $('#menu').find('input[type="checkbox"]').bind('click', function () {
             $('#menu').find('input[type="checkbox"]').not(this).attr("checked", false);
         });
         //(子任务)获取并发送添加表单
@@ -407,14 +409,14 @@ $(document).ready(function () {
             var formData = new FormData();
             var title = $('input[name="title"]').val();
             var content = $('#demo-summernote').summernote('code');
-            var fatherTaskId=$("#select option:selected").val();
-            var bearerId=$("input[name = 'users']:checked").val();
+            var fatherTaskId = $("#select option:selected").val();
+            var bearerId = $("input[name = 'users']:checked").val();
             var stratTime = $('input[name="stratTime"]').val();
             var endTime = $('input[name="endTime"]').val();
-            var systemId=sessionStorage.getItem("systemId");
+            var systemId = sessionStorage.getItem("systemId");
             formData.append("title", title);
             formData.append("content", content);//具体内容
-            formData.append("fatherTask.id",fatherTaskId);
+            formData.append("fatherTask.id", fatherTaskId);
             formData.append("bearer.id", bearerId);
             formData.append("startTime", stratTime);
             formData.append("endTime", endTime);
@@ -432,7 +434,7 @@ $(document).ready(function () {
                 data: formData,
                 contentType: false,
                 processData: false,
-                success:function () {
+                success: function () {
                     window.location.reload();
                 }
             });
@@ -440,23 +442,27 @@ $(document).ready(function () {
 
         });
         //(子任务)删除
-        $('#delete1').click(function () {
-            var a = $("#demo-custom-toolbar1").bootstrapTable('getSelections');
-            var b = [];
-            for (var i = 0; i < a.length; i++) {
-                b[i] = a[i].id
-            }
-            $.ajax({
-                type: 'post',
-                dataType: 'JSON',
-                url: ipValue + '/subTask/deleteByIds',
-                data: {_method: "DELETE", "idList": b},
-                async: false,
-                traditional: true,
-                success: function () {
-                    window.location.reload()
+        $('#deletez').click(function () {
+            if ($("#demo-custom-toolbar1").bootstrapTable('getSelections').length == 0) {
+                $("#delete_modalz").modal('hide')
+            } else {
+                var a = $("#demo-custom-toolbar1").bootstrapTable('getSelections');
+                var b = [];
+                for (var i = 0; i < a.length; i++) {
+                    b[i] = a[i].id
                 }
-            })
+                $.ajax({
+                    type: 'post',
+                    dataType: 'JSON',
+                    url: ipValue + '/subTask/deleteByIds',
+                    data: {_method: "DELETE", "idList": b},
+                    async: false,
+                    traditional: true,
+                    success: function () {
+                        window.location.reload()
+                    }
+                })
+            }
         })
     } else {
         $('#f').css('display', 'none');
@@ -465,7 +471,7 @@ $(document).ready(function () {
         $.ajax({
             crossDomain: true,
             url: ipValue + "/subTask/findByBearerId",
-            data:{"bearerId":sessionStorage.getItem("userId")},
+            data: {"bearerId": sessionStorage.getItem("userId")},
             dataType: "json",
             type: "get",
             async: false,
@@ -483,7 +489,7 @@ $(document).ready(function () {
                 field: 'fatherTask.title',
                 align: 'center',
                 title: '父任务',
-                formatter:'fatherTask'
+                formatter: 'fatherTask'
             }, {
                 field: 'title',
                 align: 'center',
@@ -516,9 +522,10 @@ $(document).ready(function () {
     $('#demo-dp-component3 .input-group.date').datepicker({autoclose: true});
 
 });
+
 //超链接(子任务)
 function subTask(value, row) {
-    return '<a href="subTask_detail.html?id='+row.id+'"class="btn-link" >' + value + '</a>'
+    return '<a href="subTask_detail.html?id=' + row.id + '"class="btn-link" >' + value + '</a>'
 }
 
 //超链接(子任务表中的父任务)
@@ -529,4 +536,20 @@ function fatherTask(value, row) {
 //超链接(父任务)
 function invoiceFormatter(value, row) {
     return '<a href="task_detail.html?id=' + row.id + '" class="btn-link" >' + value + '</a>';
+}
+//判断有没有选中需删除的项
+function delete1() {
+    if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h3f").text("请至少选择一条");
+    } else {
+        $("#delete_h3f").text("是否删除");
+    }
+}
+//判断有没有选中需删除的项
+function delete2() {
+    if ($("#demo-custom-toolbar1").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h3z").text("请至少选择一条");
+    } else {
+        $("#delete_h3z").text("是否删除");
+    }
 }

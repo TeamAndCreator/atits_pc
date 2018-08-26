@@ -134,10 +134,10 @@ $(document).ready(function () {
 
     $('input[name="system"]').val(sessionStorage.getItem("systemName"));
 //判断当前用户角色，决定是否添加添加删除框
-    if (rolesId.indexOf(1) != -1||rolesId.indexOf(3) != -1) {
+    if (rolesId.indexOf(1) != -1 || rolesId.indexOf(3) != -1) {
         $('#zdcg').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
-            "                           <button class=\"btn btn-danger\" id='delete'><i class=\"demo-pli-cross\"></i>删除</button>")
+            "                           <button class=\"btn btn-danger\" onclick=\"delete1()\" data-toggle=\"modal\" data-target=\"#delete_modal\"><i class=\"demo-pli-cross\"></i>删除</button>")
     }
 
 //日历
@@ -161,7 +161,7 @@ $(document).ready(function () {
             crossDomain: true,
             url: ipValue + "/harvest/findForSX",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
@@ -174,7 +174,7 @@ $(document).ready(function () {
             crossDomain: true,
             url: ipValue + "/harvest/findFor",
             dataType: "json",
-            data:{"systemId":sessionStorage.getItem("systemId")},
+            data: {"systemId": sessionStorage.getItem("systemId")},
             type: "get",
             async: false,
             success: function (result) {
@@ -189,7 +189,7 @@ $(document).ready(function () {
         data: data,
         columns: [{
             checkbox: true,
-            formatter:'check'
+            formatter: 'check'
         }, {
             field: 'system.systemName',
             align: 'center',
@@ -219,9 +219,9 @@ $(document).ready(function () {
     $('#add').click(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
-        var content=$('#demo-summernote').summernote('code');
+        var content = $('#demo-summernote').summernote('code');
         formData.append("title", title);
-        formData.append("content",content);//具体内容
+        formData.append("content", content);//具体内容
         formData.append("system.id", sessionStorage.getItem("systemId"));
         formData.append("user.id", sessionStorage.getItem("userId"));
         //将文件数组添加进来
@@ -236,7 +236,7 @@ $(document).ready(function () {
             data: formData,
             contentType: false,
             processData: false,
-            success:function () {
+            success: function () {
                 window.location.reload();
             }
         });
@@ -245,26 +245,31 @@ $(document).ready(function () {
     });
 
 //删除
-    $('#delete').click(function () {
-        var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
-        var b = [];
-        for (var i = 0; i < a.length; i++) {
-            b[i] = a[i].id
-        }
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/harvest/deleteByIds',
-            data: {_method: "DELETE", "idList": b},
-            async: false,
-            traditional: true,
-            success: function () {
-                window.location.reload()
+    $('#delete_btn').click(function () {
+        if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+            $("#delete_modal").modal('hide')
+        } else {
+            var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
+            var b = [];
+            for (var i = 0; i < a.length; i++) {
+                b[i] = a[i].id
             }
-        })
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/harvest/deleteByIds',
+                data: {_method: "DELETE", "idList": b},
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload()
+                }
+            })
+        }
     })
 
 });
+
 //checkbox
 function check(value, row) {
     if (row.system.id == sessionStorage.getItem('systemId')) {
@@ -281,7 +286,7 @@ function check(value, row) {
 
 //超链接
 function invoiceFormatter(value, row) {
-    return '<a href="harvest_detail.html?id='+row.id+'" class="btn-link" >' + value + '</a>';
+    return '<a href="harvest_detail.html?id=' + row.id + '" class="btn-link" >' + value + '</a>';
 }
 
 //状态
@@ -338,4 +343,13 @@ function updateState(value, harvestId) {
             }
         })
     })
+}
+
+//判断有没有选中需删除的项
+function delete1() {
+    if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h3").text("请至少选择一条");
+    } else {
+        $("#delete_h3").text("是否删除");
+    }
 }

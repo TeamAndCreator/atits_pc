@@ -131,14 +131,16 @@ $(document).ready(function () {
         $('#demo-summernote-edit').summernote('destroy');
     });
 
+    $("#gzjz").html('<button class="btn btn-success" data-toggle="modal" data-target="#demo-lg-modal" ><i class="demo-pli-plus"></i>添加</button>\n' +
+        '                        <button class="btn btn-danger" onclick="delete1()" data-toggle="modal" data-target="#delete_modal"><i class="demo-pli-cross"></i>删除</button>')
 
 //写入体系任务
     var subTasks;
-    var html2='';
+    var html2 = '';
     $.ajax({
         crossDomain: true,
         url: ipValue + "/subTask/findByBearerId",
-        data:{"bearerId":sessionStorage.getItem("userId")},
+        data: {"bearerId": sessionStorage.getItem("userId")},
         dataType: "json",
         type: "get",
         async: false,
@@ -147,7 +149,7 @@ $(document).ready(function () {
         }
     });
     for (var i = 0; i < subTasks.length; i++) {
-        html2+="<option value="+subTasks[i].id+">"+subTasks[i].title+"</option>"
+        html2 += "<option value=" + subTasks[i].id + ">" + subTasks[i].title + "</option>"
     }
     $('#select').html(html2);
 
@@ -220,7 +222,7 @@ $(document).ready(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
         var content = $('#demo-summernote').summernote('code');
-        var subTaskId=$("#select option:selected").val();
+        var subTaskId = $("#select option:selected").val();
         formData.append("title", title);
         formData.append("content", content);//具体内容
         formData.append("subTask.id", subTaskId);
@@ -238,7 +240,7 @@ $(document).ready(function () {
             data: formData,
             contentType: false,
             processData: false,
-            success:function () {
+            success: function () {
                 window.location.reload();
             }
         });
@@ -247,23 +249,27 @@ $(document).ready(function () {
     });
 
 //删除
-    $('#delete').click(function () {
-        var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
-        var b = [];
-        for (var i = 0; i < a.length; i++) {
-            b[i] = a[i].id
-        }
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/taskProgress/deleteByIds',
-            data: {_method: "DELETE", "idList": b},
-            async: false,
-            traditional: true,
-            success: function () {
-                window.location.reload()
+    $('#delete_btn').click(function () {
+        if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+            $("#delete_modal").modal('hide')
+        } else {
+            var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
+            var b = [];
+            for (var i = 0; i < a.length; i++) {
+                b[i] = a[i].id
             }
-        })
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/taskProgress/deleteByIds',
+                data: {_method: "DELETE", "idList": b},
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload()
+                }
+            })
+        }
     })
 
 });
@@ -344,4 +350,13 @@ function updateState(value, harvestId) {
             }
         })
     })
+}
+
+//判断有没有选中需删除的项
+function delete1() {
+    if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h3").text("请至少选择一条");
+    } else {
+        $("#delete_h3").text("是否删除");
+    }
 }

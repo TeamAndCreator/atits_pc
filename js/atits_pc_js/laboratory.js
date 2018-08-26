@@ -9,7 +9,7 @@ $(document).ready(function () {
         $('#row1').html('<button id="add_btn" class="btn btn-success" data-toggle="modal"\n' +
             '                                    data-target="#demo-lg-modal"><i class="demo-pli-plus"></i>添加\n' +
             '                            </button>\n' +
-            '                            <button id="delete_btn" class="btn btn-danger"><i class="demo-pli-cross"></i>删除\n' +
+            '                            <button onclick="delete1()" data-toggle="modal" data-target="#delete_modal" class="btn btn-danger"><i class="demo-pli-cross"></i>删除\n' +
             '                            </button>')
         $("input[ name = 'system']").val(sessionStorage.getItem("systemName"));
     }
@@ -40,7 +40,7 @@ $(document).ready(function () {
             field: 'laboratory.labName',
             align: 'center',
             title: '名称',
-            formatter:'detail'
+            formatter: 'detail'
         }, {
             field: 'zr',
             align: 'center',
@@ -68,14 +68,14 @@ $(document).ready(function () {
             "labName": "",
             "company": "",
             "system.id": "",
-            "content":"",
+            "content": "",
             "time": ""
         }
         laboratory.labName = $("input[ name = 'labName']").val();
         laboratory.company = $("input[ name = 'company']").val();
         laboratory["system.id"] = sessionStorage.getItem('systemId');
         laboratory.time = $("input[ name = 'time']").val();
-        laboratory.content=$('#content').val();
+        laboratory.content = $('#content').val();
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
@@ -87,22 +87,26 @@ $(document).ready(function () {
     });
 //发送删除数据
     $('#delete_btn').click(function () {
-        var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
-        var idList = [];
-        for (var i = 0; i < a.length; i++) {
-            idList[i]=a[i].laboratory.id;
-        }
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: ipValue + '/laboratory/deleteByIds',
-            data: {_method: "DELETE", "idList": idList},
-            async: false,
-            traditional: true,
-            success: function () {
-                window.location.reload()
+        if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+            $("#delete_modal").modal('hide')
+        } else {
+            var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
+            var idList = [];
+            for (var i = 0; i < a.length; i++) {
+                idList[i] = a[i].laboratory.id;
             }
-        })
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/laboratory/deleteByIds',
+                data: {_method: "DELETE", "idList": idList},
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload()
+                }
+            })
+        }
     })
 });
 
@@ -139,5 +143,14 @@ function updateState(id) {
 
 //跳转详情页
 function detail(value, row) {
-    return '<a href="laboratory_detail.html?labId='+row.laboratory.id+'">'+value+'</a>'
+    return '<a href="laboratory_detail.html?labId=' + row.laboratory.id + '">' + value + '</a>'
+}
+
+//判断有没有选中需删除的项
+function delete1() {
+    if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
+        $("#delete_h3").text("请至少选择一条");
+    } else {
+        $("#delete_h3").text("是否删除");
+    }
 }
