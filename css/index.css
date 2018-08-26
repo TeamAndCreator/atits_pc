@@ -23,25 +23,33 @@
     margin-top: -100px;
     transition: transform 0.5s ease-in-out;
 }
-.wrapper li img{
+.wrapper li a{
+    position: absolute;
+    width: 200px;
+    height: 120px; 
+    display : inline-block;
+    
+    font-size : 9px;
+    color :#3b4d56;
+    bottom : -18px;
+   
+}
+.wrapper li a img{
     position: absolute;
     width: 200px;
     height: 120px;
 }
-.wrapper li a{
-    position: absolute;
-    width: 200px;
-    display : inline-block;
-    text-align: center;
-    font-size : 9px;
-    color :#3b4d56;
-    bottom : -18px;
-    overflow: hidden;
+.wrapper li a span{
+     position: absolute;
+     margin-top: 120px;
+     width:200px;
+     text-align: center;
+     overflow: hidden;
 }
-.wrapper li a:hover{
+.wrapper li a span:hover{
     color :#2fa0ec; 
 }
-.wrapper .on a{
+.wrapper .on a span{
     font-size:11px;
 }
 

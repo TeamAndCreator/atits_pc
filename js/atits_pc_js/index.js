@@ -132,7 +132,7 @@ if (sessionStorage.getItem("systemId") == 1) {
 } else {
     $.ajax({
         crossDomain: true,
-        url: param + "/notice/findFor",
+        url: ipValue + "/notice/findFor",
         dataType: "json",
         data:{"systemId":sessionStorage.getItem("systemId")},
         type: "get",
@@ -185,7 +185,7 @@ if (sessionStorage.getItem("systemId") == 1) {
 } else {
     $.ajax({
         crossDomain: true,
-        url: param + "/dynamic/findFor",
+        url: ipValue + "/dynamic/findFor",
         dataType: "json",
         data:{"systemId":sessionStorage.getItem("systemId")},
         type: "get",
@@ -238,7 +238,7 @@ if (sessionStorage.getItem("systemId") == 1) {
 } else {
     $.ajax({
         crossDomain: true,
-        url: param + "/activity/findFor",
+        url: ipValue + "/activity/findFor",
         dataType: "json",
         data:{"systemId":sessionStorage.getItem("systemId")},
         type: "get",
@@ -292,7 +292,7 @@ if (sessionStorage.getItem("systemId") == 1) {
 } else {
     $.ajax({
         crossDomain: true,
-        url: param + "/regulation/findFor",
+        url:ipValue + "/regulation/findFor",
         dataType: "json",
         data:{"systemId":sessionStorage.getItem("systemId")},
         type: "get",
@@ -346,7 +346,7 @@ if (sessionStorage.getItem("systemId") == 1) {
 } else {
     $.ajax({
         crossDomain: true,
-        url: param + "/harvest/findFor",
+        url: ipValue + "/harvest/findFor",
         dataType: "json",
         data:{"systemId":sessionStorage.getItem("systemId")},
         type: "get",
@@ -400,7 +400,7 @@ if (sessionStorage.getItem("systemId") == 1) {
 } else {
     $.ajax({
         crossDomain: true,
-        url: param + "/report/findFor",
+        url: ipValue + "/report/findFor",
         dataType: "json",
         data:{"systemId":sessionStorage.getItem("systemId")},
         type: "get",
