@@ -9,7 +9,15 @@
     <!--=================================================-->
 
     <!--Open Sans Font [ OPTIONAL ]-->
+    <style>
+       #look:hover{
+           opacity:0.5;
+          
+       }
 
+      
+       
+    </style>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
 
@@ -58,47 +66,46 @@
 
 
     <!--=================================================-->
-
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src="js/demo/nifty-demo.min.js"></script>
-
-
-    <!--Bootstrap Table Sample [ SAMPLE ]-->
-    <script src="js/demo/tables-bs-table.js"></script>
+<!--Demo script [ DEMONSTRATION ]-->
+<script src="js/demo/nifty-demo.min.js"></script>
 
 
-    <!--X-editable [ OPTIONAL ]-->
-    <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
+<!--Bootstrap Table Sample [ SAMPLE ]-->
+<script src="js/demo/tables-bs-table.js"></script>
 
 
-    <!--Bootstrap Table [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!--X-editable [ OPTIONAL ]-->
+<script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
 
-    <!--Bootstrap Table Extension [ OPTIONAL ]-->
-    <script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
-    <!--Summernote [ OPTIONAL ]-->
-    <script src="plugins/summernote/summernote.min.js"></script>
-    <!--=================================================-->
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="js/demo/form-text-editor.js"></script>
-    <!--Demo script [ DEMONSTRATION ]-->
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="plugins/dropzone/dropzone.min.js"></script>
+<!--Bootstrap Table [ OPTIONAL ]-->
+<script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
 
+<!--Bootstrap Table Extension [ OPTIONAL ]-->
+<script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
 
+<!--Summernote [ OPTIONAL ]-->
+<script src="plugins/summernote/summernote.min.js"></script>
+<!--=================================================-->
+<!--Form File Upload [ SAMPLE ]-->
+<script src="js/demo/form-text-editor.js"></script>
+<!--Demo script [ DEMONSTRATION ]-->
 
-
-    <script src="js/atits_pc_js/personal_add.js"></script>
+<!--Dropzone [ OPTIONAL ]-->
+<script src="plugins/dropzone/dropzone.min.js"></script>
 
 
 
 
 
-    <!--=================================================
+<script src="js/atits_pc_js/personal_add.js"></script>
+
+
+
+
+
+<!--=================================================
 
     REQUIRED
     You must include this in your project.
@@ -123,7 +130,7 @@
     Detailed information and more samples can be found in the document.
 
     =================================================-->
-    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
+<link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 
 
 </head>
@@ -189,41 +196,46 @@
 
 
                 <div class="page-content-area">
-                    <!-- <div class="page-header  " >
+                    <div class="page-header  " >
                         <h1>个人简介</h1>
-                    </div> -->
+                    </div>
                     <!-- /.page-header -->
-                    <ul class="pager">
-                            <li class="previous bigger-120" >
-                                <a href="javascript:history.go(-1)"><i class="ace-icon fa fa-arrow-left"></i> 返回</a>
-                            </li>&nbsp;&nbsp;
-
+                    <!-- <ul class="pager">
                         
-                        </ul>
+                    <button class="btn btn-mint" id="add" type="submit">提交</button>
+
+                    <button class="btn btn-default" id="close" type="submit">
+                            <a href="javascript:history.go(-1)">
+                            </i> 取消</a>
+                            
+                    </button>
+                    </ul>
+                     -->
                     <div class="row">
 
-                        <div class="col-lg-8 col-lg-offset-2">
+                        <div class="col-lg-5 col-sm-offset-1">
                             <div class="panel ">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">个人简介</h2>
-                                </div>
+                               
+                                  
+                                 <div style="position: absolute;top:17px;left:30px;" >
 
+                                
+                                        <img alt="Profile Picture" id="look" class=" img-lg mar-btm" src="img/profile-photos/5.png" 
+                                    style="width:120px;height:120px;" >
+                                        <button  class="btn btn-default" id="set" style="position: absolute;font-size:15px;top:125px;left:17px;;" >更换头像</button>
+                                  </div>
+                                    
                                 <form class=" panel-body form-horizontal form-padding">
+
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">账号</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="account">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">姓名</label>
-                                        <div class="col-sm-5">
+                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">姓名</label>
+                                        <div class="col-sm-4">
                                             <input class="form-control" name="profile.name" id="name">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">性别</label>
-                                        <div class="col-sm-5">
+                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">性别</label>
+                                        <div class="col-sm-4">
                                             <select name="sex" class="form-control" id="profile.sex">
                                                 <option value="0">--请选择--</option>
                                                 <option value="男">男</option>
@@ -232,68 +244,26 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">名族</label>
-                                        <div class="col-sm-5">
+                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">名族</label>
+                                        <div class="col-sm-4">
                                             <input class="form-control" id="nation" name="profile.nation">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">出生日期</label>
-                                        <div class="col-sm-5">
+                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">出生日期</label>
+                                        <div class="col-sm-4">
                                             <input type="text" id="birthdate" class="form-control" placeholder="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">通讯地址</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">通讯地址</label>
                                         <div class="col-sm-5">
                                             <input class="form-control" id="address" name="profile.address">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">工作单位</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="work_unit">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">手机号</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="phone">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">办公室电话</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="telephone">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">电子邮箱</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="email" name="profile.email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">所属体系名称</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="tixi_name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">政治面貌</label>
-                                        <div class="col-sm-5">
-                                            <select id="political" class="form-control" name="profile.politicsStatus" >
-                                                <option value="0">--请选择--</option>
-                                                <option value="团员">团员</option>
-                                                <option value="党员">党员</option>
-                                                <option value="其他">其他</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">学位</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">学位</label>
                                         <div class="col-sm-5">
                                             <select id="degree" name="profile.degree" class="form-control" class="col-xs-8 col-sm-10 col-md-8">
                                                 <option value="0">--请选择--</option>
@@ -304,105 +274,178 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">毕业学校</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">毕业学校</label>
                                         <div class="col-sm-5">
                                             <input class="form-control" name="profile.graduateInstitutions" id="school">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">毕业时间</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">毕业时间</label>
                                         <div class="col-sm-5">
                                             <input type="text" id="graduation_date" name="profile.graduationDate" class="form-control" placeholder="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">所学专业</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">所学专业</label>
                                         <div class="col-sm-5">
                                             <input class="form-control" id="major" name="profile.major">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">从事专业</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">从事专业</label>
                                         <div class="col-sm-5">
                                             <input class="form-control" id="professial" name="profile.undertake">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">行政职务</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">行政职务</label>
                                         <div class="col-sm-5">
                                             <input class="form-control" name="profile.administrativeFunction" id="administrative">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">专业特长</label>
+                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">专业特长</label>
                                         <div class="col-sm-5">
                                             <input class="form-control" name="profile.professionalExpertise" id="expertise">
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">文化程度</label>
-                                        <div class="col-sm-5">
-                                            <select id="education" class="form-control" name="profile.education" >
-                                                <option value="0">--请选择--</option>
-                                                <option value="初中">初中</option>
-                                                <option value="高中">高中</option>
-                                                <option value="大学">大学</option>
-                                                <option value="硕士">硕士</option>
-                                                <option value="博士">博士</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">部级专家</label>
-                                        <div class="col-sm-5">
-                                            <select id="ministeria" class="form-control" name="profile.ministerialExpert" >
-                                                <option value="0">--请选择--</option>
-                                                <option value="否">否</option>
-                                                <option value="是">是</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">省级专家</label>
-                                        <div class="col-sm-5">
-                                            <select id="provincial" class="form-control" name="profile.provincialExpert" >
-                                                <option value="0">--请选择--</option>
-                                                <option value="否">否</option>
-                                                <option value="是">是</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">邮政编码</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" id="postalcode" name="profile.postalCode">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">社会兼职情况</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control" name="profile.professionalAffiliations" id="part_time">
-                                            <input type="hidden" name="_method" value="PUT">
-                                        </div>
-                                    </div>
-
+                                 
 
                                 </form>
-                                <div class="panel-footer">
-					                    <div class="row">
-					                        <div class=" col-sm-offset-5">
-					                            <button class="btn btn-mint" id="add" type="submit">提交</button>
-                                            
-                                                <button class="btn  btn-default" id="close" type="submit">取消</button>
-                                            </div>
-					                    </div>
-					             </div>
+
+                                <!-- <div class="panel-footer">
+                                    <div class="row">
+                                        <div class=" col-sm-offset-5">
+                                            <button class="btn btn-mint" id="add" type="submit">提交</button>
+
+                                            <button class="btn  btn-default" id="close" type="submit">取消</button>
+                                        </div>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
+                        <div class="col-lg-5 " >
+                            <div class="panel" >
+                                <form class=" panel-body form-horizontal form-padding">
 
+                                        
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">账号</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="account">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">工作单位</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="work_unit">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">手机号</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="phone">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">办公室电话</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="telephone">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">电子邮箱</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="email" name="profile.email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">所属体系名称</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="tixi_name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">政治面貌</label>
+                                            <div class="col-sm-4">
+                                                <select id="political" class="form-control" name="profile.politicsStatus">
+                                                    <option value="0">--请选择--</option>
+                                                    <option value="团员">团员</option>
+                                                    <option value="党员">党员</option>
+                                                    <option value="其他">其他</option>
+                                                </select>
+                                            </div>
+                                        </div>
+    
+    
+    
+    
+    
+    
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">文化程度</label>
+                                            <div class="col-sm-4">
+                                                <select id="education" class="form-control" name="profile.education">
+                                                    <option value="0">--请选择--</option>
+                                                    <option value="初中">初中</option>
+                                                    <option value="高中">高中</option>
+                                                    <option value="大学">大学</option>
+                                                    <option value="硕士">硕士</option>
+                                                    <option value="博士">博士</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">部级专家</label>
+                                            <div class="col-sm-4">
+                                                <select id="ministeria" class="form-control" name="profile.ministerialExpert">
+                                                    <option value="0">--请选择--</option>
+                                                    <option value="否">否</option>
+                                                    <option value="是">是</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">省级专家</label>
+                                            <div class="col-sm-4">
+                                                <select id="provincial" class="form-control" name="profile.provincialExpert">
+                                                    <option value="0">--请选择--</option>
+                                                    <option value="否">否</option>
+                                                    <option value="是">是</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">邮政编码</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="postalcode" name="profile.postalCode">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">社会兼职情况</label>
+                                            <div class="col-sm-5">
+                                                <input class="form-control" name="profile.professionalAffiliations" id="part_time">
+                                                <input type="hidden" name="_method" value="PUT">
+                                            </div>
+                                        </div>
+    
+    
+                                </form>
+                            </div>
+                        </div>
                     </div>
+                    <ul class="pager">
+                        
+                            <button class="btn btn-mint" id="add" type="submit">提交</button>
+                           <a href="javascript:history.go(-1)">
+                            <button class="btn btn-default" id="close" type="submit">
+                                   返回
+                                    
+                            </button>
+                        </a>
+                            </ul>
+                            
                     <!-- /.row -->
                 </div>
                 <!--MAIN NAVIGATION-->
