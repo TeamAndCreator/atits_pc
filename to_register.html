@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register page | Nifty - Admin Template</title>
+
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="css/nifty.min.css" rel="stylesheet">
+
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+
+        
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+
+
+    <!--Magic Checkbox [ OPTIONAL ]-->
+    <link href="plugins/magic-check/css/magic-check.min.css" rel="stylesheet">
+
+
+
+
+
+    
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="js/nifty.min.js"></script>
+
+
+
+
+
+
+    <!--=================================================-->
+    
+    <!--Background Image [ DEMONSTRATION ]-->
+    <script src="js/demo/bg-images.js"></script>
+
+
+
+
+    
+    <!--=================================================
+
+    REQUIRED
+    You must include this in your project.
+
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    =================================================-->
+        
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+	<div id="container" class="cls-container">
+		
+		
+		<!-- BACKGROUND IMAGE -->
+		<!--===================================================-->
+		<div id="bg-overlay" class="bg-img" style="background-image: url('img/bg-img/7.jpg')"></div>
+		
+		
+		<!-- REGISTRATION FORM -->
+		<!--===================================================-->
+		<div class="cls-content">
+		    <div class="cls-content-lg panel">
+		        <div class="panel-body">
+						<div class="mar-ver pad-btm">
+								<h1 class="h3 mar-no">注册账号</h1>
+	
+						</div>
+		            <form  class="form-horizontal" action="pages-login.html">
+		                
+						<div class="form-group user">
+                                <label  class="col-sm-4 control-label">用户名：</label>
+                                <div class="col-sm-6">
+                                     <input type="text" name="userName" id="userName"  class="form-control" placeholder="" >
+                                </div>
+                        </div>
+
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">设置密码：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name="password" id="password"  class="form-control" placeholder="" >
+                                </div>
+                        </div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">请再次输入密码：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name="password" id="password"  class="form-control" placeholder="" >
+                                </div>
+						</div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">姓名：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name="name" id="name"  class="form-control" placeholder="" >
+                                </div>
+						</div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">手机号码：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name="phone" id="phone"  class="form-control" placeholder="" >
+                                </div>
+						</div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">办公室电话：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name="telephone" id="telephone"  class="form-control" placeholder="" >
+                                </div>
+						</div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">电子邮箱：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name="email" id="email"  class="form-control" placeholder="" >
+                                </div>
+						</div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">工作单位：</label>
+                                <div class="col-sm-6">
+                                     <input type="password" name=work_unit" id="work_unit"  class="form-control" placeholder="" >
+                                </div>
+						</div>
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">所属体系名称：</label>
+                                <div class="col-sm-6">
+										<select id="system.id" name="system.id" class="form-control system" data-bv-field="system.id">
+												<option value="0" selected="selected">-- 请选择... --</option>
+												<option class="sysName" value="1">省体系办</option>
+												<option class="sysName" value="2">水稻产业技术体系</option>
+												<option class="sysName" value="3">小麦产业技术体系</option>
+												<option class="sysName" value="4">玉米产业技术体系</option>
+												<option class="sysName" value="5">油菜棉花产业技术体系</option>
+												<option class="sysName" value="6">生猪产业技术体系</option>
+												<option class="sysName" value="7">家禽产业技术体系</option>
+												<option class="sysName" value="8">牛羊产业技术体系</option>
+												<option class="sysName" value="9">水产产业技术体系</option>
+												<option class="sysName" value="10">蔬菜产业技术体系</option>
+												<option class="sysName" value="11">果树产业技术体系</option>
+												<option class="sysName" value="12">茶叶产业技术体系</option>
+												<option class="sysName" value="13">蚕桑中药材产业技术体系</option>
+												<option class="sysName" value="14">农业信息化产业技术体系</option>
+												<option class="sysName" value="15">农机装备应用产业技术体系</option>
+												<option class="sysName" value="16">农业生态环保与质量安全产业技术体系</option>
+										</select>
+										
+									</div>
+                        </div>
+
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">岗位：</label>
+                                <div class="col-sm-6">
+										
+												<input class="ace role" name="job" value="岗位专家" type="radio" data-bv-field="job">
+												<span class="lbl bigger-120">岗位专家</span>&nbsp; &nbsp;&nbsp; &nbsp;
+												<input class="ace role" value="综合试验站站长" type="radio" name="job" data-bv-field="job">
+												<span class="lbl bigger-120">综合试验站站长</span>
+						
+											<small class="help-block" data-bv-validator="notEmpty" data-bv-for="job" data-bv-result="NOT_VALIDATED" style="display: none;">必须选择一个岗位</small></div>
+                        </div>
+						
+
+
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">功能研究室名称：</label>
+                                <div class="col-sm-6">
+										<select id="laboratory" name="laboratory.id" class="form-control laborStation">
+												<option value="0" selected="selected">-- 请选择... --</option>
+										</select>
+                                </div>
+						</div>
+
+						<div class="form-group">
+                                <label class="col-sm-4 control-label">综合试验站名称：</label>
+                                <div class="col-sm-6">
+										<select id="station" name="station.id" class="form-control laborStation">
+												<option value="0" selected="selected">-- 请选择... --</option>
+										</select>
+                                </div>
+						</div>
+
+                    </form>
+
+
+		                <div class="checkbox pad-btm text-left">
+		                    <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
+		                    <label for="demo-form-checkbox">我已阅读并同意 <a href="#" class="btn-link">《用户注册协议》</a></label>
+		                </div>
+		                <button class="btn btn-primary btn-lg btn-block" id="register" type="submit">注册</button>
+		            
+		        </div>
+		        <div class="pad-all">
+		            已有账号 ? <a href="login.html" class="btn-link mar-rgt">登录</a>
+		        </div>
+		    </div>
+		</div>
+		<!--===================================================-->
+		
+		
+	
+		
+	</div>
+	<!--===================================================-->
+	<!-- END OF CONTAINER -->
+
+
+		</body>
+</html>
