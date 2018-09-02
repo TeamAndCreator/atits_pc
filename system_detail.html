@@ -298,15 +298,14 @@
                                                             <!-- PAGE CONTENT BEGINS -->
                                                             <div class="row">
                                                                 <div class="col-xs-12">
-                                                                    <c:forEach items="${laboratories}" var="laboratory">
-                                                                        <c:if test="${laboratory.state eq 1}">
+                                                                  
                                                                             <div class="row">
                                                                                 <div class="col-xs-12">
                                                                                     <div class="widget-box">
                                                                                         <div class="widget-header widget-header-flat">
                                                                                             <div>
                                                                                                 <h3 class="widget-title smaller">
-                                                                                                    ${laboratory.labName}
+                                                                                                    
                                                                                                 </h3>
                                                                                             </div>
 
@@ -316,16 +315,13 @@
                                                                                             <div class="widget-main">
                                                                                                 <dl id="dt-list-1" class="ft dl-horizontal">
                                                                                                     <dt>建设依托单位</dt>
-                                                                                                    <dd>${laboratory.company}</dd>
+                                                                                                    <dd></dd>
                                                                                                     <dt>研究室主任</dt>
-                                                                                                    <dd>${laboratory.manager}（兼）</dd>
+                                                                                                    <dd>（兼）</dd>
                                                                                                     <dt>岗位专家</dt>
 
                                                                                                     <dd>
-                                                                                                        <c:forEach items="${laboratory.persons}" var="person">
-                                                                                                            <c:if test="${person.state eq 1}">
-                                                                                                                ${person.name}&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
-                                                                                                        </c:forEach>
+                                                                                                        
 
                                                                                                     </dd>
                                                                                                     <!-- 	<dd>张运海（安徽农业大学），陈宏权（安徽农业大学），庞训胜（安徽科技学院）</dd> -->
@@ -336,13 +332,12 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="hr hr-double dotted"></div>
-                                                                        </c:if>
-                                                                    </c:forEach>
+                                                                       
                                                                     <div class="row">
                                                                         <div class="col-sm-5 pull-right">
                                                                             <h4 class="pull-right">
                                                                                 功能研究室数 :
-                                                                                <span class="red">${num.labNum}</span>个
+                                                                                <span class="red"> </span>个
                                                                             </h4>
                                                                         </div>
                                                                     </div>
