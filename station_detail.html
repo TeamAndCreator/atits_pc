@@ -1,532 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>综合试验站</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合试验站</title>
 
-		<!--STYLESHEET-->
-		<!--=================================================-->
+    <!--STYLESHEET-->
+    <!--=================================================-->
 
-		<!--Open Sans Font [ OPTIONAL ]-->
+    <!--Open Sans Font [ OPTIONAL ]-->
 
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-		<!--Bootstrap Stylesheet [ REQUIRED ]-->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-		<!--Nifty Stylesheet [ REQUIRED ]-->
-		<link href="css/nifty.min.css" rel="stylesheet">
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="css/nifty.min.css" rel="stylesheet">
 
-		<!--Nifty Premium Icon [ DEMONSTRATION ]-->
-		<link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
-		<!--Demo [ DEMONSTRATION ]-->
-		<link href="css/demo/nifty-demo.min.css" rel="stylesheet">
-		<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<!--Bootstrap Table [ OPTIONAL ]-->
-		<link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
 
-		<!--X-editable [ OPTIONAL ]-->
-		<link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <!--X-editable [ OPTIONAL ]-->
+    <link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
 
-		<!--Summernote [ OPTIONAL ]-->
-		<link href="plugins/summernote/summernote.min.css" rel="stylesheet">
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
 
-		<!--Dropzone [ OPTIONAL ]-->
-		<link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
 
-		<!--Animate.css [ OPTIONAL ]-->
-		<link href="plugins/animate-css/animate.min.css" rel="stylesheet">
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
 
-		<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
 
-		<!--JAVASCRIPT-->
-		<!--=================================================-->
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <!--===============这个js放在第一位================-->
+    <script src="js/atits_pc_js/ipaddress.js"></script>
 
-		<!--Pace - Page Load Progress Par [OPTIONAL]-->
-		<link href="plugins/pace/pace.min.css" rel="stylesheet">
-		<!--===============这个js放在第一位================-->
-		<script src="js/atits_pc_js/ipaddress.js"></script>
+    <script src="plugins/pace/pace.min.js"></script>
 
-		<script src="plugins/pace/pace.min.js"></script>
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <!--===================这个紧随jQuery==================-->
+    <script src="js/atits_pc_js/permission.js"></script>
 
-		<!--jQuery [ REQUIRED ]-->
-		<script src="js/jquery-2.2.4.min.js"></script>
-		<!--===================这个紧随jQuery==================-->
-		<script src="js/atits_pc_js/permission.js"></script>
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
 
-		<!--BootstrapJS [ RECOMMENDED ]-->
-		<script src="js/bootstrap.min.js"></script>
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="js/nifty.min.js"></script>
 
-		<!--NiftyJS [ RECOMMENDED ]-->
-		<script src="js/nifty.min.js"></script>
+    <!--=================================================-->
 
-		<!--=================================================-->
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="js/demo/nifty-demo.min.js"></script>
 
-		<!--Demo script [ DEMONSTRATION ]-->
-		<script src="js/demo/nifty-demo.min.js"></script>
+    <script src="js/atits_pc_js/station_detail.js"></script>
+    <!--X-editable [ OPTIONAL ]-->
+    <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
-		<script src="js/atits_pc_js/station_detail.js"></script>
-		<!--X-editable [ OPTIONAL ]-->
-		<script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
-
-		<!--Bootstrap Table [ OPTIONAL ]-->
-		<script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
-
-
-		<!--Summernote [ OPTIONAL ]-->
-		<script src="plugins/summernote/summernote.min.js"></script>
-		<!--Demo script [ DEMONSTRATION ]-->
-
-		<!--Dropzone [ OPTIONAL ]-->
-		<script src="plugins/dropzone/dropzone.min.js"></script>
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
 
-		<!--Bootbox Modals [ OPTIONAL ]-->
-		<script src="plugins/bootbox/bootbox.min.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="plugins/summernote/summernote.min.js"></script>
+    <!--Demo script [ DEMONSTRATION ]-->
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="plugins/dropzone/dropzone.min.js"></script>
 
 
-		<link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
+    <!--Bootbox Modals [ OPTIONAL ]-->
+    <script src="plugins/bootbox/bootbox.min.js"></script>
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-	</head>
+    <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 
-	<!--TIPS-->
-	<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+</head>
 
-	<body>
-		<div id="container" class="effect aside-float aside-bright mainnav-lg">
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
 
-			<!--NAVBAR-->
-			<!--===================================================-->
-			<header id="navbar">
-				<div id="navbar-container" class="boxed">
+<body>
+<div id="container" class="effect aside-float aside-bright mainnav-lg">
 
-					<!--Brand logo & name-->
-					<!--================================-->
-					<div class="navbar-header">
-						<a href="index.html" class="navbar-brand">
-							<img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
-							<div class="brand-title">
-								<span class="brand-text">现代农业产业技术体系平台</span>
-							</div>
-						</a>
-					</div>
-					<!--================================-->
-					<!--End brand logo & name-->
+    <!--NAVBAR-->
+    <!--===================================================-->
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
 
-					<!--Navbar Dropdown-->
-					<!--================================-->
-					<div class="navbar-content clearfix">
-						<ul class="nav navbar-top-links pull-left">
+            <!--Brand logo & name-->
+            <!--================================-->
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand">
+                    <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+                    <div class="brand-title">
+                        <span class="brand-text">现代农业产业技术体系平台</span>
+                    </div>
+                </a>
+            </div>
+            <!--================================-->
+            <!--End brand logo & name-->
 
-							<!--Navigation toogle button-->
-							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-							<li class="tgl-menu-btn">
-								<a class="mainnav-toggle" href="#">
-									<i class="demo-pli-view-list"></i>
-								</a>
-							</li>
-							<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-							<!--End Navigation toogle button-->
-						</ul>
+            <!--Navbar Dropdown-->
+            <!--================================-->
+            <div class="navbar-content clearfix">
+                <ul class="nav navbar-top-links pull-left">
 
-					</div>
-					<!--================================-->
-					<!--End Navbar Dropdown-->
+                    <!--Navigation toogle button-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="tgl-menu-btn">
+                        <a class="mainnav-toggle" href="#">
+                            <i class="demo-pli-view-list"></i>
+                        </a>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End Navigation toogle button-->
+                </ul>
 
-				</div>
-			</header>
-			<!--===================================================-->
-			<!--END NAVBAR-->
+            </div>
+            <!--================================-->
+            <!--End Navbar Dropdown-->
 
-			<div class="boxed">
+        </div>
+    </header>
+    <!--===================================================-->
+    <!--END NAVBAR-->
 
-				<!--CONTENT CONTAINER-->
-				<!--===================================================-->
-				<div id="content-container">
+    <div class="boxed">
 
-					<!--Page Title-->
-					<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-					<div id="page-title">
-						<h1 class="page-header text-overflow">综合试验站详情</h1>
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
 
-						<!--Searchbox-->
-						<div class="searchbox">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..">
-								<span class="input-group-btn">
+            <!--Page Title-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <div id="page-title">
+                <h1 class="page-header text-overflow">综合试验站详情</h1>
+
+                <!--Searchbox-->
+                <div class="searchbox">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search..">
+                        <span class="input-group-btn">
                                 <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
                             </span>
-							</div>
-						</div>
-					</div>
-					<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-					<!--End page title-->
+                    </div>
+                </div>
+            </div>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End page title-->
 
-					<!--Custom Toolbar-->
-					<!--===================================================-->
-					<div class="panel col-lg-10">
-						<!--<div class="panel-heading">
-							<h3 class="panel-title">功能研究室详情</h3>
-						</div>-->
-						<div class="panel-body">
+            <!--Custom Toolbar-->
+            <!--===================================================-->
+            <div class="panel col-lg-10">
+                <!--<div class="panel-heading">
+                    <h3 class="panel-title">功能研究室详情</h3>
+                </div>-->
+                <div class="panel-body">
 
-							<div id="page-content ">
+                    <div id="page-content ">
 
-								<div class="row ">
-									<ul class="pager pager-rounded">
-										<li class="previous">
-											<a href="javascript:history.go(-1)"><i class="demo-psi-arrow-left"></i> 返回</a>
-										</li>
-										<!--<li class="next">
-							<a href="#">Next <i class="demo-psi-arrow-right"></i></a>
-						</li>-->
-									</ul>
-									<div class="col-lg-10 col-lg-offset-1 ">
-										<div class="panel panel-trans ">
-											<div class="panel-heading ">
-												<!--<h2 class="panel-title">小麦产业技术体系简介与组织架构</h2>-->
-												<h1 class="text-main" id="name"></h1>
-											</div>
-											<h1 class="text-main ">
-												<small>基本内容展示:</small>
-											</h1>
-											<div style="text-indent:2em;">
-												<h1 class="text-main">
-													<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>建设依托单位：&nbsp;&nbsp;</small>
-													<small id="company"></small>
-												</h1>
-											</div>
-											<div style="text-indent:2em;">
-												<h1 class="text-main">
-													<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>所属体系：&nbsp;&nbsp;</small>
-													<small id="systemName"></small>
-												</h1>
-											</div>
-											<div style="text-indent:2em;">
-												<h1 class="text-main">
-													<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>综合试验站站长：&nbsp;&nbsp;</small>
-													<small id="station_master"></small>
-												</h1>
-											</div>
-											<div style="text-indent:2em;">
-												<h1 class="text-main">
-													<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>基本信息：&nbsp;&nbsp;</small>
-													<small id="content"></small>
-												</h1>
-											</div>
-										</div>
-									</div>
-								</div>
+                        <div class="row ">
+                            <ul class="pager pager-rounded" id="ul">
+                                <li class="previous">
+                                    <a href="javascript:history.go(-1)"><i class="demo-psi-arrow-left"></i> 返回</a>
+                                </li>
+                                <!--<li class="next">
+                    <a href="#">Next <i class="demo-psi-arrow-right"></i></a>
+                </li>-->
+                            </ul>
+                            <div class="col-lg-10 col-lg-offset-1 ">
+                                <div class="panel panel-trans ">
+                                    <div class="panel-heading ">
+                                        <!--<h2 class="panel-title">小麦产业技术体系简介与组织架构</h2>-->
+                                        <h1 class="text-main" id="name"></h1>
+                                    </div>
+                                    <h1 class="text-main ">
+                                        <small>基本内容展示:</small>
+                                    </h1>
+                                    <div style="text-indent:2em;">
+                                        <h1 class="text-main">
+                                            <small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>建设依托单位：&nbsp;&nbsp;
+                                            </small>
+                                            <small id="company"></small>
+                                        </h1>
+                                    </div>
+                                    <div style="text-indent:2em;">
+                                        <h1 class="text-main">
+                                            <small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>所属体系：&nbsp;&nbsp;
+                                            </small>
+                                            <small id="systemName"></small>
+                                        </h1>
+                                    </div>
+                                    <div style="text-indent:2em;">
+                                        <h1 class="text-main">
+                                            <small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>综合试验站站长：&nbsp;&nbsp;
+                                            </small>
+                                            <small id="station_master"></small>
+                                        </h1>
+                                    </div>
+                                    <div style="text-indent:2em;">
+                                        <h1 class="text-main">
+                                            <small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>基本信息：&nbsp;&nbsp;
+                                            </small>
+                                            <small id="content1"></small>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-							</div>
-						</div>
-					</div>
-					<!--===================================================-->
+                    </div>
+                </div>
+            </div>
+            <!--===================================================-->
 
 
-				</div>
-				<!--===================================================-->
-				<!--END CONTENT CONTAINER-->
+        </div>
+        <!--===================================================-->
+        <!--END CONTENT CONTAINER-->
 
-				<div id="demo-lg-modal" class="modal fade" tabindex="-1">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-								<h4 class="modal-title" id="myLargeModalLabel">添加</h4>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal">
-									<div class="panel-body">
-										<div class="form-group">
-											<label class="col-sm-3 control-label">
-                                        	体系名称
+        <div id="demo-lg-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                        </button>
+                        <h4 class="modal-title" id="myLargeModalLabel">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        综合实验站名称
                                     </label>
-											<div class="col-sm-6">
-												<input class="form-control input-sm" placeholder="" type="text">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">
-                                        	首席专家
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm" name="staName" placeholder="" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        成立时间
                                     </label>
-											<div class="col-sm-6">
-												<input class="form-control input-sm" placeholder="" type="text">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">
-                                        	副首席专家
+                                    <div id="demo-dp-component" class="col-sm-6">
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control " name="time">
+                                            <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        体系
                                     </label>
-											<div class="col-sm-6">
-												<input class="form-control input-sm" placeholder="" type="text">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label">
-                                        	产业概况
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm " type="text"
+                                               name="system" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        建设依托单位
                                     </label>
-											<div class="col-sm-6">
-												<textarea placeholder="500字以内" rows="6" class="form-control"></textarea>
-											</div>
-										</div>
-									</div>
-									<div id="page-content">
-										<div class="panel">
-											<div class="panel-heading">
-												<h3 class="panel-title">体系简介</h3>
-											</div>
-											<div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm" name="company" placeholder="" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        综合实验站基本信息
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <textarea placeholder="" id="content" rows="13" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
 
-												<!--Summernote-->
-												<!--===================================================-->
-												<div id="demo-summernote">
-													<h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br></h4>
-													<h4><font color="#9c9c94"></font></h4>
-												</div>
-												<!--===================================================-->
-												<!-- End Summernote -->
+                        </form>
+                        <div class="panel-footer text-right">
+                            <button class="btn btn-info middle " data-dismiss="modal">退出</button>
+                            <button id="fix" class="btn btn-primary middle">修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-											</div>
-										</div>
-									</div>
-									<div class="panel-footer text-right">
-										<button class="btn btn-info middle " data-dismiss="modal">退出</button>
-										<button class="btn btn-primary middle">添加</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<!--MAIN NAVIGATION-->
-				<!--===================================================-->
-				<nav id="mainnav-container">
-					<div id="mainnav">
+        <!--MAIN NAVIGATION-->
+        <!--===================================================-->
+        <nav id="mainnav-container">
+            <div id="mainnav">
 
-						<!--Menu-->
-						<!--================================-->
-						<div id="mainnav-menu-wrap">
-							<div class="nano">
-								<div class="nano-content">
+                <!--Menu-->
+                <!--================================-->
+                <div id="mainnav-menu-wrap">
+                    <div class="nano">
+                        <div class="nano-content">
 
-									<!--Profile Widget-->
-									<!--================================-->
-									<div id="mainnav-profile" class="mainnav-profile">
-										<div class="profile-wrap">
-											<div class="pad-btm">
-												<span class="label label-success pull-right">New</span>
-												<img class="img-circle img-sm img-border" src="img/profile-photos/1.png"
-													 alt="Profile Picture">
-											</div>
-											<a href="#profile-nav" class="box-block" data-toggle="collapse"
-											   aria-expanded="false">
+                            <!--Profile Widget-->
+                            <!--================================-->
+                            <div id="mainnav-profile" class="mainnav-profile">
+                                <div class="profile-wrap">
+                                    <div class="pad-btm">
+                                        <span class="label label-success pull-right">New</span>
+                                        <img class="img-circle img-sm img-border" src="img/profile-photos/1.png"
+                                             alt="Profile Picture">
+                                    </div>
+                                    <a href="#profile-nav" class="box-block" data-toggle="collapse"
+                                       aria-expanded="false">
                                             <span class="pull-right dropdown-toggle">
                                                 <i class="dropdown-caret"></i>
                                             </span>
-												<p class="mnp-name">Aaron Chavez</p>
-											</a>
-										</div>
-										<div id="profile-nav" class="collapse list-group bg-trans">
-											<a href="personal_profile.html" class="list-group-item">
-												<i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
-											</a>
-											<a href="#" class="list-group-item">
-												<i class="demo-pli-gear icon-lg icon-fw"></i> 设置
-											</a>
-											<a href="#" class="list-group-item">
-												<i class="demo-pli-information icon-lg icon-fw"></i> 帮助
-											</a>
-											<a href="#" class="list-group-item">
-												<i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
-											</a>
-										</div>
-									</div>
-									<ul id="mainnav-menu" class="list-group">
+                                        <p class="mnp-name">Aaron Chavez</p>
+                                    </a>
+                                </div>
+                                <div id="profile-nav" class="collapse list-group bg-trans">
+                                    <a href="personal_profile.html" class="list-group-item">
+                                        <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
+                                    </a>
+                                    <a href="#" class="list-group-item" id="lab_control">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
+                                    </a>
+                                    <a href="#" class="list-group-item" id="sta_control">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 实验站管理
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="demo-pli-information icon-lg icon-fw"></i> 帮助
+                                    </a>
+                                    <a href="#" class="list-group-item" id="logiout">
+                                        <i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
+                                    </a>
+                                </div>
+                            </div>
+                            <ul id="mainnav-menu" class="list-group">
 
-											<!--Menu list item-->
-											<li>
-												<a href="index.html">
-													<i class="demo-psi-home"></i>
-													<span class="menu-title">
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="index.html">
+                                        <i class="demo-psi-home"></i>
+                                        <span class="menu-title">
 															<strong>平台首页</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li style="display: none" id="person">
-												<a href="user.html">
-													<i class="fa fa-users"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li style="display: none" id="person">
+                                    <a href="user.html">
+                                        <i class="fa fa-users"></i>
+                                        <span class="menu-title">
 															<strong>人员管理</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li style="display: none" id="system">
-												<a href="system.html">
-													<i class="demo-psi-repair"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li style="display: none" id="system">
+                                    <a href="system.html">
+                                        <i class="demo-psi-repair"></i>
+                                        <span class="menu-title">
 															<strong>体系管理</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li style="display: none" id="lab">
-												<a href="laboratory.html">
-													<i class="fa fa-university"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li style="display: none" id="lab">
+                                    <a href="laboratory.html">
+                                        <i class="fa fa-university"></i>
+                                        <span class="menu-title">
 															<strong>功能研究室</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li   class="active-link" style="display: none" id="sta">
-												<a href="station.html">
-													<i class="demo-psi-office"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li class="active-link" style="display: none" id="sta">
+                                    <a href="station.html">
+                                        <i class="demo-psi-office"></i>
+                                        <span class="menu-title">
 															<strong>综合试验站</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li>
-												<a href="activity.html">
-													<i class="fa fa-life-ring"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="activity.html">
+                                        <i class="fa fa-life-ring"></i>
+                                        <span class="menu-title">
 															<strong>重大活动</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li>
-												<a href="harvest.html">
-													<i class="fa fa-mortar-board"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="harvest.html">
+                                        <i class="fa fa-mortar-board"></i>
+                                        <span class="menu-title">
 															<strong>重大成果</strong>
 														</span>
-												</a>
-											</li>
-			
-			
-											<!--Menu list item-->
-											<li>
-												<a href="report.html">
-													<i class="fa fa-file-text"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="report.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span class="menu-title">
 															<strong>重大文件报告</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li>
-												<a href="notice.html">
-													<i class="fa fa-bullhorn"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="notice.html">
+                                        <i class="fa fa-bullhorn"></i>
+                                        <span class="menu-title">
 															<strong>通知公告</strong>
 														</span>
-												</a>
-											</li>
-											<!--Menu list item-->
-											<li>
-												<a href="dynamic.html">
-													<i class="fa fa-table"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="dynamic.html">
+                                        <i class="fa fa-table"></i>
+                                        <span class="menu-title">
 															<strong>体系动态</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li>
-												<a href="regulation.html">
-													<i class="fa fa-book"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="regulation.html">
+                                        <i class="fa fa-book"></i>
+                                        <span class="menu-title">
 															<strong>规章制度</strong>
 														</span>
-												</a>
-											</li>
-											<!--Menu list item-->
-											<li>
-												<a href="task.html">
-													<i class="fa fa-list-ol"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="task.html">
+                                        <i class="fa fa-list-ol"></i>
+                                        <span class="menu-title">
 															<strong>工作任务</strong>
 														</span>
-												</a>
-											</li>
-			
-											<!--Menu list item-->
-											<li id="taskProgress">
-												<a href="taskProgress.html">
-													<i class="fa fa-spinner"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li id="taskProgress">
+                                    <a href="taskProgress.html">
+                                        <i class="fa fa-spinner"></i>
+                                        <span class="menu-title">
 															<strong>工作进展</strong>
 														</span>
-												</a>
-											</li>
-											<!--Menu list item-->
-											<li style="display: none" id="test">
-												<a href="test_manager.html">
-													<i class="fa fa-magnet"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+                                <!--Menu list item-->
+                                <li style="display: none" id="test">
+                                    <a href="test_manager.html">
+                                        <i class="fa fa-magnet"></i>
+                                        <span class="menu-title">
 															<strong>考评管理</strong>
 														</span>
-												</a>
-											</li>
-											<!--Menu list item-->
-											<li>
-												<a href="download.html">
-													<i class="demo-psi-download-from-cloud"></i>
-													<span class="menu-title">
+                                    </a>
+                                </li>
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="download.html">
+                                        <i class="demo-psi-download-from-cloud"></i>
+                                        <span class="menu-title">
 															<strong>下载中心</strong>
 														</span>
-												</a>
-											</li>
-											<!--Menu list item-->
-											<li>
-												<a href="help.html">
-													<i class="fa fa-question-circle"></i>
-													<span class="menu-title">
-															<strong>帮助</strong>
-														</span>
-												</a>
-											</li>
-			
-			
-			
-										</ul>
+                                    </a>
+                                </li>
 
 
-								</div>
-							</div>
-						</div>
-						<!--================================-->
-						<!--End menu-->
 
-					</div>
-				</nav>
-				<!--===================================================-->
-				<!--END MAIN NAVIGATION-->
-
-			</div>
+                            </ul>
 
 
-		</div>
-		<!--===================================================-->
-		<!-- END OF CONTAINER -->
+                        </div>
+                    </div>
+                </div>
+                <!--================================-->
+                <!--End menu-->
 
-	</body>
+            </div>
+        </nav>
+        <!--===================================================-->
+        <!--END MAIN NAVIGATION-->
+
+    </div>
+
+    <footer id="footer" style="text-align: center">
+
+
+        <span class="bigger-120">
+            <span class="blue bolder">安徽农业大学数字农业研究所
+            </span> &copy; 2017-2018（测试版）
+        </span>
+
+
+    </footer>
+</div>
+<!--===================================================-->
+<!-- END OF CONTAINER -->
+
+</body>
 
 </html>

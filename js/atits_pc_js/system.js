@@ -12,7 +12,7 @@ $(document).ready(function () {
         success: function (result) {
             data = result.data.list
         }
-    })
+    });
 
 //设置体系表每列标题
     $('#systems').bootstrapTable({
@@ -24,7 +24,8 @@ $(document).ready(function () {
             }, {
                 field: 'systemName',
                 align: 'center',
-                title: '体系名称'
+                title: '体系名称',
+                formatter:'sys'
             }, {
                 field: 'sx',
                 align: 'center',
@@ -77,6 +78,9 @@ $(document).ready(function () {
     })
 
 });
+function sys(value, row) {
+    return "<a href='system_detail.html?id="+row.systemId+"'>"+value+"</a>"
+}
 
 
 

@@ -57,6 +57,12 @@ function logFun(){
                     sessionStorage.setItem("systemName",systemName);
                     sessionStorage.setItem("systemId",systemId);
                 }
+                if (result.data.user.laboratory != null) {
+                    sessionStorage.setItem("labId",result.data.user.laboratory.id)
+                }
+                if (result.data.user.station != null) {
+                    sessionStorage.setItem("staId",result.data.user.station.id)
+                }
                 var roles = result.data.user.roles;
                 var rolesId=[];
                 for (var i = 0; i < roles.length;i++){

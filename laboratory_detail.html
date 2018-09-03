@@ -29,7 +29,8 @@
 		<link href="plugins/animate-css/animate.min.css" rel="stylesheet">
 
 		<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
+		<!--Bootstrap Datepicker [ OPTIONAL ]-->
+		<link href="plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
 		<!--JAVASCRIPT-->
 		<!--=================================================-->
 
@@ -54,6 +55,10 @@
 
 		<!--Demo script [ DEMONSTRATION ]-->
 		<script src="js/demo/nifty-demo.min.js"></script>
+
+
+		<!--Bootstrap Datepicker [ OPTIONAL ]-->
+		<script src="plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
 		<script src="js/atits_pc_js/laboratory_detail.js"></script>
 
@@ -159,9 +164,9 @@
 								<div id="page-content ">
 
 									<div class="row ">
-										<ul class="pager pager-rounded">
+										<ul class="pager pager-rounded" id="ul">
 											<li class="previous">
-												<a href="javascript:history.go(-1)"><i class="demo-psi-arrow-left"></i> 返回</a>
+												<a href="javascript:history.go(-1)"><i class="fa fa-reply"></i> 返回</a>
 											</li>
 										</ul>
 										<div class="col-lg-10 col-lg-offset-1 ">
@@ -200,7 +205,7 @@
 												<div style="text-indent:2em;">
 													<h1 class="text-main">
 														<small style="color:dodgerblue;"><i class="fa fa-sitemap">&nbsp;&nbsp;</i>基本信息：&nbsp;&nbsp;</small>
-														<small id="content"></small>
+														<small id="content1"></small>
 						            				</h1>
 												</div>
 											</div>
@@ -220,6 +225,72 @@
 				<!--===================================================-->
 				<!--END CONTENT CONTAINER-->
 
+				<div id="demo-lg-modal" class="modal fade" tabindex="-1">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+								</button>
+								<h4 class="modal-title" id="myLargeModalLabel">添加</h4>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal">
+									<div class="panel-body">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+												功能研究室名称
+											</label>
+											<div class="col-sm-6">
+												<input class="form-control input-sm" name="labName" placeholder="" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+												成立时间
+											</label>
+											<div id="demo-dp-component" class="col-sm-6">
+												<div class="input-group date">
+													<input type="text" class="form-control " name="time">
+													<span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+												体系
+											</label>
+											<div class="col-sm-6">
+												<input class="form-control input-sm " type="text"
+													   name="system" readonly>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+												建设依托单位
+											</label>
+											<div class="col-sm-6">
+												<input class="form-control input-sm" name="company" placeholder="" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+												功能研究室基本信息
+											</label>
+											<div class="col-sm-6">
+												<textarea placeholder="" id="content" rows="13" class="form-control"></textarea>
+											</div>
+										</div>
+									</div>
+
+								</form>
+									<div class="panel-footer text-right">
+										<button class="btn btn-info middle " data-dismiss="modal">退出</button>
+										<button id="fix" class="btn btn-primary middle">修改</button>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 				<!--MAIN NAVIGATION-->
@@ -254,13 +325,16 @@
 											<a href="personal_profile.html" class="list-group-item">
 												<i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
 											</a>
-											<a href="#" class="list-group-item">
-												<i class="demo-pli-gear icon-lg icon-fw"></i> 设置
+											<a href="#" class="list-group-item" id="lab_control">
+												<i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
+											</a>
+											<a href="#" class="list-group-item" id="sta_control">
+												<i class="demo-pli-gear icon-lg icon-fw"></i> 实验站管理
 											</a>
 											<a href="#" class="list-group-item">
 												<i class="demo-pli-information icon-lg icon-fw"></i> 帮助
 											</a>
-											<a href="#" class="list-group-item">
+											<a href="#" class="list-group-item" id="logiout">
 												<i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
 											</a>
 										</div>
@@ -413,15 +487,7 @@
 														</span>
 												</a>
 											</li>
-											<!--Menu list item-->
-											<li>
-												<a href="help.html">
-													<i class="fa fa-question-circle"></i>
-													<span class="menu-title">
-															<strong>帮助</strong>
-														</span>
-												</a>
-											</li>
+
 			
 			
 			
@@ -440,7 +506,16 @@
 
 			</div>
 
+			<footer id="footer" style="text-align: center">
 
+
+        <span class="bigger-120">
+            <span class="blue bolder">安徽农业大学数字农业研究所
+            </span> &copy; 2017-2018（测试版）
+        </span>
+
+
+			</footer>
 		</div>
 		<!--===================================================-->
 		<!-- END OF CONTAINER -->

@@ -29,7 +29,15 @@
     <!--Animate.css [ OPTIONAL ]-->
     <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
 
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
     <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
@@ -57,6 +65,14 @@
     <script src="js/demo/nifty-demo.min.js"></script>
 
     <script src="js/atits_pc_js/report_detail.js"></script>
+
+
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="plugins/summernote/summernote.min.js"></script>
+    <!--=================================================-->
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="plugins/dropzone/dropzone.min.js"></script>
 
 
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
@@ -157,9 +173,9 @@
                         <div id="page-content ">
 
                             <div class="row ">
-                                <ul class="pager pager-rounded">
+                                <ul class="pager pager-rounded" id="ul">
                                     <li class="previous">
-                                        <a href="javascript:history.go(-1)"><i class="demo-psi-arrow-left"></i> 返回</a>
+                                        <a href="javascript:history.go(-1)"><i class="fa fa-reply"></i> 返回</a>
                                     </li>
                                 </ul>
                                 <div class="col-lg-10 col-lg-offset-1 ">
@@ -185,11 +201,10 @@
                                             </div>
                                         </br>
                                              <div class="widget-main" id="content"></div>
-                                            </br>
-                                            <h5>文件:
+                                        </br>
+                                            <h5 id="files">文件:
     
                                             </h5>
-    
                                             <span id="a"> </span>
                                            
                                         </div>
@@ -209,7 +224,100 @@
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
 
+        <div id="demo-lg-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                        <h4 class="modal-title" id="myLargeModalLabel">修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        标题
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input  class="form-control input-sm" placeholder="" name="title" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        所属体系
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input  class="form-control input-sm" placeholder="" name="system" type="text" readonly>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
 
+                                    <div class="bord-top pad-ver">
+                                        <!-- The fileinput-button span is used to style the file input field as button -->
+                                        <span class="btn btn-success fileinput-button dz-clickable">
+					                <i class="fa fa-plus"></i>
+					                <span>选择文件</span>
+					                </span>
+
+                                    </div>
+
+
+                                    <div id="dz-previews">
+                                        <div id="dz-template" class="pad-top bord-top">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <!--This is used as the file preview template-->
+                                                    <div class="media-block">
+                                                        <div class="media-left">
+                                                            <img class="dz-img" data-dz-thumbnail>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                            <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                            <p class="text-sm" data-dz-size></p>
+                                                            <div id="dz-total-progress" style="opacity:0">
+                                                                <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-right">
+                                                    <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--===================================================-->
+                                    <!--End Dropzonejs using Bootstrap theme-->
+                                </div>
+                            </div>
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">内容</h3>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <!--Summernote-->
+                                        <!--===================================================-->
+                                        <div id="demo-summernote" >
+                                            <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br></h4><h4><font color="#9c9c94"></font></h4>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!-- End Summernote -->
+
+                                    </div>
+                                </div>
+                        </form>
+                        <div class="panel-footer text-right">
+                            <button class="btn btn-info middle " data-dismiss="modal">退出</button>
+                            <button class="btn btn-primary middle" id="fix">修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--MAIN NAVIGATION-->
         <!--===================================================-->
         <nav id="mainnav-container">
@@ -242,13 +350,16 @@
                                     <a href="personal_profile.html" class="list-group-item">
                                         <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
                                     </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 设置
+                                    <a href="#" class="list-group-item" id="lab_control">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
+                                    </a>
+                                    <a href="#" class="list-group-item" id="sta_control">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 实验站管理
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <i class="demo-pli-information icon-lg icon-fw"></i> 帮助
                                     </a>
-                                    <a href="#" class="list-group-item">
+                                    <a href="#" class="list-group-item" id="logiout">
                                         <i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
                                     </a>
                                 </div>
@@ -401,15 +512,7 @@
 														</span>
                                     </a>
                                 </li>
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="help.html">
-                                        <i class="fa fa-question-circle"></i>
-                                        <span class="menu-title">
-															<strong>帮助</strong>
-														</span>
-                                    </a>
-                                </li>
+
 
 
                             </ul>
@@ -426,7 +529,16 @@
         <!--END MAIN NAVIGATION-->
 
     </div>
+    <footer id="footer" style="text-align: center">
 
+
+        <span class="bigger-120">
+            <span class="blue bolder">安徽农业大学数字农业研究所
+            </span> &copy; 2017-2018（测试版）
+        </span>
+
+
+    </footer>
 
 </div>
 <!--===================================================-->

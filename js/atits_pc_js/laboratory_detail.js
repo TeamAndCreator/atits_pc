@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    //日历
+    $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
+
+
     var labId=parseInt(getQueryVariable('labId'));
     var data;
     $.ajax({
@@ -17,7 +21,44 @@ $(document).ready(function () {
     $('#systemName').text(data.laboratory.system.systemName);
     $('#job_expert').text(data.job_expert);
     $('#research_director').text(data.research_director);
-    $('#content').html(data.laboratory.content);
+    $('#content1').html(data.laboratory.content);
+
+
+    if (sessionStorage.getItem("labId")==labId&&rolesId.indexOf(5)!=-1) {
+        $('#ul').append("<li class=\"previous\">\n" +
+            "                                        <a data-toggle=\"modal\" data-target=\"#demo-lg-modal\"><div class=\"demo-icon\"><i class=\"fa fa-pencil\"></i>修改</div></a>\n" +
+            "                                    </li>");
+        $("input[ name = 'system']").val(sessionStorage.getItem("systemName"));
+    }
+
+//获取并发送修改信息
+    $("#fix").click(function () {
+        var laboratory = {
+            "_method":"put",
+            "id":labId,
+            "labName": "",
+            "company": "",
+            "system.id": "",
+            "content": "",
+            "time": ""
+        };
+        laboratory.labName = $("input[ name = 'labName']").val();
+        laboratory.company = $("input[ name = 'company']").val();
+        laboratory["system.id"] = sessionStorage.getItem('systemId');
+        laboratory.time = $("input[ name = 'time']").val();
+        laboratory.content = $('#content').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: ipValue + '/laboratory/update',
+            data: laboratory,
+            async: false,
+            traditional: true,
+            success:function () {
+                window.location.reload()
+            }
+        });
+    })
 
 });
 //获取url参数
