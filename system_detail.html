@@ -41,8 +41,6 @@
     <!--Summernote [ OPTIONAL ]-->
     <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
 
-    <!--Dropzone [ OPTIONAL ]-->
-    <link href="plugins/dropzone/dropzone.min.css" rel="stylesheet">
 
     <!--Animate.css [ OPTIONAL ]-->
     <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
@@ -88,9 +86,6 @@
     <!--Summernote [ OPTIONAL ]-->
     <script src="plugins/summernote/summernote.min.js"></script>
     <!--Demo script [ DEMONSTRATION ]-->
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="plugins/dropzone/dropzone.min.js"></script>
 
     <!--Bootbox Modals [ OPTIONAL ]-->
     <script src="plugins/bootbox/bootbox.min.js"></script>
@@ -207,7 +202,9 @@
                             <div id="tabs-1" class="tab-pane fade in active" style="text-align: center">
                                 <div class="col-lg-10 col-lg-offset-1 ">
                                     <h1>体系简介</h1>
-                                    <div class="widget-main" id="content"></div>
+                                    <div class="widget-main" id="content">
+                                    </div>
+                                    <button class="btn btn-primary" id="content_change" data-toggle="modal" data-target="#demo-lg-modal">修改</button>
                                 </div>
                             </div>
 
@@ -285,6 +282,7 @@
                             <div id="tabs-5" class="tab-pane fade" style="text-align: center">
                                 <h1>产业概况</h1>
                                 <div class="widget-main" id="overView"></div>
+                                <button class="btn btn-primary" id="overView_change" data-toggle="modal" data-target="#demo-lg-modal">修改</button>
                             </div>
 
                         </div>
@@ -295,6 +293,38 @@
 
                 <!--===================================================-->
                 <!--End page content-->
+
+                <div id="demo-lg-modal" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                                <h4 class="modal-title" id="myLargeModalLabel">修改</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="panel">
+                                        <div class="panel-body">
+
+                                            <!--Summernote-->
+                                            <!--===================================================-->
+                                            <div id="demo-summernote" >
+                                                <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br></h4><h4><font color="#9c9c94"></font></h4>
+                                            </div>
+                                            <!--===================================================-->
+                                            <!-- End Summernote -->
+
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="panel-footer text-right">
+                                    <button class="btn btn-info middle " data-dismiss="modal">退出</button>
+                                    <button class="btn btn-primary middle" id="fix">修改</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
@@ -335,6 +365,9 @@
                                 <div id="profile-nav" class="collapse list-group bg-trans">
                                     <a href="personal_profile.html" class="list-group-item">
                                         <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
+                                    </a>
+                                    <a href="#" class="list-group-item" id="sys_control">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 体系管理
                                     </a>
                                     <a href="#" class="list-group-item" id="lab_control">
                                         <i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
@@ -498,7 +531,6 @@
 														</span>
                                     </a>
                                 </li>
-
 
 
                             </ul>

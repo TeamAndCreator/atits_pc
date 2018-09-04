@@ -1,5 +1,81 @@
 $(document).ready(function () {
+
+    // SUMMERNOTE
+    // =================================================================
+    // Require Summernote
+    // http://hackerwins.github.io/summernote/
+    // =================================================================
+    $('#demo-summernote, #demo-summernote-full-width').summernote({
+        height: '230px'
+    });
+
+
+    // SUMMERNOTE AIR-MODE
+    // =================================================================
+    // Require Summernote
+    // http://hackerwins.github.io/summernote/
+    // =================================================================
+    $('#demo-summernote-airmode').summernote({
+        airMode: true
+    });
+
+
+    // SUMMERNOTE CLICK TO EDIT
+    // =================================================================
+    // Require Summernote
+    // http://hackerwins.github.io/summernote/
+    // =================================================================
+    $('#demo-edit-text').on('click', function () {
+        $('#demo-summernote-edit').summernote({focus: true});
+    });
+
+
+    $('#demo-save-text').on('click', function () {
+        $('#demo-summernote-edit').summernote('destroy');
+    });
+
+
+
     var systemId = parseInt(getQueryVariable('id'));
+    if ((sessionStorage.getItem("systemId") == systemId&&rolesId.indexOf(3)!=-1)||rolesId.indexOf(1)!=-1){
+        $("#content_change").click(function () {
+            $("#myLargeModalLabel").text("体系简介修改");
+            $("#fix").unbind("click");
+            $("#fix").click(function () {
+                var content = $('#demo-summernote').summernote('code');
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'JSON',
+                    url: ipValue + '/system/content_change',
+                    data: {_method: "put", "systemId": systemId, "content": content},
+                    async: false,
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            })
+        });
+        $("#overView_change").click(function () {
+            $("#myLargeModalLabel").text("产业概况修改");
+            $("#fix").unbind("click");
+            $("#fix").click(function () {
+                var overView = $('#demo-summernote').summernote('code');
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'JSON',
+                    url: ipValue + '/system/overView_change',
+                    data: {_method: "put", "systemId": systemId, "overView": overView},
+                    async: false,
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            })
+        })
+    } else {
+        $("#content_change").remove();
+        $("#overView_change").remove()
+    }
     var system;
     $.ajax({
         crossDomain: true,
