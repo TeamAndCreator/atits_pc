@@ -10,7 +10,7 @@
          dataType: 'json',
          success: function(result){
              if(result.code == 100){
-                 // console.log(JSON.stringify(result));
+                  console.log(JSON.stringify(result));
                   $('#username').html(JSON.stringify(result.data.user.profile.name).replace(/\"/g, ""));
                   $('#sex').html(JSON.stringify(result.data.user.profile.sex));
                   $('#birthday').html(JSON.stringify(result.data.user.profile.birthdate));
@@ -40,6 +40,18 @@
                   $('#telephone').html(JSON.stringify(result.data.user.profile.officePhone));
                   $('#email').html(JSON.stringify(result.data.user.profile.email));
                   $('#work_unit').html(JSON.stringify(result.data.user.profile.department));
+                  if(JSON.stringify(result.data.user.laboratory) == 'null'){
+                        $('#laboratoryName').html('无');
+                  }else{
+                      $('#laboratoryName').html(JSON.stringify(result.data.user.laboratory.labName).replace(/\"/g, ""));
+                  }
+                  //console.log(JSON.stringify(result.data.user.station))
+                  if(JSON.stringify(result.data.user.station) == 'null'){
+                      $('#stationName').html('无')
+                  }else{
+                      $('#stationName').html(JSON.stringify(result.data.user.station.staName).replace(/\"/g, ""));
+                  }
+                 
              }
 
          }

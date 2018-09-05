@@ -353,6 +353,18 @@
                                         </div>
     
                                         <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">功能研究室名称</label>
+                                                <div class="col-sm-4">
+                                                    <span class="form-control" id="laboratoryName"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">综合试验站名称</label>
+                                                <div class="col-sm-4">
+                                                    <span class="form-control" id="stationName" ></span>
+                                                </div>
+                                            </div>
+                                        <div class="form-group">
                                             <label for="demo-is-inputnormal" class="col-sm-4 control-label">政治面貌</label>
                                             <div class="col-sm-4">
                                                 <span class="form-control" id="political"></span>
@@ -398,221 +410,226 @@
                     <!-- /.row -->
                
               
-                <!--MAIN NAVIGATION-->
-                <!--===================================================-->
-                <nav id="mainnav-container">
-                    <div id="mainnav">
-
-                        <!--Menu-->
-                        <!--================================-->
-                        <div id="mainnav-menu-wrap">
-                            <div class="nano">
-                                <div class="nano-content">
-
-                                    <!--Profile Widget-->
-                                    <!--================================-->
-                                    <div id="mainnav-profile" class="mainnav-profile">
-                                        <div class="profile-wrap">
-                                            <div class="pad-btm">
-                                                <span class="label label-success pull-right">New</span>
-                                                <img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture">
+                    <nav id="mainnav-container" class="affix-top">
+                            <div id="mainnav">
+                                <!--Menu-->
+                                <!--================================-->
+                                <div id="mainnav-menu-wrap">
+                                    <div class="nano has-scrollbar">
+                                        <div class="nano-content" tabindex="0" style="right:-15px;">
+                        
+                                            <!--Profile Widget-->
+                                            <!--================================-->
+                                            <div id="mainnav-profile" class="mainnav-profile">
+                                                <div class="profile-wrap">
+                                                    <div class="pad-btm ">
+                                                        <img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture">
+                                                    </div>
+                                                    <a class="box-block" href="#profile-nav" data-toggle="collapse" aria-expanded="false">
+                                                        <span class="pull-right dropdown-toggle">
+                                                            <i class="dropdown-caret"></i>
+                                                        </span>
+                                                        <p class="mnp-name"></p>
+                                                    </a>
+                                                </div>
+                                                <div id="profile-nav" class="collapse list-group bg-trans">
+                                                    <a href="personal_profile.html" class="list-group-item">
+                                                        <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
+                                                    </a>
+                                                    <a href="#" class="list-group-item" id="lab_control">
+                                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
+                                                    </a>
+                                                    <a href="#" class="list-group-item" id="sta_control">
+                                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 实验站管理
+                                                    </a>
+                                                    <a href="#" class="list-group-item">
+                                                        <i class="demo-pli-information icon-lg icon-fw"></i> 帮助
+                                                    </a>
+                                                    <a href="#" class="list-group-item" id="logiout">
+                                                        <i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
-                                                <span class="pull-right dropdown-toggle">
-                                                    <i class="dropdown-caret"></i>
-                                                </span>
-                                                <p class="mnp-name">Aaron Chavez</p>
-                                            </a>
-                                        </div>
-                                        <div id="profile-nav" class="collapse list-group bg-trans">
-                                            <a href="personal_profile.html" class="list-group-item">
-                                                <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
-                                            </a>
-                                            <a href="#" class="list-group-item" id="lab_control">
-                                                <i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
-                                            </a>
-                                            <a href="#" class="list-group-item" id="sta_control">
-                                                <i class="demo-pli-gear icon-lg icon-fw"></i> 实验站管理
-                                            </a>
-                                            <a href="#" class="list-group-item">
-                                                <i class="demo-pli-information icon-lg icon-fw"></i> 帮助
-                                            </a>
-                                            <a href="#" class="list-group-item" id="logiout">
-                                                <i class="demo-pli-unlock icon-lg icon-fw"></i> 登出
-                                            </a>
+                                            <ul id="mainnav-menu" class="list-group">
+                        
+                                                <!--Menu list item-->
+                                                <li class="active-link">
+                                                    <a href="index.html">
+                                                        <i class="demo-psi-home"></i>
+                                                        <span class="menu-title">
+                                                            <strong>平台首页</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li style="display: none" id="person">
+                                                    <a href="user.html">
+                                                        <i class="fa fa-users"></i>
+                                                        <span class="menu-title">
+                                                            <strong>人员管理</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li style="display: none" id="system">
+                                                    <a href="system.html">
+                                                        <i class="demo-psi-repair"></i>
+                                                        <span class="menu-title">
+                                                            <strong>体系管理</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li style="display: none" id="lab">
+                                                    <a href="laboratory.html">
+                                                        <i class="fa fa-university"></i>
+                                                        <span class="menu-title">
+                                                            <strong>功能研究室</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li style="display: none" id="sta">
+                                                    <a href="station.html">
+                                                        <i class="demo-psi-office"></i>
+                                                        <span class="menu-title">
+                                                            <strong>综合试验站</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="activity.html">
+                                                        <i class="fa fa-life-ring"></i>
+                                                        <span class="menu-title">
+                                                            <strong>重大活动</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="harvest.html">
+                                                        <i class="fa fa-mortar-board"></i>
+                                                        <span class="menu-title">
+                                                            <strong>重大成果</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                        
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="report.html">
+                                                        <i class="fa fa-file-text"></i>
+                                                        <span class="menu-title">
+                                                            <strong>重大文件报告</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="notice.html">
+                                                        <i class="fa fa-bullhorn"></i>
+                                                        <span class="menu-title">
+                                                            <strong>通知公告</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="dynamic.html">
+                                                        <i class="fa fa-table"></i>
+                                                        <span class="menu-title">
+                                                            <strong>体系动态</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="regulation.html">
+                                                        <i class="fa fa-book"></i>
+                                                        <span class="menu-title">
+                                                            <strong>规章制度</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="task.html">
+                                                        <i class="fa fa-list-ol"></i>
+                                                        <span class="menu-title">
+                                                            <strong>工作任务</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="taskProgress.html">
+                                                        <i class="fa fa-spinner"></i>
+                                                        <span class="menu-title">
+                                                            <strong>工作进展</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <!--Menu list item-->
+                                                <li style="display: none" id="test">
+                                                    <a href="test_manager.html">
+                                                        <i class="fa fa-magnet"></i>
+                                                        <span class="menu-title">
+                                                            <strong>考评管理</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <!--Menu list item-->
+                                                <li>
+                                                    <a href="download.html">
+                                                        <i class="demo-psi-download-from-cloud"></i>
+                                                        <span class="menu-title">
+                                                            <strong>下载中心</strong>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                        
+                        
+                        
+                                            </ul>
+                        
+                        
                                         </div>
                                     </div>
-                                    <ul id="mainnav-menu" class="list-group">
-
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="index.html">
-                                                <i class="demo-psi-home"></i>
-                                                <span class="menu-title">
-                                                    <strong>平台首页</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li style="display: none" id="person">
-                                            <a href="user.html">
-                                                <i class="fa fa-users"></i>
-                                                <span class="menu-title">
-                                                    <strong>人员管理</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li style="display: none" id="system">
-                                            <a href="system.html">
-                                                <i class="demo-psi-repair"></i>
-                                                <span class="menu-title">
-                                                    <strong>体系管理</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li style="display: none" id="lab">
-                                            <a href="laboratory.html">
-                                                <i class="fa fa-university"></i>
-                                                <span class="menu-title">
-                                                    <strong>功能研究室</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li style="display: none" id="sta">
-                                            <a href="station.html">
-                                                <i class="demo-psi-office"></i>
-                                                <span class="menu-title">
-                                                    <strong>综合试验站</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="activity.html">
-                                                <i class="fa fa-life-ring"></i>
-                                                <span class="menu-title">
-                                                    <strong>重大活动</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="harvest.html">
-                                                <i class="fa fa-mortar-board"></i>
-                                                <span class="menu-title">
-                                                    <strong>重大成果</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="report.html">
-                                                <i class="fa fa-file-text"></i>
-                                                <span class="menu-title">
-                                                    <strong>重大文件报告</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="notice.html">
-                                                <i class="fa fa-bullhorn"></i>
-                                                <span class="menu-title">
-                                                    <strong>通知公告</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="dynamic.html">
-                                                <i class="fa fa-table"></i>
-                                                <span class="menu-title">
-                                                    <strong>体系动态</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="regulation.html">
-                                                <i class="fa fa-book"></i>
-                                                <span class="menu-title">
-                                                    <strong>规章制度</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="task.html">
-                                                <i class="fa fa-list-ol"></i>
-                                                <span class="menu-title">
-                                                    <strong>工作任务</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <!--Menu list item-->
-                                        <li id="taskProgress">
-                                            <a href="taskProgress.html">
-                                                <i class="fa fa-spinner"></i>
-                                                <span class="menu-title">
-                                                    <strong>工作进展</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <!--Menu list item-->
-                                        <li style="display: none" id="test">
-                                            <a href="test_manager.html">
-                                                <i class="fa fa-magnet"></i>
-                                                <span class="menu-title">
-                                                    <strong>考评管理</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <!--Menu list item-->
-                                        <li>
-                                            <a href="download.html">
-                                                <i class="demo-psi-download-from-cloud"></i>
-                                                <span class="menu-title">
-                                                    <strong>下载中心</strong>
-                                                </span>
-                                            </a>
-                                        </li>
-
-
-
-
-                                    </ul>
-
-
                                 </div>
+                                <!--================================-->
+                                <!--End menu-->
+                        
                             </div>
-                        </div>
-                        <!--================================-->
-                        <!--End menu-->
-
-                    </div>
-                </nav>
-                <!--===================================================-->
-                <!--END MAIN NAVIGATION-->
+                        </nav>
+                        <!--===================================================-->
+                        <!--END MAIN NAVIGATION-->
+                        <footer id="footer" style="text-align: center">
+                        
+                        
+                            <span class="bigger-120">
+                                <span class="blue bolder">安徽农业大学数字农业研究所
+                                </span> &copy; 2017-2018（测试版）
+                            </span>
+                        
+                        
+                        </footer>
 
             </div>
 
 
 
-
+           
 
         </div>
         <!--===================================================-->
