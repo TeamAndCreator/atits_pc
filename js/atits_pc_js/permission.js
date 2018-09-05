@@ -32,6 +32,9 @@ $(document).ready(function() {
         $("#sta_control").remove()
     }
 
+    $("#personal_profile").attr("href", "personal_profile.html?id=" + sessionStorage.getItem("userId"))
+    
+
     $("#logiout").click(function () {
             sessionStorage.clear();
             window.location.href="login.html";

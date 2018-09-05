@@ -296,31 +296,31 @@
                                         
                                             <div class="col-sm-5" id="title">
                                                 <label>
-                                                    <input name="job" class="ace " value="行业主管人员" type="checkbox">
+                                                    <input name="job" class="ace"  value="2" type="checkbox">
                                                     <span class="lbl bigger-120">行业主管人员</span>
                                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input name="job" class="ace" value="首席专家" type="checkbox">
+                                                    <input name="job" class="ace" value="3" type="checkbox">
                                                     <span class="lbl bigger-120">首席专家</span>
                                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         
                                                 <label>
-                                                    <input name="job" class="ace " value="副首席专家" type="checkbox">
+                                                    <input name="job" class="ace " value="4" type="checkbox">
                                                     <span class="lbl bigger-120">副首席专家</span>
                                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                            
                                                 <label>
-                                                    <input name="job" class="ace " value="研究室主任" type="checkbox">
+                                                    <input name="job" class="ace " value="5" type="checkbox">
                                                     <span class="lbl bigger-120">研究室主任</span>
                                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         
                                                 <label>
-                                                    <input name="job" class="ace " value="岗位专家" type="checkbox">
+                                                    <input name="job" class="ace " value="6" type="checkbox">
                                                     <span class="lbl bigger-120">岗位专家</span>
                                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         
                                                 <label>
-                                                    <input name="job" class="ace " value="综合试验站站长" type="checkbox">
+                                                    <input name="job" class="ace " value="7" type="checkbox">
                                                     <span class="lbl bigger-120">综合试验站站长</span>
                                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         
@@ -498,7 +498,7 @@
                     <ul class="pager">
                         
                             
-                           <a href="javascript:void(0);"  onclick="Update()"> 
+                           <a href="javascript:void(0);"> 
                                <button class="btn btn-mint" id="add" type="submit">提交</button>
                             </a>
                             <a href="javascript:history.go(-1)">
@@ -531,8 +531,11 @@
                                                     </a>
                                                 </div>
                                                 <div id="profile-nav" class="collapse list-group bg-trans">
-                                                    <a href="personal_profile.html" class="list-group-item">
+                                                    <a href="#" class="list-group-item" id="personal_profile">
                                                         <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
+                                                    </a>
+                                                    <a href="#" class="list-group-item" id="sys_control">
+                                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 体系管理
                                                     </a>
                                                     <a href="#" class="list-group-item" id="lab_control">
                                                         <i class="demo-pli-gear icon-lg icon-fw"></i> 研究室管理
@@ -736,75 +739,4 @@
 
 </body>
 
-
-<script type="text/javascript">
-   
-urlParam5 = ipValue + '/profile/update';
-urlParam6 = ipValue + '/station/findAll1';
-
-
-
-   
-
-
-function Update(){
-
-    var roles = [
-         {
-     "id":'',
-     "name":'',
-     "description":'',  
-    }
-    ];
-   
-                // if($("#title input[type='checkbox']").prop('checked') == true){
-                    
-                    
-                   
-                //     rolesObj.description = $(this).val();
-                // }
-                $("#title input[type='checkbox']").each(function(i){
-                    
-                    roles[i]= $(this).val();
-                });
-                console.log(roles);
-
-
-    // var profileId = sessionStorage.getItem("proId");
-    //     $.ajax({
-    //         url: urlParam5,
-    //         type: 'get',
-    //         data: { 
-    //             "profile.id":profileId,
-    //             "name":$('#name').val(),
-    //             "phoneNumber":$('#phone').val(),
-    //             "officePhone":$('#telephone').val(),
-    //             "email":$('#email').val(),
-    //             "department":$('#work_unit').val(),
-    //             "sex":$('#sex').val(),
-    //             "nation":$('#nation').val(),
-    //             "birthdate":$('#birthdate').val(),
-    //             "politicsStatus":$('#political').val(),
-    //             "education":$('#education').val(),
-    //             "degree":$('#degree').val(),
-    //             "graduateInstitutions":$('#school').val(),
-    //             "graduationDate":$('#graduation_date').val(),
-    //             "major":$('#major').val(),
-    //             "undertake":$('#professial').val(),
-    //             "administrativeFunction":$('#administrative').val(),
-    //             "ministerialExpert":$('#ministeria').val(),
-    //             "provincialExpert":$('#provincial').val(),
-    //             "postalCode":$('#postalcode').val(),
-    //             "address":$('#address').val(),
-    //             "professionalAffiliations":$('#part_time').val(),
-    //             "professionalExpertise":$('#expertise').val(),
-    //         },
-    //         dataType: 'json',
-    //         success:function(result){
-    //             console.log(result);
-    //         }
-    //     })
-}
-
-</script>
 </html>

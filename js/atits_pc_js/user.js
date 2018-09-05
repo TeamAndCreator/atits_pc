@@ -21,7 +21,8 @@ $(document).ready(function () {
             {
                 field: 'profile.name',
                 align: 'center',
-                title: '姓名'
+                title: '姓名',
+                formatter:'name'
             },{
                 field: 'system',
                 align: 'center',
@@ -89,6 +90,10 @@ function updateState(userId) {
         });
     })
 
+}
+//姓名超链接
+function name(value,row){
+    return "<a href=personal_profile.html?id="+row.id+">"+value+"</a>"
 }
 
 

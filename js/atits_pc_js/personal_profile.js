@@ -1,7 +1,12 @@
-(function($){
+$(document).ready(function () {
   
     urlParam = ipValue + '/user/findById';
-    var userId = sessionStorage.getItem("userId");
+    var userId = parseInt(getQueryVariable('id'));
+    if (userId == sessionStorage.getItem("userId") || rolesId.indexOf(1) != -1) {
+        $("#personal_add").attr("href", "personal_add.html?id=" +userId)
+    } else {
+        $("#personal_add").css('display','none');
+    }
     
  $.ajax({
          url: urlParam,
@@ -10,7 +15,6 @@
          dataType: 'json',
          success: function(result){
              if(result.code == 100){
-                  console.log(JSON.stringify(result));
                   $('#username').html(JSON.stringify(result.data.user.profile.name).replace(/\"/g, ""));
                   $('#sex').html(JSON.stringify(result.data.user.profile.sex));
                   $('#birthday').html(JSON.stringify(result.data.user.profile.birthdate));
@@ -25,7 +29,11 @@
                   $('#title').html(JSON.stringify(result.data.user.roles[0].description).replace(/\"/g, ""));
                   $('#account').html(JSON.stringify(result.data.user.userName).replace(/\"/g, ""));                   
                   $('#password').html(JSON.stringify(result.data.user.password));
-                  $('#tixi_name').html(JSON.stringify(result.data.user.system.systemName).replace(/\"/g, ""));
+                 if (result.data.user.system != null) {
+                     $('#tixi_name').html(JSON.stringify(result.data.user.system.systemName).replace(/\"/g, ""));
+                 }else{
+                    $('#tixi_name').html("无");
+                 }
                   $('#education').html(JSON.stringify(result.data.user.profile.education));
                   $('#ministeria').html(JSON.stringify(result.data.user.profile.ministerialExpert));
                   $('#provincial').html(JSON.stringify(result.data.user.profile.provincialExpert));
@@ -56,4 +64,18 @@
 
          }
  });
- })(jQuery)
+ })
+   
+
+//获取url参数
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
+}

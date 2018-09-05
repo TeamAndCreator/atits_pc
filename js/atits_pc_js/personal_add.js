@@ -1,13 +1,17 @@
 $(document).ready(function () {
    
-    var userId = sessionStorage.getItem("userId");
+    var userId = parseInt(getQueryVariable('id'));
     var profileId = '';
     var sysId;
     urlParam1 = ipValue + '/user/findById';
     urlParam2 = ipValue + '/user/update';
     urlParam3 = ipValue + '/laboratory/findAll1';
     urlParam4 = ipValue + '/station/findAll1';
-   
+    urlParam5 = ipValue + '/user/update1';
+    urlParam6 = ipValue + '/station/findAll1';
+    
+
+
     
     //获取原始数据
     $.ajax({
@@ -66,25 +70,46 @@ $(document).ready(function () {
 
                 $('#account').val(JSON.stringify(result.data.user.userName).replace(/\"/g, ""));
                               
-                if (userId == 1) {
+                if (sessionStorage.getItem("userId") == 1) {
                     //所属体系名称
-                    sysId = JSON.stringify(result.data.user.system.id);
-                    $("#systemName option[value='" + sysId + "']").attr("selected", "selected")
+                    if(result.data.user.system!=null){
+                        sysId = JSON.stringify(result.data.user.system.id);
+                        $("#systemName option[value='" + sysId + "']").attr("selected", "selected")
+                    }else{
+                        $("#systemName option[value=0]").html("无")
+                    }
                     //console.log($('option:selected', '#systemName').index())
-                    //功能研究室
-                    $('#laboratoryName option[value=0]').html(JSON.stringify(result.data.user.laboratory).replace(/\"/g, ""));
-                    //综合试验站
-                    $('#stationName option[value=0]').html(JSON.stringify(result.data.user.station).replace(/\"/g, ""));
-                    systemId = JSON.stringify(result.data.user.system.id);
+                    if(result.data.user.laboratory!=null){
+                        //功能研究室
+                        $('#laboratoryName option[value=0]').html(JSON.stringify(result.data.user.laboratory.labName).replace(/\"/g, ""));
+                    }else{
+                        $("#laboratoryName option[value=0]").html("无")
+                    }
+                    if(result.data.user.station!=null){
+                        //综合试验站
+                        $('#stationName option[value=0]').html(JSON.stringify(result.data.user.station.staName).replace(/\"/g, ""));
+                    }else{
+                        $('#stationName option[value=0]').html("无")
+                    }
                     //岗位专家
+                    for( var i = 0; i < result.data.user.roles.length;i++){
+                        var gw = JSON.stringify(result.data.user.roles[i].id);
+                        $("#title input[value='" + gw + "']").prop('checked', 'true')
+                    }
+                    
+                    
                     $("input[name='job']").attr("disabled") == false;
                 } else {
-                    //体系名称
-                    $('#systemName option[value=0]').html(JSON.stringify(result.data.user.system.systemName).replace(/\"/g, ""));
+                    if(result.data.system!=null){
+                        //体系名称
+                        $('#systemName option[value=0]').html(JSON.stringify(result.data.user.system.systemName).replace(/\"/g, ""));
+                    }else{
+                        $('#systemName option[value=0]').html("无")
+                    };
                     $('#systemName').attr("disabled", "true")
                     //岗位
                     $("input[name='job']").attr('disabled', 'disabled');
-                    var gw = JSON.stringify(result.data.user.roles[0].description).replace(/\"/g, "");
+                    var gw = JSON.stringify(result.data.user.roles[0].id);
                     $("#title input[value='" + gw + "']").prop('checked', 'true')
                     //功能研究室
                    // console.log(JSON.stringify(result.data.user.laboratory))
@@ -111,6 +136,9 @@ $(document).ready(function () {
  
     //根据体系所属名称显示相应的综合试验站和功能研究室
     $('#systemName').change(function () {
+        $('#laboratoryName option').remove();
+        $('#stationName option').remove();
+        
         var sysId = ($('option:selected', '#systemName').index())       
         $.ajax({
             url: urlParam3,
@@ -138,8 +166,6 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 if (result.code == 100) {
-                    console.log(JSON.stringify(result));
-                    console.log(JSON.stringify(result.data.stations.length));
                     var staLength = JSON.stringify(result.data.stations.length);
                     var htmlStr = '';
                     for (var i = 0; i < staLength; i++) {
@@ -152,6 +178,133 @@ $(document).ready(function () {
 
     });
 
+
+    $("#add").click(function (){
+
+
+
+
+//岗位
+        var roles = [];
+                $("#title input[type='checkbox']:checked").each(function(i,ele){
+                     var obj = {
+                        "id": '',
+                        "name": '',
+                        "description": '',
+                    };
+                    obj.id = ele.value;
+                    switch (parseInt(ele.value)){
+                        case 2:
+                            obj.name = 'expert';
+                            obj.description = '行业主管人员';
+                            
+                            break;
+                        case 3:
+                            obj.name = 'shouxi';
+                            obj.description = '首席专家';
+                            break;
+                        case 4:
+                            obj.name = 'fu_shouxi';
+                            obj.description = '副首席专家';
+                            break;
+                        case 5:
+                            obj.name = 'master';
+                            obj.description = '研究室主任';
+                            break;
+                        case 6:
+                            obj.name = 'manager';
+                            obj.description = '岗位专家';
+                            break;
+                        case 7:
+                            obj.name = 'zhanzhang';
+                            obj.description = '综合实验室站长';
+                            break;
+                    }
+                     roles.push(obj)
+                });
+        
+
+//user
+        var user={
+            "id":userId,
+            "userName":$("#account").val(),
+            "laboratory.id":$("#laboratoryName option:selected").val(),
+            "station.id":$("#stationName option:selected").val(),
+            "system.id":$("#systemName option:selected").val(),
+            "roles":roles,
+            "profile":{
+                "id":profileId,
+                "name":$('#name').val(),
+                "phoneNumber":$('#phone').val(),
+                "officePhone":$('#telephone').val(),
+                "email":$('#email').val(),
+                "department":$('#work_unit').val(),
+                "sex":$('#sex').val(),
+                "nation":$('#nation').val(),
+                "birthdate":$('#birthdate').val(),
+                "politicsStatus":$('#political').val(),
+                "education":$('#education').val(),
+                "degree":$('#degree').val(),
+                "graduateInstitutions":$('#school').val(),
+                "graduationDate":$('#graduation_date').val(),
+                "major":$('#major').val(),
+                "undertake":$('#professial').val(),
+                "administrativeFunction":$('#administrative').val(),
+                "ministerialExpert":$('#ministeria').val(),
+                "provincialExpert":$('#provincial').val(),
+                "postalCode":$('#postalcode').val(),
+                "address":$('#address').val(),
+                "professionalAffiliations":$('#part_time').val(),
+                "professionalExpertise":$('#expertise').val(),
+            }
+        }
+        console.log(user)
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: ipValue + '/user/update1',
+            data: {_method: "put", "user": user},
+            async: false,
+            success: function (result) {
+                console.log(result)
+            }
+        });
+
+    // var profileId = sessionStorage.getItem("proId");
+    //     $.ajax({
+    //         url: urlParam5,
+    //         type: 'get',
+    //         data: { 
+    //             "profile.id":profileId,
+    //             "name":$('#name').val(),
+    //             "phoneNumber":$('#phone').val(),
+    //             "officePhone":$('#telephone').val(),
+    //             "email":$('#email').val(),
+    //             "department":$('#work_unit').val(),
+    //             "sex":$('#sex').val(),
+    //             "nation":$('#nation').val(),
+    //             "birthdate":$('#birthdate').val(),
+    //             "politicsStatus":$('#political').val(),
+    //             "education":$('#education').val(),
+    //             "degree":$('#degree').val(),
+    //             "graduateInstitutions":$('#school').val(),
+    //             "graduationDate":$('#graduation_date').val(),
+    //             "major":$('#major').val(),
+    //             "undertake":$('#professial').val(),
+    //             "administrativeFunction":$('#administrative').val(),
+    //             "ministerialExpert":$('#ministeria').val(),
+    //             "provincialExpert":$('#provincial').val(),
+    //             "postalCode":$('#postalcode').val(),
+    //             "address":$('#address').val(),
+    //             "professionalAffiliations":$('#part_time').val(),
+    //             "professionalExpertise":$('#expertise').val(),
+    //         },
+    //         dataType: 'json',
+    //         success:function(result){
+    //             console.log(result);
+    //         }
+    //     })
+    })
     
    
 
@@ -159,3 +312,16 @@ $(document).ready(function () {
 
 
    
+
+//获取url参数
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
+}
