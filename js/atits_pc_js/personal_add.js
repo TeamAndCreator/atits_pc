@@ -136,9 +136,10 @@ $(document).ready(function () {
  
     //根据体系所属名称显示相应的综合试验站和功能研究室
     $('#systemName').change(function () {
-        $('#laboratoryName option').remove();
+        $('#laboratoryName option').remove();    
+        $('#laboratoryName').append('<option value= "null">无</option>')
         $('#stationName option').remove();
-        
+        $('#stationName').append('<option value= "null">无</option>')
         var sysId = ($('option:selected', '#systemName').index())       
         $.ajax({
             url: urlParam3,
@@ -228,9 +229,6 @@ $(document).ready(function () {
         var user={
             "id":userId,
             "userName":$("#account").val(),
-            "laboratory.id":$("#laboratoryName option:selected").val(),
-            "station.id":$("#stationName option:selected").val(),
-            "system.id":$("#systemName option:selected").val(),
             "roles":roles,
             "profile":{
                 "id":profileId,
@@ -256,6 +254,20 @@ $(document).ready(function () {
                 "address":$('#address').val(),
                 "professionalAffiliations":$('#part_time').val(),
                 "professionalExpertise":$('#expertise').val(),
+            }
+        }
+        if($("#systemName option:selected").val()==null){
+        }else{
+            user["system.id"]=$("#systemName option:selected").val()
+            if($("#laboratoryName option:selected").val()== 0){
+                
+            }else{
+                user["laboratory.id"]=$("#laboratoryName option:selected").val();
+            }
+            if($("#stationName option:selected").val()== 0){
+                
+            }else{
+                user["station.id"]=$("#stationName option:selected").val();
             }
         }
         console.log(user)
