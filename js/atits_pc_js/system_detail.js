@@ -34,7 +34,7 @@ $(document).ready(function () {
         $('#demo-summernote-edit').summernote('destroy');
     });
 
-
+   
 
     var systemId = parseInt(getQueryVariable('id'));
     if ((sessionStorage.getItem("systemId") == systemId&&rolesId.indexOf(3)!=-1)||rolesId.indexOf(1)!=-1){
@@ -88,6 +88,7 @@ $(document).ready(function () {
             system = result.data.system;
             $("#content").html(system.content);
             $("#overView").html(system.overView);
+            $("#system_detail_title").text(system.systemName)
         }
     });
     $.ajax({
