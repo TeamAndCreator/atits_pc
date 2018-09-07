@@ -198,12 +198,12 @@ $(document).ready(function () {
         //向责任人上写名字
         var htmlStr = '';
         for (i = 0; i < dataUsers.length; i++) {
-            htmlStr += '<li class="checkbox">\n' +
-                '   <input class="magic-checkbox" type="checkbox" name="users" value="' + dataUsers[i].id + '">\n' +
-                '             <label for="demo-checkbox-11"> ' + dataUsers[i].profile.name + '</label>\n' +
-                '        </li>'
+            htmlStr += '<div class="col-sm-4"><li class="checkbox">\n' +
+                '       <input class="magic-checkbox" type="checkbox" name="users" value="' + dataUsers[i].id + '">\n' +
+                '       <label for="demo-checkbox-11"> ' + dataUsers[i].profile.name + '</label>\n' +
+                '       </li></div>'
         }
-        $('#menu').html(htmlStr);
+       $('#menu').html(htmlStr);
         //只能选一个责任人
         $('#menu').find('input[type="checkbox"]').bind('click', function () {
             $('#menu').find('input[type="checkbox"]').not(this).attr("checked", false);
@@ -394,7 +394,8 @@ $(document).ready(function () {
             }
         });
         for (var i = 0; i < bearers.length; i++) {
-            html3 += '<li class="checkbox">\n' +
+            
+            html3 += '<li class="checkbox col-sm-4">\n' +
                 '   <input class="magic-checkbox" type="checkbox" name="users" value="' + bearers[i].id + '">\n' +
                 '             <label for="demo-checkbox-11"> ' + bearers[i].profile.name + '</label>\n' +
                 '        </li>';
