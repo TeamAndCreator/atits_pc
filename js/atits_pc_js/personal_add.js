@@ -212,7 +212,6 @@ $(document).ready(function () {
     //根据体系所属名称显示相应的综合试验站和功能研究室
     $('#systemName').change(function () {
         $('#laboratoryName option').remove();    
-        $('#laboratoryName').append('<option value= "null">无</option>')
         $('#stationName option').remove();
         var sysId = ($('option:selected', '#systemName').index());
         if (sysId == 1) {
