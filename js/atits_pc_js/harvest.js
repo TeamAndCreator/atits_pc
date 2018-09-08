@@ -219,28 +219,31 @@ $(document).ready(function () {
     $('#add').click(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
-        var content = $('#demo-summernote').summernote('code');
-        formData.append("title", title);
-        formData.append("content", content);//具体内容
-        formData.append("system.id", sessionStorage.getItem("systemId"));
-        formData.append("user.id", sessionStorage.getItem("userId"));
-        //将文件数组添加进来
-        var multipartFiles = myDropzone.files;
-        for (var i = 0; i < multipartFiles.length; i++) {
-            formData.append("multipartFiles", myDropzone.files[i]);
-        }
-        $.ajax({
-            type: 'POST',
-            dataType: 'JSON',
-            url: ipValue + '/harvest/save',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function () {
-                window.location.reload();
+        if (title == "") {
+            alert("标题不能为空")
+        } else {
+            var content = $('#demo-summernote').summernote('code');
+            formData.append("title", title);
+            formData.append("content", content);//具体内容
+            formData.append("system.id", sessionStorage.getItem("systemId"));
+            formData.append("user.id", sessionStorage.getItem("userId"));
+            //将文件数组添加进来
+            var multipartFiles = myDropzone.files;
+            for (var i = 0; i < multipartFiles.length; i++) {
+                formData.append("multipartFiles", myDropzone.files[i]);
             }
-        });
-
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                url: ipValue + '/harvest/save',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
 
     });
 

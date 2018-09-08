@@ -41,7 +41,7 @@ $(document).ready(function () {
 //发送添加数据
     $('#add_btn').click(function () {
         var systemName = $('#systemName').val();
-        if (systemName == null) {
+        if (systemName == "") {
             alert("体系名称不能为空")
         } else {
             $.ajax({

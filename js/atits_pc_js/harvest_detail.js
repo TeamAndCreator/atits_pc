@@ -126,6 +126,7 @@ $(document).ready(function () {
 
     var id = parseInt(getQueryVariable('id'));
     var harvest;
+    var update_url = "/harvest/update";
     $.ajax({
         crossDomain: true,
         url: ipValue + "/harvest/findById",
@@ -134,9 +135,31 @@ $(document).ready(function () {
         type: "get",
         async: false,
         success: function (result) {
-            harvest=result.data.harvest;
+            harvest = result.data.harvest;
+            $('input[name="title"]').val(harvest.title);
+            $('#demo-summernote').summernote('code', harvest.content);
+            if (harvest.files.length != 0) {
+                $("#files_add").css("display", "none");
+                var str = [];
+                for (var i = 0; i < harvest.files.length; i++) {
+                    str[i] = harvest.files[i].title
+                }
+                update_url = "/harvest/update1";
+                $("#old_files_name").text(str.toString())
+            } else {
+                $("#old_files").css("display", "none")
+            }
         }
     });
+
+//删除文件按钮
+    $("#old_files_change").click(function () {
+        $("#old_files").css("display", "none");
+        $("#files_add").css("display", "block");
+        update_url = "/harvest/update";
+        return false;
+    });
+
 
     if (harvest.user.id == sessionStorage.getItem("userId") || sessionStorage.getItem("userId") == 1) {
         $('#ul').append("<li class=\"previous\">\n" +
@@ -149,29 +172,33 @@ $(document).ready(function () {
     $('#fix').click(function () {
         var formData = new FormData();
         var title = $('input[name="title"]').val();
-        var content = $('#demo-summernote').summernote('code');
-        formData.append("_method", "put");
-        formData.append("id", harvest.id);
-        formData.append("title", title);
-        formData.append("content", content);//具体内容
-        formData.append("system.id", sessionStorage.getItem("systemId"));
-        formData.append("user.id", sessionStorage.getItem("userId"));
-        //将文件数组添加进来
-        var multipartFiles = myDropzone.files;
-        for (var i = 0; i < multipartFiles.length; i++) {
-            formData.append("multipartFiles", myDropzone.files[i]);
-        }
-        $.ajax({
-            type: 'POST',
-            dataType: 'JSON',
-            url: ipValue + '/harvest/update',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function () {
-                window.location.reload();
+        if (title == "") {
+            alert("标题不能为空")
+        } else {
+            var content = $('#demo-summernote').summernote('code');
+            formData.append("_method", "put");
+            formData.append("id", harvest.id);
+            formData.append("title", title);
+            formData.append("content", content);//具体内容
+            formData.append("system.id", sessionStorage.getItem("systemId"));
+            formData.append("user.id", sessionStorage.getItem("userId"));
+            //将文件数组添加进来
+            var multipartFiles = myDropzone.files;
+            for (var i = 0; i < multipartFiles.length; i++) {
+                formData.append("multipartFiles", myDropzone.files[i]);
             }
-        });
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                url: ipValue + update_url,
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
     });
 
     $('#title').text(harvest.title);
@@ -179,7 +206,7 @@ $(document).ready(function () {
     $('#date').text(harvest.date);
     $('#content').html(harvest.content);
     $('#userName').html(harvest.user.profile.name);
-    var files=harvest.files;
+    var files = harvest.files;
 
     if (files.length == 0) {
         $("#files").css("display", "none")
@@ -191,16 +218,18 @@ $(document).ready(function () {
         $('#a').html(html)
     }
 });
+
 //获取url参数
-function getQueryVariable(variable)
-{
+function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
-    for (var i=0;i<vars.length;i++) {
+    for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split("=");
-        if(pair[0] == variable){return pair[1];}
+        if (pair[0] == variable) {
+            return pair[1];
+        }
     }
-    return(false);
+    return (false);
 }
 
 

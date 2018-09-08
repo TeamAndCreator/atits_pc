@@ -72,18 +72,25 @@ $(document).ready(function () {
             "time": ""
         }
         laboratory.labName = $("input[ name = 'labName']").val();
-        laboratory.company = $("input[ name = 'company']").val();
-        laboratory["system.id"] = sessionStorage.getItem('systemId');
-        laboratory.time = $("input[ name = 'time']").val();
-        laboratory.content = $('#content').val();
-        $.ajax({
-            type: 'POST',
-            dataType: 'JSON',
-            url: ipValue + '/laboratory/save',
-            data: laboratory,
-            async: false,
-            traditional: true
-        });
+        if (laboratory.labName == "") {
+            alert("研究室名称不能为空")
+        } else {
+            laboratory.company = $("input[ name = 'company']").val();
+            laboratory["system.id"] = sessionStorage.getItem('systemId');
+            laboratory.time = $("input[ name = 'time']").val();
+            laboratory.content = $('#content').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                url: ipValue + '/laboratory/save',
+                data: laboratory,
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
     });
 //发送删除数据
     $('#delete_btn').click(function () {

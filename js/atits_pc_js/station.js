@@ -70,18 +70,25 @@ $(document).ready(function () {
             "time": ""
         }
         station.staName = $("input[ name = 'staName']").val();
-        station.company = $("input[ name = 'company']").val();
-        station["system.id"] = sessionStorage.getItem('systemId');
-        station.time = $("input[ name = 'time']").val();
-        station.content = $('#content').val();
-        $.ajax({
-            type: 'POST',
-            dataType: 'JSON',
-            url: ipValue + '/station/save',
-            data: station,
-            async: false,
-            traditional: true
-        });
+        if (station.staName == "") {
+            alert("研究室名称不能为空")
+        } else {
+            station.company = $("input[ name = 'company']").val();
+            station["system.id"] = sessionStorage.getItem('systemId');
+            station.time = $("input[ name = 'time']").val();
+            station.content = $('#content').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                url: ipValue + '/station/save',
+                data: station,
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
     });
 
 //发送删除数据

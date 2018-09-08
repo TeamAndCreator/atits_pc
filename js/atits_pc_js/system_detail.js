@@ -37,9 +37,25 @@ $(document).ready(function () {
    
 
     var systemId = parseInt(getQueryVariable('id'));
+    var system;
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/system/findById",
+        dataType: "json",
+        type: "get",
+        async: false,
+        data: {"id": systemId},
+        success: function (result) {
+            system = result.data.system;
+            $("#content").html(system.content);
+            $("#overView").html(system.overView);
+            $("#system_detail_title").text(system.systemName)
+        }
+    });
     if ((sessionStorage.getItem("systemId") == systemId&&rolesId.indexOf(3)!=-1)||rolesId.indexOf(1)!=-1){
         $("#content_change").click(function () {
             $("#myLargeModalLabel").text("体系简介修改");
+            $('#demo-summernote').summernote('code',system.content);
             $("#fix").unbind("click");
             $("#fix").click(function () {
                 var content = $('#demo-summernote').summernote('code');
@@ -57,6 +73,7 @@ $(document).ready(function () {
         });
         $("#overView_change").click(function () {
             $("#myLargeModalLabel").text("产业概况修改");
+            $('#demo-summernote').summernote('code',system.overView);
             $("#fix").unbind("click");
             $("#fix").click(function () {
                 var overView = $('#demo-summernote').summernote('code');
@@ -76,21 +93,6 @@ $(document).ready(function () {
         $("#content_change").remove();
         $("#overView_change").remove()
     }
-    var system;
-    $.ajax({
-        crossDomain: true,
-        url: ipValue + "/system/findById",
-        dataType: "json",
-        type: "get",
-        async: false,
-        data: {"id": systemId},
-        success: function (result) {
-            system = result.data.system;
-            $("#content").html(system.content);
-            $("#overView").html(system.overView);
-            $("#system_detail_title").text(system.systemName)
-        }
-    });
     $.ajax({
         crossDomain: true,
         url: ipValue + "/system/findUsers",
