@@ -191,21 +191,31 @@ $(document).ready(function () {
             checkbox: true,
             formatter: 'check'
         }, {
-            field: 'system.systemName',
+            field: 'system',
             align: 'center',
             title: '所属体系',
+            sortable:'true',
+            formatter:function (value, row, index) {
+                return value.systemName
+            }
         }, {
             field: 'title',
             align: 'center',
             formatter: 'invoiceFormatter',
+            sortable:'true',
             title: '标题'
         }, {
             field: 'date',
             align: 'center',
+            sortable:'true',
             title: '上传日期'
         }, {
-            field: 'user.profile.name',
-            title: '上传人员'
+            field: 'user',
+            title: '上传人员',
+            sortable:'true',
+            formatter:function (value, row, index) {
+                return value.profile.name
+            }
         }, {
             field: 'state',
             align: 'center',

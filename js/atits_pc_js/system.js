@@ -30,10 +30,16 @@ $(document).ready(function () {
                 field: 'sx',
                 align: 'center',
                 title: '首席',
+                formatter:function (value, row, index) {
+                    return value[0]
+                }
             }, {
                 field: 'fsx',
                 align: 'center',
                 title: '副首席',
+                formatter:function (value, row, index) {
+                    return value[0]
+                }
             }
 
         ]

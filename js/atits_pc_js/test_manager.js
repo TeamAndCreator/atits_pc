@@ -230,24 +230,32 @@ $(document).ready(function () {
         }, {
             field: 'year',
             align: 'center',
+            sortable:'true',
             title: '考评年度'
         }, {
-            field: 'system.systemName',
+            field: 'system',
             align: 'center',
-            title: '所属体系'
+            sortable:'true',
+            title: '所属体系',
+            formatter:function (value, row, index) {
+                return value.systemName
+            }
         }, {
             field: 'users',
             align: 'center',
             title: '考评人员',
+            sortable:'true',
             formatter: 'invoiceFormatter'
         }, {
             field: 'date',
             align: 'center',
+            sortable:'true',
             title: '考评日期'
         }, {
             field: 'address',
             align: 'center',
-            title: '考评地点',
+            sortable:'true',
+            title: '考评地点'
         }, {
             field: 'testWeight',
             align: 'center',
@@ -265,7 +273,7 @@ $(document).ready(function () {
     })
 
 //获取testScore
-    var testScore;
+    var testScore="";
     $.ajax({
         crossDomain: true,
         url: ipValue + "/testscore/findByEvaluation",
@@ -278,6 +286,15 @@ $(document).ready(function () {
         }
     });
 
+    for (var i = 0; i < testScore.length; i++) {
+        testScore[i].year=testScore[i].testStart.year;
+        testScore[i].systemName=testScore[i].testStart.system.systemName;
+        testScore[i].address=testScore[i].testStart.address;
+        testScore[i].date=testScore[i].testStart.date;
+        testScore[i].evaluationed=testScore[i].evaluationed.profile.name;
+        testScore[i].evaluation=testScore[i].evaluation.profile.name;
+        testScore[i].year=testScore[i].testStart.year;
+    }
 //设置testScore表格标题
     $('#testScore').bootstrapTable({
         idField: 'id',
@@ -285,28 +302,34 @@ $(document).ready(function () {
         editable: true,
         columns: [
             {
-                field: 'testStart.year',
+                field: 'year',
                 align: 'center',
+                sortable:'true',
                 title: '考评年度'
             }, {
-                field: 'testStart.system.systemName',
+                field: 'systemName',
                 align: 'center',
+                sortable:'true',
                 title: '考评发起单位'
             }, {
-                field: 'testStart.address',
+                field: 'address',
                 align: 'center',
+                sortable:'true',
                 title: '考评地点'
             }, {
-                field: 'testStart.date',
+                field: 'date',
                 align: 'center',
+                sortable:'true',
                 title: '考评日期'
             }, {
-                field: 'evaluationed.profile.name',
+                field: 'evaluationed',
                 align: 'center',
-                title: '被考评人员',
+                sortable:'true',
+                title: '被考评人员'
             }, {
-                field: 'evaluation.profile.name',
+                field: 'evaluation',
                 align: 'center',
+                sortable:'true',
                 title: '打分人员'
             }, {
                 field: 'testStart.state',
@@ -316,6 +339,7 @@ $(document).ready(function () {
             }, {
                 field: 'time',
                 align: 'center',
+                sortable:'true',
                 title: '打分时间'
             }
 
@@ -364,7 +388,7 @@ $(document).ready(function () {
             $('#title').text("个人得分");
         }
 //获取个人得分
-        var testManage_person;
+        var testManage_person="";
         $.ajax({
             crossDomain: true,
             url: ipValue + "/testmanage/findOwn",
@@ -375,7 +399,14 @@ $(document).ready(function () {
             success: function (result) {
                 testManage_person = result.data.testManages;
             }
-        })
+        });
+        for (var i = 0; i < testManage_person.length;i++){
+            testManage_person[i].year=testManage_person[i].testStart.year;
+            testManage_person[i].systemName=testManage_person[i].testStart.system.systemName;
+            testManage_person[i].date=testManage_person[i].testStart.date;
+            testManage_person[i].address=testManage_person[i].testStart.address;
+            testManage_person[i].name=testManage_person[i].scoreUser.profile.name;
+        }
 //设置个人得分标题
         $('#testManage_person').bootstrapTable({
             striped: true,
@@ -392,28 +423,34 @@ $(document).ready(function () {
             editable: true,
             columns: [
                 {
-                    field: 'testStart.year',
+                    field: 'year',
                     align: 'center',
+                    sortable:'true',
                     title: '考评年度'
                 }, {
-                    field: 'testStart.system.systemName',
+                    field: 'systemName',
                     align: 'center',
+                    sortable:'true',
                     title: '考评发起单位'
                 }, {
-                    field: 'testStart.date',
+                    field: 'date',
                     align: 'center',
+                    sortable:'true',
                     title: '考评日期'
                 }, {
-                    field: 'testStart.address',
+                    field: 'address',
                     align: 'center',
+                    sortable:'true',
                     title: '考评地点'
                 }, {
-                    field: 'scoreUser.profile.name',
+                    field: 'name',
                     align: 'center',
+                    sortable:'true',
                     title: '得分人'
                 }, {
                     field: 'sum',
                     align: 'center',
+                    sortable:'true',
                     title: '综合得分'
                 }
 
@@ -435,7 +472,14 @@ $(document).ready(function () {
             success: function (result) {
                 testManage_system = result.data.testManages;
             }
-        })
+        });
+        for (var i = 0; i < testManage_system.length; i++) {
+            testManage_system[i].year=testManage_system[i].testStart.year;
+            testManage_system[i].systemName=testManage_system[i].testStart.system.systemName;
+            testManage_system[i].date=testManage_system[i].testStart.date;
+            testManage_system[i].address=testManage_system[i].testStart.address;
+            testManage_system[i].name=testManage_system[i].scoreUser.profile.name;
+        }
         $('#testManage_system').bootstrapTable({
             striped: true,
             pagination: true,
@@ -451,28 +495,34 @@ $(document).ready(function () {
             editable: true,
             columns: [
                 {
-                    field: 'testStart.year',
+                    field: 'year',
                     align: 'center',
+                    sortable:'true',
                     title: '考评年度'
                 }, {
-                    field: 'testStart.system.systemName',
+                    field: 'systemName',
                     align: 'center',
+                    sortable:'true',
                     title: '考评发起单位'
                 }, {
-                    field: 'testStart.date',
+                    field: 'date',
                     align: 'center',
+                    sortable:'true',
                     title: '考评日期'
                 }, {
-                    field: 'testStart.address',
+                    field: 'address',
                     align: 'center',
+                    sortable:'true',
                     title: '考评地点'
                 }, {
-                    field: 'scoreUser.profile.name',
+                    field: 'name',
                     align: 'center',
+                    sortable:'true',
                     title: '得分人'
                 }, {
                     field: 'sum',
                     align: 'center',
+                    sortable:'true',
                     title: '综合得分'
                 }
 

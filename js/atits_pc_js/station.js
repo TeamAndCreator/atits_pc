@@ -20,7 +20,12 @@ $(document).ready(function () {
         type: "get",
         async: false,
         success: function (result) {
-            stas = result.data.stations
+            stas = result.data.stations;
+            for (var i = 0; i < stas.length; i++) {
+                stas[i].station.zr=stas[i].zr[0];
+                stas[i]=stas[i].station
+            }
+            console.log(stas)
         }
     });
 
@@ -31,28 +36,31 @@ $(document).ready(function () {
         columns: [{
             checkbox: true
         }, {
-            field: 'station.system.systemName',
+            field: 'system',
             align: 'center',
-            title: '所属体系'
+            title: '所属体系',
+            formatter:function (value, row, index) {
+                return value.systemName
+            }
         }, {
-            field: 'station.staName',
+            field: 'staName',
             align: 'center',
             title: '名称',
             formatter: 'detail'
         }, {
             field: 'zr',
             align: 'center',
-            title: '研究室主任'
+            title: '实验站站长'
         }, {
-            field: 'station.company',
+            field: 'company',
             align: 'center',
             title: '建设依托单位'
         }, {
-            field: 'station.time',
+            field: 'time',
             align: 'center',
             title: '成立时间'
         }, {
-            field: 'station.state',
+            field: 'state',
             align: 'center',
             title: '状态',
             formatter: 'state'
@@ -123,7 +131,7 @@ function state(value, row) {
         return "<div class='label label-table label-success'>已激活</div>";
     } else {
         if (rolesId.indexOf(1) != -1) {
-            return "<div class='label label-table label-warning'> <a onclick='updateState(" + row.station.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>";
+            return "<div class='label label-table label-warning'> <a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>";
         } else {
             return "<div class='label label-table label-warning'>未激活</div>";
         }
@@ -150,7 +158,7 @@ function updateState(id) {
 
 //跳转详情页
 function detail(value, row) {
-    return '<a href="station_detail.html?staId=' + row.station.id + '">' + value + '</a>'
+    return '<a href="station_detail.html?staId=' + row.id + '">' + value + '</a>'
 }
 
 //判断有没有选中需删除的项

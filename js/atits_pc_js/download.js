@@ -9,7 +9,12 @@ $(document).ready(function () {
             type: "get",
             async: false,
             success: function (result) {
-                data = result.data.files
+                data = result.data.files;
+                for (var i = 0; i < data.length; i++) {
+                    data[i].files.systemName=data[i].systemName;
+                    data[i].files.userName=data[i].userName;
+                    data[i]=data[i].files
+                }
             }
 
         });
@@ -19,23 +24,28 @@ $(document).ready(function () {
         data: data,
         columns: [
             {
-                field: 'files.title',
+                field: 'title',
                 align: 'center',
+                sortable:'true',
                 formatter: 'invoiceFormatter',
                 title: '文件名'
             }, {
                 field: 'userName',
+                sortable:'true',
                 title: '发布者'
             }, {
                 field: 'systemName',
+                sortable:'true',
                 title: '所属体系'
             }, {
-                field: 'files.fileType',
+                field: 'fileType',
                 align: 'center',
+                sortable:'true',
                 title: '文件类型'
             }, {
-                field: 'files.date',
+                field: 'date',
                 align: 'center',
+                sortable:'true',
                 title: '上传日期'
             }
 
@@ -44,5 +54,5 @@ $(document).ready(function () {
 });
 //超链接
 function invoiceFormatter(value, row) {
-    return "<a href='"+vr_path+"/"+row.files.path+row.files.name+"' download='"+value+"'>"+value+"</a>";
+    return "<a href='"+vr_path+"/"+row.path+row.name+"' download='"+value+"'>"+value+"</a>";
 }

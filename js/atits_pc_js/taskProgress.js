@@ -184,6 +184,9 @@ $(document).ready(function () {
 
         });
     }
+    for (var i = 0; i < data.length; i++) {
+        data[i].name=data[i].subTask.bearer.profile.name
+    }
 //设置table每列标题
     $('#demo-custom-toolbar').bootstrapTable({
         idField: 'id',
@@ -192,21 +195,25 @@ $(document).ready(function () {
             checkbox: true,
             formatter: 'check'
         }, {
-            field: 'subTask.title',
+            field: 'subTask',
             align: 'center',
             formatter: 'subTask',
+            sortable:'true',
             title: '体系任务'
         }, {
             field: 'title',
             align: 'center',
             formatter: 'invoiceFormatter',
+            sortable:'true',
             title: '标题'
         }, {
             field: 'date',
             align: 'center',
+            sortable:'true',
             title: '上传日期'
         }, {
-            field: 'subTask.bearer.profile.name',
+            field: 'name',
+            sortable:'true',
             title: '责任人'
         }, {
             field: 'state',
@@ -276,7 +283,7 @@ $(document).ready(function () {
 
 //体系任务
 function subTask(value, row) {
-    return '<a href="subTask_detail.html?id=' + row.subTask.id + '"class="btn-link" >' + value + '</a>'
+    return '<a href="subTask_detail.html?id=' + row.subTask.id + '"class="btn-link" >' + value.title + '</a>'
 }
 
 //checkbox

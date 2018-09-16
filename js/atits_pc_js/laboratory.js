@@ -23,7 +23,11 @@ $(document).ready(function () {
         type: "get",
         async: false,
         success: function (result) {
-            labs = result.data.laboratories
+            labs = result.data.laboratories;
+            for (var i = 0; i < labs.length; i++) {
+                labs[i].laboratory.zr=labs[i].zr[0];
+                labs[i]=labs[i].laboratory
+            }
         }
     });
 //设置表格每列标题
@@ -33,28 +37,36 @@ $(document).ready(function () {
         columns: [{
             checkbox: true
         }, {
-            field: 'laboratory.system.systemName',
+            field: 'system',
             align: 'center',
-            title: '所属体系'
+            title: '所属体系',
+            sortable:'true',
+            formatter:function (value, row, index) {
+                return value.systemName
+            }
         }, {
-            field: 'laboratory.labName',
+            field: 'labName',
             align: 'center',
             title: '名称',
+            sortable:'true',
             formatter: 'detail'
         }, {
             field: 'zr',
             align: 'center',
+            sortable:'true',
             title: '研究室主任'
         }, {
-            field: 'laboratory.company',
+            field: 'company',
             align: 'center',
+            sortable:'true',
             title: '建设依托单位'
         }, {
-            field: 'laboratory.time',
+            field: 'time',
             align: 'center',
+            sortable:'true',
             title: '成立时间'
         }, {
-            field: 'laboratory.state',
+            field: 'state',
             align: 'center',
             title: '状态',
             formatter: 'state'
@@ -123,7 +135,7 @@ function state(value, row) {
         return "<div class='label label-table label-success'>已激活</div>";
     } else {
         if (rolesId.indexOf(1) != -1) {
-            return "<div class='label label-table label-warning'> <a onclick='updateState(" + row.laboratory.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>";
+            return "<div class='label label-table label-warning'> <a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>";
         } else {
             return "<div class='label label-table label-warning'>未激活</div>";
         }
@@ -150,7 +162,7 @@ function updateState(id) {
 
 //跳转详情页
 function detail(value, row) {
-    return '<a href="laboratory_detail.html?labId=' + row.laboratory.id + '">' + value + '</a>'
+    return '<a href="laboratory_detail.html?labId=' + row.id + '">' + value + '</a>'
 }
 
 //判断有没有选中需删除的项

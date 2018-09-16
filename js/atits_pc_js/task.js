@@ -153,30 +153,42 @@ $(document).ready(function () {
             idField: 'id',
             data: tasks,
             columns: [{
-                checkbox: true,
+                checkbox: true
             }, {
-                field: 'system.systemName',
+                field: 'system',
                 align: 'center',
+                sortable:'true',
                 title: '所属体系',
+                formatter:function (value, row, index) {
+                    return value.systemName
+                }
             }, {
                 field: 'title',
                 align: 'center',
                 formatter: 'invoiceFormatter',
+                sortable:'true',
                 title: '标题'
             }, {
-                field: 'user.profile.name',
-                title: '责任人'
+                field: 'user',
+                sortable:'true',
+                title: '责任人',
+                formatter:function (value, row, index) {
+                    return value.profile.name
+                }
             }, {
                 field: 'stratTime',
                 align: 'center',
+                sortable:'true',
                 title: '起始时间'
             }, {
                 field: 'endTime',
                 align: 'center',
+                sortable:'true',
                 title: '结束时间'
             }, {
                 field: 'date',
                 align: 'center',
+                sortable:'true',
                 title: '上传日期'
             }
             ]
@@ -287,28 +299,40 @@ $(document).ready(function () {
             idField: 'id',
             data: ftasks,
             columns: [{
-                field: 'system.systemName',
+                field: 'system',
                 align: 'center',
-                title: '所属体系'
+                sortable:'true',
+                title: '所属体系',
+                formatter:function (value, row, index) {
+                    return value.systemName
+                }
             }, {
                 field: 'title',
                 align: 'center',
                 formatter: 'invoiceFormatter',
+                sortable:'true',
                 title: '标题'
             }, {
-                field: 'user.profile.name',
-                title: '责任人'
+                field: 'user',
+                sortable:'true',
+                title: '责任人',
+                formatter:function (value, row, index) {
+                    return value.profile.name
+                }
             }, {
                 field: 'stratTime',
                 align: 'center',
+                sortable:'true',
                 title: '起始时间'
             }, {
                 field: 'endTime',
                 align: 'center',
+                sortable:'true',
                 title: '结束时间'
             }, {
                 field: 'date',
                 align: 'center',
+                sortable:'true',
                 title: '上传日期'
             }
             ]
@@ -331,31 +355,40 @@ $(document).ready(function () {
             idField: 'id',
             data: ztasks,
             columns: [{
-                checkbox: true,
+                checkbox: true
             }, {
-                field: 'fatherTask.title',
+                field: 'fatherTask',
                 align: 'center',
+                sortable:'true',
                 title: '父任务',
                 formatter: 'fatherTask'
             }, {
                 field: 'title',
                 align: 'center',
                 formatter: 'subTask',
+                sortable:'true',
                 title: '标题'
             }, {
-                field: 'bearer.profile.name',
-                title: '责任人'
+                field: 'bearer',
+                sortable:'true',
+                title: '责任人',
+                formatter:function (value, row, index) {
+                    return value.profile.name
+                }
             }, {
                 field: 'startTime',
                 align: 'center',
+                sortable:'true',
                 title: '起始时间'
             }, {
                 field: 'endTime',
                 align: 'center',
+                sortable:'true',
                 title: '结束时间'
             }, {
                 field: 'date',
                 align: 'center',
+                sortable:'true',
                 title: '上传日期'
             }
             ]
@@ -485,31 +518,40 @@ $(document).ready(function () {
             idField: 'id',
             data: ztasks1,
             columns: [{
-                checkbox: true,
+                checkbox: true
             }, {
-                field: 'fatherTask.title',
+                field: 'fatherTask',
                 align: 'center',
+                sortable:'true',
                 title: '父任务',
                 formatter: 'fatherTask'
             }, {
                 field: 'title',
                 align: 'center',
+                sortable:'true',
                 formatter: 'subTask',
                 title: '标题'
             }, {
-                field: 'bearer.profile.name',
-                title: '责任人'
+                field: 'bearer',
+                sortable:'true',
+                title: '责任人',
+                formatter:function (value, row, index) {
+                    return value.profile.name
+                }
             }, {
                 field: 'startTime',
                 align: 'center',
+                sortable:'true',
                 title: '起始时间'
             }, {
                 field: 'endTime',
                 align: 'center',
+                sortable:'true',
                 title: '结束时间'
             }, {
                 field: 'date',
                 align: 'center',
+                sortable:'true',
                 title: '上传日期'
             }
             ]
@@ -531,7 +573,7 @@ function subTask(value, row) {
 
 //超链接(子任务表中的父任务)
 function fatherTask(value, row) {
-    return '<a href="task_detail.html?id=' + row.fatherTask.id + '" class="btn-link" >' + value + '</a>';
+    return '<a href="task_detail.html?id=' + row.fatherTask.id + '" class="btn-link" >' + value.title + '</a>';
 }
 
 //超链接(父任务)

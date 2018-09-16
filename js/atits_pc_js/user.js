@@ -19,24 +19,28 @@ $(document).ready(function () {
         editable: true,
         columns: [
             {
-                field: 'profile.name',
+                field: 'profile',
                 align: 'center',
                 title: '姓名',
+                sortable:'true',
                 formatter:'name'
             },{
                 field: 'system',
                 align: 'center',
                 title: '所属体系',
+                sortable:'true',
                 formatter:'system'
             },{
                 field: 'roles',
                 align: 'center',
                 title: '岗位',
+                sortable:'true',
                 formatter:'roles'
             },{
                 field: 'state',
                 align: 'center',
                 title: '状态',
+                sortable:'true',
                 formatter:'state'
             }
         ]
@@ -93,7 +97,7 @@ function updateState(userId) {
 }
 //姓名超链接
 function name(value,row){
-    return "<a href=personal_profile.html?id="+row.id+">"+value+"</a>"
+    return "<a href=personal_profile.html?id="+row.id+">"+value.name+"</a>"
 }
 
 
