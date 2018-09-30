@@ -199,12 +199,14 @@
                         <!--Tabs content-->
                         <div class="tab-content">
 
-                            <div id="tabs-1" class="tab-pane fade in active" style="text-align: center">
+                            <div id="tabs-1" class="tab-pane fade in active">
                                 <div class="col-lg-10 col-lg-offset-1 ">
-                                    <h1>体系简介</h1>
+                                    <h1 style="text-align: center">体系简介</h1>
                                     <div class="widget-main" id="content">
                                     </div>
-                                    <button class="btn btn-primary" id="content_change" data-toggle="modal" data-target="#demo-lg-modal">修改</button>
+                                    <div style="text-align: center">
+                                        <button class="btn btn-primary" id="content_change" data-toggle="modal" data-target="#demo-lg-modal">修改</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -262,6 +264,7 @@
                                             <table id="demo-custom-toolbar" class="demo-add-niftycheck"
                                                    data-toggle="table">
                                             </table>
+                                            <div class="text-right" id="lab_number"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -274,15 +277,18 @@
                                             <table id="demo-custom-toolbar1" class="demo-add-niftycheck"
                                                    data-toggle="table">
                                             </table>
+                                            <div class="text-right" id="sta_number"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="tabs-5" class="tab-pane fade" style="text-align: center">
-                                <h1>产业概况</h1>
+                            <div id="tabs-5" class="tab-pane fade" >
+                                <h1 style="text-align: center">产业概况</h1>
                                 <div class="widget-main" id="overView"></div>
-                                <button class="btn btn-primary" id="overView_change" data-toggle="modal" data-target="#demo-lg-modal">修改</button>
+                                <div style="text-align: center">
+                                    <button class="btn btn-primary" id="overView_change" data-toggle="modal" data-target="#demo-lg-modal">修改</button>
+                                </div>
                             </div>
 
                         </div>
@@ -347,7 +353,7 @@
 
                             <!--Profile Widget-->
                             <!--================================-->
-                            <div id="mainnav-profile" class="mainnav-profile">
+                            <div id="mainnav-profile" class="mainnav-profile" style="max-height: 550px">
                                 <div class="profile-wrap">
                                     <div class="pad-btm">
                                         <span class="label label-success pull-right">New</span>
@@ -366,6 +372,9 @@
                                         <a href="#" class="list-group-item" id="personal_profile">
                                                 <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
                                             </a>
+                                    <a href="#" class="list-group-item" id="resetPassWord">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 个人密码修改
+                                    </a>
                                     <a href="#" class="list-group-item" id="sys_control">
                                         <i class="demo-pli-gear icon-lg icon-fw"></i> 体系管理
                                     </a>
@@ -418,7 +427,7 @@
                                 <!--Menu list item-->
                                 <li style="display: none" id="lab">
                                     <a href="laboratory.html">
-                                        <i class="fa fa-university"></i>
+                                        <i class="fa fa-hourglass-1"></i>
                                         <span class="menu-title">
 															<strong>功能研究室</strong>
 														</span>
@@ -426,7 +435,7 @@
                                 </li>
 
                                 <!--Menu list item-->
-                                <li class="active-link" style="display: none" id="sta">
+                                <li style="display: none" id="sta">
                                     <a href="station.html">
                                         <i class="demo-psi-office"></i>
                                         <span class="menu-title">
@@ -448,7 +457,7 @@
                                 <!--Menu list item-->
                                 <li>
                                     <a href="harvest.html">
-                                        <i class="fa fa-mortar-board"></i>
+                                        <i class="fa fa-trophy"></i>
                                         <span class="menu-title">
 															<strong>重大成果</strong>
 														</span>

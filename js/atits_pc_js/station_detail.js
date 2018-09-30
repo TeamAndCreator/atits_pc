@@ -16,12 +16,10 @@ $(document).ready(function () {
             data = result.data;
             $("input[ name = 'staName']").val(data.station.staName);
             $("input[ name = 'company']").val(data.station.company);
-            $("input[ name = 'time']").val(data.station.time);
             $("input[ name = 'system']").val(sessionStorage.getItem("systemName"));
             $('#content').val(data.station.content);
         }
     });
-    $("#time").text(data.station.time);
     $('#name').text(data.station.staName);
     $('#company').text(data.station.company);
     $('#systemName').text(data.station.system.systemName);
@@ -44,7 +42,6 @@ $(document).ready(function () {
             "company": "",
             "system.id": "",
             "content": "",
-            "time": ""
         };
         station.staName = $("input[ name = 'staName']").val();
         if (station.staName == "") {
@@ -52,7 +49,6 @@ $(document).ready(function () {
         } else {
             station.company = $("input[ name = 'company']").val();
             station["system.id"] = sessionStorage.getItem('systemId');
-            station.time = $("input[ name = 'time']").val();
             station.content = $('#content').val();
             $.ajax({
                 type: 'POST',

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>体系管理</title>
+    <title>个人简介</title>
     <!--STYLESHEET-->
     <!--=================================================-->
 
@@ -70,10 +70,6 @@
 <script src="js/demo/nifty-demo.min.js"></script>
 
 
-<!--Bootstrap Table Sample [ SAMPLE ]-->
-<script src="js/demo/tables-bs-table.js"></script>
-
-
 <!--X-editable [ OPTIONAL ]-->
 <script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
@@ -88,8 +84,6 @@
 <!--Summernote [ OPTIONAL ]-->
 <script src="plugins/summernote/summernote.min.js"></script>
 <!--=================================================-->
-<!--Form File Upload [ SAMPLE ]-->
-<script src="js/demo/form-text-editor.js"></script>
 <!--Demo script [ DEMONSTRATION ]-->
 
 <!--Dropzone [ OPTIONAL ]-->
@@ -352,6 +346,12 @@
                                                 <input class="form-control" id="account">
                                             </div>
                                         </div>
+                                        <div class="form-group" id="passWord_reset_div">
+                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">密码</label>
+                                            <div class="col-sm-4">
+                                                <input id="passWord_reset_button" class="btn-warning form-control text-center" data-toggle="modal" data-target="#demo-sm-modal">
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="demo-is-inputnormal" class="col-sm-4 control-label">工作单位</label>
                                             <div class="col-sm-4">
@@ -487,7 +487,25 @@
                         </div>
                     </div>
 
-                    
+                <!--Small Bootstrap Modal-->
+                <!--===================================================-->
+                <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h4>是否将此账号密码初始化</h4>
+                                <button id="passWord_reset" class="btn btn-success">是</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--===================================================-->
+                <!--End Small Bootstrap Modal-->
+
                     <ul class="pager">
                         
                             
@@ -511,7 +529,7 @@
                         
                                             <!--Profile Widget-->
                                             <!--================================-->
-                                            <div id="mainnav-profile" class="mainnav-profile">
+                                            <div id="mainnav-profile" class="mainnav-profile"style="max-height: 550px">
                                                 <div class="profile-wrap">
                                                     <div class="pad-btm ">
                                                         <img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture">
@@ -526,6 +544,9 @@
                                                 <div id="profile-nav" class="collapse list-group bg-trans">
                                                     <a href="#" class="list-group-item" id="personal_profile">
                                                         <i class="demo-pli-male icon-lg icon-fw"></i> 个人中心
+                                                    </a>
+                                                    <a href="#" class="list-group-item" id="resetPassWord">
+                                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 个人密码修改
                                                     </a>
                                                     <a href="#" class="list-group-item" id="sys_control">
                                                         <i class="demo-pli-gear icon-lg icon-fw"></i> 体系管理
@@ -579,7 +600,7 @@
                                                 <!--Menu list item-->
                                                 <li style="display: none" id="lab">
                                                     <a href="laboratory.html">
-                                                        <i class="fa fa-university"></i>
+                                                        <i class="fa fa-hourglass-1"></i>
                                                         <span class="menu-title">
                                                             <strong>功能研究室</strong>
                                                         </span>
@@ -609,7 +630,7 @@
                                                 <!--Menu list item-->
                                                 <li>
                                                     <a href="harvest.html">
-                                                        <i class="fa fa-mortar-board"></i>
+                                                        <i class="fa fa-trophy"></i>
                                                         <span class="menu-title">
                                                             <strong>重大成果</strong>
                                                         </span>

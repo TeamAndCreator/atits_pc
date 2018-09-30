@@ -25,7 +25,6 @@ $(document).ready(function () {
                 stas[i].station.zr=stas[i].zr[0];
                 stas[i]=stas[i].station
             }
-            console.log(stas)
         }
     });
 
@@ -56,10 +55,6 @@ $(document).ready(function () {
             align: 'center',
             title: '建设依托单位'
         }, {
-            field: 'time',
-            align: 'center',
-            title: '成立时间'
-        }, {
             field: 'state',
             align: 'center',
             title: '状态',
@@ -74,16 +69,14 @@ $(document).ready(function () {
             "staName": "",
             "company": "",
             "system.id": "",
-            "content": "",
-            "time": ""
-        }
+            "content": ""
+        };
         station.staName = $("input[ name = 'staName']").val();
         if (station.staName == "") {
             alert("研究室名称不能为空")
         } else {
             station.company = $("input[ name = 'company']").val();
             station["system.id"] = sessionStorage.getItem('systemId');
-            station.time = $("input[ name = 'time']").val();
             station.content = $('#content').val();
             $.ajax({
                 type: 'POST',

@@ -75,6 +75,9 @@ function logFun(){
                 sessionStorage.setItem("rolesId",rolesId);
                 sessionStorage.setItem("userId",userId);
                 sessionStorage.setItem("userName",userName);
+                if ($("#password").val()=="123456"){
+                    alert("密码为初始密码，请修改")
+                }
                 window.location.href = "index.html";
             }else {
                 alert("账号或密码错误");

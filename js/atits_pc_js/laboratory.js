@@ -61,11 +61,6 @@ $(document).ready(function () {
             sortable:'true',
             title: '建设依托单位'
         }, {
-            field: 'time',
-            align: 'center',
-            sortable:'true',
-            title: '成立时间'
-        }, {
             field: 'state',
             align: 'center',
             title: '状态',
@@ -80,16 +75,14 @@ $(document).ready(function () {
             "labName": "",
             "company": "",
             "system.id": "",
-            "content": "",
-            "time": ""
-        }
+            "content": ""
+        };
         laboratory.labName = $("input[ name = 'labName']").val();
         if (laboratory.labName == "") {
             alert("研究室名称不能为空")
         } else {
             laboratory.company = $("input[ name = 'company']").val();
             laboratory["system.id"] = sessionStorage.getItem('systemId');
-            laboratory.time = $("input[ name = 'time']").val();
             laboratory.content = $('#content').val();
             $.ajax({
                 type: 'POST',

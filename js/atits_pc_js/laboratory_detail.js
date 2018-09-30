@@ -16,12 +16,10 @@ $(document).ready(function () {
             data = result.data;
             $("input[ name = 'labName']").val(data.laboratory.labName);
             $("input[ name = 'company']").val(data.laboratory.company);
-            $("input[ name = 'time']").val(data.laboratory.time);
             $("input[ name = 'system']").val(sessionStorage.getItem("systemName"));
             $('#content').val(data.laboratory.content);
         }
     });
-    $("#time").text(data.laboratory.time);
     $('#name').text(data.laboratory.labName);
     $('#company').text(data.laboratory.company);
     $('#systemName').text(data.laboratory.system.systemName);
@@ -44,8 +42,7 @@ $(document).ready(function () {
             "labName": "",
             "company": "",
             "system.id": "",
-            "content": "",
-            "time": ""
+            "content": ""
         };
         laboratory.labName = $("input[ name = 'labName']").val();
         if (laboratory.labName == "") {
@@ -53,7 +50,6 @@ $(document).ready(function () {
         } else {
             laboratory.company = $("input[ name = 'company']").val();
             laboratory["system.id"] = sessionStorage.getItem('systemId');
-            laboratory.time = $("input[ name = 'time']").val();
             laboratory.content = $('#content').val();
             $.ajax({
                 type: 'POST',

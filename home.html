@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,
+       maximum-scale=1.0,minimum-scale=1.0,user-scalable=yes,width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>安徽省现代农业产业技术体系平台</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--jQuery [ REQUIRED ]-->
+
+    <script src="js/atits_pc_js/ipaddress.js"></script>
+   
+
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/atits_pc_js/newsPage.js" ></script>
+    <script src="js/atits_pc_js/home.js"></script>
+    <script language="JavaScript">
+        function startTime() {
+            var today = new Date();//定义日期对象
+            var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年
+            var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年
+            var dd = today.getDate();//通过日期对象的getDate()方法返回年
+            var hh = today.getHours();//通过日期对象的getHours方法返回小时
+            var mm = today.getMinutes();//通过日期对象的getMinutes方法返回分钟
+            var ss = today.getSeconds();//通过日期对象的getSeconds方法返回秒
+            // 如果分钟或小时的值小于10，则在其值前加0，比如如果时间是下午3点20分9秒的话，则显示15：20：09
+            MM = checkTime(MM);
+            dd = checkTime(dd);
+            mm = checkTime(mm);
+            ss = checkTime(ss);
+            var day; //用于保存星期（getDay()方法得到星期编号）
+            if (today.getDay() == 0) day = "星期日 "
+            if (today.getDay() == 1) day = "星期一 "
+            if (today.getDay() == 2) day = "星期二 "
+            if (today.getDay() == 3) day = "星期三 "
+            if (today.getDay() == 4) day = "星期四 "
+            if (today.getDay() == 5) day = "星期五 "
+            if (today.getDay() == 6) day = "星期六 "
+            document.getElementById('nowDateTimeSpan').innerHTML = yyyy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "   " + day;
+            setTimeout('startTime()', 1000);//每一秒中重新加载startTime()方法
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    </script>
+    
+</head>
+
+<body onload="startTime();goPageNoti(1,10);goPageDyna(1,10);goPageRegu(1,10);goPageHarv(1,5);goPageActi(1,5);goPageRepo(1,5);">
+    <!-- 时间-->
+    <div class="htop">
+        <div class="htop-l">
+            <span id="nowDateTimeSpan"></span>
+        </div>
+        <div class="htop-r">
+            <ul class="list-inline">
+                <li>
+                    <a href="login.html">登陆</a>
+                </li>
+                <li>
+                    <a href="#">注册</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!--背景图 -->
+    <div class="header">
+        <div class="headerc2">
+            <img src="img/bjt3.jpg">
+        </div>
+    </div>
+
+
+    <!-- 内容区域-->
+    <div class="row">
+        <div class="con-l col-md-9" style="width:75%" >
+             <div class="row" style="margin-top:10px">
+                <!-- 体系综述-->
+                <div class="con-l-1 col-md-6">
+                    <div class="col-md-12" style="background:#eee;padding-bottom:6px;">
+                        <div class="row div-title">
+                            <span class="div-col-md-4 n-b">安徽省现代农业产业技术体系综述</span>
+                        </div>
+                        <div class="title">
+                            <acticle>
+                                <p style="text-align:center;">
+                                    <span style="font-size:18px;">
+                                        <strong>安徽省现代农业产业技术体系综述</strong>
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <span style="font-size:14px;"> &nbsp; &nbsp; &nbsp; &nbsp;安徽省现代农业产业技术体系，是新形势下汇聚优质农业科技资源、集聚精干农业科研力量、解决重大关键技术瓶颈的农业科技大联合、大协作的一种崭新平台，也是一个多主体聚集、多资源聚合、多力量聚力的农业科技联合体。其主要职责是，聚焦产业发展，强化问题和需求”双导向“，发力成果创制、试验示范、技术服务、应急处置、决策咨询五大任务，助力产业兴旺。建设好、维护好、发展好体系，契合创新驱动发展战略，吻合农业科技协同创新发展趋势，符合现代农业发展需求，耦合农业科研一般规律，迎合农业科技人员期盼。省体系实行首席专家负责制，坚持“开放、流动、协作、竞争、共享”的运行模式，倡导“爱农、奉献、担当、务实、包容”的文化价值，践行“用心、用情、用智”的工作理念。</span>
+                                </p>
+
+                                <p>
+                                    <span style="font-size:14px;"> &nbsp; &nbsp; &nbsp; &nbsp;在“十一五”收官之际，为有效满足现代农业发展要求，我省在全国最早建立了以农产品为单元... &nbsp; &nbsp;
+                                        &nbsp; &nbsp;</span>
+                                    <a class="detail" href="review.html">详情</a>
+                                </p>
+                            </acticle>
+                        </div>
+                    </div>
+                </div>
+                <!-- 通知公告-->
+                <div class="con-l-2 col-md-6">
+                    <div class="col-md-12" style="background:#eee;padding-bottom:6px;">
+                        <div class="row div-title">
+                            <span class="div-col-md-4 n-b">通知公告</span>
+                           
+                        </div>
+                        <div class="title">
+                            <ul class="demo2" id="notice">
+                            </ul>
+                            <div class="barcon"  id="noti"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px">
+                <!--体系动态-->
+                <div class="con-l-2 col-md-6">
+
+                    <div class="col-md-12" style="background:#eee;padding-bottom:6px;">
+                        <div class="row div-title">
+                            <span class="div-col-md-4 n-b">体系动态</span>
+                            
+                        </div>
+                        <div class="title">
+                            <ul class="demo2" id="dynamic">
+                            </ul>  
+                            <div class="barcon" id="dyna"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--规章制度-->
+                <div class="con-l-4 col-md-6">
+                    <div class="col-md-12" style="background:#eee;padding-bottom:6px;">
+                        <div class="row div-title">
+                            <span class="div-col-md-4 n-b">规章制度</span>
+                           
+                        </div>
+                        <div class="title">
+                            <ul class="demo2" id="regulation" >                              
+                            </ul>   
+                            <div class="barcon" id="regu" ></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+
+
+        <div class="con-r col-md-3" style="width:25%">
+            <!--重大活动-->
+            <div class="col-md-12" style="margin-top:10px;padding-bottom:6px;background:#eee;">
+
+                <div class="row div-title">
+                    <span class="div-col-md-4 n-b">重大活动</span>
+                    
+                </div>
+                <div class="title">
+                        <ul class="demo2" id="activity">
+                    
+                        </ul>
+                        <div class="barcon"  id="acti"></div>
+                </div>
+
+            </div>
+            <!--重大成果-->
+            <div class="col-md-12" style="margin-top:20px;padding-bottom:6px;background:#eee;">
+                <div class="row div-title">
+                    <span class="div-col-md-4 n-b">重大成果</span>
+                    
+                </div>
+                <div class="title">
+                     <ul class="demo2" id="harvest">             
+                    </ul>
+                    <div class="barcon"  id="harv"></div>
+                </div>        
+            </div>
+            <!--重大文件报告-->
+            <div class="col-md-12" style="margin-top:20px;padding-bottom:6px;background:#eee;">
+                <div class="row div-title">
+                    <span class="div-col-md-4 n-b">重大文件报告</span>
+                   
+                </div>
+                <div class="title">
+                    <ul class="demo2" id="report">                   
+                    </ul>
+                    <div class="barcon"  id="repo"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--轮播图 -->
+    <div class="con-play">
+        <div class="my-widget-header" style="height:42px;">
+            <h4 class="widget-title lighter fon-tiltixishow white">体系展示</h4>
+        </div>
+        <div id="photo-list">
+            <ul id="scroll" style="width : 2800px;">
+
+                <li align="center">
+                    <a href="system_detail_2.html?id=2">
+                        <img class="pic" src="img/images/rice.jpg">
+                        <br>
+                        <br> 水稻产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=3">
+                        <img class="pic" src="img/images/wheat.jpg">
+                        <br>
+                        <br> 小麦产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=4">
+                        <img class="pic" src="img/images/corn.jpg">
+                        <br>
+                        <br> 玉米产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=5">
+                        <img class="pic" src="img/images/rape_cotton.jpg">
+                        <br>
+                        <br> 油菜棉花产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=6">
+                        <img class="pic" src="img/images/pig.jpg">
+                        <br>
+                        <br> 生猪产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=7">
+                        <img class="pic" src="img/images/poultry.jpg">
+                        <br>
+                        <br> 家禽产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=8">
+                        <img class="pic" src="img/images/cattle_sheep.jpg">
+                        <br>
+                        <br> 牛羊产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=9">
+                        <img class="pic" src="img/images/aquatic.jpg">
+                        <br>
+                        <br> 水产产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=10">
+                        <img class="pic" src="img/images/vegetables.jpg">
+                        <br>
+                        <br> 蔬菜产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=11">
+                        <img class="pic" src="img/images/fruit_trees.jpg">
+                        <br>
+                        <br> 果树产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=12">
+                        <img class="pic" src="img/images/tea.jpg">
+                        <br>
+                        <br> 茶叶产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=13">
+                        <img class="pic" src="img/images/sericulture.jpg">
+                        <br>
+                        <br> 蚕桑中药材产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=14">
+                        <img class="pic" src="img/images/information.jpg">
+                        <br>
+                        <br> 农业信息化产业技术体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=15">
+                        <img class="pic" src="img/images/equipment.jpg">
+                        <br> 农机装备产业技术
+                        <br> 体系
+                    </a>
+                </li>
+                <li align="center">
+                    <a href="system_detail_2.html?id=16">
+                        <img class="pic" src="img/images/ecology.jpg">
+                        <br> 农业生态环保与质量安全
+                        <br> 产业技术体系
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!--footer -->
+    <div class="footer">
+        <div class="copyright">
+            Copyright 2012 @安徽农业大学 All Right Rights Reserved 皖ICP备 05014183
+            <br>地址：安徽省合肥市长江西路130号 邮编230036 信箱：yjsy@anhu.edu.cn
+            <br>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+
+</html>

@@ -134,6 +134,7 @@ $(document).ready(function () {
 
 //判断当前用户角色，决定是否添加添加删除框
     if (rolesId.indexOf(1) != -1) {//设置体系办的页面
+        $("#user1").remove();
         $('#z').css('display', 'none');
         $('#fgzrw').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
@@ -198,27 +199,33 @@ $(document).ready(function () {
         var dataUsers;
         $.ajax({
             crossDomain: true,
-            url: ipValue + "/teststart/import_persons",
+            url: ipValue + "/system/findUsersInRole",
             dataType: "json",
-            data: {"sysId": sessionStorage.getItem("systemId")},
+            data: {"systemId": 1,"roleId":1},
             type: "get",
             async: false,
             success: function (result) {
                 dataUsers = result.data.users;
+                $('input[name="sx"]').val(dataUsers[0].profile.name);
             }
         });
-        //向责任人上写名字
-        var htmlStr = '';
-        for (i = 0; i < dataUsers.length; i++) {
-            htmlStr += '<div class="col-sm-4"><li class="checkbox">\n' +
-                '       <input class="magic-checkbox" type="checkbox" name="users" value="' + dataUsers[i].id + '">\n' +
-                '       <label for="demo-checkbox-11"> ' + dataUsers[i].profile.name + '</label>\n' +
-                '       </li></div>'
-        }
-       $('#menu').html(htmlStr);
-        //只能选一个责任人
-        $('#menu').find('input[type="checkbox"]').bind('click', function () {
-            $('#menu').find('input[type="checkbox"]').not(this).attr("checked", false);
+        $("#select").change(function () {
+            $.ajax({
+                crossDomain: true,
+                url: ipValue + "/system/findUsersInRole",
+                dataType: "json",
+                data: {"systemId": $("#select option:selected").val(),"roleId":3},
+                type: "get",
+                async: false,
+                success: function (result) {
+                    dataUsers = result.data.users;
+                    if (dataUsers.length != 0) {
+                        $('input[name="sx"]').val(dataUsers[0].profile.name)
+                    }else {
+                        $('input[name="sx"]').val("该体系无首席，请先设置首席")
+                    }
+                }
+            });
         });
         //(父任务)获取并发送添加表单
         $('#add').click(function () {
@@ -226,7 +233,8 @@ $(document).ready(function () {
             var title = $('input[name="title"]').val();
             var content = $('#demo-summernote').summernote('code');
             var systemId = $("#select option:selected").val();
-            var userId = $("input[name = 'users']:checked").val();
+            if (dataUsers.length != 0)
+                var userId = dataUsers[0].id;
             var stratTime = $('input[name="stratTime"]').val();
             var endTime = $('input[name="endTime"]').val();
             formData.append("title", title);
@@ -241,18 +249,21 @@ $(document).ready(function () {
                 formData.append("multipartFiles", myDropzone.files[i]);
             }
 
-            $.ajax({
-                type: 'POST',
-                dataType: 'JSON',
-                url: ipValue + '/task/save',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function () {
-                    window.location.reload();
-                }
-            });
-
+            if (userId == null){
+                alert("无责任人")
+            }else {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'JSON',
+                    url: ipValue + '/task/save',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            }
 
         });
         //(父任务)删除
@@ -279,6 +290,7 @@ $(document).ready(function () {
             }
         })
     } else if (rolesId.indexOf(3) != -1) {//设置首席的页面
+        $("#user2").remove();
         $('#zgzrw').html("<button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#demo-lg-modal\">\n" +
             "                               <i class=\"demo-pli-plus\"></i>添加</button>\n" +
             "                           <button class=\"btn btn-danger\" onclick=\"delete2()\" data-toggle=\"modal\" data-target=\"#delete_modalz\"><i class=\"demo-pli-cross\"></i>删除</button>")

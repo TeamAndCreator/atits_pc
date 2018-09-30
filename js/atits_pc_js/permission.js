@@ -32,9 +32,9 @@ $(document).ready(function() {
         $("#sta_control").remove()
     }
 
-    $("#personal_profile").attr("href", "personal_profile.html?id=" + sessionStorage.getItem("userId"))
+    $("#personal_profile").attr("href", "personal_profile.html?id=" + sessionStorage.getItem("userId"));
     
-
+    $("#resetPassWord").attr("href", "resetPassword.html");
     $("#logiout").click(function () {
             sessionStorage.clear();
             window.location.href="login.html";

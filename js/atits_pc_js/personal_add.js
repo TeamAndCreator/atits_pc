@@ -64,16 +64,133 @@ $(document).ready(function () {
                 $('#account').val(JSON.stringify(result.data.user.userName).replace(/\"/g, ""));
 
                 if (sessionStorage.getItem("userId") == 1) {
-                    //所属体系名称
-                    if (result.data.user.system != null) {
-                        sysId = JSON.stringify(result.data.user.system.id);
-                        $("#systemName option[value='" + sysId + "']").attr("selected", "selected")
-                    } else {
-                        $("#systemName option[value=0]").html("无")
+                    //获取此人的权限数组
+                    var roleIds=[];
+                    for (var i = 0; i < result.data.user.roles.length; i++) {
+                        roleIds[i]=result.data.user.roles[i].id
                     }
-                    //console.log($('option:selected', '#systemName').index())
+                    //所属体系名称
+                    if (result.data.user.system != null) {//如果此人有体系
+                        $("#title input[value='2']").prop('disabled', 'disabled');
+                        sysId = JSON.stringify(result.data.user.system.id);
+                        //设置显示体系名称下拉框
+                        $("#systemName option[value='" + sysId + "']").attr("selected", "selected");
+                        //如果此人不是首席
+                        if (roleIds.indexOf(3)==-1) {
+                            //判断当前体系是否有首席。
+                            $.ajax({
+                                url: ipValue + "/system/findUsersInRole",
+                                type: 'get',
+                                data: {"systemId": sysId, "roleId": 3},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var sx = result.data.users;
+                                    //如果当前体系有首席
+                                    if (sx.length != 0) {
+                                        $("#title input[value='3']").prop('disabled', 'true')
+                                    }
+                                    //如果没有，CheckBox不用加属性
+                                }
+                            })
+                        }
+                        //如果此人是首席，下方代码中会选中。
+                        //如果此人不是副首席
+                        if (roleIds.indexOf(2)==-1) {
+                            //判断当前体系是否有副首席。
+                            $.ajax({
+                                url: ipValue + "/system/findUsersInRole",
+                                type: 'get',
+                                data: {"systemId": sysId, "roleId": 4},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var fsx = result.data.users;
+                                    //如果当前体系有副首席，CheckBox不可用
+                                    if (fsx.length != 0) {
+                                        $("#title input[value='4']").prop('disabled', 'true')
+                                    }
+                                    //如果没有，CheckBox不用加属性
+                                }
+                            })
+                        }
+                        //如果此人是副首席，下方会选中
+                    } else {//如果此人无体系
+                        $("#systemName option[value=0]").html("无");
+                        $("#title input[value='3']").prop('disabled', 'true');
+                        $("#title input[value='4']").prop('disabled', 'true');
+                        $("#title input[value='5']").prop('disabled', 'true');
+                        $("#title input[value='6']").prop('disabled', 'true');
+                        $("#title input[value='7']").prop('disabled', 'true');
+                    }
+                    //当体系下拉框改变时
+                    $("#systemName").change(function () {
+                        if ($('option:selected', '#systemName').val()==0) {
+                            $("#title input[value='2']").prop('disabled', 'disabled');
+                            $("#title input[value='3']").prop('disabled', 'disabled');
+                            $("#title input[value='4']").prop('disabled', 'disabled');
+                            $("#title input[value='5']").prop('disabled', 'disabled');
+                            $("#title input[value='6']").prop('disabled', 'disabled');
+                            $("#title input[value='7']").prop('disabled', 'disabled');
+
+                            $("#title input[value='2']").prop('checked', 'true');
+                            $("#title input[value='3']").removeAttr("checked");
+                            $("#title input[value='4']").removeAttr("checked");
+                            $("#title input[value='5']").removeAttr("checked");
+                            $("#title input[value='6']").removeAttr("checked");
+                            $("#title input[value='7']").removeAttr("checked");
+                        }else {
+                            $("#title input[value='2']").prop('disabled', 'disabled');
+                            $("#title input[value='3']").removeAttr("disabled");
+                            $("#title input[value='4']").removeAttr("disabled");
+                            $("#title input[value='5']").prop('disabled', 'disabled');
+                            $("#title input[value='6']").removeAttr("disabled");
+                            $("#title input[value='7']").prop('disabled', 'disabled');
+
+                            $("#title input[value='2']").removeAttr("checked");
+                            $("#title input[value='3']").removeAttr("checked");
+                            $("#title input[value='4']").removeAttr("checked");
+                            $("#title input[value='5']").removeAttr("checked");
+                            $("#title input[value='6']").removeAttr("checked");
+                            $("#title input[value='7']").removeAttr("checked");
+                            //发送ajax验证所选体系是否有首席和副首席
+                            //首席
+                            $.ajax({
+                                url: ipValue + "/system/findUsersInRole",
+                                type: 'get',
+                                data: {"systemId": $('option:selected', '#systemName').val(), "roleId": 3},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var sx = result.data.users;
+                                    //如果当前体系有首席，CheckBox不可用
+                                    if (sx.length != 0) {
+                                        $("#title input[value='3']").prop('disabled', 'true')
+                                    }
+                                    //如果没有，CheckBox不用加属性
+                                }
+                            });
+                            //副首席
+                            $.ajax({
+                                url: ipValue + "/system/findUsersInRole",
+                                type: 'get',
+                                data: {"systemId": $('option:selected', '#systemName').val(), "roleId": 4},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var fsx = result.data.users;
+                                    //如果当前体系有副首席，CheckBox不可用
+                                    if (fsx.length != 0) {
+                                        $("#title input[value='4']").prop('disabled', 'true')
+                                    }
+                                    //如果没有，CheckBox不用加属性
+                                }
+                            })
+                        }
+                    });
+
+
+
+
+
                     //功能研究室
-                    if (result.data.user.laboratory != null) {
+                    if (result.data.user.laboratory != null) {//如果此人有研究室
                         var laboratory = result.data.user.laboratory;
                         $.ajax({
                             url: urlParam3,
@@ -94,7 +211,27 @@ $(document).ready(function () {
                                 }
                             }
                         });
-                    } else {
+                        //判断此用户是否是研究室主任
+                        if (roleIds.indexOf(5)==-1){//不是
+                            //查询该用户所在研究室是否有研究室主任
+                            $.ajax({
+                                url: ipValue+"/laboratory/findUserInRole2",
+                                type: 'get',
+                                data: {"laboratoryId": laboratory.id,roleId:5},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var users=result.data.users;
+                                    //如果有
+                                    if (users.length != 0) {
+                                        $("#title input[value='5']").prop('disabled', 'true')
+                                    }
+                                    //如果没有，CheckBox不用添加属性。
+                                }
+                            })
+                        }
+                        //如果此人是研究室主任，下方会选中，不用对CheckBox添加属性
+                    } else {//如果此人没有研究室
+                        $("#title input[value='5']").prop('disabled', 'true');
                         if (result.data.user.system == null || result.data.user.system.id == 1) {
                             var htmlStr = '<option value= "0">无</option>';
                             $('#laboratoryName').append(htmlStr);
@@ -121,8 +258,35 @@ $(document).ready(function () {
                             });
                         }
                     }
+                    //当研究室改变时，判断选后的研究室是否有研究室主任
+                    $("#laboratoryName").change(function () {
+                        if ($('option:selected', '#laboratoryName').val() != 0) {//选择的不是无
+                            $.ajax({
+                                url: ipValue + "/laboratory/findUserInRole2",
+                                type: 'get',
+                                data: {"laboratoryId": $('option:selected', '#laboratoryName').val(), roleId: 5},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var users = result.data.users;
+                                    if (users.length != 0) {//如果有，CheckBox不可用。
+                                        $("#title input[value='5']").prop('disabled', 'true');
+                                    }else {//如果没有，CheckBox可用。
+                                        $("#title input[value='5']").removeAttr('disabled');
+                                    }
+                                    $("#title input[value='5']").removeAttr("checked");
+                                }
+                            })
+                        }else {//选择的是无
+                            $("#title input[value='5']").prop('disabled', 'true');
+                            $("#title input[value='5']").removeAttr("checked");
+                        }
+                    });
+
+
+
+
                     //综合实验站
-                    if (result.data.user.station != null) {
+                    if (result.data.user.station != null) {//如果此人有实验站
                         var station = result.data.user.station;
                         $.ajax({
                             url: urlParam4,
@@ -141,7 +305,27 @@ $(document).ready(function () {
                                 }
                             }
                         });
-                    } else {
+                        //判断此用户是否是实验站站长
+                        if (roleIds.indexOf(7)==-1){//不是
+                            //查询该用户所在实验站是否有实验站站长
+                            $.ajax({
+                                url: ipValue+"/station/findUserInRole2",
+                                type: 'get',
+                                data: {"stationId": station.id,roleId:7},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var users=result.data.users;
+                                    //如果有
+                                    if (users.length != 0) {
+                                        $("#title input[value='7']").prop('disabled', 'true')
+                                    }
+                                    //如果没有，CheckBox不用添加属性。
+                                }
+                            })
+                        }
+                        //如果此人是实验站站长，下方会选中，不用对CheckBox添加属性
+                    } else {//如果此人没有实验站
+                    $("#title input[value='7']").prop('disabled', 'true');
                         if (result.data.user.system == null || result.data.user.system.id == 1) {
                             var htmlStr = '<option value= "0">无</option>';
                             $('#stationName').append(htmlStr);
@@ -166,14 +350,42 @@ $(document).ready(function () {
                             });
                         }
                     }
-                    //岗位专家
+                    //当实验站改变时，判断选后的实验站是否有实验站站长
+                    $("#stationName").change(function () {
+                        if ($('option:selected', '#stationName').val() != 0) {//选择的不是无
+                            $.ajax({
+                                url: ipValue + "/station/findUserInRole2",
+                                type: 'get',
+                                data: {"stationId": $('option:selected', '#stationName').val(), roleId: 7},
+                                dataType: 'json',
+                                success: function (result) {
+                                    var users = result.data.users;
+                                    if (users.length != 0) {//如果有，CheckBox不可用。
+                                        $("#title input[value='7']").prop('disabled', 'true');
+                                    }else {//如果没有，CheckBox可用。
+                                        $("#title input[value='7']").removeAttr('disabled');
+                                    }
+                                    $("#title input[value='7']").removeAttr("checked");
+                                }
+                            })
+                        }else {//选择的是无
+                            $("#title input[value='7']").prop('disabled', 'true');
+                            $("#title input[value='7']").removeAttr("checked");
+                        }
+                    });
+
+
+
+
+
+
+
+                    //岗位CheckBox设置
                     for (var i = 0; i < result.data.user.roles.length; i++) {
                         var gw = JSON.stringify(result.data.user.roles[i].id);
                         $("#title input[value='" + gw + "']").prop('checked', 'true')
                     }
 
-
-                    $("input[name='job']").attr("disabled") == false;
                 } else {
                     if (result.data.user.system != null) {
                         //体系名称
@@ -181,24 +393,29 @@ $(document).ready(function () {
                     } else {
                         $('#systemName option[value=0]').html("无")
                     }
-                    ;
                     $('#systemName').attr("disabled", "true");
                     //岗位
                     $("input[name='job']").attr('disabled', 'disabled');
-                    var gw = JSON.stringify(result.data.user.roles[0].id);
-                    $("#title input[value='" + gw + "']").prop('checked', 'true');
+                    for (var i = 0; i < result.data.user.roles.length; i++) {
+                        var gw = JSON.stringify(result.data.user.roles[i].id);
+                        $("#title input[value='" + gw + "']").prop('checked', 'true')
+                    }
                     //功能研究室
-                    if (JSON.stringify(result.data.user.laboratory) == 'null') {
-                        $('#laboratoryName option[value=0]').html('无');
+                    if (result.data.user.laboratory == null) {
+                        console.log("labnull")
+                        $('#laboratoryName').html('<option value= "0">无</option>');
                     } else {
-                        $('#laboratoryName option[value=0]').html(JSON.stringify(result.data.user.laboratory.labName).replace(/\"/g, ""));
+                        console.log("lab")
+                        $('#laboratoryName').html('<option value= "0">'+result.data.user.laboratory.labName+'</option>')
                     }
                     $('#laboratoryName').attr("disabled", "true");
                     //综合试验站
-                    if (JSON.stringify(result.data.user.station) == 'null') {
-                        $('#stationName option[value=0]').html('无')
+                    if (result.data.user.station == null) {
+                        console.log("stanull")
+                        $('#stationName').html('<option value= "0">无</option>')
                     } else {
-                        $('#stationName option[value=0]').html(JSON.stringify(result.data.user.station.staName).replace(/\"/g, ""));
+                        console.log("sta")
+                        $('#stationName').html('<option value= "0">'+result.data.user.station.staName+'</option>')
                     }
                     $('#stationName').attr("disabled", "true");
 
@@ -324,43 +541,26 @@ $(document).ready(function () {
                 window.location.reload()
             }
         });
-
-        // var profileId = sessionStorage.getItem("proId");
-        //     $.ajax({
-        //         url: urlParam5,
-        //         type: 'get',
-        //         data: {
-        //             "profile.id":profileId,
-        //             "name":$('#name').val(),
-        //             "phoneNumber":$('#phone').val(),
-        //             "officePhone":$('#telephone').val(),
-        //             "email":$('#email').val(),
-        //             "department":$('#work_unit').val(),
-        //             "sex":$('#sex').val(),
-        //             "nation":$('#nation').val(),
-        //             "birthdate":$('#birthdate').val(),
-        //             "politicsStatus":$('#political').val(),
-        //             "education":$('#education').val(),
-        //             "degree":$('#degree').val(),
-        //             "graduateInstitutions":$('#school').val(),
-        //             "graduationDate":$('#graduation_date').val(),
-        //             "major":$('#major').val(),
-        //             "undertake":$('#professial').val(),
-        //             "administrativeFunction":$('#administrative').val(),
-        //             "ministerialExpert":$('#ministeria').val(),
-        //             "provincialExpert":$('#provincial').val(),
-        //             "postalCode":$('#postalcode').val(),
-        //             "address":$('#address').val(),
-        //             "professionalAffiliations":$('#part_time').val(),
-        //             "professionalExpertise":$('#expertise').val(),
-        //         },
-        //         dataType: 'json',
-        //         success:function(result){
-        //             console.log(result);
-        //         }
-        //     })
-    })
-
+    });
+//密码初始化
+    if (sessionStorage.getItem("userId") != 1) {
+        $("#passWord_reset_div").css("display","none")
+    }else {
+        $("#passWord_reset_button").val("密码初始化")
+        $("#passWord_reset").click(function () {
+            $.ajax({
+                type: 'post',
+                dataType: 'JSON',
+                url: ipValue + '/user/changePassword',
+                data: {_method: "put","userId":userId,"password":"123456"},
+                async: false,
+                traditional: true,
+                success: function () {
+                    window.location.reload()
+                }
+            });
+        })
+    }
 
 });
 

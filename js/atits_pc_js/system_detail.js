@@ -146,6 +146,7 @@ $(document).ready(function () {
                         title: '研究室主任'
                     }]
             });
+            $("#lab_number").text("共"+labs.length+"行")
         }
     });
 
@@ -177,6 +178,7 @@ $(document).ready(function () {
                         title: '综合实验站站长'
                     }]
             });
+            $("#sta_number").text("共"+stas.length+"行")
         }
     });
 

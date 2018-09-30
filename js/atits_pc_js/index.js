@@ -4,6 +4,8 @@
 
 
 (function($){
+
+    $("#page-title").html("<h1 class=\"page-header text-overflow text-3x \">"+sessionStorage.getItem("systemName")+"</h1>");
      //轮播图
     function slider(ele, option) {
         this.default = {

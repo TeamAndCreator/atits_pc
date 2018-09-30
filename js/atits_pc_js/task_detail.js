@@ -21,9 +21,13 @@ $(document).ready(function () {
     $('#date').text(task.date);
     $('#content').html(task.content);
     var files=task.files;
-    var html="";
-    for (var i=0;i<files.length;i++){
-        html+="<small><a href='"+vr_path+"/"+task.files[i].path+task.files[i].name+"' download='"+task.files[i].title+"'>"+task.files[i].title+"</a></small><br>"
+    if (files.length != 0) {
+        var html="";
+        for (var i=0;i<files.length;i++){
+            html+="<small><a href='"+vr_path+"/"+task.files[i].path+task.files[i].name+"' download='"+task.files[i].title+"'>"+task.files[i].title+"</a></small><br>"
+        }
+    }else {
+        $("#files").remove()
     }
     $('#a').html(html)
 });
