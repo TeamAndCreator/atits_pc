@@ -189,7 +189,7 @@ if (sessionStorage.getItem("systemId") == 1) {
         crossDomain: true,
         url: ipValue + "/dynamic/findFor",
         dataType: "json",
-        data:{"systemId":sessionStorage.getItem("systemId")},
+        data:{"userId":sessionStorage.getItem("userId")},
         type: "get",
         async: false,
         success: function (result) {

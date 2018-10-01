@@ -100,7 +100,7 @@ $(document).ready(function () {
             var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
             var idList = [];
             for (var i = 0; i < a.length; i++) {
-                idList[i] = a[i].station.id;
+                idList[i] = a[i].id;
             }
             $.ajax({
                 type: 'post',

@@ -64,7 +64,7 @@ function logFun(){
                     sessionStorage.setItem("staId",result.data.user.station.id)
                 }
                 
-                sessionStorage.setItem("proId",result.data.user.profile.id)
+                sessionStorage.setItem("proId",result.data.user.profile.id);
                 
                 var roles = result.data.user.roles;
                 var rolesId=[];
