@@ -35,16 +35,16 @@ function goPageNoti(pno, psize) {
     var pageEnd = document.getElementById("pageEnd");
     var tempStr = "当前第" + currentPage + "页  ";
     if (currentPage > 1) {
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPageNoti(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
+        // tempStr += "<a  onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageNoti(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
     } else {
         // tempStr += "首页";
         tempStr += "<上一页";
     }
 
     if (currentPage < totalPage) {
-        tempStr += "<a href=\"#\" onClick=\"goPageNoti(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageNoti(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
+        // tempStr += "<a  onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
     } else {
         tempStr += "下一页>";
         // tempStr += "尾页";
@@ -85,16 +85,16 @@ function goPageDyna(pno, psize) {
     var pageEnd = document.getElementById("pageEnd");
     var tempStr = "当前第" + currentPage + "页  ";
     if (currentPage > 1) {
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPageDyna(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
+        // tempStr += "<a  onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageDyna(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
     } else {
         // tempStr += "首页";
         tempStr += "<上一页";
     }
    
     if (currentPage < totalPage) {
-        tempStr += "<a href=\"#\" onClick=\"goPageDyna(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageDyna(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
+        // tempStr += "<a  onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
     } else {
         tempStr += "下一页>";
         // tempStr += "尾页";
@@ -134,16 +134,16 @@ function goPageRegu(pno, psize) {
     var pageEnd = document.getElementById("pageEnd");
     var tempStr = "当前第" + currentPage + "页  ";
     if (currentPage > 1) {
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPageRegu(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
+        // tempStr += "<a  onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageRegu(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
     } else {
         // tempStr += "首页";
         tempStr += "<上一页";
     }
 
     if (currentPage < totalPage) {
-        tempStr += "<a href=\"#\" onClick=\"goPageRegu(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageRegu(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
+        // tempStr += "<a  onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
     } else {
         tempStr += "下一页>";
         // tempStr += "尾页";
@@ -184,16 +184,16 @@ function goPageActi(pno, psize) {
     var pageEnd = document.getElementById("pageEnd");
     var tempStr = "当前第" + currentPage + "页  ";
     if (currentPage > 1) {
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPageActi(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
+        // tempStr += "<a  onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageActi(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
     } else {
         // tempStr += "首页";
         tempStr += "<上一页";
     }
 
     if (currentPage < totalPage) {
-        tempStr += "<a href=\"#\" onClick=\"goPageActi(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageActi(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
+        // tempStr += "<a  onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
     } else {
         tempStr += "下一页>";
         // tempStr += "尾页";
@@ -233,16 +233,16 @@ function goPageRepo(pno, psize) {
     var pageEnd = document.getElementById("pageEnd");
     var tempStr = "当前第" + currentPage + "页  ";
     if (currentPage > 1) {
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPageRepo(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
+        // tempStr += "<a  onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageRepo(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
     } else {
         // tempStr += "首页";
         tempStr += "<上一页";
     }
 
     if (currentPage < totalPage) {
-        tempStr += "<a href=\"#\" onClick=\"goPageRepo(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageRepo(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
+        // tempStr += "<a  onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
     } else {
         tempStr += "下一页>";
         // tempStr += "尾页";
@@ -282,16 +282,16 @@ function goPageHarv(pno, psize) {
     var pageEnd = document.getElementById("pageEnd");
     var tempStr = "当前第" + currentPage + "页  ";
     if (currentPage > 1) {
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPageHarv(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
+        // tempStr += "<a  onClick=\"goPage(" + (1) + "," + psize + ")\">首页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageHarv(" + (currentPage - 1) + "," + psize + ")\"><上一页</a>"
     } else {
         // tempStr += "首页";
         tempStr += "<上一页";
     }
 
     if (currentPage < totalPage) {
-        tempStr += "<a href=\"#\" onClick=\"goPageHarv(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
-        // tempStr += "<a href=\"#\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
+        tempStr += "<a style=\"cursor: pointer\" onClick=\"goPageHarv(" + (currentPage + 1) + "," + psize + ")\">下一页></a>";
+        // tempStr += "<a  onClick=\"goPage(" + (totalPage) + "," + psize + ")\">尾页</a>";
     } else {
         tempStr += "下一页>";
         // tempStr += "尾页";
