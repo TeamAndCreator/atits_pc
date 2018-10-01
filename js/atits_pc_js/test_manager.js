@@ -578,6 +578,8 @@ function score(value, row, index) {
 
 //给首席、副首席打分，设置打分项，考评已启动（可打分）
 function score1(row) {
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
+    $("#score-btn").css("display","block");
     $("#a1").text("1．团队建设情况（15分）");
     $("#a2").text("2．支撑产业发展情况（50分)");
     $("#a3").text("3．应急事件处置及参与重大活动情况（10分）");
@@ -607,12 +609,20 @@ function score1_1(row) {
     $("#a4").text("4．经费使用情况（10分）");
     $("#a5").text("5．宣传推动情况（10分）");
     $("#a6").text("6．对接协作情况（5分）");
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a6']").val(row.a6);
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
-    $("#score-btn").remove();
+    $("#score-btn").css("display","none");
 }
 
 //给岗位专家打分，设置打分项，考评已启动（可打分）
 function score2(row) {
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
+    $("#score-btn").css("display","block");
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");
     $("#a3").text("3．经费使用情况（10分）");
@@ -640,13 +650,21 @@ function score2_1(row) {
     $("#a3").text("3．经费使用情况（10分）");
     $("#a4").text("4．宣传推动情况（10分）");
     $("#a5").text("5．其他（10分）");
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a6']").val(row.a6);
     $("input[name='a6']").css('display','none');
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5']").attr("disabled", "disabled");
-    $("#score-btn").remove();
+    $("#score-btn").css("display","none");
 }
 
 //给实验站站长打分，设置打分项，考评已启动（可打分）
 function score3(row) {
+    $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
+    $("#score-btn").css("display","block");
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");
     $("#a3").text("3．经费使用情况（10分）");
@@ -676,8 +694,14 @@ function score3_1(row) {
     $("#a4").text("4．宣传推动情况（10分）");
     $("#a5").text("5．争取支持情况（5分）");
     $("#a6").text("6．其他（5分）");
+    $("input[name='a1']").val(row.a1);
+    $("input[name='a2']").val(row.a2);
+    $("input[name='a3']").val(row.a3);
+    $("input[name='a4']").val(row.a4);
+    $("input[name='a5']").val(row.a5);
+    $("input[name='a6']").val(row.a6);
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
-    $("#score-btn").remove();
+    $("#score-btn").css("display","none");
 }
 
 //考评启动表checkbox可用权限判断
@@ -722,6 +746,8 @@ function test_weight(value, row) {
 
 //四种权重设置的权限
 function testWeightTable(value) {
+    $("input[name='a'],input[name='b'],input[name='c'],input[name='d'],input[name='e'],input[name='f']").removeAttr("disabled");
+    $("#testWeight_btn").css('display', 'inline-block');
     $("input[name='id']").val(value.id);
     $("input[name='a']").val(value.a);
     $("input[name='b']").val(value.b);
@@ -744,7 +770,9 @@ function testWeightTable2(value) {
 }
 
 function testWeightTable3(value) {
-    $("input[name='id2']").val(value.id)
+    $("input[name='g'],input[name='h']").removeAttr("disabled");
+    $("#testWeight2_btn").css('display', 'inline-block');
+    $("input[name='id2']").val(value.id);
     $("input[name='g']").val(value.g);
     $("input[name='h']").val(value.h);
 }
