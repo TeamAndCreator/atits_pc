@@ -9,7 +9,7 @@ $(document).ready(function() {
         $("#taskProgress").css('display','none')
     }
     if (rolesId.indexOf(3)!=-1||rolesId.indexOf(4)!=-1){
-        $("#lab,#sta,#test,#person").css('display','block')
+        $("#lab,#sta,#person").css('display','block')
     }
 
     $(".mnp-name").text(sessionStorage.getItem("userName"));
