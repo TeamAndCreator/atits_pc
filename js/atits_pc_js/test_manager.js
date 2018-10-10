@@ -364,9 +364,7 @@ $(document).ready(function () {
         A4 = parseInt($("input[name='a4']").val());
         A5 = parseInt($("input[name='a5']").val());
         A6 = parseInt($("input[name='a6']").val());
-        if (A1 + A1 + A3 + A4 + A5 + A6 > 100) {
-            alert("分数总和不能大于100")
-        } else {
+
             $.ajax({
                 type: 'post',
                 dataType: 'JSON',
@@ -379,7 +377,7 @@ $(document).ready(function () {
                     location.reload()
                 }
             });
-        }
+
     })
 
 //个人得分表（体系办不用，外聘人员不用）
