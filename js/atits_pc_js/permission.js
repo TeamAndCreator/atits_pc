@@ -11,6 +11,24 @@ $(document).ready(function() {
     if (rolesId.indexOf(3)!=-1||rolesId.indexOf(4)!=-1){
         $("#lab,#sta,#person").css('display','block')
     }
+    if (sessionStorage.getItem("systemId") == null) {
+        $("#mainnav-menu").html("<li>\n" +
+            "                                        <a href=\"index.html\">\n" +
+            "                                            <i class=\"demo-psi-home\"></i>\n" +
+            "                                            <span class=\"menu-title\">\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>平台首页</strong>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
+            "                                        </a>\n" +
+            "                                    </li>\n" +
+            "                                    <li id=\"test\">\n" +
+            "                                        <a href=\"test_manager.html\">\n" +
+            "                                            <i class=\"fa fa-magnet\"></i>\n" +
+            "                                            <span class=\"menu-title\">\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>考评管理</strong>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
+            "                                        </a>\n" +
+            "                                    </li>")
+    }
 
     $(".mnp-name").text(sessionStorage.getItem("userName"));
 
