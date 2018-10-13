@@ -9,6 +9,18 @@
     }else {
         $("#page-title").html("<h1 class=\"page-header text-overflow text-3x \">" + sessionStorage.getItem("systemName") + "</h1>");
     }
+//首页安徽省现代农业产业技术体系综述
+    $.ajax({
+        crossDomain: true,
+        url: ipValue + "/system/findById",
+        dataType: "json",
+        type: "get",
+        async: false,
+        data: {"id": 1},
+        success: function (result) {
+            $("#system1_detail").html(result.data.system.content);
+        }
+    });
 //轮播图
     function slider(ele, option) {
         this.default = {
