@@ -96,10 +96,10 @@ if (typeof Object.create !== 'function') {
             
             //get height of the very first self.options.newsPerPage news
             var height = 0
-
+         
             $.map(self.$elem.find(self.newsTagName), function( newsItem, index ) {
                 if ( index < self.options.newsPerPage ) {
-                    height = parseInt(height) + parseInt($(newsItem).height()) + 10;
+                    height = parseInt(height) + parseInt($(newsItem).height()) + 21;
                 }
             });
 
@@ -276,7 +276,7 @@ if (typeof Object.create !== 'function') {
     };
 
     $.fn.bootstrapNews.options = {
-        newsPerPage: 4,
+        newsPerPage: 5,
         navigation: true,
         autoplay: true,
         direction:'up',
