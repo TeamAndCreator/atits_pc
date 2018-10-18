@@ -45,7 +45,7 @@ $(document).ready(function () {
         };
         station.staName = $("input[ name = 'staName']").val();
         if (station.staName == "") {
-            alert("实验站名称不能为空 ")
+            alert("试验站名称不能为空 ")
         } else {
             station.company = $("input[ name = 'company']").val();
             station["system.id"] = sessionStorage.getItem('systemId');

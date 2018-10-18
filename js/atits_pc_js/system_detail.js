@@ -166,7 +166,7 @@ $(document).ready(function () {
                     {
                         field: 'station.staName',
                         align: 'center',
-                        title: '综合实验站名称',
+                        title: '综合试验站名称',
                         formatter:'sta'
                     }, {
                         field: 'station.company',
@@ -175,7 +175,7 @@ $(document).ready(function () {
                     }, {
                         field: 'zr',
                         align: 'center',
-                        title: '综合实验站站长'
+                        title: '综合试验站站长'
                     }]
             });
             $("#sta_number").text("共"+stas.length+"行")

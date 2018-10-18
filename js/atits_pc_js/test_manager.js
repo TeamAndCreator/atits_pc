@@ -676,7 +676,7 @@ function score2_1(row) {
     $("#score-btn").css("display", "none");
 }
 
-//给实验站站长打分，设置打分项，考评已启动（可打分）
+//给试验站站长打分，设置打分项，考评已启动（可打分）
 function score3(row) {
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
     $("#score-btn").css("display", "block");
@@ -701,7 +701,7 @@ function score3(row) {
     $("input[name='a6']").attr('oninput', 'if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
-//给实验站站长打分，设置打分项，考评已启动（不可打分）
+//给试验站站长打分，设置打分项，考评已启动（不可打分）
 function score3_1(row) {
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");

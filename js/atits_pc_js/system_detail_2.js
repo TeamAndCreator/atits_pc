@@ -90,7 +90,7 @@ $(document).ready(function () {
             {
                 field: 'station.staName',
                 align: 'center',
-                title: '综合实验站名称'
+                title: '综合试验站名称'
             }, {
                 field: 'station.company',
                 align: 'center',
@@ -98,7 +98,7 @@ $(document).ready(function () {
             }, {
                 field: 'zr',
                 align: 'center',
-                title: '综合实验站站长'
+                title: '综合试验站站长'
             }]
     });
 

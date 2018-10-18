@@ -49,7 +49,7 @@ $(document).ready(function () {
         }, {
             field: 'zr',
             align: 'center',
-            title: '实验站站长'
+            title: '试验站站长'
         }, {
             field: 'company',
             align: 'center',

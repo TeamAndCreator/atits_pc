@@ -285,8 +285,8 @@ $(document).ready(function () {
 
 
 
-                    //综合实验站
-                    if (result.data.user.station != null) {//如果此人有实验站
+                    //综合试验站
+                    if (result.data.user.station != null) {//如果此人有试验站
                         var station = result.data.user.station;
                         $.ajax({
                             url: urlParam4,
@@ -305,9 +305,9 @@ $(document).ready(function () {
                                 }
                             }
                         });
-                        //判断此用户是否是实验站站长
+                        //判断此用户是否是试验站站长
                         if (roleIds.indexOf(7)==-1){//不是
-                            //查询该用户所在实验站是否有实验站站长
+                            //查询该用户所在试验站是否有试验站站长
                             $.ajax({
                                 url: ipValue+"/station/findUserInRole2",
                                 type: 'get',
@@ -323,8 +323,8 @@ $(document).ready(function () {
                                 }
                             })
                         }
-                        //如果此人是实验站站长，下方会选中，不用对CheckBox添加属性
-                    } else {//如果此人没有实验站
+                        //如果此人是试验站站长，下方会选中，不用对CheckBox添加属性
+                    } else {//如果此人没有试验站
                     $("#title input[value='7']").prop('disabled', 'true');
                         if (result.data.user.system == null || result.data.user.system.id == 1) {
                             var htmlStr = '<option value= "0">无</option>';
@@ -350,7 +350,7 @@ $(document).ready(function () {
                             });
                         }
                     }
-                    //当实验站改变时，判断选后的实验站是否有实验站站长
+                    //当试验站改变时，判断选后的试验站是否有试验站站长
                     $("#stationName").change(function () {
                         if ($('option:selected', '#stationName').val() != 0) {//选择的不是无
                             $.ajax({
