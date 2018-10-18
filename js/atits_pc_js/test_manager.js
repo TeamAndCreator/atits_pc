@@ -49,7 +49,7 @@ $(document).ready(function () {
             $('#external_add li:eq(1)').remove();
         }
 
-    })
+    });
 
     function createDom2(ele) {
         var htmlStr = '';
@@ -101,7 +101,7 @@ $(document).ready(function () {
                 "ids": ""
             };
         }
-        obj.year = $("input[ name = 'year']").val();
+        obj.year = $("#years option:selected").val();
         obj.date = $("input[ name = 'date']").val();
         obj.address = $("input[ name = 'address']").val();
         var ids = [];
@@ -117,7 +117,7 @@ $(document).ready(function () {
             async: false,
             traditional: true
         });
-    })
+    });
 
 //两个权重设置修改模态框提交按钮
     $("#testWeight2_btn").click(function () {
@@ -184,7 +184,7 @@ $(document).ready(function () {
             });
         }
 
-    })
+    });
 
 //删除
     $('#delete').click(function () {
@@ -204,7 +204,7 @@ $(document).ready(function () {
                 window.location.reload()
             }
         })
-    })
+    });
 
 //获取考评启动表单数据
     var data;
@@ -215,9 +215,25 @@ $(document).ready(function () {
         type: "get",
         async: false,
         success: function (result) {
-            data = result.data.testStarts
+            data = result.data.testStarts;
+            var old_years = [];
+            var date = new Date();
+            var current_year = date.getFullYear();
+            var start_year = current_year - 10;
+            var end_year = current_year + 10;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].system.id == sessionStorage.getItem("systemId")) {
+                    old_years.push(parseInt(data[i].year))
+                }
+            }
+            var obj = document.getElementById('years');
+            for (var i = start_year; i <= end_year; i++) {
+                if (old_years.indexOf(i) == -1)
+                    obj.options.add(new Option(i, i));
+            }
+            $("#years option[value=" + current_year + "]").attr("selected", "selected");
         }
-    })
+    });
 
 //设置table每列标题
     $('#demo-custom-toolbar1').bootstrapTable({
@@ -230,31 +246,31 @@ $(document).ready(function () {
         }, {
             field: 'year',
             align: 'center',
-            sortable:'true',
+            sortable: 'true',
             title: '考评年度'
         }, {
             field: 'system',
             align: 'center',
-            sortable:'true',
+            sortable: 'true',
             title: '所属体系',
-            formatter:function (value, row, index) {
+            formatter: function (value, row, index) {
                 return value.systemName
             }
         }, {
             field: 'users',
             align: 'center',
             title: '考评人员',
-            sortable:'true',
+            sortable: 'true',
             formatter: 'invoiceFormatter'
         }, {
             field: 'date',
             align: 'center',
-            sortable:'true',
+            sortable: 'true',
             title: '考评日期'
         }, {
             field: 'address',
             align: 'center',
-            sortable:'true',
+            sortable: 'true',
             title: '考评地点'
         }, {
             field: 'testWeight',
@@ -270,10 +286,10 @@ $(document).ready(function () {
         }
 
         ]
-    })
+    });
 
 //获取testScore
-    var testScore="";
+    var testScore = "";
     $.ajax({
         crossDomain: true,
         url: ipValue + "/testscore/findByEvaluation",
@@ -287,13 +303,13 @@ $(document).ready(function () {
     });
 
     for (var i = 0; i < testScore.length; i++) {
-        testScore[i].year=testScore[i].testStart.year;
-        testScore[i].systemName=testScore[i].testStart.system.systemName;
-        testScore[i].address=testScore[i].testStart.address;
-        testScore[i].date=testScore[i].testStart.date;
-        testScore[i].evaluationed=testScore[i].evaluationed.profile.name;
-        testScore[i].evaluation=testScore[i].evaluation.profile.name;
-        testScore[i].year=testScore[i].testStart.year;
+        testScore[i].year = testScore[i].testStart.year;
+        testScore[i].systemName = testScore[i].testStart.system.systemName;
+        testScore[i].address = testScore[i].testStart.address;
+        testScore[i].date = testScore[i].testStart.date;
+        testScore[i].evaluationed = testScore[i].evaluationed.profile.name;
+        testScore[i].evaluation = testScore[i].evaluation.profile.name;
+        testScore[i].year = testScore[i].testStart.year;
     }
 //设置testScore表格标题
     $('#testScore').bootstrapTable({
@@ -304,32 +320,32 @@ $(document).ready(function () {
             {
                 field: 'year',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '考评年度'
             }, {
                 field: 'systemName',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '考评发起单位'
             }, {
                 field: 'address',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '考评地点'
             }, {
                 field: 'date',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '考评日期'
             }, {
                 field: 'evaluationed',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '被考评人员'
             }, {
                 field: 'evaluation',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '打分人员'
             }, {
                 field: 'testStart.state',
@@ -339,7 +355,7 @@ $(document).ready(function () {
             }, {
                 field: 'time',
                 align: 'center',
-                sortable:'true',
+                sortable: 'true',
                 title: '打分时间'
             }
 
@@ -365,20 +381,20 @@ $(document).ready(function () {
         A5 = parseInt($("input[name='a5']").val());
         A6 = parseInt($("input[name='a6']").val());
 
-            $.ajax({
-                type: 'post',
-                dataType: 'JSON',
-                url: ipValue + '/testscore/score',
-                data: {_method: "put", "id": id, "A1": A1, "A2": A2, "A3": A3, "A4": A4, "A5": A5, "A6": A6},
-                async: false,
-                traditional: true,
-                success: function (result) {
-                    alert("打分成功");
-                    location.reload()
-                }
-            });
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: ipValue + '/testscore/score',
+            data: {_method: "put", "id": id, "A1": A1, "A2": A2, "A3": A3, "A4": A4, "A5": A5, "A6": A6},
+            async: false,
+            traditional: true,
+            success: function (result) {
+                alert("打分成功");
+                location.reload()
+            }
+        });
 
-    })
+    });
 
 //个人得分表（体系办不用，外聘人员不用）
     if (sessionStorage.getItem("systemId") != 1 && sessionStorage.getItem("systemId") != null) {
@@ -386,7 +402,7 @@ $(document).ready(function () {
             $('#title').text("个人得分");
         }
 //获取个人得分
-        var testManage_person="";
+        var testManage_person = "";
         $.ajax({
             crossDomain: true,
             url: ipValue + "/testmanage/findOwn",
@@ -398,12 +414,12 @@ $(document).ready(function () {
                 testManage_person = result.data.testManages;
             }
         });
-        for (var i = 0; i < testManage_person.length;i++){
-            testManage_person[i].year=testManage_person[i].testStart.year;
-            testManage_person[i].systemName=testManage_person[i].testStart.system.systemName;
-            testManage_person[i].date=testManage_person[i].testStart.date;
-            testManage_person[i].address=testManage_person[i].testStart.address;
-            testManage_person[i].name=testManage_person[i].scoreUser.profile.name;
+        for (var i = 0; i < testManage_person.length; i++) {
+            testManage_person[i].year = testManage_person[i].testStart.year;
+            testManage_person[i].systemName = testManage_person[i].testStart.system.systemName;
+            testManage_person[i].date = testManage_person[i].testStart.date;
+            testManage_person[i].address = testManage_person[i].testStart.address;
+            testManage_person[i].name = testManage_person[i].scoreUser.profile.name;
         }
 //设置个人得分标题
         $('#testManage_person').bootstrapTable({
@@ -423,32 +439,32 @@ $(document).ready(function () {
                 {
                     field: 'year',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评年度'
                 }, {
                     field: 'systemName',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评发起单位'
                 }, {
                     field: 'date',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评日期'
                 }, {
                     field: 'address',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评地点'
                 }, {
                     field: 'name',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '得分人'
                 }, {
                     field: 'sum',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '综合得分'
                 }
 
@@ -472,11 +488,11 @@ $(document).ready(function () {
             }
         });
         for (var i = 0; i < testManage_system.length; i++) {
-            testManage_system[i].year=testManage_system[i].testStart.year;
-            testManage_system[i].systemName=testManage_system[i].testStart.system.systemName;
-            testManage_system[i].date=testManage_system[i].testStart.date;
-            testManage_system[i].address=testManage_system[i].testStart.address;
-            testManage_system[i].name=testManage_system[i].scoreUser.profile.name;
+            testManage_system[i].year = testManage_system[i].testStart.year;
+            testManage_system[i].systemName = testManage_system[i].testStart.system.systemName;
+            testManage_system[i].date = testManage_system[i].testStart.date;
+            testManage_system[i].address = testManage_system[i].testStart.address;
+            testManage_system[i].name = testManage_system[i].scoreUser.profile.name;
         }
         $('#testManage_system').bootstrapTable({
             striped: true,
@@ -495,32 +511,32 @@ $(document).ready(function () {
                 {
                     field: 'year',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评年度'
                 }, {
                     field: 'systemName',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评发起单位'
                 }, {
                     field: 'date',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评日期'
                 }, {
                     field: 'address',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '考评地点'
                 }, {
                     field: 'name',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '得分人'
                 }, {
                     field: 'sum',
                     align: 'center',
-                    sortable:'true',
+                    sortable: 'true',
                     title: '综合得分'
                 }
 
@@ -577,7 +593,7 @@ function score(value, row, index) {
 //给首席、副首席打分，设置打分项，考评已启动（可打分）
 function score1(row) {
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
-    $("#score-btn").css("display","block");
+    $("#score-btn").css("display", "block");
     $("#a1").text("1．团队建设情况（15分）");
     $("#a2").text("2．支撑产业发展情况（50分)");
     $("#a3").text("3．应急事件处置及参与重大活动情况（10分）");
@@ -586,17 +602,17 @@ function score1(row) {
     $("#a6").text("6．对接协作情况（5分）");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('oninput','if(value>15)value=15;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a1']").attr('oninput', 'if(value>15)value=15;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a2']").attr('oninput', 'if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a3']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a4']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a5']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
+    $("input[name='a6']").attr('oninput', 'if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
 //给首席、副首席打分，设置打分项，考评已启动（不可打分）
@@ -614,30 +630,30 @@ function score1_1(row) {
     $("input[name='a5']").val(row.a5);
     $("input[name='a6']").val(row.a6);
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
-    $("#score-btn").css("display","none");
+    $("#score-btn").css("display", "none");
 }
 
 //给岗位专家打分，设置打分项，考评已启动（可打分）
 function score2(row) {
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
-    $("#score-btn").css("display","block");
+    $("#score-btn").css("display", "block");
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");
     $("#a3").text("3．经费使用情况（10分）");
     $("#a4").text("4．宣传推动情况（10分）");
     $("#a5").text("5．其他（10分）");
-    $("input[name='a6']").css('display','none');
+    $("input[name='a6']").css('display', 'none');
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a1']").attr('oninput', 'if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('oninput','if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a2']").attr('oninput', 'if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a3']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a4']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a5']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
 }
 
@@ -654,15 +670,15 @@ function score2_1(row) {
     $("input[name='a4']").val(row.a4);
     $("input[name='a5']").val(row.a5);
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").css('display','none');
+    $("input[name='a6']").css('display', 'none');
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5']").attr("disabled", "disabled");
-    $("#score-btn").css("display","none");
+    $("#score-btn").css("display", "none");
 }
 
 //给实验站站长打分，设置打分项，考评已启动（可打分）
 function score3(row) {
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
-    $("#score-btn").css("display","block");
+    $("#score-btn").css("display", "block");
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");
     $("#a3").text("3．经费使用情况（10分）");
@@ -671,17 +687,17 @@ function score3(row) {
     $("#a6").text("6．其他（5分）");
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
-    $("input[name='a1']").attr('oninput','if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a1']").attr('oninput', 'if(value>50)value=50;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a2']").val(row.a2);
-    $("input[name='a2']").attr('oninput','if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a2']").attr('oninput', 'if(value>20)value=20;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a3']").val(row.a3);
-    $("input[name='a3']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a3']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a4']").val(row.a4);
-    $("input[name='a4']").attr('oninput','if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
+    $("input[name='a4']").attr('oninput', 'if(value>10)value=10;if(value.length>2)value=value.slice(0,2);if(value<0)value=0');
     $("input[name='a5']").val(row.a5);
-    $("input[name='a5']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
+    $("input[name='a5']").attr('oninput', 'if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
     $("input[name='a6']").val(row.a6);
-    $("input[name='a6']").attr('oninput','if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
+    $("input[name='a6']").attr('oninput', 'if(value>5)value=5;if(value.length>1)value=value.slice(0,1);if(value<0)value=0');
 }
 
 //给实验站站长打分，设置打分项，考评已启动（不可打分）
@@ -699,7 +715,7 @@ function score3_1(row) {
     $("input[name='a5']").val(row.a5);
     $("input[name='a6']").val(row.a6);
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").attr("disabled", "disabled");
-    $("#score-btn").css("display","none");
+    $("#score-btn").css("display", "none");
 }
 
 //考评启动表checkbox可用权限判断
