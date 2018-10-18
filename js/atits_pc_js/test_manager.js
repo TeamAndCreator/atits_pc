@@ -430,7 +430,6 @@ $(document).ready(function () {
             showColumns: true,
             search: true,
             showRefresh: false,
-            showRefresh: false,
             showToggle: true,
             idField: 'id',
             data: testManage_person,
@@ -465,7 +464,8 @@ $(document).ready(function () {
                     field: 'sum',
                     align: 'center',
                     sortable: 'true',
-                    title: '综合得分'
+                    title: '综合得分',
+                    formatter: 'xsd'
                 }
 
             ]
@@ -502,7 +502,7 @@ $(document).ready(function () {
             showColumns: true,
             search: true,
             showRefresh: false,
-            showRefresh: false,
+            toggle: true,
             showToggle: true,
             idField: 'id',
             data: testManage_system,
@@ -537,7 +537,8 @@ $(document).ready(function () {
                     field: 'sum',
                     align: 'center',
                     sortable: 'true',
-                    title: '综合得分'
+                    title: '综合得分',
+                    formatter: 'xsd'
                 }
 
             ]
@@ -895,4 +896,9 @@ function f2(id) {
             window.location.reload()
         }
     })
+}
+
+//取小数点后两位
+function xsd(value) {
+    return value.toFixed(2)
 }
