@@ -163,10 +163,11 @@
 					        <h3 class="panel-title">人员管理</h3>
 					    </div>
 					    <div class="panel-body">
-
+                            <div id="row1"></div>
 
 					        <table id="users" class="demo-add-niftycheck" data-toggle="table"
-					               data-search="true"
+                                   data-toolbar="#row1"
+                                   data-search="true"
 					               data-show-refresh="true"
 					               data-show-toggle="true"
 					               data-show-columns="true"
@@ -188,6 +189,60 @@
             </div>
             <!--===================================================-->
             <!--END CONTENT CONTAINER-->
+
+            <div id="demo-lg-modal" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                            <h4 class="modal-title" id="myLargeModalLabel">用户注册</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
+                                            用户姓名
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input  id="name" class="form-control input-sm" placeholder="" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
+                                            账号
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input  id="account" class="form-control input-sm" placeholder="" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
+                                            密码
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input  id="password" class="form-control input-sm" type="password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
+                                            再次输入密码
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input  id="password_confirm" class="form-control input-sm" type="password"><span id="tip"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                                <div class="panel-footer text-right">
+                                    <button class="btn btn-info middle " data-dismiss="modal">退出</button>
+                                    <button id="add_btn" class="btn btn-primary middle">添加</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
             <div id="updateState" class="modal fade" tabindex="-1">
