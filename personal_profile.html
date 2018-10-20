@@ -136,223 +136,205 @@
                                     <button class="btn btn-default" id="close" type="submit">返回</button>
                             </a>
                             <a href="#" id="personal_add" >
-                                    <button class="btn btn-default" id="close" type="submit">修改</button>
+                                    <button class="btn btn-danger" id="close" type="submit">修改</button>
                             </a>
                      </div>
                     </br>
-                    <!-- /.page-header -->
-
-                        <!-- <ul class="pager">
-                            <li class="previous bigger-120">
-                                <a href="javascript:history.go(-1)">
-                                    <i class="ace-icon fa fa-arrow-left"></i> 返回</a>
-                            </li>&nbsp;&nbsp;
-
-                            <li class="previous bigger-120" style="margin-top : -19px">
-                                <a href="personal_add.html">
-                                    <i class="ace-icon fa fa-pencil"></i> 修改</a>
-                            </li>
-                        </ul>  -->
+                  
+                    <div id="page-content">
                         
-                        
-                 
-                       <div class="row">
-                        <div class="col-lg-5 col-sm-offset-1">
-                            <div class="panel">
-                                    <img alt="Profile Picture" class="img-lg mar-btm" src="img/profile-photos/5.png" 
-                                    style="position: absolute;top:17px;left:30px;width:120px;height:120px;" >
-                                <form class=" panel-body form-horizontal form-padding">
-                                 
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">姓名</label>
-                                        <div class="col-sm-4">
-                                            <span class="form-control" id="username"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">性别</label>
-                                        <div class="col-sm-4">
-                                            <span class="form-control" id="sex"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">民族</label>
-                                        <div class="col-sm-4">
-                                            <span class="form-control" id="nation"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-5 control-label">出生日期</label>
-                                        <div class="col-sm-4">
-                                            <span class="form-control" id="birthday"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">通讯地址</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="address"></span>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">学位</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="degree"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">毕业学校</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="school"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">毕业时间</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="graduation_date"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">所学专业</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="major"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">从事专业</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="professial"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">行政职务</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="administrative"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">岗位</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="title"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">专业特长</label>
-                                        <div class="col-sm-5">
-                                            <span class="form-control" id="expertise"></span>
-                                        </div>
-                                    </div>
-
-                               
-                                   
-                                
-
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 ">
-                            <div class="panel">
-                                    <form class=" panel-body form-horizontal form-padding">
-                                     
-                                   
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">账号</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="account"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">工作单位</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="work_unit"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">手机号</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="phone"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">办公室电话</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="telephone"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">电子邮箱</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="email"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">所属体系名称</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="tixi_name"></span>
-                                            </div>
-                                        </div>
-    
-                                        <div class="form-group">
-                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">功能研究室名称</label>
-                                                <div class="col-sm-4">
-                                                    <span class="form-control" id="laboratoryName"></span>
+                                <div class="col-lg-5  col-sm-8 ">
+                                    <div class="panel">
+                                            
+                                        <form class=" panel-body form-horizontal form-padding">
+                                        
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">姓名</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="username"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">综合试验站名称</label>
-                                                <div class="col-sm-4">
-                                                    <span class="form-control" id="stationName" ></span>
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">性别</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="sex"></span>
                                                 </div>
                                             </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">政治面貌</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="political"></span>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">民族</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="nation"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">文化程度</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="education"></span>
+
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">出生日期</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="birthday"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">部级专家</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="ministeria"></span>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">通讯地址</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="address"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">省级专家</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="provincial"></span>
+
+
+
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">学位</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="degree"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">邮政编码</label>
-                                            <div class="col-sm-4">
-                                                <span class="form-control" id="postalcode"></span>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">毕业学校</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="school"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="demo-is-inputnormal" class="col-sm-4 control-label">社会兼职情况</label>
-                                            <div class="col-sm-5">
-                                                <span class="form-control" id="part_time"></span>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">毕业时间</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="graduation_date"></span>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">所学专业</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="major"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">从事专业</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="professial"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">行政职务</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="administrative"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">岗位</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="title"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="demo-is-inputnormal" class="col-sm-4 control-label">专业特长</label>
+                                                <div class="col-sm-5">
+                                                    <span class="form-control" id="expertise"></span>
+                                                </div>
+                                            </div>
+
                                     
-    
-                                    </form>
-                            </div>
-                        </div>
-                     </div> 
-                    
-                    <!-- /.row -->
-               
-              
+                                        
+                                        
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-sm-8  ">
+                                    <div class="panel">
+                                            <form class=" panel-body form-horizontal form-padding">
+                                            
+                                        
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">账号</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="account"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">工作单位</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="work_unit"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">手机号</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="phone"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">办公室电话</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="telephone"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">电子邮箱</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="email"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">所属体系名称</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="tixi_name"></span>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="form-group">
+                                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">功能研究室名称</label>
+                                                        <div class="col-sm-5">
+                                                            <span class="form-control" id="laboratoryName"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="demo-is-inputnormal" class="col-sm-4 control-label">综合试验站名称</label>
+                                                        <div class="col-sm-5">
+                                                            <span class="form-control" id="stationName" ></span>
+                                                        </div>
+                                                    </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">政治面貌</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="political"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">文化程度</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="education"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">部级专家</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="ministeria"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">省级专家</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="provincial"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">邮政编码</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="postalcode"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="demo-is-inputnormal" class="col-sm-4 control-label">社会兼职情况</label>
+                                                    <div class="col-sm-5">
+                                                        <span class="form-control" id="part_time"></span>
+                                                    </div>
+                                                </div>
+                                            
+            
+                                            </form>
+                                    </div>
+                                </div>
+                    </div>
+            </div>
                     <nav id="mainnav-container" class="affix-top">
                             <div id="mainnav">
                                 <!--Menu-->
@@ -560,9 +542,12 @@
                                 <!--End menu-->
                         
                             </div>
-                        </nav>
+                    </nav>
                         <!--===================================================-->
                         <!--END MAIN NAVIGATION-->
+               
+           
+        </div>
                         <footer id="footer" style="text-align: center">
                         
                         
@@ -573,18 +558,10 @@
                         
                         
                         </footer>
-
-            </div>
-
-
-
-           
-
-        </div>
         <!--===================================================-->
         <!-- END OF CONTAINER -->
 
-</div>
+    </div>
 </body>
 
 </html>
