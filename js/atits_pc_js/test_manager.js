@@ -1,5 +1,25 @@
 $(document).ready(function () {
 
+    //tab选择
+    var getIndexNum = sessionStorage.getItem("tabLiNum");
+    $(".tab-hd li").eq(getIndexNum).addClass('active').siblings().removeClass('active');
+    $(".tab-bd").eq(getIndexNum).addClass('in').siblings('.tab-bd').removeClass('in');
+    $(".tab-bd").eq(getIndexNum).addClass('active').siblings('.tab-bd').removeClass('active');
+
+    $(".tab-hd li").on('click',function(){
+
+        $(this).addClass('active').siblings().removeClass('active');
+        $(".tab-bd").eq($(this).index()).removeClass('in').siblings('.tab-bd').removeClass('in');
+        $(".tab-bd").eq($(this).index()).removeClass('active').siblings('.tab-bd').removeClass('active');
+
+        var indexNum = $(this).index(); //所点击li的索引值
+        console.log("当前li的下标为：",indexNum); //打印索引值
+
+        sessionStorage.setItem("tabLiNum",indexNum); //将(下标名称，索引值)存入session中
+    });
+
+
+
 
     //日历
     $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
