@@ -614,6 +614,7 @@ function score(value, row, index) {
 //给首席、副首席打分，设置打分项，考评已启动（可打分）
 function score1(row) {
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
+    $("input[name='a6']").css('display','block');
     $("#score-btn").css("display", "block");
     $("#a1").text("1．团队建设情况（15分）");
     $("#a2").text("2．支撑产业发展情况（50分)");
@@ -638,6 +639,7 @@ function score1(row) {
 
 //给首席、副首席打分，设置打分项，考评已启动（不可打分）
 function score1_1(row) {
+    $("input[name='a6']").css('display','block');
     $("#a1").text("1．团队建设情况（15分）");
     $("#a2").text("2．支撑产业发展情况（50分）");
     $("#a3").text("3．应急事件处置及参与重大活动情况（10分）");
@@ -663,6 +665,7 @@ function score2(row) {
     $("#a3").text("3．经费使用情况（10分）");
     $("#a4").text("4．宣传推动情况（10分）");
     $("#a5").text("5．其他（10分）");
+    $("#a6").text("");
     $("input[name='a6']").css('display', 'none');
     $("input[name='score-id']").val(row.id);
     $("input[name='a1']").val(row.a1);
@@ -685,6 +688,7 @@ function score2_1(row) {
     $("#a3").text("3．经费使用情况（10分）");
     $("#a4").text("4．宣传推动情况（10分）");
     $("#a5").text("5．其他（10分）");
+    $("#a6").text("");
     $("input[name='a1']").val(row.a1);
     $("input[name='a2']").val(row.a2);
     $("input[name='a3']").val(row.a3);
@@ -699,6 +703,7 @@ function score2_1(row) {
 //给试验站站长打分，设置打分项，考评已启动（可打分）
 function score3(row) {
     $("input[name='a1'],input[name='a2'],input[name='a3'],input[name='a4'],input[name='a5'],input[name='a6']").removeAttr("disabled");
+    $("input[name='a6']").css('display','block');
     $("#score-btn").css("display", "block");
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");
@@ -723,6 +728,7 @@ function score3(row) {
 
 //给试验站站长打分，设置打分项，考评已启动（不可打分）
 function score3_1(row) {
+    $("input[name='a6']").css('display','block');
     $("#a1").text("1．任务完成情况（50分）");
     $("#a2").text("2．遵规守纪情况（20分）");
     $("#a3").text("3．经费使用情况（10分）");
