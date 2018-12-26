@@ -74,7 +74,7 @@ $(document).ready(function () {
     function createDom2(ele) {
         var htmlStr = '';
         for (i = 0; i < ele.length; i++) {
-            htmlStr += '<li class="checkbox col-sm-4">\n' +
+            htmlStr += '<li class="checkbox col-sm-3">\n' +
                 '   <input class="magic-checkbox" type="checkbox" name="users" value="' + ele[i].id + '">\n' +
                 '             <label for="demo-checkbox-11"> ' + ele[i].profile.name + '</label>\n' +
                 '        </li>'
@@ -85,7 +85,7 @@ $(document).ready(function () {
     function createDom(ele) {
         var htmlStr = '';
         for (i = 0; i < ele.length; i++) {
-            htmlStr += '<li class="checkbox col-sm-4">\n' +
+            htmlStr += '<li class="checkbox col-sm-3">\n' +
                 '   <input class="magic-checkbox" type="checkbox" name="users" value="' + ele[i].id + '">\n' +
                 '             <label for="demo-checkbox-11"> ' + ele[i].profile.name + '</label>\n' +
                 '        </li>'
