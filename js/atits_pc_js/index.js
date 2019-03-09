@@ -12,7 +12,7 @@
         }else if (sessionStorage.getItem("userId")==427){
             $("#page-title").html("<h1 class=\"page-header text-overflow text-3x \">体系办</h1>");
         }else {
-            $("#page-title").html("<h1 class=\"page-header text-overflow text-3x \">外聘人员</h1>");
+            $("#page-title").html("<h1 class=\"page-header text-overflow text-3x \">专家人员</h1>");
         }
     }else if (sessionStorage.getItem("systemId") == 1) {
         $("#page-title").html("<h1 class=\"page-header text-overflow text-3x \">安徽省现代农业产业技术体系综述</h1>");
