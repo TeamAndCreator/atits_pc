@@ -23,8 +23,8 @@ $(document).ready(function () {
     $('#name').text(data.laboratory.labName);
     $('#company').text(data.laboratory.company);
     $('#systemName').text(data.laboratory.system.systemName);
-    $('#job_expert').text(data.job_expert);
-    $('#research_director').text(data.research_director);
+    $('#job_expert').text(data.research_director);
+    $('#research_director').text(data.job_expert);
     $('#content1').html(data.laboratory.content);
 
 
