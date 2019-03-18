@@ -91,6 +91,16 @@
 
     <script src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
+    <style type="text/css">
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type="number"]{
+            -moz-appearance: textfield;
+        }
+    </style>
+
     <link id="theme" href="css/themes/type-a/theme-dark.min.css" rel="stylesheet">
 </head>
 
@@ -290,40 +300,45 @@
                             <div class="form-group">
                                 <label class="col-sm-offset-2 control-label" id="a1"> </label>
                                 <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
-                                    <input type="number" class="form-control" name="a1" placeholder="">
+                                    <input type="number" step="0.1" class="form-control" name="a1" placeholder="0">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-offset-2  control-label" id="a2"> </label>
                                 <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
-                                    <input type="number" class="form-control" name="a2" placeholder="">
+                                    <input type="number" step="0.1" class="form-control" name="a2" placeholder="0">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-offset-2  control-label" id="a3"> </label>
                                 <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
-                                    <input type="number" class="form-control" name="a3" placeholder="">
+                                    <input type="number" step="0.1" class="form-control" name="a3" placeholder="0">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-offset-2 control-label" id="a4"> </label>
                                 <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
-                                    <input type="number" class="form-control" name="a4" placeholder="">
+                                    <input type="number" step="0.1" class="form-control" name="a4" placeholder="0">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-offset-2  control-label" id="a5"> </label>
                                 <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
-                                    <input type="number" class="form-control" name="a5" placeholder="">
+                                    <input type="number" step="0.1" class="form-control" name="a5" placeholder="0">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-offset-2  control-label" id="a6"> </label>
                                 <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
-                                    <input type="number" class="form-control" name="a6" placeholder="">
+                                    <input type="number" step="0.1" class="form-control" name="a6" placeholder="0">
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label class="col-sm-offset-2  control-label" id="a7">附加分 </label>
+                                <div class="col-sm-offset-8" style="margin-top:-30px;width:80px;">
+                                    <input type="number" step="0.1" class="form-control" name="a7" placeholder="0" value=0>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-sm-7 col-sm-offset-5">
