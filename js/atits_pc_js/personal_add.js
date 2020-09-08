@@ -389,7 +389,8 @@ $(document).ready(function () {
                 } else {
                     if (result.data.user.system != null) {
                         //体系名称
-                        $('#systemName option[value=0]').html(JSON.stringify(result.data.user.system.systemName).replace(/\"/g, ""));
+                        // $('#systemName option[value=0]').html(JSON.stringify(result.data.user.system.systemName).replace(/\"/g, ""));
+                        $("#systemName option[value='" + result.data.user.system.id + "']").attr("selected", "selected");
                     } else {
                         $('#systemName option[value=0]').html("无")
                     }
@@ -406,7 +407,7 @@ $(document).ready(function () {
                         $('#laboratoryName').html('<option value= "0">无</option>');
                     } else {
                         console.log("lab")
-                        $('#laboratoryName').html('<option value= "0">'+result.data.user.laboratory.labName+'</option>')
+                        $('#laboratoryName').html('<option value= '+result.data.user.laboratory.id+'>'+result.data.user.laboratory.labName+'</option>')
                     }
                     $('#laboratoryName').attr("disabled", "true");
                     //综合试验站
@@ -415,7 +416,7 @@ $(document).ready(function () {
                         $('#stationName').html('<option value= "0">无</option>')
                     } else {
                         console.log("sta")
-                        $('#stationName').html('<option value= "0">'+result.data.user.station.staName+'</option>')
+                        $('#stationName').html('<option value= '+ result.data.user.station.id +'>'+result.data.user.station.staName+'</option>')
                     }
                     $('#stationName').attr("disabled", "true");
 
